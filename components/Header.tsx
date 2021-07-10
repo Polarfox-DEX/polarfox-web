@@ -1,28 +1,14 @@
-import classNames from 'classnames';
-
-interface HeaderProps {
-  className?: string;
-}
-
-export function Header({ className }: HeaderProps) {
-  classNames();
+export function Header() {
   return (
-    <div className={classNames('flex justify-between items-center', className)}>
-      <div className="flex items-center">
-        <img
-          src="/polarfox-logo.jpg"
-          alt="Polarfox logo"
-          width="56"
-          height="56"
-        />
-        <span className="ml-4 text-2xl">polarfox</span>
+    <div className="flex justify-between w-full px-14 py-4 absolute">
+      <img src="/polarfox-logo.png" alt="Polarfox logo" />
+      <div className="flex items-center space-x-16 ">
+        <div>Products</div>
+        <div>About</div>
+        <div>Roadmap</div>
+        <div>FAQ</div>
+        <div>Resources</div>
       </div>
-
-      <div className="text-xs">Products</div>
-      <div className="text-xs">About</div>
-      <div className="text-xs">Roadmap</div>
-      <div className="text-xs">FAQ</div>
-      <div className="text-xs">Resources</div>
     </div>
   );
 }
