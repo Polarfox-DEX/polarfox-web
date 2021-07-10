@@ -16,21 +16,24 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Polarfox</title>
-        <meta name="description" content="Polarfox website" />
+        <meta name="description" content="Polarfox | Home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Header />
+
       <SectionWrapper backgroundImageUrl="/background/forest-1.jpg">
         <PfxHighlight />
       </SectionWrapper>
 
       <SectionWrapper>
-        <PfxStatements />
-        <PfxFigures className="mt-32" />
-        <PfxTokenObjectives className="mt-32" />
-        <ProductsSection className="mt-32" />
-        <FAQSection className="mt-32" />
+        <PfxStatements className="mt-16" />
+        <PfxFigures className="mt-44" />
+        <PfxTokenObjectives className="mt-44" />
+        <ProductsSection className="mt-44" />
+        <FAQSection className="my-44" />
       </SectionWrapper>
+
       <Footer />
     </div>
   );

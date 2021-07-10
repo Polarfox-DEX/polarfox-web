@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import TopRightArrow from '../svg/top-right-arrow';
+import { calcRem } from '../../utils/styles';
+import TopRightArrow from '../svg/TopRightArrow';
 
 interface ProductsSectionProps {
   className?: string;
@@ -8,8 +9,26 @@ interface ProductsSectionProps {
 export function ProductsSection({ className }: ProductsSectionProps) {
   return (
     <div className={classNames(className)}>
-      <div className="text-xs opacity-50">PFX PORTFOLIO</div>
-      <div style={{ fontSize: '50px', lineHeight: '65px' }}>Products</div>
+      <div
+        className="opacity-50"
+        style={{
+          fontSize: calcRem(12),
+          lineHeight: calcRem(14.1),
+          letterSpacing: calcRem(3),
+        }}
+      >
+        PFX PORTFOLIO
+      </div>
+      <h2
+        className="font-switzer font-semibold mt-1"
+        style={{
+          maxWidth: calcRem(357),
+          fontSize: calcRem(50),
+          lineHeight: calcRem(65),
+        }}
+      >
+        Products
+      </h2>
       <div className="flex justify-between mt-28">
         <Product
           label="Decentralized Exchange"
@@ -22,40 +41,33 @@ export function ProductsSection({ className }: ProductsSectionProps) {
         />
         <Product label="Akita Community" url="https://akita.network" />
       </div>
-      <div className="text-xs opacity-50 mt-40">PARTNERS</div>
+      <div
+        className="opacity-50 mt-40"
+        style={{
+          fontSize: calcRem(12),
+          lineHeight: calcRem(14.1),
+          letterSpacing: calcRem(3),
+        }}
+      >
+        PARTNERS
+      </div>
       <div className="flex justify-between items-center mt-11">
-        <div>
-          <img
-            src="/gitcoin.jpg"
-            width="202px"
-            height="59px"
-            alt="Gitcoin logo"
-          />
-        </div>
-        <div>
-          <img
-            src="/avalanche.jpg"
-            width="188px"
-            height="94px"
-            alt="Gitcoin logo"
-          />
-        </div>
-        <div>
-          <img
-            src="/ethereum.jpg"
-            width="188px"
-            height="85px"
-            alt="Gitcoin logo"
-          />
-        </div>
-        <div>
-          <img
-            src="/coinmarketcap.jpg"
-            width="278px"
-            height="49px"
-            alt="Gitcoin logo"
-          />
-        </div>
+        <img className="grayscale" src="/logo/gitcoin.png" alt="Gitcoin logo" />
+        <img
+          className="grayscale"
+          src="/logo/avalanche.png"
+          alt="Gitcoin logo"
+        />
+        <img
+          className="grayscale"
+          src="/logo/ethereum.png"
+          alt="Gitcoin logo"
+        />
+        <img
+          className="grayscale"
+          src="/logo/coin-market-cap.png"
+          alt="Gitcoin logo"
+        />
       </div>
     </div>
   );
@@ -70,14 +82,23 @@ function Product({ label, url }: ProductProps) {
   return (
     <a
       href={url}
-      className="flex p-7 bg-white border border-blue  hover:bg-blue-light hover:border-0 hover:text-white"
+      className="flex p-7 bg-white border border-blue"
       style={{
-        width: '285px',
-        height: '270px',
-        borderRadius: '10px',
+        width: calcRem(285),
+        height: calcRem(270),
+        borderRadius: calcRem(10),
       }}
     >
-      <div className="flex-1 self-end text-lg">{label}</div>
+      <p
+        className="flex-1 self-end text-lg font-switzer font-semibold"
+        style={{
+          width: calcRem(224),
+          fontSize: calcRem(20),
+          lineHeight: calcRem(26.4),
+        }}
+      >
+        {label}
+      </p>
       <div className="text-right">
         <TopRightArrow className="fill-current" />
       </div>

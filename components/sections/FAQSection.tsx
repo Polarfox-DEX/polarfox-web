@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
+import { calcRem } from '../../utils/styles';
 
 interface PropsSectionProps {
   className?: string;
@@ -9,23 +10,45 @@ export function FAQSection({ className }: PropsSectionProps) {
   return (
     <div className={classNames('flex justify-between', className)}>
       <div>
-        <div className="text-xs opacity-50">FAQ</div>
-        <div style={{ fontSize: '50px', lineHeight: '65px', width: '382px' }}>
-          Frequently Asked Questions
+        <div
+          className="opacity-50"
+          style={{
+            fontSize: calcRem(12),
+            lineHeight: calcRem(14.1),
+            letterSpacing: calcRem(3),
+          }}
+        >
+          FAQ
         </div>
+        <h2
+          className="font-switzer font-semibold mt-1"
+          style={{
+            maxWidth: calcRem(357),
+            fontSize: calcRem(50),
+            lineHeight: calcRem(65),
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
         <button
-          className="my-12 border border-blue bg-white w-40 h-11 hover:border-0 hover:bg-blue-light hover:text-white"
-          style={{ borderRadius: '22px' }}
+          className="mt-12 rounded-full border border-blue bg-white"
+          style={{ width: calcRem(166), height: calcRem(44) }}
         >
           More question
         </button>
       </div>
 
-      <div style={{ width: '680px' }}>
-        <div style={{ fontSize: '26px', lineHeight: '50px' }}>
+      <div style={{ width: calcRem(680) }}>
+        <h3
+          className="font-bold"
+          style={{ fontSize: calcRem(26), lineHeight: calcRem(50) }}
+        >
           What is Polarfox?
-        </div>
-        <p className="leading-8 mt-3 mb-8" style={{ color: '#4D6481' }}>
+        </h3>
+        <p
+          className="mt-3 mb-8"
+          style={{ color: '#4D6481', lineHeight: calcRem(30) }}
+        >
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -76,14 +99,21 @@ interface QuestionProps {
 function Question({ question, children }: QuestionProps) {
   return (
     <>
-      <div
-        className="flex justify-between border-t-2 py-3"
-        style={{ fontSize: '26px', lineHeight: '50px', borderColor: '#D8D8D8' }}
+      <h3
+        className="flex justify-between border-t-2 py-3 font-bold"
+        style={{
+          fontSize: calcRem(26),
+          lineHeight: calcRem(50),
+          borderColor: '#D8D8D8',
+        }}
       >
         <div>{question}</div>
-        <div className="">+</div>
-      </div>
-      <div className="leading-8" style={{ color: '#4D6481' }}>
+        <div>+</div>
+      </h3>
+      <div
+        className="leading-8"
+        style={{ color: '#4D6481', lineHeight: calcRem(30) }}
+      >
         {children}
       </div>
     </>

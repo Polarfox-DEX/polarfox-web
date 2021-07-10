@@ -1,5 +1,10 @@
 import React, { ReactNode, ReactText } from 'react';
 import { WithBackgroundImage } from '../components/utils/WithBackgroundImage';
+import { calcRem } from '../utils/styles';
+import GitHub from './svg/Github';
+import Medium from './svg/Medium';
+import Telegram from './svg/Telegram';
+import Twitter from './svg/Twitter';
 
 export function Footer() {
   return (
@@ -10,11 +15,16 @@ export function Footer() {
           style={{ width: '1200px' }}
         >
           <div className="flex justify-between pb-32">
-            <div
-              style={{ fontSize: '50px', lineHeight: '65px', width: '514px' }}
+            <h2
+              className="font-switzer"
+              style={{
+                fontSize: calcRem(50),
+                lineHeight: calcRem(65),
+                width: calcRem(514),
+              }}
             >
               Meet the worldwide community
-            </div>
+            </h2>
             <div className="flex space-x-5">
               <TelegramButton />
               <GitHubButton />
@@ -22,23 +32,34 @@ export function Footer() {
               <TwitterButton />
             </div>
           </div>
-          <div className="pt-32">
+          <div className="py-32">
             <img src="/polarfox-logo.png" alt="Polarfox logo" />
           </div>
         </div>
       </WithBackgroundImage>
-      <SiteMap />
       <WithBackgroundImage imageUrl="/background/fox.png">
+        <SiteMap />
         <div
-          className="self-start border-t mx-auto text-sm"
-          style={{ width: '1200px', lineHeight: '22px', color: '#4D6481' }}
+          className="self-start border-t mx-auto text-sm flex-1"
+          style={{
+            width: '1200px',
+            fontSize: calcRem(12),
+            lineHeight: calcRem(22),
+            color: '#4D6481',
+          }}
         >
-          <p
-            className="text-blue my-20"
-            style={{ fontSize: '13px', lineHeight: '33px' }}
-          >
-            © 2021 Polarfox ltd.
-          </p>
+          <div className="flex justify-end items-center space-x-6">
+            <p
+              className="text-blue my-20 flex-1"
+              style={{ fontSize: '13px', lineHeight: '33px' }}
+            >
+              © 2021 Polarfox ltd.
+            </p>
+            <Telegram width="24.29" height="20" />
+            <GitHub width="20.51" height="20" />
+            <Medium width="35.22" height="20" />
+            <Twitter width="24.29" height="20" />
+          </div>
 
           <p className="w-72">
             <b>Disclaimer</b>
@@ -57,33 +78,50 @@ export function Footer() {
 }
 
 function TelegramButton() {
-  return <SocialButton url="" />;
+  return (
+    <SocialButton url="">
+      <Telegram width="24.62" height="20.51" />
+    </SocialButton>
+  );
 }
 
 function GitHubButton() {
-  return <SocialButton url="" />;
+  return (
+    <SocialButton url="">
+      <GitHub width="21.03" height="20.51" />
+    </SocialButton>
+  );
 }
 
 function MediumButton() {
-  return <SocialButton url="" />;
+  return (
+    <SocialButton url="">
+      <Medium width="36.12" height="20.51" />
+    </SocialButton>
+  );
 }
 
 function TwitterButton() {
-  return <SocialButton url="" />;
+  return (
+    <SocialButton url="">
+      <Twitter width="24.91" height="20.51" />
+    </SocialButton>
+  );
 }
 
 interface SocialButtonProps {
   url: string;
+  children: ReactNode;
 }
 
-function SocialButton({ url }: SocialButtonProps) {
+function SocialButton({ url, children }: SocialButtonProps) {
   return (
     <a
       href={url}
       target="blank"
-      className="flex justify-center items-center rounded-full border border-blue bg-white w-20 h-20 hover:border-0 hover:bg-blue-light hover:text-white"
+      className="flex justify-center items-center rounded-full border border-blue bg-white w-20 h-20"
     >
-      B
+      {children}
     </a>
   );
 }
@@ -91,7 +129,7 @@ function SocialButton({ url }: SocialButtonProps) {
 function SiteMap() {
   return (
     <div
-      className="flex justify-between mx-auto my-20"
+      className="flex justify-between mx-auto mb-20"
       style={{ width: '1200px', fontSize: '13px', lineHeight: '33px' }}
     >
       <SiteMapSection>
@@ -153,5 +191,5 @@ interface SiteMapSectionTitleProps {
 }
 
 function SiteMapSectionTitle({ children }: SiteMapSectionTitleProps) {
-  return <h5>{children}</h5>;
+  return <h5 className="font-bold">{children}</h5>;
 }

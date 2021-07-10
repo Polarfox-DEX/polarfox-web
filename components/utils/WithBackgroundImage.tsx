@@ -11,7 +11,7 @@ export function WithBackgroundImage({
 }: WithBackGroundImageProps) {
   return (
     <div
-      className="flex justify-center items-center"
+      className="flex flex-col justify-center items-center"
       style={{
         height: '100vh',
         minHeight: '100vh',

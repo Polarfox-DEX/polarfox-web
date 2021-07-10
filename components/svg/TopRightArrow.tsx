@@ -1,4 +1,4 @@
-export function TopRightArrow(props: any) {
+export function TopRightArrow(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={12}
