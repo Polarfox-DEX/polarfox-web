@@ -1,12 +1,11 @@
 import classNames from 'classnames';
+import { ReactNode } from 'react';
 
-interface PfxTokenObjectivesSectionProps {
+interface PfxTokenObjectivesProps {
   className?: string;
 }
 
-export function PfxTokenObjectivesSection({
-  className,
-}: PfxTokenObjectivesSectionProps) {
+export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
   return (
     <div className={classNames(className)}>
       <div className="grid grid-cols-2 gap-4">
@@ -18,8 +17,8 @@ export function PfxTokenObjectivesSection({
             objectives
           </div>
           <p className="my-12" style={{ maxWidth: '425px' }}>
-            Polarfox is a community-based project, and hearing the voice of that
-            community is crucial to its future.
+            The PFX token is at the center of the Polarfox ecosystem. Find out
+            more about PFX below.
           </p>
           <button
             className="border border-blue bg-white w-40 h-11 hover:border-0 hover:bg-blue-light hover:text-white"
@@ -93,42 +92,47 @@ export function PfxTokenObjectivesSection({
         </div>
       </div>
       <div className="flex justify-between mt-32">
-        <PfxTokenObjectiveBlock
-          title="Community based token"
-          description="Polarfox is a community-based project, and hearing the voice of that community is crucial to its future."
-        />
-        <PfxTokenObjectiveBlock
-          title="Effective ecosystem"
-          description="PFX funds the Polarfox ecosystem, initially with a percentage of the token supply, and then with a dev fee on each PFX transaction."
-        />
-        <PfxTokenObjectiveBlock
-          title="Governance protocol"
-          description="2.5% of the total supply will be given to the governance for use over a time period of sixteen years."
-        />
-        <PfxTokenObjectiveBlock
-          title="Deflationary & flexible"
-          description="The token is deflationary & flexible - the burn rate and dev fee can be changed at any time, or even disabled."
-        />
+        <PfxTokenObjective title="Tokenomics">
+          <p>
+            The PFX tokenomics are designed to provide a long-term increase in
+            value while rewarding liquidity providers with even more PFX gains.
+          </p>
+        </PfxTokenObjective>
+        <PfxTokenObjective title="Effective ecosystem">
+          <p>
+            PFX funds the Polarfox ecosystem, initially with a percentage of the
+            token supply, and then with a dev fee on each PFX transaction.
+          </p>
+        </PfxTokenObjective>
+        <PfxTokenObjective title="Governance protocol">
+          <p>
+            2.5% of the total supply will be given to the governance for use
+            over a time period of sixteen years.
+          </p>
+        </PfxTokenObjective>
+        <PfxTokenObjective title="Deflationary">
+          <p>
+            On every transaction involving PFX, 0.27% of the transferred PFX
+            amount is burned forever, effectively making it deflationary.
+          </p>
+        </PfxTokenObjective>
       </div>
     </div>
   );
 }
 
-interface PfxTokenObjectiveBlockProps {
+interface PfxTokenObjectiveProps {
   title: string;
-  description: string;
+  children: ReactNode;
 }
 
-function PfxTokenObjectiveBlock({
-  title,
-  description,
-}: PfxTokenObjectiveBlockProps) {
+function PfxTokenObjective({ title, children }: PfxTokenObjectiveProps) {
   return (
     <div className="border-t-2 border-blue" style={{ width: '280px' }}>
       <div className="text-2xl my-7">{title}</div>
-      <p className="leading-8" style={{ color: '#4D6481' }}>
-        {description}
-      </p>
+      <div className="leading-8" style={{ color: '#4D6481' }}>
+        {children}
+      </div>
     </div>
   );
 }

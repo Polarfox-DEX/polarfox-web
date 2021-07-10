@@ -11,16 +11,16 @@ export function ProductsSection({ className }: ProductsSectionProps) {
       <div className="text-xs opacity-50">PFX PORTFOLIO</div>
       <div style={{ fontSize: '50px', lineHeight: '65px' }}>Products</div>
       <div className="flex justify-between mt-28">
-        <ProductBox
+        <Product
           label="Decentralized Exchange"
           url="https://dex-test.polarfox.io/"
         />
-        <ProductBox label="Polarfox Token (PFX)" url="#" />
-        <ProductBox
+        <Product label="Polarfox Token (PFX)" url="#" />
+        <Product
           label="Polarfox Bridge"
           url="https://bridge-test.polarfox.io"
         />
-        <ProductBox label="Akita Community" url="https://akita.network" />
+        <Product label="Akita Community" url="https://akita.network" />
       </div>
       <div className="text-xs opacity-50 mt-40">PARTNERS</div>
       <div className="flex justify-between items-center mt-11">
@@ -61,16 +61,16 @@ export function ProductsSection({ className }: ProductsSectionProps) {
   );
 }
 
-interface ProductBoxProps {
+interface ProductProps {
   label: string;
   url: string;
 }
 
-function ProductBox({ label, url }: ProductBoxProps) {
+function Product({ label, url }: ProductProps) {
   return (
     <a
       href={url}
-      className="flex border p-7 hover:bg-blue-light hover:text-white"
+      className="flex p-7 bg-white border border-blue  hover:bg-blue-light hover:border-0 hover:text-white"
       style={{
         width: '285px',
         height: '270px',

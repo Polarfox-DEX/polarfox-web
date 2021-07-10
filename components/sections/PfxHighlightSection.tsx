@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 
-interface PfxHighlightsSectionProps {
+interface PfxHighlightsProps {
   className?: string;
 }
 
-export function PfxHighlightSection({ className }: PfxHighlightsSectionProps) {
+export function PfxHighlight({ className }: PfxHighlightsProps) {
   return (
     <div className={classNames('flex flex-col items-center', className)}>
       <p
@@ -22,7 +22,7 @@ export function PfxHighlightSection({ className }: PfxHighlightsSectionProps) {
             borderRadius: '2.438rem',
           }}
         >
-          Whitepaper
+          Litepaper
         </button>
         <button
           className="text-white bg-blue hover:border-0 hover:bg-blue-light hover:text-white"
@@ -32,7 +32,7 @@ export function PfxHighlightSection({ className }: PfxHighlightsSectionProps) {
             borderRadius: '2.438rem',
           }}
         >
-          Go to app
+          Open DEX
         </button>
       </div>
     </div>

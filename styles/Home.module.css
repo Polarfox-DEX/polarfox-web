@@ -5,7 +5,4 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-image: url('/bg.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
