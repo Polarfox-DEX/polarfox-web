@@ -36,7 +36,18 @@ export function PfxTokenObjectivesSection({
               <p className="text-xs opacity-50">
                 Presale
                 <br />
-                60%
+                37%
+              </p>
+            </div>
+            <div className="flex items-center my-5">
+              <div
+                className="w-7 h-7 rounded-md mr-4"
+                style={{ backgroundColor: '#66AEFF' }}
+              ></div>
+              <p className="text-xs opacity-50">
+                Liquidity mining
+                <br />
+                37%
               </p>
             </div>
             <div className="flex items-center my-5">
@@ -45,20 +56,9 @@ export function PfxTokenObjectivesSection({
                 style={{ backgroundColor: '#2DBCC4' }}
               ></div>
               <p className="text-xs opacity-50">
-                Liquidity mining
+                Initial Liquidity
                 <br />
-                32%
-              </p>
-            </div>
-            <div className="flex items-center my-5">
-              <div
-                className="w-7 h-7 rounded-md mr-4"
-                style={{ backgroundColor: '#086AD9' }}
-              ></div>
-              <p className="text-xs opacity-50">
-                Governance treasury
-                <br />
-                2.37%
+                17%
               </p>
             </div>
             <div className="flex items-center my-5">
@@ -69,12 +69,23 @@ export function PfxTokenObjectivesSection({
               <p className="text-xs opacity-50">
                 Team treasury
                 <br />
-                5.3%
+                6.5%
+              </p>
+            </div>
+            <div className="flex items-center my-5">
+              <div
+                className="w-7 h-7 rounded-md mr-4"
+                style={{ backgroundColor: '#0130A6' }}
+              ></div>
+              <p className="text-xs opacity-50">
+                Governance treasury
+                <br />
+                2.5%
               </p>
             </div>
           </div>
           <img
-            src="/pfx-token-distribution.png"
+            src="/pfx-token-distribution.svg"
             width="386"
             height="386"
             alt="PFX token distribution chart"
@@ -92,7 +103,7 @@ export function PfxTokenObjectivesSection({
         />
         <PfxTokenObjectiveBlock
           title="Governance protocol"
-          description="2.7% of the total supply will be given to the governance for use over a time period of sixteen years."
+          description="2.5% of the total supply will be given to the governance for use over a time period of sixteen years."
         />
         <PfxTokenObjectiveBlock
           title="Deflationary & flexible"
