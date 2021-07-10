@@ -6,6 +6,7 @@ import { PfxFigures } from '../components/sections/PfxFiguresSection';
 import { PfxTokenObjectivesSection } from '../components/sections/PfxTokenObjectivesSection';
 import { ProductsSection } from '../components/sections/ProductsSection';
 import { PfxStatementsSection } from '../components/sections/PfxStatementsSection';
+import { FAQSection } from '../components/sections/FAQSection';
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         <PfxFigures className="mt-32" />
         <PfxTokenObjectivesSection className="mt-32" />
         <ProductsSection className="mt-32" />
+        <FAQSection className="mt-32" />
       </div>
     </div>
   );
