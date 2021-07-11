@@ -16,7 +16,24 @@ export function Page({ children }: PageProps) {
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon/favicon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
       </Head>
 
       <Header />
