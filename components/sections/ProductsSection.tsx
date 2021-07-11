@@ -82,6 +82,8 @@ function Product({ label, url }: ProductProps) {
   return (
     <a
       href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex p-7 bg-white border border-blue"
       style={{
         width: calcRem(285),

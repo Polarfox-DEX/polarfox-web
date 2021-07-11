@@ -1,4 +1,4 @@
-import { ReactNode, ReactText } from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 import Flag from '../svg/Flag';
 import Token from '../svg/Token';

@@ -118,7 +118,8 @@ function SocialButton({ url, children }: SocialButtonProps) {
   return (
     <a
       href={url}
-      target="blank"
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex justify-center items-center rounded-full border border-blue bg-white w-20 h-20"
     >
       {children}

@@ -20,7 +20,12 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
         Decentralized ecosystem of applications
       </h1>
       <div className="flex space-x-5 mt-24">
-        <Button className="border border-blue bg-white">Litepaper</Button>
+        <Button
+          url="/Polarfox Litepaper V2.6.pdf"
+          className="border border-blue bg-white"
+        >
+          Litepaper
+        </Button>
         <Button
           url="https://dex-test.polarfox.io/"
           className="text-white bg-blue"
@@ -33,7 +38,7 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
 }
 
 interface ButtonProps {
-  url?: string; // TODO Make it mandatory
+  url: string;
   children: ReactNode;
   className?: string;
 }
@@ -41,7 +46,9 @@ interface ButtonProps {
 function Button({ url, className, children }: ButtonProps) {
   return (
     <a
-      href={url ?? ''}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className={classNames(
         'flex justify-center items-center rounded-full font-semibold',
         className

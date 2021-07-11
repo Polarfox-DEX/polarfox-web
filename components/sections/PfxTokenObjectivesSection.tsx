@@ -42,12 +42,15 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
             The PFX token is at the center of the Polarfox ecosystem. Find out
             more about PFX below.
           </p>
-          <button
-            className="rounded-full border border-blue bg-white"
+          <a
+            href="/Polarfox Litepaper V2.6.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex justify-center items-center rounded-full border border-blue bg-white"
             style={{ width: calcRem(166), height: calcRem(44) }}
           >
             Read more
-          </button>
+          </a>
         </div>
 
         <div className="flex justify-between items-center">
