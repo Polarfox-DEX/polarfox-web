@@ -10,10 +10,11 @@ import { FAQSection } from '../components/sections/FAQSection';
 import { WithBackgroundImage } from '../components/utils/WithBackgroundImage';
 import { ReactNode } from 'react';
 import { Footer } from '../components/Footer';
+import classNames from 'classnames';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, 'text-blue')}>
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
