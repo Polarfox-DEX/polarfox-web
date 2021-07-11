@@ -33,7 +33,7 @@ export function Footer() {
             </div>
           </div>
           <div className="py-32">
-            <img src="/polarfox-logo.png" alt="Polarfox logo" />
+            <img src="/logo/polarfox.png" alt="Polarfox logo" />
           </div>
         </div>
       </WithBackgroundImage>
