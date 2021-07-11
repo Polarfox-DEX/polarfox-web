@@ -40,12 +40,11 @@ export function Footer() {
       <WithBackgroundImage imageUrl="/background/fox.png">
         <SiteMap />
         <div
-          className="self-start border-t mx-auto text-sm flex-1"
+          className="self-start border-t mx-auto text-sm flex-1 text-gray"
           style={{
             width: '1200px',
             fontSize: calcRem(12),
             lineHeight: calcRem(22),
-            color: '#4D6481',
           }}
         >
           <div className="flex justify-end items-center space-x-6">
@@ -181,7 +180,7 @@ interface SiteMapLinkProps {
 
 function SiteMapLink({ url, children }: SiteMapLinkProps) {
   return (
-    <a className="hover:underline" style={{ color: '#4D6481' }} href={url}>
+    <a className="hover:underline text-gray" href={url}>
       {children}
     </a>
   );

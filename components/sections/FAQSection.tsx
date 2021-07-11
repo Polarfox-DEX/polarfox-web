@@ -45,10 +45,7 @@ export function FAQ({ className }: PropsSectionProps) {
         >
           What is Polarfox?
         </h3>
-        <p
-          className="mt-3 mb-8"
-          style={{ color: '#4D6481', lineHeight: calcRem(30) }}
-        >
+        <p className="mt-3 mb-8 text-gray" style={{ lineHeight: calcRem(30) }}>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -100,20 +97,16 @@ function Question({ question, children }: QuestionProps) {
   return (
     <>
       <h3
-        className="flex justify-between border-t-2 py-3 font-bold"
+        className="flex justify-between border-t-2 py-3 font-bold border-gray-light"
         style={{
           fontSize: calcRem(26),
           lineHeight: calcRem(50),
-          borderColor: '#D8D8D8',
         }}
       >
         <div>{question}</div>
         <div>+</div>
       </h3>
-      <div
-        className="leading-8"
-        style={{ color: '#4D6481', lineHeight: calcRem(30) }}
-      >
+      <div className="leading-8 text-gray" style={{ lineHeight: calcRem(30) }}>
         {children}
       </div>
     </>

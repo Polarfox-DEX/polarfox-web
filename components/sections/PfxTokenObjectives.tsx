@@ -151,7 +151,9 @@ function PfxTokenObjective({ title, children }: PfxTokenObjectiveProps) {
       >
         {title}
       </h3>
-      <p style={{ color: '#4D6481', lineHeight: calcRem(32) }}>{children}</p>
+      <p className="text-gray" style={{ lineHeight: calcRem(32) }}>
+        {children}
+      </p>
     </div>
   );
 }

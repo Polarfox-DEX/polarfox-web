@@ -56,7 +56,9 @@ function PfxStatement({ icon, title, children }: PfxStatementProps) {
       >
         {title}
       </p>
-      <p style={{ color: '#4D6481', lineHeight: calcRem(32) }}>{children}</p>
+      <p className="text-gray" style={{ lineHeight: calcRem(32) }}>
+        {children}
+      </p>
     </div>
   );
 }
