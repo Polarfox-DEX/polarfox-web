@@ -6,7 +6,7 @@ interface ProductsSectionProps {
   className?: string;
 }
 
-export function ProductsSection({ className }: ProductsSectionProps) {
+export function Products({ className }: ProductsSectionProps) {
   return (
     <div className={classNames(className)}>
       <div

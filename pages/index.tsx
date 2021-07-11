@@ -1,28 +1,20 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import { Header } from '../components/Header';
-import { PfxHighlight } from '../components/sections/PfxHighlightSection';
-import { PfxFigures } from '../components/sections/PfxFiguresSection';
-import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectivesSection';
-import { ProductsSection } from '../components/sections/ProductsSection';
-import { PfxStatements } from '../components/sections/PfxStatementsSection';
-import { FAQSection } from '../components/sections/FAQSection';
+import { PfxHighlight } from '../components/sections/PfxHighlight';
+import { PfxFigures } from '../components/sections/PfxFigures';
+import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives';
+import { Products } from '../components/sections/Products';
+import { PfxStatements } from '../components/sections/PfxStatements';
+import { FAQ } from '../components/sections/FAQSection';
 import { WithBackgroundImage } from '../components/utils/WithBackgroundImage';
 import { ReactNode } from 'react';
 import { Footer } from '../components/Footer';
 import classNames from 'classnames';
+import { Page } from '../components/Page';
 
 export default function Home() {
   return (
-    <div className={classNames(styles.container, 'text-blue')}>
-      <Head>
-        <title>Polarfox</title>
-        <meta name="description" content="Polarfox | Home" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
+    <Page>
       <SectionWrapper backgroundImageUrl="/background/forest-1.jpg">
         <PfxHighlight />
       </SectionWrapper>
@@ -31,12 +23,10 @@ export default function Home() {
         <PfxStatements className="mt-16" />
         <PfxFigures className="mt-44" />
         <PfxTokenObjectives className="mt-44" />
-        <ProductsSection className="mt-44" />
-        <FAQSection className="my-44" />
+        <Products className="mt-44" />
+        <FAQ className="my-44" />
       </SectionWrapper>
-
-      <Footer />
-    </div>
+    </Page>
   );
 }
 

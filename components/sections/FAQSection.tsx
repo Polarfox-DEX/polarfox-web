@@ -6,7 +6,7 @@ interface PropsSectionProps {
   className?: string;
 }
 
-export function FAQSection({ className }: PropsSectionProps) {
+export function FAQ({ className }: PropsSectionProps) {
   return (
     <div className={classNames('flex justify-between', className)}>
       <div>
