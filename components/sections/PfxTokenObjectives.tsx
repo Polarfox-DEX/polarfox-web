@@ -10,7 +10,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
   return (
     <div
       className="w-screen bg-cover bg-no-repeat flex flex-col justify-center items-center bg-right"
-      style={{ backgroundImage: 'url("/background/forest-22.jpg")' }}
+      style={{ backgroundImage: 'url("/background/forest-2.jpg")' }}
     >
       <div className={classNames('container', className)}>
         <div className="grid grid-cols-2 gap-4">
