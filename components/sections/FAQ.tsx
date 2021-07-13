@@ -8,7 +8,7 @@ interface PropsSectionProps {
 
 export function FAQ({ className }: PropsSectionProps) {
   return (
-    <div className={classNames('flex justify-between', className)}>
+    <div className={classNames('container flex justify-between', className)}>
       <div>
         <div
           className="opacity-50"
@@ -38,7 +38,7 @@ export function FAQ({ className }: PropsSectionProps) {
         </button>
       </div>
 
-      <div style={{ width: calcRem(680) }}>
+      <div className="pl-44">
         <h3
           className="font-bold"
           style={{ fontSize: calcRem(26), lineHeight: calcRem(50) }}

@@ -7,7 +7,7 @@ interface LeadershipProps {
 
 export function TeamMap({ className }: LeadershipProps) {
   return (
-    <div className={classNames(className)}>
+    <div className={classNames('container', className)}>
       <div className="grid grid-cols-2">
         <h2
           className="font-switzer font-semibold"

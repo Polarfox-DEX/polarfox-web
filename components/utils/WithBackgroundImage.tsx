@@ -1,25 +1,24 @@
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 
 interface WithBackGroundImageProps {
   imageUrl: string;
   children: ReactNode;
+  className?: string;
 }
 
 export function WithBackgroundImage({
   imageUrl,
   children,
+  className,
 }: WithBackGroundImageProps) {
   return (
     <div
-      className="flex flex-col justify-center items-center"
-      style={{
-        height: '100vh',
-        minHeight: '100vh',
-        width: '100%',
-        backgroundImage: `url('${imageUrl}')`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className={classNames(
+        'bg-cover bg-no-repeat flex flex-col justify-center items-center',
+        className
+      )}
+      style={{ backgroundImage: `url('${imageUrl}')` }}
     >
       {children}
     </div>

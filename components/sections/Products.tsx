@@ -8,7 +8,7 @@ interface ProductsSectionProps {
 
 export function Products({ className }: ProductsSectionProps) {
   return (
-    <div className={classNames(className)}>
+    <div className={classNames('container', className)}>
       <div
         className="opacity-50"
         style={{

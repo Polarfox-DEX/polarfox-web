@@ -4,7 +4,6 @@ import styles from '../styles/Page.module.css';
 import Head from 'next/head';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { WithBackgroundImage } from './utils/WithBackgroundImage';
 
 interface PageProps {
   children: ReactNode;
@@ -16,6 +15,7 @@ export function Page({ children }: PageProps) {
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="icon"
           type="image/png"
@@ -42,29 +42,5 @@ export function Page({ children }: PageProps) {
 
       <Footer />
     </div>
-  );
-}
-
-interface SectionWrapperProps {
-  backgroundImageUrl?: string;
-  children: ReactNode;
-}
-
-export function SectionWrapper({
-  backgroundImageUrl,
-  children,
-}: SectionWrapperProps) {
-  const section = (
-    <div className="mx-auto" style={{ width: '1200px' }}>
-      {children}
-    </div>
-  );
-
-  if (!backgroundImageUrl) return section;
-
-  return (
-    <WithBackgroundImage imageUrl={backgroundImageUrl}>
-      {section}
-    </WithBackgroundImage>
   );
 }
