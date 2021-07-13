@@ -3,7 +3,7 @@ import { PfxFigures } from '../components/sections/PfxFigures';
 import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives';
 import { Products } from '../components/sections/Products';
 import { PfxStatements } from '../components/sections/PfxStatements';
-import { FAQ } from '../components/sections/FAQ';
+import { FaqPreview } from '../components/sections/FaqPreview';
 import { Page, SectionWrapper } from '../components/Page';
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
         <PfxFigures className="mt-44" />
         <PfxTokenObjectives className="mt-44" />
         <Products className="mt-44" />
-        <FAQ className="my-44" />
+        <FaqPreview className="my-44" />
       </SectionWrapper>
     </Page>
   );

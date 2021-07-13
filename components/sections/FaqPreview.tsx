@@ -1,14 +1,15 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
+import classNames from "classnames";
+import { calcRem } from "../../utils/styles";
+import { Question } from "../utils/Question";
+import Link from "next/link";
 
 interface PropsSectionProps {
   className?: string;
 }
 
-export function FAQ({ className }: PropsSectionProps) {
+export function FaqPreview({ className }: PropsSectionProps) {
   return (
-    <div className={classNames('flex justify-between', className)}>
+    <div className={classNames("flex justify-between", className)}>
       <div>
         <div
           className="opacity-50"
@@ -34,7 +35,9 @@ export function FAQ({ className }: PropsSectionProps) {
           className="mt-12 rounded-full border border-blue bg-white"
           style={{ width: calcRem(166), height: calcRem(44) }}
         >
-          More question
+          <Link href="/faq">
+            <a>More questions</a>
+          </Link>
         </button>
       </div>
 
@@ -85,30 +88,5 @@ export function FAQ({ className }: PropsSectionProps) {
         </Question>
       </div>
     </div>
-  );
-}
-
-interface QuestionProps {
-  question: string;
-  children: ReactNode;
-}
-
-function Question({ question, children }: QuestionProps) {
-  return (
-    <>
-      <h3
-        className="flex justify-between border-t-2 py-3 font-bold border-gray-light"
-        style={{
-          fontSize: calcRem(26),
-          lineHeight: calcRem(50),
-        }}
-      >
-        <div>{question}</div>
-        <div>+</div>
-      </h3>
-      <div className="leading-8 text-gray" style={{ lineHeight: calcRem(30) }}>
-        {children}
-      </div>
-    </>
   );
 }
