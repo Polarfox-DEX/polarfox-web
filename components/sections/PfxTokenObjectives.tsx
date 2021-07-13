@@ -50,7 +50,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
               href="/Polarfox Litepaper V2.6.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center rounded-full border border-blue bg-white"
+              className="flex justify-center items-center rounded-full border border-blue bg-white font-semibold text-blue"
               style={{ width: calcRem(166), height: calcRem(44) }}
             >
               Read more

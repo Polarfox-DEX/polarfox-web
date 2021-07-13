@@ -32,7 +32,7 @@ export function FaqPreview({ className }: PropsSectionProps) {
           Frequently Asked Questions
         </h2>
         <button
-          className="mt-12 rounded-full border border-blue bg-white"
+          className="mt-12 rounded-full border border-blue bg-white font-semibold text-blue"
           style={{ width: calcRem(166), height: calcRem(44) }}
         >
           <Link href="/faq">
