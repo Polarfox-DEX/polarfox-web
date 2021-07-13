@@ -8,7 +8,7 @@ interface OurMissionProps {
 
 export function OurMission({ className }: OurMissionProps) {
   return (
-    <div className={classNames('flex justify-between', className)}>
+    <div className={classNames('container flex justify-between', className)}>
       <Mission title="Our mission">
         Our goal is to build an independent ecosystem of fully decentralized and
         open-source applications on the Avalanche blockchain.

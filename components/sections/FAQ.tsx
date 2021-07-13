@@ -1,7 +1,6 @@
-import classNames from "classnames";
-import { calcRem } from "../../utils/styles";
-import { Question } from "../utils/Question";
-import Link from "next/link";
+import classNames from 'classnames';
+import { ReactNode } from 'react';
+import { calcRem } from '../../utils/styles';
 
 interface PropsSectionProps {
   className?: string;
@@ -35,9 +34,7 @@ export function FAQ({ className }: PropsSectionProps) {
           className="mt-12 rounded-full border border-blue bg-white"
           style={{ width: calcRem(166), height: calcRem(44) }}
         >
-          <Link href="/faq">
-            <a>More questions</a>
-          </Link>
+          More question
         </button>
       </div>
 
@@ -88,5 +85,30 @@ export function FAQ({ className }: PropsSectionProps) {
         </Question>
       </div>
     </div>
+  );
+}
+
+interface QuestionProps {
+  question: string;
+  children: ReactNode;
+}
+
+function Question({ question, children }: QuestionProps) {
+  return (
+    <>
+      <h3
+        className="flex justify-between border-t-2 py-3 font-bold border-gray-light"
+        style={{
+          fontSize: calcRem(26),
+          lineHeight: calcRem(50),
+        }}
+      >
+        <div>{question}</div>
+        <div>+</div>
+      </h3>
+      <div className="leading-8 text-gray" style={{ lineHeight: calcRem(30) }}>
+        {children}
+      </div>
+    </>
   );
 }

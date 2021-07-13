@@ -9,11 +9,11 @@ import Twitter from './svg/Twitter';
 export function Footer() {
   return (
     <>
-      <WithBackgroundImage imageUrl="/background/forest-3.png">
-        <div
-          className="flex flex-col items-stretch justify-end h-full divide-y-2 divide-blue mx-auto"
-          style={{ width: '1200px' }}
-        >
+      <WithBackgroundImage
+        className="bg-left-top w-screen h-screen min-h-screen"
+        imageUrl="/background/forest-3.jpg"
+      >
+        <div className="container flex flex-col items-stretch justify-end h-full border-b-2 border-blue">
           <div className="flex justify-between pb-32">
             <h2
               className="font-switzer"
@@ -32,17 +32,19 @@ export function Footer() {
               <TwitterButton />
             </div>
           </div>
-          <div className="py-32">
-            <img src="/logo/polarfox.png" alt="Polarfox logo" />
-          </div>
         </div>
       </WithBackgroundImage>
-      <WithBackgroundImage imageUrl="/background/fox.png">
+      <WithBackgroundImage
+        className="bg-left-top w-screen h-screen min-h-screen"
+        imageUrl="/background/fox.jpg"
+      >
+        <div className="container flex justify-start my-32">
+          <img src="/logo/polarfox.png" alt="Polarfox logo" />
+        </div>
         <SiteMap />
         <div
-          className="self-start border-t mx-auto text-sm flex-1 text-gray"
+          className="container mt-32 border-t border-blue border-opacity-20 text-sm flex-1 text-gray "
           style={{
-            width: '1200px',
             fontSize: calcRem(12),
             lineHeight: calcRem(22),
           }}
@@ -129,8 +131,8 @@ function SocialButton({ url, children }: SocialButtonProps) {
 function SiteMap() {
   return (
     <div
-      className="flex justify-between mx-auto mb-20"
-      style={{ width: '1200px', fontSize: '13px', lineHeight: '33px' }}
+      className="container flex justify-between"
+      style={{ fontSize: '13px', lineHeight: '33px' }}
     >
       <SiteMapSection>
         <SiteMapSectionTitle>About</SiteMapSectionTitle>

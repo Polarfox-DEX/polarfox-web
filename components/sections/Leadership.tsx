@@ -10,7 +10,7 @@ interface LeadershipProps {
 // TODO extract tile component
 export function Leadership({ className }: LeadershipProps) {
   return (
-    <div className={classNames(className)}>
+    <div className={classNames('container', className)}>
       <div
         className="opacity-50"
         style={{
