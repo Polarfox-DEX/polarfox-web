@@ -7,7 +7,7 @@ interface PfxFiguresProps {
 
 export function PfxFigures({ className }: PfxFiguresProps) {
   return (
-    <div className={classNames('container flex justify-between', className)}>
+    <div className={classNames('flex justify-between', className)}>
       <PfxFigureBox
         title="Total PFX supply"
         figure="30,000,000 PFX"
