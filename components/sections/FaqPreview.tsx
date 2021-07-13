@@ -7,9 +7,9 @@ interface PropsSectionProps {
   className?: string;
 }
 
-export function FAQ({ className }: PropsSectionProps) {
+export function FaqPreview({ className }: PropsSectionProps) {
   return (
-    <div className={classNames('container flex justify-between', className)}>
+    <div className={classNames("container flex justify-between", className)}>
       <div>
         <div
           className="opacity-50"
@@ -56,7 +56,7 @@ export function FAQ({ className }: PropsSectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </p>
-        <Question question="What is the Polarfox DEX?">
+        <Question question="What is the Polarfox DEX?" isOpen={false}>
           {/* <p>
             Polarfox is a crypto ecosystem, based on Avalanche, which will bring
             many apps together. Its main app is the Polarfox DEX; some other
@@ -66,7 +66,7 @@ export function FAQ({ className }: PropsSectionProps) {
             honesty and transparency.
           </p> */}
         </Question>
-        <Question question="What is PFX?">
+        <Question question="What is PFX?" isOpen={false}>
           {/* <p>
             Polarfox is a crypto ecosystem, based on Avalanche, which will bring
             many apps together. Its main app is the Polarfox DEX; some other
@@ -76,7 +76,7 @@ export function FAQ({ className }: PropsSectionProps) {
             honesty and transparency.
           </p> */}
         </Question>
-        <Question question="What are the PFX tokenomics?">
+        <Question question="What are the PFX tokenomics?" isOpen={false}>
           {/* <p>
             Polarfox is a crypto ecosystem, based on Avalanche, which will bring
             many apps together. Its main app is the Polarfox DEX; some other
