@@ -1,0 +1,36 @@
+import { calcRem } from "../../utils/styles";
+import Link from "next/link";
+
+export function FaqContact() {
+  return (
+    <div className="mt-44 border-t-2 border-blue">
+      <div className="mt-8">
+        <h3
+          className="font-switzer font-semibold text-blue"
+          style={{
+            maxWidth: calcRem(357),
+            fontSize: calcRem(20),
+            lineHeight: calcRem(32),
+          }}
+        >
+          Couldn&apos;t find what you are looking for?
+        </h3>
+        <div className="mt-12">
+          {/* TODO: Add some links */}
+          <p className="text-gray">
+            No problem, feel free to contact us directly or ask in our community
+            channels on Telegram or Twitter.
+          </p>
+        </div>
+        <button
+          className="mt-12 rounded-full border border-blue bg-white font-semibold text-blue"
+          style={{ width: calcRem(166), height: calcRem(44) }}
+        >
+          <Link href="/faq">
+            <a>Contact us</a>
+          </Link>
+        </button>
+      </div>
+    </div>
+  );
+}

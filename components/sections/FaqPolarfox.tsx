@@ -1,13 +1,9 @@
 import { calcRem } from "../../utils/styles";
 import { Question } from "../utils/Question";
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function FaqPolarfox({ className }: PropsSectionProps) {
+export function FaqPolarfox() {
   return (
-    <div style={{ width: calcRem(680) }}>
+    <div className="pl-44">
       <Question question="What is Polarfox?" isOpen={true} isFirst>
         <p>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
