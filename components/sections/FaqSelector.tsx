@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { calcRem } from "../../utils/styles";
 
 export function FaqSelector() {
@@ -32,7 +33,7 @@ export function FaqSelector() {
   );
 }
 
-interface FaqSelectorButton {
+interface FaqSelectorButtonProps {
   title: String;
   numberOfItems: number;
   isSelected?: boolean;
@@ -42,13 +43,12 @@ function FaqSelectorButton({
   title,
   numberOfItems,
   isSelected,
-}: FaqSelectorButton) {
+}: FaqSelectorButtonProps) {
   return (
     <button
-      className={
-        "mt-5 rounded-lg" +
-        (isSelected && " border border-blue bg-blue text-white")
-      }
+      className={classNames("mt-5 rounded-lg", {
+        "border border-blue bg-blue text-white": isSelected,
+      })}
       style={{ width: calcRem(386), height: calcRem(55) }}
     >
       <div>
