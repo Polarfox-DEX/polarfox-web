@@ -4,23 +4,14 @@ import { calcRem } from "../../utils/styles";
 interface QuestionProps {
   question: string;
   isOpen: boolean;
-  isFirst?: boolean;
   children: ReactNode;
 }
 
-export function Question({
-  question,
-  isOpen,
-  isFirst,
-  children,
-}: QuestionProps) {
+export function Question({ question, isOpen, children }: QuestionProps) {
   return (
-    <>
+    <div>
       <h3
-        className={
-          "flex justify-between py-3 font-bold" +
-          (isFirst === undefined ? " border-t-2 border-gray-light" : "")
-        }
+        className={"flex justify-between py-3 font-bold"}
         style={{
           fontSize: calcRem(26),
           lineHeight: calcRem(50),
@@ -31,15 +22,12 @@ export function Question({
         {/* TODO: Make this a button (or two distinct buttons that have the same effect) */}
       </h3>
       {isOpen ? (
-        <div
-          className="mt-3 mb-8 text-gray"
-          style={{ lineHeight: calcRem(30) }}
-        >
+        <p className="mt-3 mb-8 text-gray" style={{ lineHeight: calcRem(30) }}>
           {children}
-        </div>
+        </p>
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 }

@@ -4,18 +4,22 @@ import { FaqContact } from "./FaqContact";
 import { FaqPolarfox } from "./FaqPolarfox";
 import { WithBackgroundImage } from "../utils/WithBackgroundImage";
 
-export function FaqMain() {
+interface PropsSectionProps {
+  className?: string;
+}
+
+export function FaqMain({ className }: PropsSectionProps) {
   return (
     <WithBackgroundImage
       className="bg-left-bottom w-screen min-h-screen h-screen"
       imageUrl="/background/forest-1.jpg"
     >
-      <div className="container flex justify-between mt-64">
+      <div className={classNames("container flex justify-between", className)}>
         <div>
           <FaqSelector />
-          <FaqContact />
+          <FaqContact className="mt-44" />
         </div>
-        <FaqPolarfox />
+        <FaqPolarfox className="pl-44" />
       </div>
     </WithBackgroundImage>
   );

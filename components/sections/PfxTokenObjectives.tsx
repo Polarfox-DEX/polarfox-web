@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
+import classNames from "classnames";
+import { ReactNode } from "react";
+import { calcRem } from "../../utils/styles";
 
 interface PfxTokenObjectivesProps {
   className?: string;
@@ -12,7 +12,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
       className="w-screen bg-cover bg-no-repeat flex flex-col justify-center items-center bg-right"
       style={{ backgroundImage: 'url("/background/forest-22.jpg")' }}
     >
-      <div className={classNames('container', className)}>
+      <div className={classNames("container", className)}>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <div
@@ -38,7 +38,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
             <p
               className="my-12"
               style={{
-                maxWidth: '425px',
+                maxWidth: "425px",
                 fontSize: calcRem(20),
                 lineHeight: calcRem(32),
               }}
@@ -50,7 +50,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
               href="/Polarfox Litepaper V2.6.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center rounded-full border border-blue bg-white font-semibold text-blue"
+              className="flex justify-center items-center rounded-full border border-blue bg-white font-semibold"
               style={{ width: calcRem(166), height: calcRem(44) }}
             >
               Read more
@@ -149,7 +149,7 @@ interface PfxTokenObjectiveProps {
 
 function PfxTokenObjective({ title, children }: PfxTokenObjectiveProps) {
   return (
-    <div className="border-t-2 border-blue" style={{ width: '280px' }}>
+    <div className="border-t-2 border-blue" style={{ width: "280px" }}>
       <h3
         className="my-7 font-switzer font-semibold"
         style={{ fontSize: calcRem(24), lineHeight: calcRem(31.68) }}

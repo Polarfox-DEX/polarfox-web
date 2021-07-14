@@ -24,41 +24,48 @@ export function FaqSelector() {
         Help Center
       </h2>
       <div className="mt-12">
-        <button
-          className="mt-5 rounded-lg border border-blue bg-blue text-white"
-          style={{ width: calcRem(386), height: calcRem(55) }}
-        >
-          <div>
-            <h3 className="float-left mx-5 font-bold font text-xl">Polarfox</h3>
-            <p className="float-right mx-5 font-normal text-sm mt-1">12</p>
-            {/* TODO: Should not have to use mt-1 above */}
-          </div>
-        </button>
-        <button
-          className="mt-5 text-blue"
-          style={{ width: calcRem(386), height: calcRem(55) }}
-        >
-          <div>
-            <h3 className="float-left mx-5 font-bold font text-xl">
-              PFX token
-            </h3>
-            <p className="float-right mx-5 font-normal text-sm mt-1">8</p>
-            {/* TODO: Should not have to use mt-1 above */}
-          </div>
-        </button>
-        <button
-          className="mt-5 text-blue"
-          style={{ width: calcRem(386), height: calcRem(55) }}
-        >
-          <div>
-            <h3 className="float-left mx-5 font-bold font text-xl">
-              Akita Inu
-            </h3>
-            <p className="float-right mx-5 font-normal text-sm mt-1">6</p>
-            {/* TODO: Should not have to use mt-1 above */}
-          </div>
-        </button>
+        <FaqSelectorButton title="Polarfox" numberOfItems={12} isSelected />
+        <FaqSelectorButton title="PFX token" numberOfItems={8} />
+        <FaqSelectorButton title="Akita Inu" numberOfItems={6} />
       </div>
     </div>
+  );
+}
+
+interface FaqSelectorButton {
+  title: String;
+  numberOfItems: number;
+  isSelected?: boolean;
+}
+
+function FaqSelectorButton({
+  title,
+  numberOfItems,
+  isSelected,
+}: FaqSelectorButton) {
+  return (
+    <button
+      className={
+        "mt-5 rounded-lg" +
+        (isSelected && " border border-blue bg-blue text-white")
+      }
+      style={{ width: calcRem(386), height: calcRem(55) }}
+    >
+      <div>
+        <h3
+          className="float-left mx-5 font-bold"
+          style={{ fontSize: calcRem(20) }}
+        >
+          {title}
+        </h3>
+        <span
+          className="float-right mx-5 font-normal mt-1"
+          style={{ fontSize: calcRem(14) }}
+        >
+          {numberOfItems}
+        </span>
+        {/* TODO: Should not have to use mt-1 above */}
+      </div>
+    </button>
   );
 }
