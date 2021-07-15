@@ -21,7 +21,9 @@ export function Header() {
           <a>About</a>
         </Link>
         <div>Roadmap</div>
-        <div>FAQ</div>
+        <Link href="/faq">
+          <a>FAQ</a>
+        </Link>
         <div>Resources</div>
       </div>
     </div>
