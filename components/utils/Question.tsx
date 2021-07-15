@@ -21,12 +21,10 @@ export function Question({ question, isOpen, children }: QuestionProps) {
         <div>{isOpen ? "-" : "+"}</div>
         {/* TODO: Make this a button (or two distinct buttons that have the same effect) */}
       </h3>
-      {isOpen ? (
+      {isOpen && (
         <p className="mt-3 mb-8 text-gray" style={{ lineHeight: calcRem(30) }}>
           {children}
         </p>
-      ) : (
-        ""
       )}
     </div>
   );
