@@ -1,7 +1,7 @@
 import classNames from "classnames";
+import Link from "next/link";
 import { calcRem } from "../../utils/styles";
 import { Question } from "../utils/Question";
-import Link from "next/link";
 
 interface PropsSectionProps {
   className?: string;

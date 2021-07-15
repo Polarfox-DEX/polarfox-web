@@ -1,17 +1,20 @@
-import { ReactNode } from 'react';
-import classNames from 'classnames';
-import styles from '../styles/Page.module.css';
-import Head from 'next/head';
-import { Header } from './Header';
-import { Footer } from './Footer';
+import classNames from "classnames";
+import Head from "next/head";
+import styles from "../styles/Page.module.css";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+import { PresaleHeader } from "./PresaleHeader";
+import { ReactNode } from "react";
 
 interface PageProps {
   children: ReactNode;
 }
 
 export function Page({ children }: PageProps) {
+  const displayPresale = true;
+
   return (
-    <div className={classNames(styles.container, 'text-blue')}>
+    <div className={classNames(styles.container, "text-blue")}>
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
@@ -36,11 +39,19 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      <Header />
-
-      {children}
-
-      <Footer />
+      {displayPresale && <PresaleHeader />}
+      {/* TODO: Had to write "styles.container" and "text-blue" again. Is there a way to avoid this? */}
+      <div
+        className={classNames(
+          styles.container,
+          "text-blue",
+          displayPresale && "mt-28"
+        )}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </div>
     </div>
   );
 }
