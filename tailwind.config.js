@@ -22,6 +22,7 @@ module.exports = {
       },
       gray: {
         light: '#D8D8D8',
+        light2: '#E1E8F1',
         DEFAULT: '#4D6481'
       },
       white: colors.white
