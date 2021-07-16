@@ -17,6 +17,7 @@ module.exports = {
     colors: {
       blue: {
         light: '#1C67FE',
+        gray: "#142B47",
         DEFAULT: '#001937'
       },
       gray: {
@@ -31,6 +32,12 @@ module.exports = {
         switzer: ['Switzer', ...defaultTheme.fontFamily.sans],
         graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
       },
+      opacity: {
+        '12': '0.12'
+      },
+      spacing: {
+        '5.5': '1.375rem'
+      }
     },
   },
   variants: {
