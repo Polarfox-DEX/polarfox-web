@@ -2,13 +2,13 @@ import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../../utils/styles";
 
-interface PropsSectionProps {
-  className?: string;
+interface FaqContactProps {
+  marginTop?: number;
 }
 
-export function FaqContact({ className }: PropsSectionProps) {
+export function FaqContact({ marginTop }: FaqContactProps) {
   return (
-    <div className={classNames("border-t-2 border-blue", className)}>
+    <div className={classNames("border-t-2 border-blue")} style={{marginTop: calcRem(marginTop || 0)}}>
       <div className="mt-8">
         <h3
           className="font-switzer font-semibold"

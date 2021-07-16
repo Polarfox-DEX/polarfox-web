@@ -1,17 +1,17 @@
 import classNames from "classnames";
-import { FaqSelector } from "./FaqSelector";
+import { PresaleFaqTitle } from "./PresaleFaqTitle";
 import { FaqContact } from "./FaqContact";
-import { FaqPolarfox } from "./FaqPolarfox";
+import { PresaleFaqQuestions } from "./PresaleFaqQuestions";
 import { PropsSectionProps } from '../utils/PropsSectionProps'
 
 export function PresaleFaq({ className }: PropsSectionProps) {
   return (
     <div className={classNames("container flex justify-between", className)}>
       <div>
-        <FaqSelector />
-        <FaqContact className="mt-44" />
+        <PresaleFaqTitle />
+        <FaqContact marginTop={440} />
       </div>
-      <FaqPolarfox className="pl-44" />
+      <PresaleFaqQuestions className="pl-44" />
     </div>
   );
 }

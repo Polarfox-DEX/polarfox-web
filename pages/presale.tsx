@@ -11,7 +11,7 @@ export default function Home() {
       <PresaleMain className="mt-64" />
       <PresaleTutorial className="mt-24" />
       <PresaleStatistics className="mt-44" />
-      <PresaleFaq className="mt-64" />
+      <PresaleFaq className="mt-32" />
     </Page>
   );
 }
