@@ -35,7 +35,7 @@ export function PresaleStatistics({ className }: PropsSectionProps) {
         <DayStatisticsRow>Receiving tokens</DayStatisticsRow>
       </DayStatistics>
       <DayStatistics className="-mt-1" hasBackground>
-        <DayStatisticsRow>Day 1</DayStatisticsRow>
+        <DayStatisticsRow className="font-bold">Day 1</DayStatisticsRow>
         <DayStatisticsRow>6,782,250</DayStatisticsRow>
         <DayStatisticsRow>267</DayStatisticsRow>
         <DayStatisticsRow>271,728 ETH</DayStatisticsRow>
@@ -44,7 +44,7 @@ export function PresaleStatistics({ className }: PropsSectionProps) {
         <DayStatisticsRow>16,728</DayStatisticsRow>
       </DayStatistics>
       <DayStatistics className="mt-1">
-        <DayStatisticsRow>Day 2</DayStatisticsRow>
+        <DayStatisticsRow className="font-bold">Day 2</DayStatisticsRow>
         <DayStatisticsRow>6,782,250</DayStatisticsRow>
         <DayStatisticsRow>56-</DayStatisticsRow>
         <DayStatisticsRow>82.728 ETH -</DayStatisticsRow>
@@ -53,7 +53,7 @@ export function PresaleStatistics({ className }: PropsSectionProps) {
         <DayStatisticsRow>-</DayStatisticsRow>
       </DayStatistics>
       <DayStatistics className="mt-1" hasBackground>
-        <DayStatisticsRow>Day 3</DayStatisticsRow>
+        <DayStatisticsRow className="font-bold">Day 3</DayStatisticsRow>
         <DayStatisticsRow>6,782,250</DayStatisticsRow>
         <DayStatisticsRow>-</DayStatisticsRow>
         <DayStatisticsRow>-</DayStatisticsRow>
