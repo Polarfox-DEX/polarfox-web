@@ -1,10 +1,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../utils/styles";
-
-interface PropsSectionProps {
-  className?: string;
-}
+import { ReactNode } from "react";
+import { PropsSectionProps } from './utils/PropsSectionProps'
 
 export function PresaleHeader({ className }: PropsSectionProps) {
   return (
@@ -23,14 +21,14 @@ export function PresaleHeader({ className }: PropsSectionProps) {
         style={{ width: calcRem(312), marginLeft: calcRem(700) }}
         // TODO: is there a better way than "marginLeft: calcRem(700)?"
       >
-        <PresaleTimerWindow title="10d" />
-        <PresaleTimerWindow title="23h" />
-        <PresaleTimerWindow title="15m" />
+        <PresaleTimerWindow>10d</PresaleTimerWindow>
+        <PresaleTimerWindow>23h</PresaleTimerWindow>
+        <PresaleTimerWindow>15m</PresaleTimerWindow>
       </div>
       <div className="mt-12 px-14">
         <Link href="/presale">
           <a>
-            <img src="white-arrow.png" alt="➔" />
+            <img src="white-right-arrow.png" alt="➔" />
           </a>
         </Link>
       </div>
@@ -39,17 +37,17 @@ export function PresaleHeader({ className }: PropsSectionProps) {
 }
 
 interface PresaleTimerWindowProps {
-  title: String;
+  children: ReactNode;
 }
 
-function PresaleTimerWindow({ title }: PresaleTimerWindowProps) {
+function PresaleTimerWindow({ children }: PresaleTimerWindowProps) {
   return (
     <div
       className="border border-white rounded-lg border-opacity-25 h-10"
       style={{ width: calcRem(92), height: calcRem(72) }}
     >
-      <div className="mt-4 ml-5" style={{ fontSize: calcRem(28) }}>
-        {title}
+      <div className="mt-4 text-center" style={{ fontSize: calcRem(28) }}>
+        {children}
       </div>
     </div>
   );
