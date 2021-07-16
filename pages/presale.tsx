@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Page>
       <PresaleMain className="mt-64" />
-      <PresaleTutorial className="mt-64" />
+      <PresaleTutorial className="mt-24" />
       <PresaleStatistics className="mt-64" />
       <PresaleFaq className="mt-64" />
     </Page>
