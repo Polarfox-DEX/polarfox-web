@@ -32,7 +32,7 @@ export function PresaleHeader({ className }: SectionProps) {
           <Link href="/presale">
             <a>
               <div style={{ height: calcRem(17), width: calcRem(17) }}>
-                <img src="white-right-arrow.png" alt="➔" className="" />
+                <img src="white-right-arrow.png" alt="➔" />
               </div>
             </a>
           </Link>

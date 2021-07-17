@@ -1,10 +1,10 @@
-import { PresaleMain } from '../components/sections/PresaleMain';
-import { PresaleTutorial } from '../components/sections/PresaleTutorial';
-import { PresaleStatistics } from '../components/sections/PresaleStatistics';
-import { PresaleFaq } from '../components/sections/PresaleFaq';
+import { PresaleMain } from '../components/presale/PresaleMain';
+import { PresaleTutorial } from '../components/presale/PresaleTutorial';
+import { PresaleStatistics } from '../components/presale/PresaleStatistics';
+import { PresaleFaq } from '../components/presale/PresaleFaq';
 import { Page } from '../components/Page';
 
-export default function Home() {
+export default function Presale() {
   // TODO: Eventually add partners
   return (
     <Page>

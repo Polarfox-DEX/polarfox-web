@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PresaleFaqTitle } from "./PresaleFaqTitle";
-import { FaqContact } from "./FaqContact";
+import { FaqContact } from "../faq/FaqContact";
 import { PresaleFaqQuestions } from "./PresaleFaqQuestions";
 import { SectionProps } from '../utils/SectionProps'
 
