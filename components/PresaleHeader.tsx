@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../utils/styles";
 import { ReactNode } from "react";
-import { RightArrow } from "./svg/RightArrow"
+import { RightArrow } from "./svg/RightArrow";
 import { SectionProps } from "./utils/SectionProps";
 
 export function PresaleHeader({ className }: SectionProps) {
@@ -48,12 +48,10 @@ interface PresaleTimerBoxProps {
 function PresaleTimerBox({ children }: PresaleTimerBoxProps) {
   return (
     <div
-      className="border border-white rounded-lg border-opacity-25"
-      style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28)}}
+      className="border border-white rounded-lg border-opacity-25 pt-4 text-center"
+      style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
     >
-      <div className="mt-4 text-center" >
-        {children}
-      </div>
+      {children}
     </div>
   );
 }

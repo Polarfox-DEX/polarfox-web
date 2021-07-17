@@ -14,7 +14,11 @@ export function Page({ children }: PageProps) {
   const displayPresale = true;
 
   return (
-    <div className={classNames(styles.container, "text-blue")}>
+    <div
+      className={classNames(styles.container, "text-blue", {
+        "pt-28": displayPresale,
+      })}
+    >
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
@@ -39,19 +43,10 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader />}
-      {/* TODO: Had to write "styles.container" and "text-blue" again. Is there a way to avoid this? */}
-      <div
-        className={classNames(
-          styles.container,
-          "text-blue",
-          { "mt-28": displayPresale }
-        )}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </div>
+      {displayPresale && <PresaleHeader className="-mt-28"/>}
+      <Header className="" />
+      {children}
+      <Footer />
     </div>
   );
 }
