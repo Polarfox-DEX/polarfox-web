@@ -6,12 +6,12 @@ import { SectionProps } from '../utils/SectionProps'
 
 export function PresaleFaq({ className }: SectionProps) {
   return (
-    <div className={classNames("container flex justify-between", className)}>
-      <div>
+    <div className={classNames("container flex flex-col", className)}>
+      <div className="flex justify-around">
         <PresaleFaqTitle />
-        <FaqContact marginTop={440} />
+        <PresaleFaqQuestions />
       </div>
-      <PresaleFaqQuestions className="pl-44" />
+        <FaqContact />
     </div>
   );
 }
