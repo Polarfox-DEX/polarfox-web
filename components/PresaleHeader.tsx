@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../utils/styles";
 import { ReactNode } from "react";
+import { RightArrow } from "./svg/RightArrow"
 import { SectionProps } from "./utils/SectionProps";
 
 export function PresaleHeader({ className }: SectionProps) {
@@ -31,9 +32,7 @@ export function PresaleHeader({ className }: SectionProps) {
         <div className="mx-12 self-center">
           <Link href="/presale">
             <a>
-              <div style={{ height: calcRem(17), width: calcRem(17) }}>
-                <img src="white-right-arrow.png" alt="➔" />
-              </div>
+              <RightArrow className="fill-current" />
             </a>
           </Link>
         </div>

@@ -1,4 +1,6 @@
 import classNames from "classnames";
+import Clock from "../svg/Clock"
+import DownArrow from "../svg/DownArrow"
 import { calcRem } from "../../utils/styles";
 import { SectionProps } from "../utils/SectionProps";
 import { ReactNode } from "react";
@@ -24,11 +26,7 @@ export function PresaleInterface({ className }: SectionProps) {
             <PresaleTimerWindow>45m</PresaleTimerWindow>
             <PresaleTimerWindow>32s</PresaleTimerWindow>
           </div>
-          <img
-            src="clock.png"
-            alt="clock"
-            style={{ height: calcRem(31), width: calcRem(31) }}
-          />
+          <Clock />
         </div>
       </div>
       <div className="text-white mt-7 divide-y divide-white divide-opacity-12">
@@ -62,14 +60,9 @@ export function PresaleInterface({ className }: SectionProps) {
             className="flex mt-8 justify-between"
             style={{ lineHeight: calcRem(20) }}
           >
-            <div className="flex">
+            <div className="flex items-center">
               <MainText>Buy</MainText>
-              <img
-                src="white-down-arrow.png"
-                alt="↓"
-                className="mx-3 mt-0.5"
-                style={{ height: calcRem(17), width: calcRem(17) }}
-              />
+              <DownArrow className="mx-3" />
             </div>
             <div className="mx-2">
               <SideText>Your daily spend allowance</SideText>

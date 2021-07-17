@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Check from "../svg/Check"
 import { calcRem } from "../../utils/styles";
 import { SectionProps } from "../utils/SectionProps";
 
@@ -29,12 +30,7 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
           </div>
           <div className="text-white">100,200,300,400 / 100,000,000 AKITA</div>
         </div>
-        <img
-          src="check.png"
-          alt="✓"
-          className="ml-6"
-          style={{ height: calcRem(29), width: calcRem(29) }}
-        />
+        <Check className="ml-6" />
       </div>
     </div>
   );
