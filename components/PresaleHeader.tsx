@@ -31,10 +31,7 @@ export function PresaleHeader({ className }: PropsSectionProps) {
         <div className="mx-12 self-center">
           <Link href="/presale">
             <a>
-              <div
-                className=""
-                style={{ height: calcRem(17), width: calcRem(17) }}
-              >
+              <div style={{ height: calcRem(17), width: calcRem(17) }}>
                 <img src="white-right-arrow.png" alt="➔" className="" />
               </div>
             </a>

@@ -23,17 +23,20 @@ export function PresaleInterface({ className }: PropsSectionProps) {
             // TODO: can we improve this?
           }}
         >
-          <div className="flex mt-7 text-white">
-            <PresaleTimerWindow className="ml-8">16h</PresaleTimerWindow>
-            <PresaleTimerWindow className="ml-4">45m</PresaleTimerWindow>
-            <PresaleTimerWindow className="ml-4">32s</PresaleTimerWindow>
-            <div className="mt-6 ml-7">
-              <img
-                src="clock.png"
-                alt="clock"
-                style={{ height: calcRem(31), width: calcRem(31) }}
-              />
+          <div className="flex text-white h-full items-center space-x-7">
+            <div
+              className="flex space-x-5 ml-7"
+              style={{ width: calcRem(312) }}
+            >
+              <PresaleTimerWindow>16h</PresaleTimerWindow>
+              <PresaleTimerWindow>45m</PresaleTimerWindow>
+              <PresaleTimerWindow>32s</PresaleTimerWindow>
             </div>
+            <img
+              src="clock.png"
+              alt="clock"
+              style={{ height: calcRem(31), width: calcRem(31) }}
+            />
           </div>
         </div>
         <div className="text-white mt-7 divide-y divide-white divide-opacity-12">
@@ -43,14 +46,12 @@ export function PresaleInterface({ className }: PropsSectionProps) {
                 <span>DAY 2</span>
                 <span className="opacity-30">/3</span>
               </MainText>
-              <div className="ml-32 flex">
-                <DayButton className="-ml-4" hasStarted>
-                  D1
-                </DayButton>
-                <DayButton className="ml-1.5" hasStarted isActive>
+              <div className="ml-28 flex space-x-1.5">
+                <DayButton hasStarted>D1</DayButton>
+                <DayButton hasStarted isActive>
                   D2
                 </DayButton>
-                <DayButton className="ml-1.5">D3</DayButton>
+                <DayButton>D3</DayButton>
               </div>
             </div>
             <div className="flex mt-8" style={{ lineHeight: calcRem(20) }}>
@@ -72,12 +73,12 @@ export function PresaleInterface({ className }: PropsSectionProps) {
               >
                 <div className="flex">
                   <MainText>Buy</MainText>
-                  <div
+                  <img
+                    src="white-down-arrow.png"
+                    alt="↓"
                     className="mx-3 mt-0.5"
                     style={{ height: calcRem(17), width: calcRem(17) }}
-                  >
-                    <img src="white-down-arrow.png" alt="↓" />
-                  </div>
+                  />
                 </div>
                 <div className="mx-2">
                   <SideText className="">Your daily spend allowance</SideText>
