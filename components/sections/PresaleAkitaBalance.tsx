@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { calcRem } from "../../utils/styles";
-import { PropsSectionProps } from '../utils/PropsSectionProps'
+import { PropsSectionProps } from "../utils/PropsSectionProps";
 
 export function PresaleAkitaBalance({ className }: PropsSectionProps) {
   return (
@@ -13,9 +13,12 @@ export function PresaleAkitaBalance({ className }: PropsSectionProps) {
         }}
       >
         <div className="flex">
-          <div className="mx-4 my-9">
-            <img src="akita.png" alt="akita" className="" />
-          </div>
+          <img
+            src="akita.png"
+            alt="akita"
+            className="mx-4 my-9"
+            style={{ height: calcRem(36), width: calcRem(36) }}
+          />
           <div>
             <div
               className="text-white opacity-40 my-7"
@@ -25,11 +28,16 @@ export function PresaleAkitaBalance({ className }: PropsSectionProps) {
             >
               Your AKITA balance to participate in the presale
             </div>
-            <div className="text-white -my-5">100,200,300,400 / 100,000,000 AKITA</div>
+            <div className="text-white -my-5">
+              100,200,300,400 / 100,000,000 AKITA
+            </div>
           </div>
-          <div className="ml-6 my-9">
-            <img src="check.png" alt="✓" className="" />
-          </div>
+          <img
+            src="check.png"
+            alt="✓"
+            className="ml-6 my-9"
+            style={{ height: calcRem(29), width: calcRem(29) }}
+          />
         </div>
       </div>
     </div>
