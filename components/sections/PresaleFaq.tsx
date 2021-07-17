@@ -2,9 +2,9 @@ import classNames from "classnames";
 import { PresaleFaqTitle } from "./PresaleFaqTitle";
 import { FaqContact } from "./FaqContact";
 import { PresaleFaqQuestions } from "./PresaleFaqQuestions";
-import { PropsSectionProps } from '../utils/PropsSectionProps'
+import { SectionProps } from '../utils/SectionProps'
 
-export function PresaleFaq({ className }: PropsSectionProps) {
+export function PresaleFaq({ className }: SectionProps) {
   return (
     <div className={classNames("container flex justify-between", className)}>
       <div>

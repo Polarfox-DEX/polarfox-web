@@ -2,14 +2,14 @@ import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../utils/styles";
 import { ReactNode } from "react";
-import { PropsSectionProps } from "./utils/PropsSectionProps";
+import { SectionProps } from "./utils/SectionProps";
 
-export function PresaleHeader({ className }: PropsSectionProps) {
+export function PresaleHeader({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        className,
-        "flex w-full absolute bg-blue text-white font-graphik justify-between"
+        "flex w-full absolute bg-blue text-white font-graphik justify-between",
+        className
       )}
       style={{ height: calcRem(114) }}
     >
@@ -24,9 +24,9 @@ export function PresaleHeader({ className }: PropsSectionProps) {
           className="container flex justify-between items-center space-x-5 mx-24"
           style={{ width: calcRem(312) }}
         >
-          <PresaleTimerWindow>10d</PresaleTimerWindow>
-          <PresaleTimerWindow>23h</PresaleTimerWindow>
-          <PresaleTimerWindow>15m</PresaleTimerWindow>
+          <PresaleTimerBox>10d</PresaleTimerBox>
+          <PresaleTimerBox>23h</PresaleTimerBox>
+          <PresaleTimerBox>15m</PresaleTimerBox>
         </div>
         <div className="mx-12 self-center">
           <Link href="/presale">
@@ -42,17 +42,17 @@ export function PresaleHeader({ className }: PropsSectionProps) {
   );
 }
 
-interface PresaleTimerWindowProps {
+interface PresaleTimerBoxProps {
   children: ReactNode;
 }
 
-function PresaleTimerWindow({ children }: PresaleTimerWindowProps) {
+function PresaleTimerBox({ children }: PresaleTimerBoxProps) {
   return (
     <div
-      className="border border-white rounded-lg border-opacity-25 h-10"
-      style={{ width: calcRem(92), height: calcRem(72) }}
+      className="border border-white rounded-lg border-opacity-25"
+      style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28)}}
     >
-      <div className="mt-4 text-center" style={{ fontSize: calcRem(28) }}>
+      <div className="mt-4 text-center" >
         {children}
       </div>
     </div>

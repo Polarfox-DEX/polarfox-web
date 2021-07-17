@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { Question } from "../utils/Question";
-import { PropsSectionProps } from "../utils/PropsSectionProps"
+import { SectionProps } from "../utils/SectionProps"
 
-export function PresaleFaqQuestions({ className }: PropsSectionProps) {
+export function PresaleFaqQuestions({ className }: SectionProps) {
   return (
     <div className={classNames("divide-y divide-gray-light", className)}>
       <Question question="How do I buy PFX in the presale?" isOpen={true}>

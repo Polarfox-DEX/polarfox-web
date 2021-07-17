@@ -2,12 +2,9 @@ import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../../utils/styles";
 import { Question } from "../utils/Question";
+import { SectionProps } from "../utils/SectionProps"
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function FaqPreview({ className }: PropsSectionProps) {
+export function FaqPreview({ className }: SectionProps) {
   return (
     <div className={classNames("container flex justify-between", className)}>
       <div>

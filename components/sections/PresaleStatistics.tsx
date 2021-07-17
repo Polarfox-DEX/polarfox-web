@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import { calcRem } from "../../utils/styles";
-import { PropsSectionProps } from "../utils/PropsSectionProps";
+import { SectionProps } from "../utils/SectionProps";
 import { ReactNode } from "react";
 
-export function PresaleStatistics({ className }: PropsSectionProps) {
+export function PresaleStatistics({ className }: SectionProps) {
   return (
     <div className={classNames("container", className)}>
       <div

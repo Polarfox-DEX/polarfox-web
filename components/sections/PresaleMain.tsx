@@ -3,9 +3,9 @@ import { PresaleDescription } from "./PresaleDescription";
 import { PresaleAkitaBalance } from "./PresaleAkitaBalance";
 import { PresaleInterface } from "./PresaleInterface";
 import { WithBackgroundImage } from "../utils/WithBackgroundImage";
-import { PropsSectionProps } from '../utils/PropsSectionProps'
+import { SectionProps } from '../utils/SectionProps'
 
-export function PresaleMain({ className }: PropsSectionProps) {
+export function PresaleMain({ className }: SectionProps) {
   return (
     <WithBackgroundImage
       className="bg-left-bottom w-screen min-h-screen h-screen"

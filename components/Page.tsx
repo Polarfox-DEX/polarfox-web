@@ -45,7 +45,7 @@ export function Page({ children }: PageProps) {
         className={classNames(
           styles.container,
           "text-blue",
-          displayPresale && "mt-28"
+          { "mt-28": displayPresale }
         )}
       >
         <Header />

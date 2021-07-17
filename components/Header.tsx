@@ -1,14 +1,11 @@
 import classNames from "classnames";
 import Link from 'next/link';
 import { calcRem } from '../utils/styles';
+import { SectionProps } from './utils/SectionProps'
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function Header({ className }: PropsSectionProps) {
+export function Header({ className }: SectionProps) {
   return (
-    <div className={classNames(className, "flex justify-between w-full px-14 py-4 absolute")}>
+    <div className={classNames("flex justify-between w-full px-14 py-4 absolute", className)}>
       <Link href="/">
         <a>
           <img src="/logo/polarfox.png" alt="Polarfox logo" />

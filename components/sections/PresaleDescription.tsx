@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { calcRem } from "../../utils/styles";
-import { PropsSectionProps } from '../utils/PropsSectionProps'
+import { SectionProps } from '../utils/SectionProps'
 
-export function PresaleDescription({ className }: PropsSectionProps) {
+export function PresaleDescription({ className }: SectionProps) {
   return (
     <div className={classNames(className)}>
       <div

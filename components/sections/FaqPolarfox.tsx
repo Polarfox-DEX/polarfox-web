@@ -1,11 +1,8 @@
 import classNames from "classnames";
 import { Question } from "../utils/Question";
+import { SectionProps } from "../utils/SectionProps"
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function FaqPolarfox({ className }: PropsSectionProps) {
+export function FaqPolarfox({ className }: SectionProps) {
   return (
     <div className={classNames("divide-y divide-gray-light", className)}>
       <Question question="What is Polarfox?" isOpen={true}>
