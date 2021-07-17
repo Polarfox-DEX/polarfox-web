@@ -72,9 +72,11 @@ export function PresaleInterface({ className }: PropsSectionProps) {
               >
                 <div className="flex">
                   <MainText>Buy</MainText>
-                  <div className="mx-3 mt-0.5">
+                  <div
+                    className="mx-3 mt-0.5"
+                    style={{ height: calcRem(17), width: calcRem(17) }}
+                  >
                     <img src="white-down-arrow.png" alt="↓" />
-                    {/* TODO: add image size for responsive? */}
                   </div>
                 </div>
                 <div className="mx-2">
