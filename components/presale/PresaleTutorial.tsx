@@ -69,7 +69,10 @@ export function PresaleTutorial({ className }: SectionProps) {
           MetaMask wallet.
         </PresaleTutorialBlock>
       </div>
-      <div className="mt-12 italic text-grey" style={{lineHeight: calcRem(30)}}>
+      <div
+        className="mt-12 italic text-grey"
+        style={{ lineHeight: calcRem(30) }}
+      >
         <span className="font-semibold">Note: </span>
         You may purchase PFX with Trustwallet or Coinbase wallet, but MetaMask
         is currently the only wallet that is supported for claiming your PFX
@@ -103,13 +106,11 @@ function PresaleTutorialBlock({
       className={classNames("container mt-12", className)}
       style={{ lineHeight: calcRem(30), width: calcRem(198) }}
     >
-      <div>
-        <img
-          src={imgPath}
-          alt={imgAlt}
-          style={{ height: calcRem(imgHeight), width: calcRem(imgWidth) }}
-        />
-      </div>
+      <img
+        src={imgPath}
+        alt={imgAlt}
+        style={{ height: calcRem(imgHeight), width: calcRem(imgWidth) }}
+      />
       <div className="font-bold mt-7">{title}</div>
       <div className="text-gray mt-7">{children}</div>
     </div>
@@ -122,7 +123,11 @@ export function GreyRightArrow() {
       <img
         src="grey-right-arrow.png"
         alt="➔"
-        style={{ height: calcRem(16), width: calcRem(16), marginTop: calcRem(103) }}
+        style={{
+          height: calcRem(16),
+          width: calcRem(16),
+          marginTop: calcRem(103),
+        }}
       />
     </div>
   );

@@ -84,7 +84,7 @@ interface DayStatisticsProps {
 function DayStatistics({ hasBackground, fontSize, className, children }: DayStatisticsProps) {
   return (
     
-    <div className={classNames("flex justify-between", hasBackground && "bg-gray-light2 rounded-lg", className)} style={{height: calcRem(64), fontSize: calcRem(fontSize || 16)}}>
+    <div className={classNames("flex justify-between", {"bg-gray-mid rounded-lg": hasBackground}, className)} style={{height: calcRem(64), fontSize: calcRem(fontSize || 16)}}>
       {children}
     </div>
   );
