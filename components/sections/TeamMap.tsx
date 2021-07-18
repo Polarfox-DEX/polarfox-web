@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { calcRem } from '../../utils/styles';
+import { SectionTitle } from './utils/SectionTitle';
 
 interface LeadershipProps {
   className?: string;
@@ -8,23 +9,15 @@ interface LeadershipProps {
 export function TeamMap({ className }: LeadershipProps) {
   return (
     <div className={classNames('container', className)}>
-      <div className="grid grid-cols-2">
-        <h2
-          className="font-switzer font-semibold"
-          style={{
-            fontSize: calcRem(50),
-            lineHeight: calcRem(65),
-          }}
-        >
-          Let&apos;s get familiar!
-        </h2>
-        <div className="flex justify-end space-x-10">
+      <div className="grid grid-cols-1 tablet:grid-cols-2">
+        <SectionTitle>Let&apos;s get familiar!</SectionTitle>
+        <div className="flex flex-wrap justify-center tablet:justify-end space-x-10 mt-10 tablet:mt-0">
           <Figure figure="30" label="members" />
           <Figure figure="12" label="countries" />
           <Figure figure="14" label="personalities" />
         </div>
       </div>
-      <div className="flex justify-center mt-28">
+      <div className="flex justify-center mt-14 tablet:mt-28">
         <img src="/team-map.png" alt="Team map" />
       </div>
     </div>
