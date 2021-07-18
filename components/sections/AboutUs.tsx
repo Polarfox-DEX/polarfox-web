@@ -4,7 +4,7 @@ import { WithBackgroundImage } from '../utils/WithBackgroundImage';
 export function AboutUs() {
   return (
     <WithBackgroundImage
-      className="bg-left-bottom w-screen min-h-screen h-screen"
+      className="bg-left-bottom w-full min-h-screen h-screen"
       imageUrl="/background/forest-1.jpg"
     >
       <div className="container flex justify-between">

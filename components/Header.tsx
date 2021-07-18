@@ -3,7 +3,7 @@ import { calcRem } from '../utils/styles';
 
 export function Header() {
   return (
-    <div className="flex justify-between w-full px-14 py-4 absolute">
+    <div className="hidden desktop:flex justify-between w-full px-14 py-4 absolute">
       <Link href="/">
         <a>
           <img src="/logo/polarfox.png" alt="Polarfox logo" />
