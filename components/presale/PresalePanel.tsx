@@ -5,7 +5,7 @@ import { PresaleInterface } from "./PresaleInterface";
 import { WithBackgroundImage } from "../utils/WithBackgroundImage";
 import { SectionProps } from '../utils/SectionProps'
 
-export function PresaleMain({ className }: SectionProps) {
+export function PresalePanel({ className }: SectionProps) {
   return (
     <WithBackgroundImage
       className="bg-left-bottom w-screen min-h-screen h-screen"
