@@ -1,18 +1,20 @@
 import classNames from "classnames";
 import Link from "next/link";
+import Analytics from "./svg/Analytics";
+import Bridge from "./svg/Bridge";
+import DoubleArrow from "./svg/DoubleArrow";
+import Mining from "./svg/Mining";
+import TopRightArrow from "./svg/TopRightArrow";
 import { calcRem } from "../utils/styles";
+import { SectionProps } from "./utils/SectionProps";
 import { ReactNode } from "react";
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function Header({ className }: PropsSectionProps) {
+export function Header({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        className,
-        "flex justify-between w-full px-14 py-4 absolute"
+        "flex justify-between w-full px-14 py-4 absolute",
+        className
       )}
     >
       <Link href="/">
@@ -28,7 +30,7 @@ export function Header({ className }: PropsSectionProps) {
         }}
       >
         <div
-          className="rounded-3xl bg-gray-light3 flex items-center justify-between -mr-5"
+          className="rounded-3xl bg-gray-mid2 flex items-center justify-between -mr-5"
           style={{ width: calcRem(110), height: calcRem(44) }}
         >
           <div className="ml-4">Products</div>
@@ -73,10 +75,7 @@ function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
     >
       <div className="flex justify-between space-x-3 mx-4 my-6">
         <Product
-          imgPath="exchange.png"
-          imgAlt="exchange"
-          imgWidth={23}
-          imgHeight={20}
+          logo={<DoubleArrow />}
           href="https://dex.polarfox.io"
           linkTitle="Open app"
           textClass="mt-11"
@@ -84,40 +83,34 @@ function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
           Decentralized Exchange
         </Product>
         <Product
-          imgPath="analytics.png"
-          imgAlt="analytics"
-          imgWidth={30}
-          imgHeight={20}
+          logo={<Analytics />}
           href="https://analytics.polarfox.io"
           linkTitle="Open app"
         >
           Analytics
         </Product>
         <Product
-          imgPath="mining.png"
-          imgAlt="mining"
-          imgWidth={20}
-          imgHeight={20}
+          logo={<Mining />}
           href="https://dex.polarfox.io/#/pfx"
           linkTitle="Open app"
         >
           Mining Pools
         </Product>
         <Product
-          imgPath="bridge.png"
-          imgAlt="bridge"
-          imgWidth={20}
-          imgHeight={20}
+          logo={<Bridge />}
           href="https://bridge.polarfox.io"
           linkTitle="Open app"
         >
           Bridge
         </Product>
         <Product
-          imgPath="akita.png"
-          imgAlt="akita"
-          imgWidth={24}
-          imgHeight={24}
+          logo={
+            <img
+              src="akita.png"
+              alt="akita"
+              style={{ height: calcRem(24), width: calcRem(24) }}
+            />
+          }
           href="https://akita.network"
           linkTitle="Visit site"
         >
@@ -126,15 +119,12 @@ function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
       </div>
     </div>
   ) : (
-    <div />
+    <div className="absolute" />
   );
 }
 
 interface ProductProps {
-  imgPath: string;
-  imgAlt: string;
-  imgWidth: number;
-  imgHeight: number;
+  logo: ReactNode;
   href: string;
   linkTitle: string;
   textClass?: string;
@@ -143,10 +133,7 @@ interface ProductProps {
 }
 
 function Product({
-  imgPath,
-  imgAlt,
-  imgWidth,
-  imgHeight,
+  logo,
   href,
   linkTitle,
   textClass,
@@ -164,13 +151,8 @@ function Product({
               height: calcRem(121),
             }}
           >
-            <div className="mx-3 h-full">
-              <img
-                src={imgPath}
-                alt={imgAlt}
-                className="mt-4"
-                style={{ height: calcRem(imgHeight), width: calcRem(imgWidth) }}
-              />
+            <div className="mx-3 h-full pt-4">
+              {logo}
               <div
                 className={classNames("font-semibold", textClass || "mt-14")}
                 style={{ fontSize: calcRem(12), lineHeight: calcRem(14) }}
@@ -195,10 +177,8 @@ function Product({
             >
               {linkTitle}
             </div>
-            <img
-              src="top-right-arrow.png"
-              alt="⬈"
-              className="mx-4"
+            <TopRightArrow
+              className="fill-current mx-4"
               style={{ height: calcRem(7), width: calcRem(7) }}
             />
           </div>

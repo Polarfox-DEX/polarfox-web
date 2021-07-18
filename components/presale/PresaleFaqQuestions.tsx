@@ -1,10 +1,11 @@
 import classNames from "classnames";
+import { calcRem } from "../../utils/styles";
 import { Question } from "../utils/Question";
-import { PropsSectionProps } from "../utils/PropsSectionProps"
+import { SectionProps } from "../utils/SectionProps"
 
-export function PresaleFaqQuestions({ className }: PropsSectionProps) {
+export function PresaleFaqQuestions({ className }: SectionProps) {
   return (
-    <div className={classNames("divide-y divide-gray-light", className)}>
+    <div className={classNames("divide-y divide-gray-light", className)} style={{width: calcRem(680)}}>
       <Question question="How do I buy PFX in the presale?" isOpen={true}>
         Polarfox is a crypto ecosystem, based on Avalanche, which will bring
         many apps together. Its main app is the Polarfox DEX; some other apps

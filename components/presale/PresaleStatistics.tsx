@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import { calcRem } from "../../utils/styles";
-import { PropsSectionProps } from "../utils/PropsSectionProps";
+import { SectionProps } from "../utils/SectionProps";
 import { ReactNode } from "react";
 
-export function PresaleStatistics({ className }: PropsSectionProps) {
+export function PresaleStatistics({ className }: SectionProps) {
   return (
     <div className={classNames("container", className)}>
       <div
@@ -84,7 +84,7 @@ interface DayStatisticsProps {
 function DayStatistics({ hasBackground, fontSize, className, children }: DayStatisticsProps) {
   return (
     
-    <div className={classNames("flex justify-between", hasBackground && "bg-gray-light2 rounded-lg", className)} style={{height: calcRem(64), fontSize: calcRem(fontSize || 16)}}>
+    <div className={classNames("flex justify-between", {"bg-gray-mid rounded-lg": hasBackground}, className)} style={{height: calcRem(64), fontSize: calcRem(fontSize || 16)}}>
       {children}
     </div>
   );

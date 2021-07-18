@@ -1,8 +1,12 @@
 import classNames from "classnames";
+import Link from "next/link";
+import Facebook from "../svg/Facebook";
+import Telegram from "../svg/Telegram";
+import Twitter from "../svg/Twitter";
 import { calcRem } from "../../utils/styles";
-import { PropsSectionProps } from '../utils/PropsSectionProps'
+import { SectionProps } from "../utils/SectionProps";
 
-export function PresaleDescription({ className }: PropsSectionProps) {
+export function PresaleDescription({ className }: SectionProps) {
   return (
     <div className={classNames(className)}>
       <div
@@ -73,11 +77,23 @@ export function PresaleDescription({ className }: PropsSectionProps) {
           </span>
         </p>
       </div>
-      <div className="mt-16 font-bold" >Share with your friends!</div>
-      <div className="mt-8 flex">
-        <img src="telegram.png" alt="TG" className="ml-1" />
-        <img src="facebook.png" alt="FB" className="ml-4" />
-        <img src="twitter.png" alt="TW" className="ml-4" />
+      <div className="mt-16 font-bold">Share with your friends!</div>
+      <div className="mt-8 flex gap-x-4 ml-1">
+        <Link href="">
+          <a>
+            <Telegram width={calcRem(24.29)} height={calcRem(20)} />
+          </a>
+        </Link>
+        <Link href="">
+          <a>
+            <Facebook width={calcRem(10)} height={calcRem(20)} />
+          </a>
+        </Link>
+        <Link href="">
+          <a>
+            <Twitter width={calcRem(24.29)} height={calcRem(20)} />
+          </a>
+        </Link>
       </div>
     </div>
   );
