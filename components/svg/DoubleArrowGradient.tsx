@@ -1,4 +1,4 @@
-function DoubleArrow(props: React.SVGProps<SVGSVGElement>) {
+function DoubleArrowGradient(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="1em"
@@ -31,4 +31,4 @@ function DoubleArrow(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export default DoubleArrow;
+export default DoubleArrowGradient;
