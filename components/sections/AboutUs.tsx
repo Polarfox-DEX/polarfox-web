@@ -1,31 +1,26 @@
+import classNames from 'classnames';
 import { calcRem } from '../../utils/styles';
 import { WithBackgroundImage } from '../utils/WithBackgroundImage';
+import { SectionHeading } from './utils/SectionHeading';
 
-export function AboutUs() {
+interface AboutUsProps {
+  className?: string;
+}
+
+export function AboutUs({ className }: AboutUsProps) {
   return (
     <WithBackgroundImage
-      className="bg-left-bottom w-full min-h-screen h-screen"
+      className="bg-right-bottom tablet:bg-left-bottom w-full min-h-screen tablet:h-full"
       imageUrl="/background/forest-1.jpg"
     >
-      <div className="container flex justify-between">
-        <div
-          className="opacity-50"
-          style={{
-            fontSize: calcRem(12),
-            lineHeight: calcRem(14.1),
-            letterSpacing: calcRem(3),
-          }}
-        >
-          ABOUT US
-        </div>
-        <div
-          className="font-switzer"
-          style={{
-            maxWidth: calcRem(745),
-            fontSize: calcRem(30),
-            lineHeight: calcRem(46),
-          }}
-        >
+      <div
+        className={classNames(
+          'container flex flex-wrap justify-between items-baseline gap-x-16',
+          className
+        )}
+      >
+        <SectionHeading>ABOUT US</SectionHeading>
+        <div className="text font-switzer">
           <p>
             Polarfox is a self-funding community-based team of crypto
             enthusiasts who urge to build a great financial ecosystem, based on
@@ -38,6 +33,19 @@ export function AboutUs() {
             world&apos;s financial system and so we feel drifted to contribute
             to its new form.
           </p>
+          <style jsx>{`
+            .text {
+              font-size: ${calcRem(25)};
+              line-height: ${calcRem(46)};
+            }
+
+            @media (min-width: 1200px) {
+              .text {
+                max-width: ${calcRem(745)};
+                font-size: ${calcRem(30)};
+              }
+            }
+          `}</style>
         </div>
       </div>
     </WithBackgroundImage>

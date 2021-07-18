@@ -21,16 +21,16 @@ export function MainTeam({ className }: LeadershipProps) {
   return (
     <div className={classNames('container', className)}>
       <SectionHeading>POLARFOX TEAM</SectionHeading>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 tablet:grid-cols-2 tablet:gap-4">
         <SectionTitle>Leadership</SectionTitle>
-        <div className="flex items-end">
+        <div className="flex items-end mt-10 tablet:mt-0">
           <p style={{ fontSize: calcRem(20), lineHeight: calcRem(32) }}>
             Meet the team of Polarfox working on the project behind the scenes
             from all around the world.
           </p>
         </div>
       </div>
-      <div className="flex justify-between flex-wrap mt-28 gap-y-16">
+      <div className="flex justify-around flex-wrap mt-10 desktop:mt-28 gap-x-16 desktop:gap-x-0 gap-y-16">
         <Profile>
           <ProfilePicture
             src="/team-pictures/jf.jpg"
@@ -213,12 +213,14 @@ interface ProfilePictureProps {
 
 function ProfilePicture({ src, alt }: ProfilePictureProps) {
   return (
-    <img
-      className="rounded-2xl"
-      src={src}
-      alt={alt}
-      style={{ minWidth: calcRem(285), minHeight: calcRem(285) }}
-    />
+    <>
+      <img
+        className="profile-picture rounded-2xl"
+        src={src}
+        alt={alt}
+        style={{ width: calcRem(285), height: calcRem(285) }}
+      />
+    </>
   );
 }
 

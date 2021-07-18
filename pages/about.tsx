@@ -9,8 +9,8 @@ export default function About() {
     <Page>
       <AboutUs />
       <OurMission className="mt-16" />
-      <TeamMap className="mt-32" />
-      <MainTeam className="mt-32" />
+      <TeamMap className="mt-22 desktop:mt-44" />
+      <MainTeam className="mt-22 desktop:mt-44" />
     </Page>
   );
 }

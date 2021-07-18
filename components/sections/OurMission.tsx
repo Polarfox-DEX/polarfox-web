@@ -8,7 +8,12 @@ interface OurMissionProps {
 
 export function OurMission({ className }: OurMissionProps) {
   return (
-    <div className={classNames('container flex justify-between', className)}>
+    <div
+      className={classNames(
+        'container flex flex-wrap justify-center desktop:justify-between gap-x-8 desktop:gap-x-0 gap-y-16',
+        className
+      )}
+    >
       <Mission title="Our mission">
         Our goal is to build an independent ecosystem of fully decentralized and
         open-source applications on the Avalanche blockchain.
@@ -32,7 +37,7 @@ interface MissionProps {
 
 export function Mission({ title, children }: MissionProps) {
   return (
-    <div style={{ width: calcRem(386) }}>
+    <div className="mission w-full">
       <h3
         className="font-switzer font-semibold"
         style={{ fontSize: calcRem(20), lineHeight: calcRem(32) }}
@@ -45,6 +50,13 @@ export function Mission({ title, children }: MissionProps) {
       >
         {children}
       </p>
+      <style jsx>{`
+        @media (min-width: 1200px) {
+          .mission {
+            width: ${calcRem(385)};
+          }
+        }
+      `}</style>
     </div>
   );
 }
