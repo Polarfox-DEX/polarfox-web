@@ -3,6 +3,7 @@ import Link from "next/link";
 import Analytics from "./svg/Analytics";
 import Bridge from "./svg/Bridge";
 import DoubleArrow from "./svg/DoubleArrow";
+import MenuArrow from "./svg/MenuArrow";
 import Mining from "./svg/Mining";
 import TopRightArrow from "./svg/TopRightArrow";
 import { calcRem } from "../utils/styles";
@@ -34,12 +35,7 @@ export function Header({ className }: SectionProps) {
           style={{ width: calcRem(110), height: calcRem(44) }}
         >
           <div className="ml-4">Products</div>
-          <img
-            src="menu-arrow.png"
-            alt="↓"
-            className="mr-4"
-            style={{ height: calcRem(8), width: calcRem(8) }}
-          />
+          <MenuArrow className="mr-4" />
         </div>
         <ProductsDropdown isActive/>
         <Link href="/about">
