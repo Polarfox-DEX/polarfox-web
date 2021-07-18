@@ -10,26 +10,35 @@ interface PfxHighlightsProps {
 export function PfxHighlight({ className }: PfxHighlightsProps) {
   return (
     <WithBackgroundImage
-      className="bg-left-bottom w-screen min-h-screen h-screen"
+      className="bg-right-bottom desktop:bg-left-bottom w-full min-h-screen h-screen"
       imageUrl="/background/forest-1.jpg"
     >
       <div
         className={classNames(
-          'container flex flex-col items-center',
+          'container flex flex-wrap flex-col items-center',
           className
         )}
       >
         <h1
-          className="text-center font-switzer font-semibold"
-          style={{
-            width: calcRem(880),
-            fontSize: calcRem(70),
-            lineHeight: calcRem(90),
-          }}
+          className="title text-center font-switzer font-semibold"
+          style={{ maxWidth: calcRem(880) }}
         >
           Decentralized ecosystem of applications
+          <style jsx>{`
+            .title {
+              font-size: ${calcRem(40)};
+              line-height: ${calcRem(52.8)};
+            }
+
+            @media (min-width: 1200px) {
+              .title {
+                font-size: ${calcRem(70)};
+                line-height: ${calcRem(90)};
+              }
+            }
+          `}</style>
         </h1>
-        <div className="flex space-x-5 mt-24">
+        <div className="flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24">
           <Button
             url="/Polarfox Litepaper V2.6.pdf"
             className="border border-blue bg-white"
@@ -61,17 +70,26 @@ function Button({ url, className, children }: ButtonProps) {
       target="_blank"
       rel="noopener noreferrer"
       className={classNames(
-        'flex justify-center items-center rounded-full font-semibold',
+        'button flex justify-center items-center rounded-full font-semibold',
         className
       )}
-      style={{
-        width: calcRem(200),
-        height: calcRem(78),
-        fontSize: calcRem(18),
-        lineHeight: calcRem(21.15),
-      }}
     >
       {children}
+      <style jsx>{`
+        .button {
+          width: 100%;
+          height: ${calcRem(60)};
+          font-size: ${calcRem(18)};
+          line-height: ${calcRem(21.15)};
+        }
+
+        @media (min-width: 1200px) {
+          .button {
+            max-width: ${calcRem(209)};
+            height: ${calcRem(78)};
+          }
+        }
+      `}</style>
     </a>
   );
 }
