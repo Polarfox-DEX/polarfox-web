@@ -41,7 +41,7 @@ export function Header({ className }: SectionProps) {
             style={{ height: calcRem(8), width: calcRem(8) }}
           />
         </div>
-        <ProductsDropdown isActive />
+        <ProductsDropdown isActive/>
         <Link href="/about">
           <a>About</a>
         </Link>
