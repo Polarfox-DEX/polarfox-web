@@ -123,7 +123,7 @@ function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
       </div>
     </div>
   ) : (
-    <div />
+    <div className="absolute" />
   );
 }
 
