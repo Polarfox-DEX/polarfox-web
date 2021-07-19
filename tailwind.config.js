@@ -6,12 +6,20 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      tablet: '640px',
+      laptop: '1024px',
+      desktop: '1280px',
+    },
     container: {
       screens: {
-        sm: "100%",
-        md: "100%",
-        lg: "1024px",
-        xl: "1200px"
+        tablet: '100%',
+        laptop: '100%',
+        desktop: '1200px',
+      },
+      padding: {
+        DEFAULT: '1.25rem',
+        desktop: '0rem'
       }
     },
     colors: {
@@ -38,6 +46,9 @@ module.exports = {
       },
       spacing: {
         '5.5': '1.375rem'
+      },
+      margin: {
+        '22': '5.5rem'
       }
     },
   },
@@ -45,4 +56,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};

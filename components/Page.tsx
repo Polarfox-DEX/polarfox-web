@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import Head from "next/head";
-import styles from "../styles/Page.module.css";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
-import { PresaleHeader } from "./PresaleHeader";
-import { ReactNode } from "react";
+import classNames from 'classnames';
+import Head from 'next/head';
+import styles from '../styles/Page.module.css';
+import { Footer } from './Footer';
+import { Header } from './Header';
+import { PresaleHeader } from './PresaleHeader';
+import { ReactNode } from 'react';
 
 interface PageProps {
   children: ReactNode;
@@ -15,8 +15,8 @@ export function Page({ children }: PageProps) {
 
   return (
     <div
-      className={classNames(styles.container, "text-blue", {
-        "pt-28": displayPresale,
+      className={classNames(styles.container, 'text-blue', {
+        'pt-28': displayPresale,
       })}
     >
       <Head>
@@ -43,10 +43,11 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28"/>}
+      {displayPresale && <PresaleHeader className="-mt-28" />}
       <Header className="" />
       {children}
-      <Footer />
+
+      <Footer className="mt-22 desktop:mt-44" />
     </div>
   );
 }

@@ -11,7 +11,12 @@ interface PfxStatementsProps {
 
 export function PfxStatements({ className }: PfxStatementsProps) {
   return (
-    <div className={classNames('container flex justify-between', className)}>
+    <div
+      className={classNames(
+        'container flex flex-wrap justify-center desktop:justify-between gap-y-16',
+        className
+      )}
+    >
       <PfxStatement
         icon={<Flag width={calcRem(17.07)} height={calcRem(40)} />}
         title="Goal of Polarfox"
@@ -47,7 +52,7 @@ function PfxStatement({ icon, title, children }: PfxStatementProps) {
   return (
     <div
       className="flex flex-col items-center text-center"
-      style={{ width: '385px' }}
+      style={{ maxWidth: '385px' }}
     >
       {icon}
       <p

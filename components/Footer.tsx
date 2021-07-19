@@ -1,41 +1,54 @@
-import React, { ReactNode, ReactText } from "react";
-import { WithBackgroundImage } from "../components/utils/WithBackgroundImage";
-import { calcRem } from "../utils/styles";
-import GitHub from "./svg/Github";
-import Medium from "./svg/Medium";
-import Telegram from "./svg/Telegram";
-import Twitter from "./svg/Twitter";
+import classNames from 'classnames';
+import React, { ReactNode, ReactText } from 'react';
+import { WithBackgroundImage } from '../components/utils/WithBackgroundImage';
+import { calcRem } from '../utils/styles';
+import GitHub from './svg/Github';
+import Medium from './svg/Medium';
+import Telegram from './svg/Telegram';
+import Twitter from './svg/Twitter';
 
-export function Footer() {
+interface FooterProps {
+  className?: string;
+}
+
+export function Footer({ className }: FooterProps) {
   return (
     <>
       <WithBackgroundImage
-        className="bg-left-top w-screen h-screen min-h-screen"
+        className={classNames(
+          'bg-left-top bg-contain w-full h-screen min-h-screen',
+          className
+        )}
         imageUrl="/background/forest-3.jpg"
       >
-        <div className="container flex flex-col items-stretch justify-end h-full border-b-2 border-blue">
-          <div className="flex justify-between pb-32">
-            <h2
-              className="font-switzer"
-              style={{
-                fontSize: calcRem(50),
-                lineHeight: calcRem(65),
-                width: calcRem(514),
-              }}
-            >
-              Meet the worldwide community
-            </h2>
-            <div className="flex space-x-5">
-              <TelegramButton />
-              <GitHubButton />
-              <MediumButton />
-              <TwitterButton />
-            </div>
+        <div className="container flex flex-col justify-end desktop:flex-row desktop:justify-between desktop:items-end h-full desktop:pb-32 border-b-2 border-blue">
+          <h2 className="title font-switzer font-semibold" style={{}}>
+            Meet the worldwide community
+            <style jsx>{`
+              .title {
+                font-size: ${calcRem(30)};
+                line-height: ${calcRem(39.6)};
+              }
+
+              @media (min-width: 1200px) {
+                .title {
+                  font-size: ${calcRem(50)};
+                  line-height: ${calcRem(65)};
+                  max-width: ${calcRem(514)};
+                }
+              }
+            `}</style>
+          </h2>
+          <div className="flex justify-between space-x-1 desktop:space-x-5 my-12 desktop:my-0">
+            <TelegramButton />
+            <GitHubButton />
+            <MediumButton />
+            <TwitterButton />
           </div>
         </div>
       </WithBackgroundImage>
       <WithBackgroundImage
-        className="bg-left-top w-screen h-screen min-h-screen"
+        className="bg-left bg-contain desktop:bg-left-top desktop:bg-cover w-full"
         imageUrl="/background/fox.jpg"
       >
         <div className="container flex justify-start my-32">
@@ -52,7 +65,7 @@ export function Footer() {
           <div className="flex justify-end items-center space-x-6">
             <p
               className="text-blue my-20 flex-1"
-              style={{ fontSize: "13px", lineHeight: "33px" }}
+              style={{ fontSize: '13px', lineHeight: '33px' }}
             >
               © 2021 Polarfox ltd.
             </p>
@@ -121,9 +134,22 @@ function SocialButton({ url, children }: SocialButtonProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex justify-center items-center rounded-full border border-blue bg-white w-20 h-20"
+      className="flex justify-center items-center rounded-full border border-blue bg-white"
     >
       {children}
+      <style jsx>{`
+        a {
+          width: ${calcRem(74)};
+          height: ${calcRem(74)};
+        }
+
+        @media (min-width: 640px) {
+          a {
+            width: ${calcRem(80)};
+            height: ${calcRem(80)};
+          }
+        }
+      `}</style>
     </a>
   );
 }
@@ -131,8 +157,8 @@ function SocialButton({ url, children }: SocialButtonProps) {
 function SiteMap() {
   return (
     <div
-      className="container flex justify-between"
-      style={{ fontSize: "13px", lineHeight: "33px" }}
+      className="container grid gap-y-16 grid-cols-2 desktop:flex desktop:justify-between"
+      style={{ fontSize: '13px', lineHeight: '33px' }}
     >
       <SiteMapSection>
         <SiteMapSectionTitle>About</SiteMapSectionTitle>

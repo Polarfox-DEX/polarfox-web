@@ -7,7 +7,12 @@ interface PfxFiguresProps {
 
 export function PfxFigures({ className }: PfxFiguresProps) {
   return (
-    <div className={classNames('container flex justify-between', className)}>
+    <div
+      className={classNames(
+        'container flex flex-wrap justify-between gap-5',
+        className
+      )}
+    >
       <PfxFigureBox
         title="Total PFX supply"
         figure="30,000,000 PFX"
@@ -41,10 +46,10 @@ interface PfxFigureBoxProps {
 function PfxFigureBox({ title, figure, backgroundColor }: PfxFigureBoxProps) {
   return (
     <div
-      className="flex flex-col justify-center pl-10 text-white font-graphik"
+      className="text-center flex flex-col flex-1 justify-center text-white font-graphik desktop:text-left desktop:pl-10"
       style={{
         backgroundColor,
-        width: calcRem(284),
+        minWidth: calcRem(284),
         height: calcRem(207),
         borderRadius: calcRem(10),
       }}

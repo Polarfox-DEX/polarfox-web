@@ -1,11 +1,16 @@
-import classNames from "classnames";
+import classNames from 'classnames';
 import Link from 'next/link';
 import { calcRem } from '../utils/styles';
-import { SectionProps } from './utils/SectionProps'
+import { SectionProps } from './sections/utils/SectionProps';
 
 export function Header({ className }: SectionProps) {
   return (
-    <div className={classNames("flex justify-between w-full px-14 py-4 absolute", className)}>
+    <div
+      className={classNames(
+        'hidden desktop:flex justify-between w-full px-14 py-4 absolute',
+        className
+      )}
+    >
       <Link href="/">
         <a>
           <img src="/logo/polarfox.png" alt="Polarfox logo" />
