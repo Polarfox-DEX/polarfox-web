@@ -1,14 +1,14 @@
-import classNames from "classnames";
-import Clock from "../svg/Clock"
-import DownArrow from "../svg/DownArrow"
-import { calcRem } from "../../utils/styles";
-import { SectionProps } from "../utils/SectionProps";
-import { ReactNode } from "react";
+import classNames from 'classnames';
+import Clock from '../svg/Clock';
+import DownArrow from '../svg/DownArrow';
+import { calcRem } from '../../utils/styles';
+import { SectionProps } from '../sections/utils/SectionProps';
+import { ReactNode } from 'react';
 
 export function PresaleInterface({ className }: SectionProps) {
   return (
     <div
-      className={classNames("border bg-blue rounded-3xl", className)}
+      className={classNames('border bg-blue rounded-3xl', className)}
       style={{
         width: calcRem(439),
         height: calcRem(717),
@@ -139,7 +139,7 @@ function PresaleTimerWindow({ className, children }: PresaleTimerWindowProps) {
   return (
     <div
       className={classNames(
-        "border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center",
+        'border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center',
         className
       )}
       style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
@@ -157,7 +157,7 @@ interface MainTextProps {
 function MainText({ className, children }: MainTextProps) {
   return (
     <div
-      className={classNames("font-semibold", className)}
+      className={classNames('font-semibold', className)}
       style={{
         fontSize: calcRem(20),
         lineHeight: calcRem(23),
@@ -176,7 +176,7 @@ interface SideTextProps {
 function SideText({ className, children }: SideTextProps) {
   return (
     <div
-      className={classNames("opacity-40", className)}
+      className={classNames('opacity-40', className)}
       style={{
         fontSize: calcRem(12),
         lineHeight: calcRem(14),
@@ -203,11 +203,11 @@ function DayButton({
   return (
     <div
       className={classNames(
-        "rounded-3xl -mt-2 font-semibold text-center pt-3",
-        { "bg-blue-gray": hasStarted && !isActive },
-        { "bg-white": isActive },
-        { "text-blue": isActive },
-        { "opacity-30": !hasStarted },
+        'rounded-3xl -mt-2 font-semibold text-center pt-3',
+        { 'bg-blue-gray': hasStarted && !isActive },
+        { 'bg-white': isActive },
+        { 'text-blue': isActive },
+        { 'opacity-30': !hasStarted },
 
         className
       )}
@@ -232,9 +232,9 @@ function ActionButton({ isActive, children }: ActionButtonProps) {
   return (
     <div
       className={classNames(
-        "bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center",
+        'bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center',
         {
-          "opacity-30": !isActive,
+          'opacity-30': !isActive,
         }
       )}
       style={{

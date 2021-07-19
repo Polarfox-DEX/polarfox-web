@@ -1,16 +1,16 @@
-import classNames from "classnames";
-import Coins from "../svg/Coins";
-import Ethereum from "../svg/Ethereum";
-import RightArrow from "../svg/RightArrow";
-import Sablier from "../svg/Sablier";
-import Wallet from "../svg/Wallet";
-import { calcRem } from "../../utils/styles";
-import { SectionProps } from "../utils/SectionProps";
-import { ReactNode } from "react";
+import classNames from 'classnames';
+import Coins from '../svg/Coins';
+import Ethereum from '../svg/Ethereum';
+import RightArrow from '../svg/RightArrow';
+import Sablier from '../svg/Sablier';
+import Wallet from '../svg/Wallet';
+import { calcRem } from '../../utils/styles';
+import { SectionProps } from '../sections/utils/SectionProps';
+import { ReactNode } from 'react';
 
 export function PresaleTutorial({ className }: SectionProps) {
   return (
-    <div className={classNames("container", className)}>
+    <div className={classNames('container', className)}>
       <div
         className="opacity-50"
         style={{
@@ -80,7 +80,7 @@ function PresaleTutorialBlock({
 }: PresaleTutorialBlockProps) {
   return (
     <div
-      className={classNames("container mt-12", className)}
+      className={classNames('container mt-12', className)}
       style={{ lineHeight: calcRem(30), width: calcRem(198) }}
     >
       {logo}

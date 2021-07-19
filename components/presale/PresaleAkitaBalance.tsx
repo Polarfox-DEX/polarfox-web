@@ -1,7 +1,7 @@
-import classNames from "classnames";
-import Check from "../svg/Check"
-import { calcRem } from "../../utils/styles";
-import { SectionProps } from "../utils/SectionProps";
+import classNames from 'classnames';
+import Check from '../svg/Check';
+import { calcRem } from '../../utils/styles';
+import { SectionProps } from '../sections/utils/SectionProps';
 
 export function PresaleAkitaBalance({ className }: SectionProps) {
   return (

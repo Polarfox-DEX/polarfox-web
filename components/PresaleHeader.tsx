@@ -1,15 +1,15 @@
-import classNames from "classnames";
-import Link from "next/link";
-import { calcRem } from "../utils/styles";
-import { ReactNode } from "react";
-import { RightArrow } from "./svg/RightArrow";
-import { SectionProps } from "./utils/SectionProps";
+import classNames from 'classnames';
+import Link from 'next/link';
+import { calcRem } from '../utils/styles';
+import { ReactNode } from 'react';
+import { RightArrow } from './svg/RightArrow';
+import { SectionProps } from './sections/utils/SectionProps';
 
 export function PresaleHeader({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        "flex w-full absolute bg-blue text-white font-graphik justify-between",
+        'flex w-full absolute bg-blue text-white font-graphik justify-between',
         className
       )}
       style={{ height: calcRem(114) }}
