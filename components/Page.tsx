@@ -14,11 +14,7 @@ export function Page({ children }: PageProps) {
   const displayPresale = true;
 
   return (
-    <div
-      className={classNames(styles.container, 'text-blue', {
-        'pt-28': displayPresale,
-      })}
-    >
+    <div className={classNames(styles.container, 'text-blue')}>
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
@@ -43,8 +39,8 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28" />}
-      <Header className="" />
+      {displayPresale && <PresaleHeader />}
+      <Header className={classNames({ 'mt-28': displayPresale })} />
       {children}
 
       <Footer className="mt-22 desktop:mt-44" />
