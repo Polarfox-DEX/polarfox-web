@@ -25,10 +25,12 @@ module.exports = {
     colors: {
       blue: {
         light: '#1C67FE',
+        gray: "#142B47",
         DEFAULT: '#001937'
       },
       gray: {
         light: '#D8D8D8',
+        mid: '#E1E8F1',
         DEFAULT: '#4D6481'
       },
       white: colors.white
@@ -38,6 +40,12 @@ module.exports = {
         publicSans: ['Public Sans', ...defaultTheme.fontFamily.sans],
         switzer: ['Switzer', ...defaultTheme.fontFamily.sans],
         graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
+      },
+      opacity: {
+        '12': '0.12'
+      },
+      spacing: {
+        '5.5': '1.375rem'
       },
       margin: {
         '22': '5.5rem'

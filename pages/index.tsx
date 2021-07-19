@@ -3,7 +3,7 @@ import { PfxFigures } from '../components/sections/PfxFigures';
 import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives';
 import { Products } from '../components/sections/Products';
 import { PfxStatements } from '../components/sections/PfxStatements';
-import { FaqPreview } from '../components/sections/FaqPreview';
+import { FaqPreview } from '../components/faq/FaqPreview';
 import { Page } from '../components/Page';
 
 export default function Home() {

@@ -69,10 +69,10 @@ export function Footer({ className }: FooterProps) {
             >
               © 2021 Polarfox ltd.
             </p>
-            <Telegram width="24.29" height="20" />
-            <GitHub width="20.51" height="20" />
-            <Medium width="35.22" height="20" />
-            <Twitter width="24.29" height="20" />
+            <Telegram width={calcRem(24.29)} height={calcRem(20)} />
+            <GitHub width={calcRem(20.51)} height={calcRem(20)} />
+            <Medium width={calcRem(35.22)} height={calcRem(20)} />
+            <Twitter width={calcRem(24.29)} height={calcRem(20)} />
           </div>
 
           <p className="w-72">
@@ -94,7 +94,7 @@ export function Footer({ className }: FooterProps) {
 function TelegramButton() {
   return (
     <SocialButton url="">
-      <Telegram width="24.62" height="20.51" />
+      <Telegram width={calcRem(24.62)} height={calcRem(20.51)} />
     </SocialButton>
   );
 }
@@ -102,7 +102,7 @@ function TelegramButton() {
 function GitHubButton() {
   return (
     <SocialButton url="">
-      <GitHub width="21.03" height="20.51" />
+      <GitHub width={calcRem(21.03)} height={calcRem(20.51)} />
     </SocialButton>
   );
 }
@@ -110,7 +110,7 @@ function GitHubButton() {
 function MediumButton() {
   return (
     <SocialButton url="">
-      <Medium width="36.12" height="20.51" />
+      <Medium width={calcRem(36.12)} height={calcRem(20.51)} />
     </SocialButton>
   );
 }
@@ -118,7 +118,7 @@ function MediumButton() {
 function TwitterButton() {
   return (
     <SocialButton url="">
-      <Twitter width="24.91" height="20.51" />
+      <Twitter width={calcRem(24.91)} height={calcRem(20.51)} />
     </SocialButton>
   );
 }

@@ -1,15 +1,18 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames';
-import styles from '../styles/Page.module.css';
 import Head from 'next/head';
-import { Header } from './Header';
+import styles from '../styles/Page.module.css';
 import { Footer } from './Footer';
+import { Header } from './Header';
+import { PresaleHeader } from './PresaleHeader';
+import { ReactNode } from 'react';
 
 interface PageProps {
   children: ReactNode;
 }
 
 export function Page({ children }: PageProps) {
+  const displayPresale = true;
+
   return (
     <div className={classNames(styles.container, 'text-blue')}>
       <Head>
@@ -36,8 +39,8 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      <Header />
-
+      {displayPresale && <PresaleHeader />}
+      <Header className={classNames({ 'mt-28': displayPresale })} />
       {children}
 
       <Footer className="mt-22 desktop:mt-44" />

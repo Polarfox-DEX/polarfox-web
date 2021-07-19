@@ -1,16 +1,12 @@
 import classNames from 'classnames';
 import { calcRem } from '../../utils/styles';
-import { Question } from '../utils/Question';
-import Link from 'next/link';
-import { SectionHeading } from './utils/SectionHeading';
-import { SectionTitle } from './utils/SectionTitle';
-import { SectionButton } from './utils/SectionButton';
+import { Question } from './Question';
+import { SectionProps } from '../sections/utils/SectionProps';
+import { SectionHeading } from '../sections/utils/SectionHeading';
+import { SectionTitle } from '../sections/utils/SectionTitle';
+import { SectionButton } from '../sections/utils/SectionButton';
 
-interface PropsSectionProps {
-  className?: string;
-}
-
-export function FaqPreview({ className }: PropsSectionProps) {
+export function FaqPreview({ className }: SectionProps) {
   return (
     <div
       className={classNames(
