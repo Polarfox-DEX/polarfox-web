@@ -6,10 +6,6 @@ import { SectionHeading } from '../sections/utils/SectionHeading';
 import { SectionTitle } from '../sections/utils/SectionTitle';
 import { SectionButton } from '../sections/utils/SectionButton';
 
-interface PropsSectionProps {
-  className?: string;
-}
-
 export function FaqPreview({ className }: SectionProps) {
   return (
     <div
