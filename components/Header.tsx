@@ -14,7 +14,7 @@ export function Header({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        "flex justify-between w-full px-14 py-4 absolute",
+        'hidden desktop:flex justify-between w-full px-14 py-4 absolute',
         className
       )}
     >
@@ -139,7 +139,7 @@ function Product({
       <Link href={href}>
         <a>
           <div
-s            className="rounded-xl hover:bg-gray-dark mx-3 px-3 pt-4"
+            className="rounded-xl hover:bg-gray-dark mx-3 px-3 pt-4"
             style={{
               height: calcRem(121),
             }}

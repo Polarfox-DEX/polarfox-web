@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <Page>
       <PfxHighlight />
-      <PfxStatements className="mt-16" />
-      <PfxFigures className="mt-44" />
-      <PfxTokenObjectives className="py-44" />
-      <Products />
-      <FaqPreview className="my-44" />
+      <PfxStatements className="desktop:mt-16" />
+      <PfxFigures className="mt-22 desktop:mt-44" />
+      <PfxTokenObjectives className="mt-22 desktop:mt-44" />
+      <Products className="mt-22 desktop:mt-44" />
+      <FaqPreview className="mt-22 desktop:mt-44" />
     </Page>
   );
 }

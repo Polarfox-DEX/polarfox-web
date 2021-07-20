@@ -3,7 +3,7 @@ import { FaqSelector } from "./FaqSelector";
 import { FaqContact } from "./FaqContact";
 import { FaqPolarfox } from "./FaqPolarfox";
 import { WithBackgroundImage } from "../utils/WithBackgroundImage";
-import { SectionProps } from '../utils/SectionProps'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqMain({ className }: SectionProps) {
   return (

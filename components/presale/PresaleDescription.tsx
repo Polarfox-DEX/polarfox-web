@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import Link from "next/link";
-import Facebook from "../svg/Facebook";
-import Telegram from "../svg/Telegram";
-import Twitter from "../svg/Twitter";
-import { calcRem } from "../../utils/styles";
-import { SectionProps } from "../utils/SectionProps";
+import classNames from 'classnames';
+import Link from 'next/link';
+import Facebook from '../svg/Facebook';
+import Telegram from '../svg/Telegram';
+import Twitter from '../svg/Twitter';
+import { calcRem } from '../../utils/styles';
+import { SectionProps } from '../sections/utils/SectionProps';
 
 export function PresaleDescription({ className }: SectionProps) {
   return (

@@ -1,11 +1,11 @@
-import classNames from "classnames";
-import { calcRem } from "../../utils/styles";
-import { SectionProps } from "../utils/SectionProps";
-import { ReactNode } from "react";
+import classNames from 'classnames';
+import { calcRem } from '../../utils/styles';
+import { SectionProps } from '../sections/utils/SectionProps';
+import { ReactNode } from 'react';
 
 export function PresaleStatistics({ className }: SectionProps) {
   return (
-    <div className={classNames("container", className)}>
+    <div className={classNames('container', className)}>
       <div
         className="opacity-50"
         style={{
@@ -75,16 +75,27 @@ export function PresaleStatistics({ className }: SectionProps) {
 }
 
 interface DayStatisticsProps {
-  hasBackground ?: boolean;
-  fontSize ?: number
+  hasBackground?: boolean;
+  fontSize?: number;
   className?: string;
   children: ReactNode;
 }
 
-function DayStatistics({ hasBackground, fontSize, className, children }: DayStatisticsProps) {
+function DayStatistics({
+  hasBackground,
+  fontSize,
+  className,
+  children,
+}: DayStatisticsProps) {
   return (
-    
-    <div className={classNames("flex justify-between", {"bg-gray-mid rounded-lg": hasBackground}, className)} style={{height: calcRem(64), fontSize: calcRem(fontSize || 16)}}>
+    <div
+      className={classNames(
+        'flex justify-between',
+        { 'bg-gray-mid rounded-lg': hasBackground },
+        className
+      )}
+      style={{ height: calcRem(64), fontSize: calcRem(fontSize || 16) }}
+    >
       {children}
     </div>
   );
@@ -95,12 +106,12 @@ interface DayStatisticsRowProps {
   children: ReactNode;
 }
 
-function DayStatisticsRow({
-  className,
-  children,
-}: DayStatisticsRowProps) {
+function DayStatisticsRow({ className, children }: DayStatisticsRowProps) {
   return (
-    <div className={classNames("mt-5 ml-6", className)} style={{ width: calcRem(171) }}>
+    <div
+      className={classNames('mt-5 ml-6', className)}
+      style={{ width: calcRem(171) }}
+    >
       {children}
     </div>
   );

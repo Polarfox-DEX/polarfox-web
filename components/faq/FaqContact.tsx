@@ -1,11 +1,11 @@
-import classNames from "classnames";
-import Link from "next/link";
-import { calcRem } from "../../utils/styles";
+import classNames from 'classnames';
+import Link from 'next/link';
+import { calcRem } from '../../utils/styles';
 
 export function FaqContact() {
   return (
     <div
-      className={classNames("border-t-2 border-blue pt-8")}
+      className={classNames('border-t-2 border-blue pt-8')}
       style={{ width: calcRem(357) }}
     >
       <h3

@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { calcRem } from "../../utils/styles";
-import { Question } from "../utils/Question";
-import { SectionProps } from "../utils/SectionProps"
+import { Question } from "./Question";
+import { SectionProps } from "../sections/utils/SectionProps"
 
 export function FaqPreview({ className }: SectionProps) {
   return (

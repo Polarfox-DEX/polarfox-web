@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import { Question } from "../utils/Question";
-import { SectionProps } from "../utils/SectionProps"
+import classNames from 'classnames';
+import { Question } from './Question';
+import { SectionProps } from '../sections/utils/SectionProps';
 
 export function FaqPolarfox({ className }: SectionProps) {
   return (
-    <div className={classNames("divide-y divide-gray-light", className)}>
+    <div className={classNames('divide-y divide-gray-light', className)}>
       <Question question="What is Polarfox?" isOpen={true}>
         Polarfox is a crypto ecosystem, based on Avalanche, which will bring
         many apps together. Its main app is the Polarfox DEX; some other apps
