@@ -31,6 +31,7 @@ module.exports = {
       gray: {
         light: '#D8D8D8',
         mid: '#E1E8F1',
+        mid3: '#9EAFC9',
         DEFAULT: '#4D6481'
       },
       white: colors.white
@@ -42,7 +43,9 @@ module.exports = {
         graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
       },
       opacity: {
-        '12': '0.12'
+        '12': '0.12',
+        '36': '0.36',
+        '48': '0.48'
       },
       spacing: {
         '5.5': '1.375rem'
