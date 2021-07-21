@@ -7,7 +7,7 @@ import MenuArrow from "./svg/MenuArrow";
 import Mining from "./svg/Mining";
 import TopRightArrow from "./svg/TopRightArrow";
 import { calcRem } from "../utils/styles";
-import { SectionProps } from "./utils/SectionProps";
+import { SectionProps } from "./sections/utils/SectionProps";
 import { ReactNode } from "react";
 
 export function Header({ className }: SectionProps) {
@@ -73,7 +73,6 @@ function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
         logo={<DoubleArrow />}
         href="https://dex.polarfox.io"
         linkTitle="Open app"
-        textClass="mt-11"
       >
         Decentralized Exchange
       </Product>
@@ -121,8 +120,6 @@ interface ProductProps {
   logo: ReactNode;
   href: string;
   linkTitle: string;
-  textClass?: string;
-  className?: string;
   children: ReactNode;
 }
 
@@ -130,8 +127,6 @@ function Product({
   logo,
   href,
   linkTitle,
-  textClass,
-  className,
   children,
 }: ProductProps) {
   return (
@@ -139,15 +134,15 @@ function Product({
       <Link href={href}>
         <a>
           <div
-            className="rounded-xl hover:bg-gray-dark mx-3 px-3 pt-4"
+            className="flex rounded-xl hover:bg-gray-dark mx-3 p-3 pt-4"
             style={{
               height: calcRem(121),
             }}
           >
             {logo}
             <div
-              className={classNames("font-semibold", textClass || "mt-14")}
-              style={{ fontSize: calcRem(12), lineHeight: calcRem(14) }}
+              className={classNames("absolute self-end font-semibold")}
+              style={{ fontSize: calcRem(12), lineHeight: calcRem(14), width: calcRem(80) }}
             >
               {children}
             </div>
