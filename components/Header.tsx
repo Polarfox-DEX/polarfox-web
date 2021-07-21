@@ -151,7 +151,7 @@ function Product({
       </Link>
       <Link href={href}>
         <a
-          className="border border-blue rounded-xl border-opacity-10 mt-2 flex items-center justify-between font-semibold pl-4"
+          className="border border-blue rounded-xl border-opacity-10 mt-2 flex items-center justify-between font-semibold pl-4 hover:bg-blue hover:text-white"
           style={{
             height: calcRem(40),
           }}
