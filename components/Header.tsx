@@ -6,6 +6,9 @@ import DoubleArrow from "./svg/DoubleArrow";
 import MenuArrow from "./svg/MenuArrow";
 import Mining from "./svg/Mining";
 import TopRightArrow from "./svg/TopRightArrow";
+import USFlag from "./svg/flags/USFlag";
+import FrenchFlag from "./svg/flags/FrenchFlag";
+import GermanFlag from "./svg/flags/GermanFlag";
 import { calcRem } from "../utils/styles";
 import { SectionProps } from "./sections/utils/SectionProps";
 import { ReactNode } from "react";
@@ -43,11 +46,7 @@ export function Header({ className }: SectionProps) {
         <HoverableItem className="mr-5" width={119}>
           Resources
         </HoverableItem>
-        {/* <div>Language</div> */}
-        {/* // TODO: The mr-5 below does not work - fix this */}
-        <HoverableItem className="mr-5" width={131}>
-          :flag: Language
-        </HoverableItem>
+        <LanguageDropdown />
         <div>Account</div>
       </div>
     </div>
@@ -57,10 +56,11 @@ export function Header({ className }: SectionProps) {
 interface HoverableItemProps {
   className?: string;
   width: number;
+  flag?: ReactNode;
   children: ReactNode;
 }
 
-function HoverableItem({ className, width, children }: HoverableItemProps) {
+function HoverableItem({ className, width, flag, children }: HoverableItemProps) {
   return (
     <div
       className={classNames(
@@ -69,6 +69,7 @@ function HoverableItem({ className, width, children }: HoverableItemProps) {
       )}
       style={{ width: calcRem(width), height: calcRem(44) }}
     >
+      {flag}
       {children}
       <MenuArrow />
     </div>
@@ -147,24 +148,22 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
   return (
     <div style={{ width: calcRem(137) }}>
       <Link href={href}>
-        <a>
+        <a
+          className="flex rounded-xl hover:bg-gray-dark mx-3 p-3 pt-4"
+          style={{
+            height: calcRem(121),
+          }}
+        >
+          {logo}
           <div
-            className="flex rounded-xl hover:bg-gray-dark mx-3 p-3 pt-4"
+            className={classNames("absolute self-end font-semibold")}
             style={{
-              height: calcRem(121),
+              fontSize: calcRem(12),
+              lineHeight: calcRem(14),
+              width: calcRem(80),
             }}
           >
-            {logo}
-            <div
-              className={classNames("absolute self-end font-semibold")}
-              style={{
-                fontSize: calcRem(12),
-                lineHeight: calcRem(14),
-                width: calcRem(80),
-              }}
-            >
-              {children}
-            </div>
+            {children}
           </div>
         </a>
       </Link>
@@ -183,5 +182,55 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
         </a>
       </Link>
     </div>
+  );
+}
+
+function LanguageDropdown() {
+  return (
+    <div className="group flex items-center">
+      <HoverableItem width={131} flag={<USFlag />}>English</HoverableItem>
+      <div
+        className="bg-white rounded-xl absolute justify-between p-5 hidden group-hover:block"
+        style={{
+          width: calcRem(175),
+          marginTop: calcRem(220),
+        }}
+      >
+        <Language href="/" flag={<USFlag />}>
+          English
+        </Language>
+        <Language href="/" flag={<FrenchFlag />}>
+          Français
+        </Language>
+        <Language href="/" flag={<GermanFlag />}>
+          Deutsch
+        </Language>
+      </div>
+    </div>
+  );
+}
+
+interface LanguageProps {
+  href: string;
+  flag: ReactNode;
+  children: ReactNode;
+}
+
+function Language({ href, flag, children }: LanguageProps) {
+  return (
+    <Link href={href}>
+      <a
+        className="flex items-center justify-between rounded-xl hover:bg-gray-dark p-3 pt-4 font-semibold"
+        style={{
+          width: calcRem(137),
+          height: calcRem(40),
+          fontSize: calcRem(12),
+          lineHeight: calcRem(14),
+        }}
+      >
+        {children}
+        {flag}
+      </a>
+    </Link>
   );
 }
