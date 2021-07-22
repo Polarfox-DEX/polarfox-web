@@ -30,7 +30,7 @@ export function Header({ className }: SectionProps) {
           lineHeight: calcRem(16.45),
         }}
       >
-        <ProductsDropdown isActive />
+        <ProductsDropdown />
         <Link href="/about">
           <a>About</a>
         </Link>
@@ -64,7 +64,7 @@ function HoverableItem({ className, width, children }: HoverableItemProps) {
   return (
     <div
       className={classNames(
-        "rounded-3xl flex items-center justify-between px-4 hover:bg-gray-mid2",
+        "rounded-3xl flex items-center justify-between px-4 group-hover:bg-gray-mid2",
         className
       )}
       style={{ width: calcRem(width), height: calcRem(44) }}
@@ -75,24 +75,19 @@ function HoverableItem({ className, width, children }: HoverableItemProps) {
   );
 }
 
-interface ProductsDropdownProps {
-  isActive?: boolean;
-}
-
-function ProductsDropdown({ isActive }: ProductsDropdownProps) {
+function ProductsDropdown() {
   return (
-    <div className="flex items-center hover-trigger">
+    <div className="group flex items-center">
       {/* // TODO: We should not need -mr-5 */}
       <HoverableItem className="-mr-5" width={110}>
         Products
       </HoverableItem>
       <div
-        className="bg-white rounded-xl absolute flex justify-between space-x-3 px-4 py-6 hover-target"
+        className="bg-white rounded-xl absolute justify-between px-4 py-6 hidden group-hover:flex"
         style={{
           width: calcRem(779),
           height: calcRem(219),
           marginTop: calcRem(280),
-          marginLeft: calcRem(0), // TODO: We should not need this.
         }}
       >
         <Product
@@ -137,15 +132,6 @@ function ProductsDropdown({ isActive }: ProductsDropdownProps) {
           AKITA Network
         </Product>
       </div>
-      <style jsx>{`
-        .hover-trigger .hover-target {
-          display: none;
-        }
-
-        .hover-trigger:hover .hover-target {
-          display: flex;
-        }
-      `}</style>
     </div>
   );
 }
