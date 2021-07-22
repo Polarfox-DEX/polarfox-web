@@ -14,7 +14,7 @@ export function Header({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'hidden desktop:flex justify-between w-full px-14 py-4 absolute',
+        "hidden desktop:flex justify-between w-full px-14 py-4 absolute",
         className
       )}
     >
@@ -30,13 +30,6 @@ export function Header({ className }: SectionProps) {
           lineHeight: calcRem(16.45),
         }}
       >
-        <div
-          className="rounded-3xl bg-gray-mid2 flex items-center justify-between -mr-5 px-4"
-          style={{ width: calcRem(110), height: calcRem(44) }}
-        >
-          Products
-          <MenuArrow />
-        </div>
         <ProductsDropdown isActive />
         <Link href="/about">
           <a>About</a>
@@ -45,74 +38,115 @@ export function Header({ className }: SectionProps) {
         <Link href="/faq">
           <a>FAQ</a>
         </Link>
-        <div>Resources</div>
-        <div>Language</div>
+        {/* <div>Resources</div> */}
+        {/* // TODO: The mr-5 below does not work - fix this */}
+        <HoverableItem className="mr-5" width={119}>
+          Resources
+        </HoverableItem>
+        {/* <div>Language</div> */}
+        {/* // TODO: The mr-5 below does not work - fix this */}
+        <HoverableItem className="mr-5" width={131}>
+          :flag: Language
+        </HoverableItem>
         <div>Account</div>
       </div>
     </div>
   );
 }
 
-interface ProductsDropdownProps {
-  isActive?: boolean;
+interface HoverableItemProps {
   className?: string;
+  width: number;
+  children: ReactNode;
 }
 
-function ProductsDropdown({ isActive, className }: ProductsDropdownProps) {
-  return isActive ? (
+function HoverableItem({ className, width, children }: HoverableItemProps) {
+  return (
     <div
-      className="bg-white rounded-xl absolute flex justify-between space-x-3 px-4 py-6"
-      style={{
-        width: calcRem(779),
-        height: calcRem(219),
-        marginTop: calcRem(300),
-        marginLeft: calcRem(-16),
-      }}
+      className={classNames(
+        "rounded-3xl flex items-center justify-between px-4 hover:bg-gray-mid2",
+        className
+      )}
+      style={{ width: calcRem(width), height: calcRem(44) }}
     >
-      <Product
-        logo={<DoubleArrow />}
-        href="https://dex.polarfox.io"
-        linkTitle="Open app"
-      >
-        Decentralized Exchange
-      </Product>
-      <Product
-        logo={<Analytics />}
-        href="https://analytics.polarfox.io"
-        linkTitle="Open app"
-      >
-        Analytics
-      </Product>
-      <Product
-        logo={<Mining />}
-        href="https://dex.polarfox.io/#/pfx"
-        linkTitle="Open app"
-      >
-        Mining Pools
-      </Product>
-      <Product
-        logo={<Bridge />}
-        href="https://bridge.polarfox.io"
-        linkTitle="Open app"
-      >
-        Bridge
-      </Product>
-      <Product
-        logo={
-          <img
-            src="akita.png"
-            alt="akita"
-            style={{ height: calcRem(24), width: calcRem(24) }}
-          />
-        }
-        href="https://akita.network"
-        linkTitle="Visit site"
-      >
-        AKITA Network
-      </Product>
+      {children}
+      <MenuArrow />
     </div>
-  ) : (
-    <div className="absolute" />
+  );
+}
+
+interface ProductsDropdownProps {
+  isActive?: boolean;
+}
+
+function ProductsDropdown({ isActive }: ProductsDropdownProps) {
+  return (
+    <div className="flex items-center hover-trigger">
+      {/* // TODO: We should not need -mr-5 */}
+      <HoverableItem className="-mr-5" width={110}>
+        Products
+      </HoverableItem>
+      <div
+        className="bg-white rounded-xl absolute flex justify-between space-x-3 px-4 py-6 hover-target"
+        style={{
+          width: calcRem(779),
+          height: calcRem(219),
+          marginTop: calcRem(280),
+          marginLeft: calcRem(0), // TODO: We should not need this.
+        }}
+      >
+        <Product
+          logo={<DoubleArrow />}
+          href="https://dex.polarfox.io"
+          linkTitle="Open app"
+        >
+          Decentralized Exchange
+        </Product>
+        <Product
+          logo={<Analytics />}
+          href="https://analytics.polarfox.io"
+          linkTitle="Open app"
+        >
+          Analytics
+        </Product>
+        <Product
+          logo={<Mining />}
+          href="https://dex.polarfox.io/#/pfx"
+          linkTitle="Open app"
+        >
+          Mining Pools
+        </Product>
+        <Product
+          logo={<Bridge />}
+          href="https://bridge.polarfox.io"
+          linkTitle="Open app"
+        >
+          Bridge
+        </Product>
+        <Product
+          logo={
+            <img
+              src="akita.png"
+              alt="akita"
+              style={{ height: calcRem(24), width: calcRem(24) }}
+            />
+          }
+          href="https://akita.network"
+          linkTitle="Visit site"
+        >
+          AKITA Network
+        </Product>
+      </div>
+      <style jsx>{`
+        .hover-trigger .hover-target {
+          display: none;
+        }
+
+        .hover-trigger:hover .hover-target {
+          display: flex;
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -123,12 +157,7 @@ interface ProductProps {
   children: ReactNode;
 }
 
-function Product({
-  logo,
-  href,
-  linkTitle,
-  children,
-}: ProductProps) {
+function Product({ logo, href, linkTitle, children }: ProductProps) {
   return (
     <div style={{ width: calcRem(137) }}>
       <Link href={href}>
@@ -142,7 +171,11 @@ function Product({
             {logo}
             <div
               className={classNames("absolute self-end font-semibold")}
-              style={{ fontSize: calcRem(12), lineHeight: calcRem(14), width: calcRem(80) }}
+              style={{
+                fontSize: calcRem(12),
+                lineHeight: calcRem(14),
+                width: calcRem(80),
+              }}
             >
               {children}
             </div>
