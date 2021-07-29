@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
-import { WithBackgroundImage } from '../utils/WithBackgroundImage';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../utils/styles'
+import { WithBackgroundImage } from '../utils/WithBackgroundImage'
 
 interface PfxHighlightsProps {
-  className?: string;
+  className?: string
 }
 
 export function PfxHighlight({ className }: PfxHighlightsProps) {
@@ -54,13 +54,13 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
         </div>
       </div>
     </WithBackgroundImage>
-  );
+  )
 }
 
 interface ButtonProps {
-  url: string;
-  children: ReactNode;
-  className?: string;
+  url: string
+  children: ReactNode
+  className?: string
 }
 
 function Button({ url, className, children }: ButtonProps) {
@@ -91,5 +91,5 @@ function Button({ url, className, children }: ButtonProps) {
         }
       `}</style>
     </a>
-  );
+  )
 }

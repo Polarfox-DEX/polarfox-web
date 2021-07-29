@@ -1,20 +1,24 @@
-import classNames from 'classnames';
-import Head from 'next/head';
-import styles from '../styles/Page.module.css';
-import { Footer } from './Footer';
-import { Header } from './Header';
-import { PresaleHeader } from './PresaleHeader';
-import { ReactNode } from 'react';
+import classNames from 'classnames'
+import Head from 'next/head'
+import styles from '../styles/Page.module.css'
+import { Footer } from './Footer'
+import { Header } from './Header'
+import { PresaleHeader } from './PresaleHeader'
+import { ReactNode } from 'react'
 
 interface PageProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export function Page({ children }: PageProps) {
-  const displayPresale = true;
+  const displayPresale = true
 
   return (
-    <div className={classNames(styles.container, 'text-blue')}>
+    <div
+      className={classNames(styles.container, 'text-blue', {
+        'pt-28': displayPresale
+      })}
+    >
       <Head>
         <title>Polarfox</title>
         <meta name="description" content="Polarfox | Home" />
@@ -39,11 +43,11 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader />}
-      <Header className={classNames({ 'mt-28': displayPresale })} />
+      {displayPresale && <PresaleHeader className="-mt-28" />}
+      <Header />
       {children}
 
       <Footer className="mt-22 desktop:mt-44" />
     </div>
-  );
+  )
 }

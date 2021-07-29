@@ -1,8 +1,8 @@
-import { PresalePanel } from '../components/presale/PresalePanel';
-import { PresaleTutorial } from '../components/presale/PresaleTutorial';
-import { PresaleStatistics } from '../components/presale/PresaleStatistics';
-import { PresaleFaq } from '../components/presale/PresaleFaq';
-import { Page } from '../components/Page';
+import { PresalePanel } from '../components/presale/PresalePanel'
+import { PresaleTutorial } from '../components/presale/PresaleTutorial'
+import { PresaleStatistics } from '../components/presale/PresaleStatistics'
+import { PresaleFaq } from '../components/presale/PresaleFaq'
+import { Page } from '../components/Page'
 
 export default function Presale() {
   // TODO: Eventually add partners
@@ -13,5 +13,5 @@ export default function Presale() {
       <PresaleStatistics className="mt-44" />
       <PresaleFaq className="mt-32" />
     </Page>
-  );
+  )
 }

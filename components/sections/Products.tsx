@@ -1,11 +1,11 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import TopRightArrow from '../svg/TopRightArrow';
-import { SectionHeading } from './utils/SectionHeading';
-import { SectionTitle } from './utils/SectionTitle';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import TopRightArrow from '../svg/TopRightArrow'
+import { SectionHeading } from './utils/SectionHeading'
+import { SectionTitle } from './utils/SectionTitle'
 
 interface ProductsSectionProps {
-  className?: string;
+  className?: string
 }
 
 export function Products({ className }: ProductsSectionProps) {
@@ -26,12 +26,12 @@ export function Products({ className }: ProductsSectionProps) {
         <Product label="Akita Community" url="https://akita.network" />
       </div>
     </div>
-  );
+  )
 }
 
 interface ProductProps {
-  label: string;
-  url: string;
+  label: string
+  url: string
 }
 
 function Product({ label, url }: ProductProps) {
@@ -47,7 +47,7 @@ function Product({ label, url }: ProductProps) {
         style={{
           width: calcRem(224),
           fontSize: calcRem(20),
-          lineHeight: calcRem(26.4),
+          lineHeight: calcRem(26.4)
         }}
       >
         {label}
@@ -68,5 +68,5 @@ function Product({ label, url }: ProductProps) {
         }
       `}</style>
     </a>
-  );
+  )
 }

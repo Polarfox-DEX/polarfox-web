@@ -15,7 +15,7 @@ function LinkedIn(props: React.SVGProps<SVGSVGElement>) {
         fill="#788596"
       />
     </svg>
-  );
+  )
 }
 
-export default LinkedIn;
+export default LinkedIn

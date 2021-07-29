@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import Link from 'next/link';
-import { calcRem } from '../../utils/styles';
+import classNames from 'classnames'
+import Link from 'next/link'
+import { calcRem } from '../../utils/styles'
 
 export function FaqContact() {
   return (
@@ -12,7 +12,7 @@ export function FaqContact() {
         className="font-switzer font-semibold"
         style={{
           fontSize: calcRem(20),
-          lineHeight: calcRem(32),
+          lineHeight: calcRem(32)
         }}
       >
         Couldn&apos;t find what you are looking for?
@@ -31,5 +31,5 @@ export function FaqContact() {
         </Link>
       </button>
     </div>
-  );
+  )
 }

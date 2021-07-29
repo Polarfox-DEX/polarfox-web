@@ -13,7 +13,7 @@ function Twitter(props: React.SVGProps<SVGSVGElement>) {
         fill={props.color ?? '#001937'}
       />
     </svg>
-  );
+  )
 }
 
-export default Twitter;
+export default Twitter

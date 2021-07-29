@@ -1,19 +1,19 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
-import FrenchFlag from '../svg/flags/FrenchFlag';
-import GermanFlag from '../svg/flags/GermanFlag';
-import JapaneseFlag from '../svg/flags/JapaneseFlag';
-import SlovakianFlag from '../svg/flags/SlovakianFlag';
-import USFlag from '../svg/flags/USFlag';
-import GitHub from '../svg/Github';
-import LinkedIn from '../svg/LinkedIn';
-import Twitter from '../svg/Twitter';
-import { SectionHeading } from './utils/SectionHeading';
-import { SectionTitle } from './utils/SectionTitle';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../utils/styles'
+import FrenchFlag from '../svg/flags/FrenchFlag'
+import GermanFlag from '../svg/flags/GermanFlag'
+import JapaneseFlag from '../svg/flags/JapaneseFlag'
+import SlovakianFlag from '../svg/flags/SlovakianFlag'
+import USFlag from '../svg/flags/USFlag'
+import GitHub from '../svg/Github'
+import LinkedIn from '../svg/LinkedIn'
+import Twitter from '../svg/Twitter'
+import { SectionHeading } from './utils/SectionHeading'
+import { SectionTitle } from './utils/SectionTitle'
 
 interface LeadershipProps {
-  className?: string;
+  className?: string
 }
 
 // TODO extract tile component
@@ -191,11 +191,11 @@ export function MainTeam({ className }: LeadershipProps) {
         </Profile>
       </div>
     </div>
-  );
+  )
 }
 
 interface ProfileProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function Profile({ children }: ProfileProps) {
@@ -203,12 +203,12 @@ function Profile({ children }: ProfileProps) {
     <div className="flex flex-col" style={{ width: calcRem(285) }}>
       {children}
     </div>
-  );
+  )
 }
 
 interface ProfilePictureProps {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 function ProfilePicture({ src, alt }: ProfilePictureProps) {
@@ -221,13 +221,13 @@ function ProfilePicture({ src, alt }: ProfilePictureProps) {
         style={{ width: calcRem(285), height: calcRem(285) }}
       />
     </>
-  );
+  )
 }
 
 interface ProfileHeadingProps {
-  name: string;
-  job: string;
-  flag: ReactNode;
+  name: string
+  job: string
+  flag: ReactNode
 }
 
 function ProfileHeading({ name, job, flag }: ProfileHeadingProps) {
@@ -243,11 +243,11 @@ function ProfileHeading({ name, job, flag }: ProfileHeadingProps) {
       </p>
       <div>{flag}</div>
     </div>
-  );
+  )
 }
 
 interface ProfileDescriptionProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function ProfileDescription({ children }: ProfileDescriptionProps) {
@@ -258,15 +258,15 @@ function ProfileDescription({ children }: ProfileDescriptionProps) {
     >
       {children}
     </p>
-  );
+  )
 }
 
 interface SocialLinksProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function SocialLinks({ children }: SocialLinksProps) {
-  return <div className="flex-1 flex items-end gap-x-2">{children}</div>;
+  return <div className="flex-1 flex items-end gap-x-2">{children}</div>
 }
 
 function LinkedInLink({ url }: { url: string }) {
@@ -274,7 +274,7 @@ function LinkedInLink({ url }: { url: string }) {
     <SocialLink url={url}>
       <LinkedIn width={calcRem(19.11)} height={calcRem(18.18)} />
     </SocialLink>
-  );
+  )
 }
 
 function GitHubLink({ url }: { url: string }) {
@@ -282,7 +282,7 @@ function GitHubLink({ url }: { url: string }) {
     <SocialLink url={url}>
       <GitHub width={calcRem(18.46)} height={calcRem(18)} color="#788596" />
     </SocialLink>
-  );
+  )
 }
 
 function TwitterLink({ url }: { url: string }) {
@@ -290,12 +290,12 @@ function TwitterLink({ url }: { url: string }) {
     <SocialLink url={url}>
       <Twitter width={calcRem(24.29)} height={calcRem(20)} color="#788596" />
     </SocialLink>
-  );
+  )
 }
 
 interface SocialLinkProps {
-  url: string;
-  children: ReactNode;
+  url: string
+  children: ReactNode
 }
 
 function SocialLink({ url, children }: SocialLinkProps) {
@@ -303,5 +303,5 @@ function SocialLink({ url, children }: SocialLinkProps) {
     <a href={url} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
-  );
+  )
 }

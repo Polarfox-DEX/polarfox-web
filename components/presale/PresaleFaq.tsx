@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import { PresaleFaqTitle } from './PresaleFaqTitle';
-import { FaqContact } from '../faq/FaqContact';
-import { PresaleFaqQuestions } from './PresaleFaqQuestions';
-import { SectionProps } from '../sections/utils/SectionProps';
+import classNames from 'classnames'
+import { PresaleFaqTitle } from './PresaleFaqTitle'
+import { FaqContact } from '../faq/FaqContact'
+import { PresaleFaqQuestions } from './PresaleFaqQuestions'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function PresaleFaq({ className }: SectionProps) {
   return (
@@ -13,5 +13,5 @@ export function PresaleFaq({ className }: SectionProps) {
       </div>
       <FaqContact />
     </div>
-  );
+  )
 }

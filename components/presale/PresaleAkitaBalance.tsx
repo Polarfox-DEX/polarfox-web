@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import Check from '../svg/Check';
-import { calcRem } from '../../utils/styles';
-import { SectionProps } from '../sections/utils/SectionProps';
+import classNames from 'classnames'
+import Check from '../svg/Check'
+import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function PresaleAkitaBalance({ className }: SectionProps) {
   return (
@@ -10,7 +10,7 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
         className="border bg-blue rounded-3xl flex items-center"
         style={{
           width: calcRem(439),
-          height: calcRem(107),
+          height: calcRem(107)
         }}
       >
         <img
@@ -23,7 +23,7 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
           <div
             className="text-white opacity-40"
             style={{
-              fontSize: calcRem(12),
+              fontSize: calcRem(12)
             }}
           >
             Your AKITA balance to participate in the presale
@@ -33,5 +33,5 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
         <Check className="ml-6" />
       </div>
     </div>
-  );
+  )
 }

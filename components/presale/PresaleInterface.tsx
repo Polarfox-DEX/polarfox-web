@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import Clock from '../svg/Clock';
-import DownArrow from '../svg/DownArrow';
-import { calcRem } from '../../utils/styles';
-import { SectionProps } from '../sections/utils/SectionProps';
-import { ReactNode } from 'react';
+import classNames from 'classnames'
+import Clock from '../svg/Clock'
+import DownArrow from '../svg/DownArrow'
+import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
+import { ReactNode } from 'react'
 
 export function PresaleInterface({ className }: SectionProps) {
   return (
@@ -11,13 +11,13 @@ export function PresaleInterface({ className }: SectionProps) {
       className={classNames('border bg-blue rounded-3xl', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(717),
+        height: calcRem(717)
       }}
     >
       <div
         className="border bg-blue-gray rounded-t-3xl w-full"
         style={{
-          height: calcRem(128),
+          height: calcRem(128)
         }}
       >
         <div className="flex text-white h-full items-center space-x-7">
@@ -78,7 +78,7 @@ export function PresaleInterface({ className }: SectionProps) {
             className="mt-7 bg-blue-gray rounded-3xl flex justify-between"
             style={{
               width: calcRem(369),
-              height: calcRem(87),
+              height: calcRem(87)
             }}
           >
             <div
@@ -96,7 +96,7 @@ export function PresaleInterface({ className }: SectionProps) {
                     height: calcRem(24),
                     marginTop: calcRem(23),
                     paddingTop: calcRem(5),
-                    fontSize: calcRem(10),
+                    fontSize: calcRem(10)
                   }}
                 >
                   MAX
@@ -127,12 +127,12 @@ export function PresaleInterface({ className }: SectionProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 interface PresaleTimerWindowProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 function PresaleTimerWindow({ className, children }: PresaleTimerWindowProps) {
@@ -146,12 +146,12 @@ function PresaleTimerWindow({ className, children }: PresaleTimerWindowProps) {
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface MainTextProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 function MainText({ className, children }: MainTextProps) {
@@ -160,17 +160,17 @@ function MainText({ className, children }: MainTextProps) {
       className={classNames('font-semibold', className)}
       style={{
         fontSize: calcRem(20),
-        lineHeight: calcRem(23),
+        lineHeight: calcRem(23)
       }}
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface SideTextProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 function SideText({ className, children }: SideTextProps) {
@@ -179,26 +179,26 @@ function SideText({ className, children }: SideTextProps) {
       className={classNames('opacity-40', className)}
       style={{
         fontSize: calcRem(12),
-        lineHeight: calcRem(14),
+        lineHeight: calcRem(14)
       }}
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface DayButtonProps {
-  className?: string;
-  isActive?: boolean;
-  hasStarted?: boolean;
-  children: ReactNode;
+  className?: string
+  isActive?: boolean
+  hasStarted?: boolean
+  children: ReactNode
 }
 
 function DayButton({
   className,
   isActive,
   hasStarted,
-  children,
+  children
 }: DayButtonProps) {
   return (
     <div
@@ -215,17 +215,17 @@ function DayButton({
         width: calcRem(52),
         height: calcRem(41),
         fontSize: calcRem(14),
-        lineHeight: calcRem(16),
+        lineHeight: calcRem(16)
       }}
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface ActionButtonProps {
-  isActive?: boolean;
-  children: ReactNode;
+  isActive?: boolean
+  children: ReactNode
 }
 
 function ActionButton({ isActive, children }: ActionButtonProps) {
@@ -234,7 +234,7 @@ function ActionButton({ isActive, children }: ActionButtonProps) {
       className={classNames(
         'bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center',
         {
-          'opacity-30': !isActive,
+          'opacity-30': !isActive
         }
       )}
       style={{
@@ -242,10 +242,10 @@ function ActionButton({ isActive, children }: ActionButtonProps) {
         height: calcRem(44),
         marginTop: calcRem(23),
         fontSize: calcRem(14),
-        lineHeight: calcRem(16),
+        lineHeight: calcRem(16)
       }}
     >
       {children}
     </div>
-  );
+  )
 }

@@ -13,7 +13,7 @@ function Medium(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Medium;
+export default Medium

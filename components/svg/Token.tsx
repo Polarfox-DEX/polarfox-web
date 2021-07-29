@@ -13,7 +13,7 @@ function Token(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Token;
+export default Token

@@ -1,11 +1,11 @@
-import { FaqPreview } from '../components/faq/FaqPreview';
-import { Page } from '../components/Page';
-import { PfxFigures } from '../components/sections/PfxFigures';
-import { PfxHighlight } from '../components/sections/PfxHighlight';
-import { PfxStatements } from '../components/sections/PfxStatements';
-import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives';
-import { Products } from '../components/sections/Products';
-import { Roadmap } from '../components/sections/Roadmap';
+import { FaqPreview } from '../components/faq/FaqPreview'
+import { Page } from '../components/Page'
+import { PfxFigures } from '../components/sections/PfxFigures'
+import { PfxHighlight } from '../components/sections/PfxHighlight'
+import { PfxStatements } from '../components/sections/PfxStatements'
+import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives'
+import { Products } from '../components/sections/Products'
+import { Roadmap } from '../components/sections/Roadmap'
 
 export default function Home() {
   return (
@@ -18,5 +18,5 @@ export default function Home() {
       <Roadmap className="mt-22 desktop:mt-44" />
       <FaqPreview className="mt-8 desktop:mt-44" />
     </Page>
-  );
+  )
 }

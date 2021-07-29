@@ -15,7 +15,7 @@ function Avalanche(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Avalanche;
+export default Avalanche

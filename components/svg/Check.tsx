@@ -13,7 +13,7 @@ export function Check(props: React.SVGProps<SVGSVGElement>) {
         fill="#31CC4A"
       />
     </svg>
-  );
+  )
 }
 
-export default Check;
+export default Check

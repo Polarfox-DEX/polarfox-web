@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import { SectionTitle } from './utils/SectionTitle';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import { SectionTitle } from './utils/SectionTitle'
 
 interface LeadershipProps {
-  className?: string;
+  className?: string
 }
 
 export function TeamMap({ className }: LeadershipProps) {
@@ -21,12 +21,12 @@ export function TeamMap({ className }: LeadershipProps) {
         <img src="/team-map.png" alt="Team map" />
       </div>
     </div>
-  );
+  )
 }
 
 interface FigureProps {
-  figure: string;
-  label: string;
+  figure: string
+  label: string
 }
 
 function Figure({ figure, label }: FigureProps) {
@@ -37,5 +37,5 @@ function Figure({ figure, label }: FigureProps) {
         {label}
       </div>
     </div>
-  );
+  )
 }

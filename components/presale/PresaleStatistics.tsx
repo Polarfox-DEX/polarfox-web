@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import { SectionProps } from '../sections/utils/SectionProps';
-import { ReactNode } from 'react';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
+import { ReactNode } from 'react'
 
 export function PresaleStatistics({ className }: SectionProps) {
   return (
@@ -11,7 +11,7 @@ export function PresaleStatistics({ className }: SectionProps) {
         style={{
           fontSize: calcRem(12),
           lineHeight: calcRem(14.1),
-          letterSpacing: calcRem(3),
+          letterSpacing: calcRem(3)
         }}
       >
         STATISTICS
@@ -20,7 +20,7 @@ export function PresaleStatistics({ className }: SectionProps) {
         className="font-switzer font-semibold mt-1"
         style={{
           fontSize: calcRem(50),
-          lineHeight: calcRem(65),
+          lineHeight: calcRem(65)
         }}
       >
         Overview
@@ -71,21 +71,21 @@ export function PresaleStatistics({ className }: SectionProps) {
         <DayStatisticsRow>16,728 PFX</DayStatisticsRow>
       </DayStatistics>
     </div>
-  );
+  )
 }
 
 interface DayStatisticsProps {
-  hasBackground?: boolean;
-  fontSize?: number;
-  className?: string;
-  children: ReactNode;
+  hasBackground?: boolean
+  fontSize?: number
+  className?: string
+  children: ReactNode
 }
 
 function DayStatistics({
   hasBackground,
   fontSize,
   className,
-  children,
+  children
 }: DayStatisticsProps) {
   return (
     <div
@@ -98,12 +98,12 @@ function DayStatistics({
     >
       {children}
     </div>
-  );
+  )
 }
 
 interface DayStatisticsRowProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 function DayStatisticsRow({ className, children }: DayStatisticsRowProps) {
@@ -114,5 +114,5 @@ function DayStatisticsRow({ className, children }: DayStatisticsRowProps) {
     >
       {children}
     </div>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
 
 interface PfxFiguresProps {
-  className?: string;
+  className?: string
 }
 
 export function PfxFigures({ className }: PfxFiguresProps) {
@@ -34,13 +34,13 @@ export function PfxFigures({ className }: PfxFiguresProps) {
         backgroundColor="#667F9F"
       />
     </div>
-  );
+  )
 }
 
 interface PfxFigureBoxProps {
-  title: string;
-  figure: string;
-  backgroundColor: string;
+  title: string
+  figure: string
+  backgroundColor: string
 }
 
 function PfxFigureBox({ title, figure, backgroundColor }: PfxFigureBoxProps) {
@@ -51,7 +51,7 @@ function PfxFigureBox({ title, figure, backgroundColor }: PfxFigureBoxProps) {
         backgroundColor,
         minWidth: calcRem(284),
         height: calcRem(207),
-        borderRadius: calcRem(10),
+        borderRadius: calcRem(10)
       }}
     >
       <p
@@ -67,5 +67,5 @@ function PfxFigureBox({ title, figure, backgroundColor }: PfxFigureBoxProps) {
         {figure}
       </p>
     </div>
-  );
+  )
 }

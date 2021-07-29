@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "yarn clear && next build && next export",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./pages/*.tsx --check",
+    "lint:fix": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./pages/*.tsx --write",
     "clear": "rimraf out"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
     "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.4",
     "typescript": "4.3.5"

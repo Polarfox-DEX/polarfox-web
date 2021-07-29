@@ -1,6 +1,6 @@
-import classNames from 'classnames';
-import { Question } from './Question';
-import { SectionProps } from '../sections/utils/SectionProps';
+import classNames from 'classnames'
+import { Question } from './Question'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqPolarfox({ className }: SectionProps) {
   return (
@@ -86,5 +86,5 @@ export function FaqPolarfox({ className }: SectionProps) {
         transparency.
       </Question>
     </div>
-  );
+  )
 }
