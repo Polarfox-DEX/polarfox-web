@@ -12,23 +12,64 @@ import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
 import { ReactNode } from 'react'
+import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
+import GitHub from './svg/Github'
+import Medium from './svg/Medium'
+import Telegram from './svg/Telegram'
+import Twitter from './svg/Twitter'
 
 export function HeaderMobile({ className }: SectionProps) {
+  const isOpen = true
+
   return (
     <div
       className={classNames(
-        'flex desktop:hidden justify-between w-full px-5 py-7 absolute items-center',
+        'desktop:hidden absolute w-full px-5 py-7',
+        {
+          'z-5 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
+            isOpen
+        },
         className
       )}
     >
-      <Link href="/">
-        <a>
-          {/* TODO: The "polarfox" in the logo should not be an image */}
-          <img src="/logo/polarfox.png" alt="Polarfox logo" style={{width: calcRem(175)}} />
-        </a>
-      </Link>
-      <MenuMobile />
+      <div>
+        <div className="items-center flex justify-between">
+          <Link href="/">
+            <a>
+              {/* TODO: The "polarfox" in the logo should not be an image */}
+              <img
+                src="/logo/polarfox.png"
+                alt="Polarfox logo"
+                style={{ width: calcRem(175) }}
+              />
+            </a>
+          </Link>
+          {isOpen ? <Cross /> : <MenuMobile />}
+        </div>
+        <div
+          className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
+          style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
+        >
+          <div className="flex justify-between items-center">
+            Products
+            <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
+          </div>
+          <div>About</div>
+          <div>Roadmap</div>
+          <div>FAQ</div>
+          <div className="flex justify-between items-center">
+            Resources
+            <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-end items-center space-x-6">
+        <Telegram width={calcRem(24.29)} height={calcRem(20)} />
+        <GitHub width={calcRem(20.51)} height={calcRem(20)} />
+        <Medium width={calcRem(35.22)} height={calcRem(20)} />
+        <Twitter width={calcRem(24.29)} height={calcRem(20)} />
+      </div>
     </div>
   )
 }
