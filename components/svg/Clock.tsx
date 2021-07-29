@@ -21,7 +21,7 @@ export function Clock(props: React.SVGProps<SVGSVGElement>) {
         fill="white"
       />
     </svg>
-  );
+  )
 }
 
-export default Clock;
+export default Clock

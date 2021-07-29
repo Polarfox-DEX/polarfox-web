@@ -25,7 +25,7 @@ export function Mining(props: React.SVGProps<SVGSVGElement>) {
         </clipPath>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default Mining;
+export default Mining

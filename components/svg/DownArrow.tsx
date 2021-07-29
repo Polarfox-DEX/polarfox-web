@@ -15,7 +15,7 @@ export function DownArrow(props: React.SVGProps<SVGSVGElement>) {
         fill="white"
       />
     </svg>
-  );
+  )
 }
 
-export default DownArrow;
+export default DownArrow

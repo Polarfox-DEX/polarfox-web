@@ -15,7 +15,7 @@ export function Mining(props: React.SVGProps<SVGSVGElement>) {
         fill="#1C67FE"
       />
     </svg>
-  );
+  )
 }
 
-export default Mining;
+export default Mining

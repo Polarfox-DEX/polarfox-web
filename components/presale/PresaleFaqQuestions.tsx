@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import { Question } from '../faq/Question';
-import { SectionProps } from '../sections/utils/SectionProps';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import { Question } from '../faq/Question'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function PresaleFaqQuestions({ className }: SectionProps) {
   return (
@@ -45,5 +45,5 @@ export function PresaleFaqQuestions({ className }: SectionProps) {
         transparency.
       </Question>
     </div>
-  );
+  )
 }

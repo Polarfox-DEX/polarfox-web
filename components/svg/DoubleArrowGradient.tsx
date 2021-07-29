@@ -28,7 +28,7 @@ function DoubleArrowGradient(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default DoubleArrowGradient;
+export default DoubleArrowGradient

@@ -13,7 +13,7 @@ export function Coins(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Coins;
+export default Coins

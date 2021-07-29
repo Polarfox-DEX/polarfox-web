@@ -1,12 +1,12 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
-import { SectionButton } from './utils/SectionButton';
-import { SectionHeading } from './utils/SectionHeading';
-import { SectionTitle } from './utils/SectionTitle';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../utils/styles'
+import { SectionButton } from './utils/SectionButton'
+import { SectionHeading } from './utils/SectionHeading'
+import { SectionTitle } from './utils/SectionTitle'
 
 interface PfxTokenObjectivesProps {
-  className?: string;
+  className?: string
 }
 
 export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
@@ -20,7 +20,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
             className="my-12"
             style={{
               fontSize: calcRem(20),
-              lineHeight: calcRem(32),
+              lineHeight: calcRem(32)
             }}
           >
             The PFX token is at the center of the Polarfox ecosystem. Find out
@@ -90,12 +90,12 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
         </PfxTokenObjective>
       </div>
     </div>
-  );
+  )
 }
 
 interface LegendItemProps {
-  color: string;
-  children: ReactNode;
+  color: string
+  children: ReactNode
 }
 
 function LegendItem({ color, children }: LegendItemProps) {
@@ -106,7 +106,7 @@ function LegendItem({ color, children }: LegendItemProps) {
         style={{
           backgroundColor: color,
           width: calcRem(28),
-          height: calcRem(28),
+          height: calcRem(28)
         }}
       ></div>
       <p
@@ -116,12 +116,12 @@ function LegendItem({ color, children }: LegendItemProps) {
         {children}
       </p>
     </div>
-  );
+  )
 }
 
 interface PfxTokenObjectiveProps {
-  title: string;
-  children: ReactNode;
+  title: string
+  children: ReactNode
 }
 
 function PfxTokenObjective({ title, children }: PfxTokenObjectiveProps) {
@@ -147,5 +147,5 @@ function PfxTokenObjective({ title, children }: PfxTokenObjectiveProps) {
         }
       `}</style>
     </div>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
+import { ReactNode } from 'react'
+import { calcRem } from '../../utils/styles'
 
 interface QuestionProps {
-  question: string;
-  isOpen: boolean;
-  children: ReactNode;
+  question: string
+  isOpen: boolean
+  children: ReactNode
 }
 
 export function Question({ question, isOpen, children }: QuestionProps) {
@@ -14,7 +14,7 @@ export function Question({ question, isOpen, children }: QuestionProps) {
         className={'flex justify-between py-3 font-bold'}
         style={{
           fontSize: calcRem(26),
-          lineHeight: calcRem(50),
+          lineHeight: calcRem(50)
         }}
       >
         {question}
@@ -27,5 +27,5 @@ export function Question({ question, isOpen, children }: QuestionProps) {
         </p>
       )}
     </div>
-  );
+  )
 }

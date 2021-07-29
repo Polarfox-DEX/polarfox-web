@@ -29,7 +29,7 @@ export function Analytics(props: React.SVGProps<SVGSVGElement>) {
         fill="#1C67FE"
       />
     </svg>
-  );
+  )
 }
 
-export default Analytics;
+export default Analytics

@@ -15,7 +15,7 @@ export function TopRightArrow(props: React.SVGProps<SVGSVGElement>) {
         // fill="#000"
       />
     </svg>
-  );
+  )
 }
 
-export default TopRightArrow;
+export default TopRightArrow

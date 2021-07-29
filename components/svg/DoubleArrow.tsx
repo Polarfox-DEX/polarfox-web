@@ -15,7 +15,7 @@ export function DoubleArrow(props: React.SVGProps<SVGSVGElement>) {
         fill="#1C67FE"
       />
     </svg>
-  );
+  )
 }
 
-export default DoubleArrow;
+export default DoubleArrow

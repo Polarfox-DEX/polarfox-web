@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import { WithBackgroundImage } from '../utils/WithBackgroundImage';
-import { SectionHeading } from './utils/SectionHeading';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { SectionHeading } from './utils/SectionHeading'
 
 interface AboutUsProps {
-  className?: string;
+  className?: string
 }
 
 export function AboutUs({ className }: AboutUsProps) {
@@ -49,5 +49,5 @@ export function AboutUs({ className }: AboutUsProps) {
         </div>
       </div>
     </WithBackgroundImage>
-  );
+  )
 }

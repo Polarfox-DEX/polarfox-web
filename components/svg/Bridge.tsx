@@ -13,7 +13,7 @@ export function Bridge(props: React.SVGProps<SVGSVGElement>) {
         fill="#1C67FE"
       />
     </svg>
-  );
+  )
 }
 
-export default Bridge;
+export default Bridge

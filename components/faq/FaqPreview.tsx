@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { calcRem } from '../../utils/styles';
-import { Question } from './Question';
-import { SectionProps } from '../sections/utils/SectionProps';
-import { SectionHeading } from '../sections/utils/SectionHeading';
-import { SectionTitle } from '../sections/utils/SectionTitle';
-import { SectionButton } from '../sections/utils/SectionButton';
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
+import { Question } from './Question'
+import { SectionProps } from '../sections/utils/SectionProps'
+import { SectionHeading } from '../sections/utils/SectionHeading'
+import { SectionTitle } from '../sections/utils/SectionTitle'
+import { SectionButton } from '../sections/utils/SectionButton'
 
 export function FaqPreview({ className }: SectionProps) {
   return (
@@ -60,5 +60,5 @@ export function FaqPreview({ className }: SectionProps) {
         </Question>
       </div>
     </div>
-  );
+  )
 }

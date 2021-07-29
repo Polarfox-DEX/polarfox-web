@@ -13,7 +13,7 @@ export function Wallet(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Wallet;
+export default Wallet

@@ -1,14 +1,14 @@
-import classNames from 'classnames';
-import React, { ReactNode, ReactText } from 'react';
-import { WithBackgroundImage } from '../components/utils/WithBackgroundImage';
-import { calcRem } from '../utils/styles';
-import GitHub from './svg/Github';
-import Medium from './svg/Medium';
-import Telegram from './svg/Telegram';
-import Twitter from './svg/Twitter';
+import classNames from 'classnames'
+import React, { ReactNode, ReactText } from 'react'
+import { WithBackgroundImage } from '../components/utils/WithBackgroundImage'
+import { calcRem } from '../utils/styles'
+import GitHub from './svg/Github'
+import Medium from './svg/Medium'
+import Telegram from './svg/Telegram'
+import Twitter from './svg/Twitter'
 
 interface FooterProps {
-  className?: string;
+  className?: string
 }
 
 export function Footer({ className }: FooterProps) {
@@ -59,7 +59,7 @@ export function Footer({ className }: FooterProps) {
           className="container mt-32 border-t border-blue border-opacity-20 text-sm flex-1 text-gray "
           style={{
             fontSize: calcRem(12),
-            lineHeight: calcRem(22),
+            lineHeight: calcRem(22)
           }}
         >
           <div className="flex justify-end items-center space-x-6">
@@ -88,7 +88,7 @@ export function Footer({ className }: FooterProps) {
         </div>
       </WithBackgroundImage>
     </>
-  );
+  )
 }
 
 function TelegramButton() {
@@ -96,7 +96,7 @@ function TelegramButton() {
     <SocialButton url="">
       <Telegram width={calcRem(24.62)} height={calcRem(20.51)} />
     </SocialButton>
-  );
+  )
 }
 
 function GitHubButton() {
@@ -104,7 +104,7 @@ function GitHubButton() {
     <SocialButton url="">
       <GitHub width={calcRem(21.03)} height={calcRem(20.51)} />
     </SocialButton>
-  );
+  )
 }
 
 function MediumButton() {
@@ -112,7 +112,7 @@ function MediumButton() {
     <SocialButton url="">
       <Medium width={calcRem(36.12)} height={calcRem(20.51)} />
     </SocialButton>
-  );
+  )
 }
 
 function TwitterButton() {
@@ -120,12 +120,12 @@ function TwitterButton() {
     <SocialButton url="">
       <Twitter width={calcRem(24.91)} height={calcRem(20.51)} />
     </SocialButton>
-  );
+  )
 }
 
 interface SocialButtonProps {
-  url: string;
-  children: ReactNode;
+  url: string
+  children: ReactNode
 }
 
 function SocialButton({ url, children }: SocialButtonProps) {
@@ -151,7 +151,7 @@ function SocialButton({ url, children }: SocialButtonProps) {
         }
       `}</style>
     </a>
-  );
+  )
 }
 
 function SiteMap() {
@@ -190,20 +190,20 @@ function SiteMap() {
         <SiteMapLink>Tutorials</SiteMapLink>
       </SiteMapSection>
     </div>
-  );
+  )
 }
 
 interface SiteMapSectionProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function SiteMapSection({ children }: SiteMapSectionProps) {
-  return <div className="flex flex-col">{children}</div>;
+  return <div className="flex flex-col">{children}</div>
 }
 
 interface SiteMapLinkProps {
-  url?: string; // TODO Make it mandatory
-  children: ReactText;
+  url?: string // TODO Make it mandatory
+  children: ReactText
 }
 
 function SiteMapLink({ url, children }: SiteMapLinkProps) {
@@ -211,13 +211,13 @@ function SiteMapLink({ url, children }: SiteMapLinkProps) {
     <a className="hover:underline text-gray" href={url}>
       {children}
     </a>
-  );
+  )
 }
 
 interface SiteMapSectionTitleProps {
-  children: ReactText;
+  children: ReactText
 }
 
 function SiteMapSectionTitle({ children }: SiteMapSectionTitleProps) {
-  return <h5 className="font-bold">{children}</h5>;
+  return <h5 className="font-bold">{children}</h5>
 }

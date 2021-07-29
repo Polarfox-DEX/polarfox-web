@@ -15,7 +15,7 @@ function Telegram(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Telegram;
+export default Telegram

@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../utils/styles';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../utils/styles'
 
 interface OurMissionProps {
-  className: string;
+  className: string
 }
 
 export function OurMission({ className }: OurMissionProps) {
@@ -27,12 +27,12 @@ export function OurMission({ className }: OurMissionProps) {
         Avalanche blockchain.
       </Mission>
     </div>
-  );
+  )
 }
 
 interface MissionProps {
-  title: string;
-  children: ReactNode;
+  title: string
+  children: ReactNode
 }
 
 export function Mission({ title, children }: MissionProps) {
@@ -58,5 +58,5 @@ export function Mission({ title, children }: MissionProps) {
         }
       `}</style>
     </div>
-  );
+  )
 }

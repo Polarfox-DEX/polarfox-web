@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import { FaqSelector } from "./FaqSelector";
-import { FaqContact } from "./FaqContact";
-import { FaqPolarfox } from "./FaqPolarfox";
-import { WithBackgroundImage } from "../utils/WithBackgroundImage";
-import { SectionProps } from "../sections/utils/SectionProps";
+import classNames from 'classnames'
+import { FaqSelector } from './FaqSelector'
+import { FaqContact } from './FaqContact'
+import { FaqPolarfox } from './FaqPolarfox'
+import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqMain({ className }: SectionProps) {
   return (
@@ -11,7 +11,7 @@ export function FaqMain({ className }: SectionProps) {
       className="bg-left-bottom w-screen min-h-screen h-screen"
       imageUrl="/background/forest-1.jpg"
     >
-      <div className={classNames("container flex justify-between", className)}>
+      <div className={classNames('container flex justify-between', className)}>
         <div>
           <FaqSelector />
           <FaqContact />
@@ -20,5 +20,5 @@ export function FaqMain({ className }: SectionProps) {
         <FaqPolarfox className="pl-44" />
       </div>
     </WithBackgroundImage>
-  );
+  )
 }
