@@ -45,7 +45,7 @@ export function Header({ className }: SectionProps) {
         <HoverableItem className="mr-5" width={119}>
           Resources
         </HoverableItem>
-        <LanguageDropdown />
+        {/* <LanguageDropdown /> */}
         {/* <div>Account</div> */}
       </div>
     </div>
