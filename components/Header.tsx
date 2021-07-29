@@ -41,13 +41,12 @@ export function Header({ className }: SectionProps) {
         <Link href="/faq">
           <a>FAQ</a>
         </Link>
-        {/* <div>Resources</div> */}
         {/* // TODO: The mr-5 below does not work - fix this */}
         <HoverableItem className="mr-5" width={119}>
           Resources
         </HoverableItem>
         <LanguageDropdown />
-        <div>Account</div>
+        {/* <div>Account</div> */}
       </div>
     </div>
   );
@@ -56,11 +55,10 @@ export function Header({ className }: SectionProps) {
 interface HoverableItemProps {
   className?: string;
   width: number;
-  flag?: ReactNode;
   children: ReactNode;
 }
 
-function HoverableItem({ className, width, flag, children }: HoverableItemProps) {
+function HoverableItem({ className, width, children }: HoverableItemProps) {
   return (
     <div
       className={classNames(
@@ -69,7 +67,6 @@ function HoverableItem({ className, width, flag, children }: HoverableItemProps)
       )}
       style={{ width: calcRem(width), height: calcRem(44) }}
     >
-      {flag}
       {children}
       <MenuArrow />
     </div>
@@ -156,7 +153,7 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
         >
           {logo}
           <div
-            className={classNames("absolute self-end font-semibold")}
+            className="absolute self-end font-semibold"
             style={{
               fontSize: calcRem(12),
               lineHeight: calcRem(14),
@@ -196,14 +193,17 @@ function LanguageDropdown() {
           marginTop: calcRem(220),
         }}
       >
-        <Language href="/" flag={<USFlag />}>
+        <Language href="/">
           English
+          <USFlag />
         </Language>
-        <Language href="/" flag={<FrenchFlag />}>
+        <Language href="/">
           Français
+          <FrenchFlag />
         </Language>
-        <Language href="/" flag={<GermanFlag />}>
+        <Language href="/">
           Deutsch
+          <GermanFlag />
         </Language>
       </div>
     </div>
@@ -212,11 +212,10 @@ function LanguageDropdown() {
 
 interface LanguageProps {
   href: string;
-  flag: ReactNode;
   children: ReactNode;
 }
 
-function Language({ href, flag, children }: LanguageProps) {
+function Language({ href, children }: LanguageProps) {
   return (
     <Link href={href}>
       <a
@@ -229,7 +228,6 @@ function Language({ href, flag, children }: LanguageProps) {
         }}
       >
         {children}
-        {flag}
       </a>
     </Link>
   );
