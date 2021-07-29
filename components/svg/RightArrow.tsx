@@ -15,7 +15,7 @@ export function RightArrow(props: React.SVGProps<SVGSVGElement>) {
         // fill="white"
       />
     </svg>
-  );
+  )
 }
 
-export default RightArrow;
+export default RightArrow

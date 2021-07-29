@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import { calcRem } from "../../utils/styles";
+import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
 
 export function FaqSelector() {
   return (
@@ -9,7 +9,7 @@ export function FaqSelector() {
         style={{
           fontSize: calcRem(12),
           lineHeight: calcRem(14.1),
-          letterSpacing: calcRem(3),
+          letterSpacing: calcRem(3)
         }}
       >
         FAQ
@@ -19,7 +19,7 @@ export function FaqSelector() {
         style={{
           maxWidth: calcRem(357),
           fontSize: calcRem(50),
-          lineHeight: calcRem(65),
+          lineHeight: calcRem(65)
         }}
       >
         Help Center
@@ -30,24 +30,24 @@ export function FaqSelector() {
         <FaqSelectorButton title="Akita Inu" numberOfItems={6} />
       </div>
     </div>
-  );
+  )
 }
 
 interface FaqSelectorButtonProps {
-  title: String;
-  numberOfItems: number;
-  isSelected?: boolean;
+  title: String
+  numberOfItems: number
+  isSelected?: boolean
 }
 
 function FaqSelectorButton({
   title,
   numberOfItems,
-  isSelected,
+  isSelected
 }: FaqSelectorButtonProps) {
   return (
     <button
-      className={classNames("mt-5 rounded-lg", {
-        "border border-blue bg-blue text-white": isSelected,
+      className={classNames('mt-5 rounded-lg', {
+        'border border-blue bg-blue text-white': isSelected
       })}
       style={{ width: calcRem(386), height: calcRem(55) }}
     >
@@ -67,5 +67,5 @@ function FaqSelectorButton({
         {/* TODO: Should not have to use mt-1 above */}
       </div>
     </button>
-  );
+  )
 }

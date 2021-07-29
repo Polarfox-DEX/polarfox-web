@@ -26,7 +26,7 @@ function Flag(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default Flag;
+export default Flag

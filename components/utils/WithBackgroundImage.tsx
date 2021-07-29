@@ -1,16 +1,16 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
 
 interface WithBackGroundImageProps {
-  imageUrl: string;
-  children: ReactNode;
-  className?: string;
+  imageUrl: string
+  children: ReactNode
+  className?: string
 }
 
 export function WithBackgroundImage({
   imageUrl,
   children,
-  className,
+  className
 }: WithBackGroundImageProps) {
   return (
     <div
@@ -22,5 +22,5 @@ export function WithBackgroundImage({
     >
       {children}
     </div>
-  );
+  )
 }

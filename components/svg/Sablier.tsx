@@ -13,7 +13,7 @@ export function Sablier(props: React.SVGProps<SVGSVGElement>) {
         fill="#001937"
       />
     </svg>
-  );
+  )
 }
 
-export default Sablier;
+export default Sablier

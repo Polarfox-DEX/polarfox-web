@@ -1,21 +1,21 @@
-import classNames from "classnames";
-import AnalyticsGradient from "../svg/AnalyticsGradient";
-import BridgeGradient from "../svg/BridgeGradient";
-import DoubleArrowGradient from "../svg/DoubleArrowGradient";
-import TokenGradient from "../svg/TokenGradient";
-import TopRightArrow from "../svg/TopRightArrow";
-import { calcRem } from "../../utils/styles";
-import { ReactNode } from "react";
-import { SectionHeading } from "./utils/SectionHeading";
-import { SectionTitle } from "./utils/SectionTitle";
+import { calcRem } from '../../utils/styles'
+import { ReactNode } from 'react'
+import { SectionHeading } from './utils/SectionHeading'
+import { SectionTitle } from './utils/SectionTitle'
+import AnalyticsGradient from '../svg/AnalyticsGradient'
+import BridgeGradient from '../svg/BridgeGradient'
+import classNames from 'classnames'
+import DoubleArrowGradient from '../svg/DoubleArrowGradient'
+import TokenGradient from '../svg/TokenGradient'
+import TopRightArrow from '../svg/TopRightArrow'
 
 interface ProductsSectionProps {
-  className?: string;
+  className?: string
 }
 
 export function Products({ className }: ProductsSectionProps) {
   return (
-    <div className={classNames("container", className)}>
+    <div className={classNames('container', className)}>
       <SectionHeading>PFX PORTFOLIO</SectionHeading>
       <SectionTitle className="mt-1">Products</SectionTitle>
       <div className="flex flex-wrap justify-between gap-y-5 mt-16 desktop:mt-28">
@@ -44,19 +44,24 @@ export function Products({ className }: ProductsSectionProps) {
           url="https://akita.network"
           logo={
             <div className="-mt-1 hidden group-hover:block">
-            <img src="/akita-gradient.png" alt="akita" width="60" height="60" />
+              <img
+                src="/akita-gradient.png"
+                alt="akita"
+                width="60"
+                height="60"
+              />
             </div>
           }
         />
       </div>
     </div>
-  );
+  )
 }
 
 interface ProductProps {
-  label: string;
-  url: string;
-  logo: ReactNode;
+  label: string
+  url: string
+  logo: ReactNode
 }
 
 function Product({ label, url, logo }: ProductProps) {
@@ -74,7 +79,7 @@ function Product({ label, url, logo }: ProductProps) {
           style={{
             width: calcRem(224),
             fontSize: calcRem(20),
-            lineHeight: calcRem(26.4),
+            lineHeight: calcRem(26.4)
           }}
         >
           {label}
@@ -97,5 +102,5 @@ function Product({ label, url, logo }: ProductProps) {
         }
       `}</style>
     </a>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import Link from 'next/link';
-import { calcRem } from '../utils/styles';
-import { ReactNode } from 'react';
-import { RightArrow } from './svg/RightArrow';
-import { SectionProps } from './sections/utils/SectionProps';
+import classNames from 'classnames'
+import Link from 'next/link'
+import { calcRem } from '../utils/styles'
+import { ReactNode } from 'react'
+import { RightArrow } from './svg/RightArrow'
+import { SectionProps } from './sections/utils/SectionProps'
 
 export function PresaleHeader({ className }: SectionProps) {
   // TODO remove Hidden when implementing responsive
@@ -38,11 +38,11 @@ export function PresaleHeader({ className }: SectionProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 interface PresaleTimerBoxProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function PresaleTimerBox({ children }: PresaleTimerBoxProps) {
@@ -53,5 +53,5 @@ function PresaleTimerBox({ children }: PresaleTimerBoxProps) {
     >
       {children}
     </div>
-  );
+  )
 }

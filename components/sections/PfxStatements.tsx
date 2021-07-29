@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
-import classNames from 'classnames';
-import Flag from '../svg/Flag';
-import Token from '../svg/Token';
-import Avalanche from '../svg/Avalanche';
-import { calcRem } from '../../utils/styles';
+import { ReactNode } from 'react'
+import classNames from 'classnames'
+import Flag from '../svg/Flag'
+import Token from '../svg/Token'
+import Avalanche from '../svg/Avalanche'
+import { calcRem } from '../../utils/styles'
 
 interface PfxStatementsProps {
-  className?: string;
+  className?: string
 }
 
 export function PfxStatements({ className }: PfxStatementsProps) {
@@ -39,13 +39,13 @@ export function PfxStatements({ className }: PfxStatementsProps) {
         features: low gas fees, fast transactions, decentralized and more!
       </PfxStatement>
     </div>
-  );
+  )
 }
 
 interface PfxStatementProps {
-  icon: ReactNode;
-  title: string;
-  children: ReactNode;
+  icon: ReactNode
+  title: string
+  children: ReactNode
 }
 
 function PfxStatement({ icon, title, children }: PfxStatementProps) {
@@ -65,5 +65,5 @@ function PfxStatement({ icon, title, children }: PfxStatementProps) {
         {children}
       </p>
     </div>
-  );
+  )
 }
