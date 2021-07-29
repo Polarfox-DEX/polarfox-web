@@ -3,7 +3,7 @@ import { FaqSelector } from "./FaqSelector";
 import { FaqContact } from "./FaqContact";
 import { FaqPolarfox } from "./FaqPolarfox";
 import { WithBackgroundImage } from "../utils/WithBackgroundImage";
-import { SectionProps } from '../sections/utils/SectionProps'
+import { SectionProps } from "../sections/utils/SectionProps";
 
 export function FaqMain({ className }: SectionProps) {
   return (
@@ -14,7 +14,7 @@ export function FaqMain({ className }: SectionProps) {
       <div className={classNames("container flex justify-between", className)}>
         <div>
           <FaqSelector />
-          <FaqContact marginTop={317} />
+          <FaqContact />
         </div>
         {/* TODO: FaqPolarfox should be lower (at the same level as "Polarfox" on the the selector) */}
         <FaqPolarfox className="pl-44" />

@@ -65,7 +65,7 @@ export function Footer({ className }: FooterProps) {
           <div className="flex justify-end items-center space-x-6">
             <p
               className="text-blue my-20 flex-1"
-              style={{ fontSize: "13px", lineHeight: "33px" }}
+              style={{ fontSize: '13px', lineHeight: '33px' }}
             >
               © 2021 Polarfox ltd.
             </p>

@@ -43,10 +43,11 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28"/>}
-      <Header className="" />
+      {displayPresale && <PresaleHeader className="-mt-28" />}
+      <Header />
       {children}
-      <Footer />
+
+      <Footer className="mt-22 desktop:mt-44" />
     </div>
   );
 }
