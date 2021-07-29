@@ -1,4 +1,4 @@
-export function Mining(props: React.SVGProps<SVGSVGElement>) {
+export function MenuArrow(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="8"
@@ -28,4 +28,4 @@ export function Mining(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export default Mining
+export default MenuArrow

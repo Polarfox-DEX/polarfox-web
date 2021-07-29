@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export function Page({ children }: PageProps) {
-  const displayPresale = true
+  const displayPresale = false
 
   return (
     <div
