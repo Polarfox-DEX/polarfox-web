@@ -34,6 +34,8 @@ export function Header({ className }: SectionProps) {
         }}
       >
         <ProductsDropdown />
+        {/* TODO: Remove the div below */}
+        <div />
         <Link href="/about">
           <a>About</a>
         </Link>
@@ -75,11 +77,8 @@ function HoverableItem({ className, width, children }: HoverableItemProps) {
 
 function ProductsDropdown() {
   return (
-    <div className="group flex items-center">
-      {/* // TODO: We should not need -mr-5 */}
-      <HoverableItem className="-mr-5" width={110}>
-        Products
-      </HoverableItem>
+    <div className="group absolute flex items-center z-10">
+      <HoverableItem width={110}>Products</HoverableItem>
       <div
         className="bg-white rounded-xl absolute justify-between px-4 py-6 hidden group-hover:flex"
         style={{
@@ -185,8 +184,8 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
 function LanguageDropdown() {
   return (
     <div className="group flex items-center">
-      <HoverableItem width={131} flag={<USFlag />}>
-        English
+      <HoverableItem width={131}>
+        <USFlag /> English
       </HoverableItem>
       <div
         className="bg-white rounded-xl absolute justify-between p-5 hidden group-hover:block"
