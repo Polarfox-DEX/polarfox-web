@@ -20,7 +20,7 @@ export function SectionButton({
       <a
         target={target}
         rel={rel}
-        className="section-button flex justify-center items-center rounded-full border border-blue bg-white font-semibold"
+        className="section-button flex justify-center items-center rounded-full border border-blue bg-white font-semibold hover:bg-blue hover:text-white"
       >
         {children}
         <style jsx>{`

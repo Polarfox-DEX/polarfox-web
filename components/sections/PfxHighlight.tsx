@@ -41,13 +41,13 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
         <div className="flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24">
           <Button
             url="/Polarfox Litepaper V2.6.pdf"
-            className="border border-blue bg-white"
+            className="border border-blue bg-white hover:bg-blue hover:text-white"
           >
             Litepaper
           </Button>
           <Button
             url="https://dex-test.polarfox.io/"
-            className="text-white bg-blue"
+            className="text-white bg-blue hover:bg-blue-light"
           >
             Open DEX
           </Button>
