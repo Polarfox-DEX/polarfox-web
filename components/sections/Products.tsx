@@ -75,9 +75,8 @@ function Product({ label, url, logo }: ProductProps) {
       <div className="flex flex-wrap">
         <div className="-mt-1">{logo}</div>
         <p
-          className=" self-end absolute font-switzer font-semibold"
+          className="self-end font-switzer font-semibold"
           style={{
-            width: calcRem(224),
             fontSize: calcRem(20),
             lineHeight: calcRem(26.4)
           }}
