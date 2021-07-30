@@ -23,7 +23,7 @@ export function FaqContact({ className }: SectionProps) {
         {/* TODO: Add some links */}
       </p>
       <button
-        className="mt-12 rounded-full border border-blue bg-white font-semibold"
+        className="mt-12 rounded-full border border-blue bg-white font-semibold hover:bg-blue hover:text-white"
         style={{ width: calcRem(166), height: calcRem(44) }}
       >
         <Link href="/faq">
