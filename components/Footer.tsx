@@ -49,7 +49,7 @@ export function Footer({ className }: FooterProps) {
       </WithBackgroundImage>
       {/* TODO: Remove double div */}
       <div className="container">
-        <div className="py-12 desktop:py-20 border-t-2 border-blue">
+        <div className="py-16 mt-4 desktop:py-20 border-t-2 border-blue">
           <img src="/logo/polarfox.png" alt="Polarfox logo" />
         </div>
       </div>
