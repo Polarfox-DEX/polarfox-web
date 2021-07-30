@@ -72,8 +72,9 @@ function Product({ label, url, logo }: ProductProps) {
       rel="noopener noreferrer"
       className="product w-full flex justify-between p-7 bg-white border border-blue hover:bg-blue-light hover:border-blue-light hover:text-white group"
     >
-      <div className="flex flex-wrap">
-        <div className="-mt-1">{logo}</div>
+      <div className="flex flex-col justify-between">
+        {/* TODO: Remove div without breaking AKITA logo */}
+        <div>{logo}</div>
         <p
           className="self-end font-switzer font-semibold"
           style={{
