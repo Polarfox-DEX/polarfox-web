@@ -22,8 +22,7 @@ export function FaqMain({ className }: SectionProps) {
           <FaqSelector />
           <FaqContact className="hidden desktop:block mt-80" />
         </div>
-        {/* TODO: FaqPolarfox should be lower (at the same level as "Polarfox" on the the selector) */}
-        <FaqPolarfox className="desktop:pl-44" />
+        <FaqPolarfox className="mt-8 desktop:mt-32 desktop:pl-44" />
       </div>
       <FaqContact className="desktop:hidden mt-12" />
     </div>
