@@ -4,7 +4,8 @@ import styles from '../styles/Page.module.css'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { PresaleHeader } from './PresaleHeader'
-import { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
+
 
 interface PageProps {
   children: ReactNode
@@ -13,11 +14,20 @@ interface PageProps {
 export function Page({ children }: PageProps) {
   const displayPresale = false
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
   return (
     <div
-      className={classNames(styles.container, 'text-blue', {
-        'pt-28': displayPresale
-      })}
+      className={classNames(
+        styles.container,
+        'text-blue',
+        {
+          'pt-28': displayPresale
+        },
+        {
+          'h-screen overflow-hidden': isMobileMenuOpen
+        }
+      )}
     >
       <Head>
         <title>Polarfox</title>
@@ -44,7 +54,7 @@ export function Page({ children }: PageProps) {
       </Head>
 
       {displayPresale && <PresaleHeader className="-mt-28" />}
-      <Header />
+      <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
       {children}
 
       <Footer className="mt-22 desktop:mt-44" />

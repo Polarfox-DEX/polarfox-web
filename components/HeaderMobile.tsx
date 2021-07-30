@@ -10,7 +10,6 @@ import USFlag from './svg/flags/USFlag'
 import FrenchFlag from './svg/flags/FrenchFlag'
 import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
-import { SectionProps } from './sections/utils/SectionProps'
 import { ReactNode } from 'react'
 import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
@@ -18,20 +17,18 @@ import GitHub from './svg/Github'
 import Medium from './svg/Medium'
 import Telegram from './svg/Telegram'
 import Twitter from './svg/Twitter'
+import { HeaderProps } from './Header'
 
-export function HeaderMobile({ className }: SectionProps) {
-  const isOpen = true
-
+export function HeaderMobile({
+  isMobileMenuOpen,
+  setIsMobileMenuOpen
+}: HeaderProps) {
   return (
     <div
-      className={classNames(
-        'desktop:hidden absolute w-full px-5 py-7',
-        {
-          'z-5 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
-            isOpen
-        },
-        className
-      )}
+      className={classNames('desktop:hidden absolute w-full px-5 py-7', {
+        'z-5 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
+          isMobileMenuOpen
+      })}
     >
       <div>
         <div className="items-center flex justify-between">
@@ -45,31 +42,39 @@ export function HeaderMobile({ className }: SectionProps) {
               />
             </a>
           </Link>
-          {isOpen ? <Cross /> : <MenuMobile />}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>{isMobileMenuOpen ? <Cross /> : <MenuMobile />}</button>
         </div>
-        <div
-          className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
-          style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
-        >
-          <div className="flex justify-between items-center">
-            Products
-            <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
+        {isMobileMenuOpen ? (
+          <div
+            className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
+            style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
+          >
+            <div className="flex justify-between items-center">
+              Products
+              <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
+            </div>
+            <div>About</div>
+            <div>Roadmap</div>
+            <div>FAQ</div>
+            <div className="flex justify-between items-center">
+              Resources
+              <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
+            </div>
           </div>
-          <div>About</div>
-          <div>Roadmap</div>
-          <div>FAQ</div>
-          <div className="flex justify-between items-center">
-            Resources
-            <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
-          </div>
+        ) : (
+          <div />
+        )}
+      </div>
+      {isMobileMenuOpen ? (
+        <div className="flex justify-end items-center space-x-6">
+          <Telegram width={calcRem(24.29)} height={calcRem(20)} />
+          <GitHub width={calcRem(20.51)} height={calcRem(20)} />
+          <Medium width={calcRem(35.22)} height={calcRem(20)} />
+          <Twitter width={calcRem(24.29)} height={calcRem(20)} />
         </div>
-      </div>
-      <div className="flex justify-end items-center space-x-6">
-        <Telegram width={calcRem(24.29)} height={calcRem(20)} />
-        <GitHub width={calcRem(20.51)} height={calcRem(20)} />
-        <Medium width={calcRem(35.22)} height={calcRem(20)} />
-        <Twitter width={calcRem(24.29)} height={calcRem(20)} />
-      </div>
+      ) : (
+        <div />
+      )}
     </div>
   )
 }
