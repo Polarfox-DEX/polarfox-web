@@ -42,7 +42,9 @@ export function HeaderMobile({
               />
             </a>
           </Link>
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>{isMobileMenuOpen ? <Cross /> : <MenuMobile />}</button>
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <Cross /> : <MenuMobile />}
+          </button>
         </div>
         {isMobileMenuOpen ? (
           <div
@@ -53,9 +55,13 @@ export function HeaderMobile({
               Products
               <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
             </div>
-            <div>About</div>
+            <Link href="/about">
+              <a>About</a>
+            </Link>
             <div>Roadmap</div>
-            <div>FAQ</div>
+            <Link href="/faq">
+              <a>FAQ</a>
+            </Link>
             <div className="flex justify-between items-center">
               Resources
               <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
