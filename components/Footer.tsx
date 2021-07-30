@@ -54,9 +54,10 @@ export function Footer({ className }: FooterProps) {
         </div>
       </div>
       <SiteMap />
-      <WithBackgroundImage
-        className="bg-left bg-contain desktop:bg-left-top desktop:bg-cover w-full h-full pt-28"
-        imageUrl="/background/fox.jpg"
+      {/* TODO: Make the fox bigger for mobile */}
+      <div
+        className="bg-no-repeat flex justify-center items-center bg-bottom-24 desktop:bg-top bg-contain desktop:bg-cover w-full h-full pt-28"
+        style={{ backgroundImage: `url('${'/background/fox.jpg'}')` }}
       >
         <div
           className="container text-sm flex-1 text-gray"
@@ -92,7 +93,7 @@ export function Footer({ className }: FooterProps) {
             own research and only invest what you can afford to lose.
           </p>
         </div>
-      </WithBackgroundImage>
+      </div>
     </>
   )
 }

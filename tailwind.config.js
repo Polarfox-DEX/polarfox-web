@@ -38,6 +38,12 @@ module.exports = {
       },
       white: colors.white
     },
+    backgroundPosition: {
+      center: 'center',
+      top: 'top',
+      bottom: 'bottom',
+      'bottom-24': 'center bottom -6rem'
+    },
     extend: {
       fontFamily: {
         publicSans: ['Public Sans', ...defaultTheme.fontFamily.sans],
