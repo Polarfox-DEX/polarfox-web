@@ -46,10 +46,10 @@ function FaqSelectorButton({
 }: FaqSelectorButtonProps) {
   return (
     <button
-      className={classNames('mt-5 rounded-lg', {
+      className={classNames('mt-5 rounded-lg w-full', {
         'border border-blue bg-blue text-white': isSelected
       })}
-      style={{ width: calcRem(386), height: calcRem(55) }}
+      style={{ height: calcRem(55) }}
     >
       <div>
         <h3

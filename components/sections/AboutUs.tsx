@@ -12,7 +12,7 @@ export function AboutUs({ className }: SectionProps) {
     >
       <div
         className={classNames(
-          'container flex flex-wrap justify-between desktop:items-baseline gap-x-16 mt-16 desktop:mt-0',
+          'container flex flex-wrap justify-between desktop:items-baseline gap-x-16',
           className
         )}
       >

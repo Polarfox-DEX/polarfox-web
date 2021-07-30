@@ -7,18 +7,26 @@ import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqMain({ className }: SectionProps) {
   return (
-    <WithBackgroundImage
-      className="bg-left-bottom w-screen min-h-screen h-screen"
-      imageUrl="/background/forest-1.jpg"
+    // <WithBackgroundImage
+    // className="tablet:bg-left-bottom tablet:h-full justify-between"
+    // imageUrl="/background/forest-1.jpg"
+    // >
+    <div
+      className={classNames(
+        'container flex desktop:space-x-24 w-full flex-col desktop:flex-row',
+        className
+      )}
     >
-      <div className={classNames('container flex justify-between', className)}>
+      <div className="flex flex-col desktop:flex-row">
         <div>
           <FaqSelector />
-          <FaqContact />
+          <FaqContact className="hidden desktop:block mt-80" />
         </div>
         {/* TODO: FaqPolarfox should be lower (at the same level as "Polarfox" on the the selector) */}
-        <FaqPolarfox className="pl-44" />
+        <FaqPolarfox className="desktop:pl-44" />
       </div>
-    </WithBackgroundImage>
+      <FaqContact className="desktop:hidden mt-12" />
+    </div>
+    // </WithBackgroundImage>
   )
 }

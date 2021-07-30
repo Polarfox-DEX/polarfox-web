@@ -5,7 +5,7 @@ import { FaqMain } from '../components/faq/FaqMain'
 export default function Faq() {
   return (
     <Page>
-      <FaqMain className="mt-64" />
+      <FaqMain className="mt-32 desktop:mt-64" />
       <div
         style={{
           minHeight: calcRem(300)

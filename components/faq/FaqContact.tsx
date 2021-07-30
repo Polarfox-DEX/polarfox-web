@@ -1,12 +1,12 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
 
-export function FaqContact() {
+export function FaqContact({ className }: SectionProps) {
   return (
     <div
-      className={classNames('border-t-2 border-blue pt-8')}
-      style={{ width: calcRem(357) }}
+      className={classNames('border-t-2 border-blue pt-8 w-full desktop:w-96', className)}
     >
       <h3
         className="font-switzer font-semibold"
