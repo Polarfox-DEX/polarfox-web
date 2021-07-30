@@ -1,12 +1,9 @@
 import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
 import { SectionTitle } from './utils/SectionTitle'
+import { SectionProps } from './utils/SectionProps'
 
-interface LeadershipProps {
-  className?: string
-}
-
-export function TeamMap({ className }: LeadershipProps) {
+export function TeamMap({ className }: SectionProps) {
   return (
     <div className={classNames('container', className)}>
       <div className="grid grid-cols-1 tablet:grid-cols-2">

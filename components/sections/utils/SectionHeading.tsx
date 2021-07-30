@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
-import { calcRem } from '../../../utils/styles';
+import { ReactNode } from 'react'
+import { calcRem } from '../../../utils/styles'
 
 interface SectionHeadingProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export function SectionHeading({ children }: SectionHeadingProps) {
@@ -12,10 +12,10 @@ export function SectionHeading({ children }: SectionHeadingProps) {
       style={{
         fontSize: calcRem(12),
         lineHeight: calcRem(14.1),
-        letterSpacing: calcRem(3),
+        letterSpacing: calcRem(3)
       }}
     >
       {children}
     </div>
-  );
+  )
 }

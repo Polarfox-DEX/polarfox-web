@@ -19,6 +19,8 @@ import Telegram from './svg/Telegram'
 import Twitter from './svg/Twitter'
 import { HeaderProps } from './Header'
 
+// TODO: Define the behavior we want when the user clicks on a link to the current page
+
 export function HeaderMobile({
   isMobileMenuOpen,
   setIsMobileMenuOpen
@@ -26,7 +28,7 @@ export function HeaderMobile({
   return (
     <div
       className={classNames('desktop:hidden absolute w-full px-5 py-7', {
-        'z-5 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
+        'z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
           isMobileMenuOpen
       })}
     >
