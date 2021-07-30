@@ -26,7 +26,7 @@ export function BridgeGradient(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default BridgeGradient;
+export default BridgeGradient

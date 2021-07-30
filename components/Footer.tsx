@@ -94,7 +94,11 @@ export function Footer({ className }: FooterProps) {
 function TelegramButton() {
   return (
     <SocialButton url="">
-      <Telegram width={calcRem(24.62)} height={calcRem(20.51)} className="fill-current" />
+      <Telegram
+        width={calcRem(24.62)}
+        height={calcRem(20.51)}
+        className="fill-current"
+      />
     </SocialButton>
   )
 }
@@ -102,7 +106,11 @@ function TelegramButton() {
 function GitHubButton() {
   return (
     <SocialButton url="">
-      <GitHub width={calcRem(21.03)} height={calcRem(20.51)} className="fill-current" />
+      <GitHub
+        width={calcRem(21.03)}
+        height={calcRem(20.51)}
+        className="fill-current"
+      />
     </SocialButton>
   )
 }
@@ -110,7 +118,11 @@ function GitHubButton() {
 function MediumButton() {
   return (
     <SocialButton url="">
-      <Medium width={calcRem(36.12)} height={calcRem(20.51)} className="fill-current" />
+      <Medium
+        width={calcRem(36.12)}
+        height={calcRem(20.51)}
+        className="fill-current"
+      />
     </SocialButton>
   )
 }
@@ -118,7 +130,11 @@ function MediumButton() {
 function TwitterButton() {
   return (
     <SocialButton url="">
-      <Twitter width={calcRem(24.91)} height={calcRem(20.51)} className="fill-current" />
+      <Twitter
+        width={calcRem(24.91)}
+        height={calcRem(20.51)}
+        className="fill-current"
+      />
     </SocialButton>
   )
 }

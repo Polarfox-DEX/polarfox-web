@@ -6,7 +6,6 @@ import { Header } from './Header'
 import { PresaleHeader } from './PresaleHeader'
 import React, { ReactNode, useState } from 'react'
 
-
 interface PageProps {
   children: ReactNode
 }
@@ -54,7 +53,10 @@ export function Page({ children }: PageProps) {
       </Head>
 
       {displayPresale && <PresaleHeader className="-mt-28" />}
-      <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+      <Header
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       {children}
 
       <Footer className="mt-22 desktop:mt-44" />

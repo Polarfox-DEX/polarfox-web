@@ -86,7 +86,7 @@ export function AnalyticsGradient(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default AnalyticsGradient;
+export default AnalyticsGradient

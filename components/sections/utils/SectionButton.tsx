@@ -1,19 +1,19 @@
-import Link from 'next/link';
-import { ReactNode } from 'react';
-import { calcRem } from '../../../utils/styles';
+import Link from 'next/link'
+import { ReactNode } from 'react'
+import { calcRem } from '../../../utils/styles'
 
 interface SectionButtonProps {
-  href: string;
-  target?: string;
-  rel?: string;
-  children: ReactNode;
+  href: string
+  target?: string
+  rel?: string
+  children: ReactNode
 }
 
 export function SectionButton({
   href,
   target,
   rel,
-  children,
+  children
 }: SectionButtonProps) {
   return (
     <Link href={href} passHref={true}>
@@ -36,5 +36,5 @@ export function SectionButton({
         `}</style>
       </a>
     </Link>
-  );
+  )
 }

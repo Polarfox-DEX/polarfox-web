@@ -26,7 +26,7 @@ export function TokenGradient(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default TokenGradient;
+export default TokenGradient

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function USFlag(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -27,7 +27,7 @@ function USFlag(props: React.SVGProps<SVGSVGElement>) {
         fill="#F5F5F5"
       />
     </svg>
-  );
+  )
 }
 
-export default USFlag;
+export default USFlag

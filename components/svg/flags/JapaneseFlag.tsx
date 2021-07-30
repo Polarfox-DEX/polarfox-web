@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function JapaneseFlag(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -19,7 +19,7 @@ function JapaneseFlag(props: React.SVGProps<SVGSVGElement>) {
         fill="#FF4B55"
       />
     </svg>
-  );
+  )
 }
 
-export default JapaneseFlag;
+export default JapaneseFlag

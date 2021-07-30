@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function FrenchFlag(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -20,7 +20,7 @@ function FrenchFlag(props: React.SVGProps<SVGSVGElement>) {
         fill="#FF4B55"
       />
     </svg>
-  );
+  )
 }
 
-export default FrenchFlag;
+export default FrenchFlag

@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "yarn clear && next build && next export",
     "start": "next start",
-    "lint": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./pages/*.tsx --check",
-    "lint:fix": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./pages/*.tsx --write",
+    "lint": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./components/*/*/*.tsx ./pages/*.tsx --check",
+    "lint:fix": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./components/*/*/*.tsx ./pages/*.tsx --write",
     "clear": "rimraf out"
   },
   "dependencies": {

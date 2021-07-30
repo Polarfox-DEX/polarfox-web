@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function GermanFlag(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -20,7 +20,7 @@ function GermanFlag(props: React.SVGProps<SVGSVGElement>) {
       />
       <path d="M21 8.207H0v4.586h21V8.207z" fill="#FF4B55" />
     </svg>
-  );
+  )
 }
 
-export default GermanFlag;
+export default GermanFlag

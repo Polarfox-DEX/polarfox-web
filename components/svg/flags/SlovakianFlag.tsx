@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function SlovakianFlag(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -36,7 +36,7 @@ function SlovakianFlag(props: React.SVGProps<SVGSVGElement>) {
         fill="#F5F5F5"
       />
     </svg>
-  );
+  )
 }
 
-export default SlovakianFlag;
+export default SlovakianFlag

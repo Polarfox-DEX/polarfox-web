@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../../utils/styles';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../../utils/styles'
 
 interface SectionTitleProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 export function SectionTitle({ className, children }: SectionTitleProps) {
@@ -31,5 +31,5 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
         }
       `}</style>
     </h2>
-  );
+  )
 }
