@@ -21,9 +21,9 @@ export function Footer({ className }: FooterProps) {
         )}
         imageUrl="/background/forest-3.jpg"
       >
-        <div className="container flex flex-col justify-end desktop:flex-row desktop:justify-between desktop:items-end h-full desktop:pb-32 border-b-2 border-blue">
+        <div className="container flex flex-col justify-end desktop:flex-row desktop:justify-between desktop:items-end h-full desktop:pb-32">
           <h2 className="title font-switzer font-semibold">
-            Meet the worldwide community
+            Meet the worldwide community.
             <style jsx>{`
               .title {
                 font-size: ${calcRem(30)};
@@ -47,8 +47,11 @@ export function Footer({ className }: FooterProps) {
           </div>
         </div>
       </WithBackgroundImage>
-      <div className="container flex justify-start my-24">
-        <img src="/logo/polarfox.png" alt="Polarfox logo" />
+      {/* TODO: Remove double div */}
+      <div className="container">
+        <div className="py-12 desktop:py-20 border-t-2 border-blue">
+          <img src="/logo/polarfox.png" alt="Polarfox logo" />
+        </div>
       </div>
       <SiteMap />
       <WithBackgroundImage
@@ -63,17 +66,19 @@ export function Footer({ className }: FooterProps) {
             minHeight: calcRem(650)
           }}
         >
-          <div className="flex justify-end items-center space-x-6 border-t border-blue border-opacity-20">
+          <div className="flex flex-col-reverse desktop:flex-row desktop:items-center desktop:space-x-6 border-t border-blue border-opacity-20 pt-16 mb-20">
             <p
-              className="text-blue mt-16 mb-20 flex-1"
+              className="text-blue flex-1 mt-8 desktop:mt-0"
               style={{ fontSize: '13px', lineHeight: '33px' }}
             >
               © 2021 Polarfox ltd.
             </p>
-            <Telegram width={calcRem(24.29)} height={calcRem(20)} />
-            <GitHub width={calcRem(20.51)} height={calcRem(20)} />
-            <Medium width={calcRem(35.22)} height={calcRem(20)} />
-            <Twitter width={calcRem(24.29)} height={calcRem(20)} />
+            <div className="flex space-x-6 items">
+              <Telegram width={calcRem(24.29)} height={calcRem(20)} />
+              <GitHub width={calcRem(20.51)} height={calcRem(20)} />
+              <Medium width={calcRem(35.22)} height={calcRem(20)} />
+              <Twitter width={calcRem(24.29)} height={calcRem(20)} />
+            </div>
           </div>
 
           <p className="w-72">
