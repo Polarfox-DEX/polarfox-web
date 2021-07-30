@@ -26,7 +26,7 @@ export function FaqPreview({ className }: SectionProps) {
         className="divide-y divide-gray-light mt-16 desktop:mt-0"
         style={{ width: calcRem(680) }}
       >
-        <Question question="What is Polarfox?" isOpen={true}>
+        <Question question="What is Polarfox?" isOpenDefault>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -34,7 +34,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What is the Polarfox DEX?" isOpen={false}>
+        <Question question="What is the Polarfox DEX?">
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -42,7 +42,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What is PFX?" isOpen={false}>
+        <Question question="What is PFX?">
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -50,7 +50,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What are the PFX tokenomics?" isOpen={false}>
+        <Question question="What are the PFX tokenomics?">
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,

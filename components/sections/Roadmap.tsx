@@ -6,7 +6,7 @@ import { ReactNode } from 'react'
 
 export function Roadmap({ className }: SectionProps) {
   return (
-    <div className={classNames('container', className)}>
+    <div id="roadmap" className={classNames('container', className)}>
       <div className="flex flex-wrap justify-between gap-y-5">
         <SectionHeading>ROADMAP</SectionHeading>
         <p

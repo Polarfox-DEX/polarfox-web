@@ -13,10 +13,7 @@ import { calcRem } from '../utils/styles'
 import { ReactNode } from 'react'
 import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
-import GitHub from './svg/Github'
-import Medium from './svg/Medium'
-import Telegram from './svg/Telegram'
-import Twitter from './svg/Twitter'
+import { SocialMediaLinks } from './utils/SocialMediaLinks'
 import { HeaderProps } from './Header'
 
 // TODO: Define the behavior we want when the user clicks on a link to the current page
@@ -60,7 +57,9 @@ export function HeaderMobile({
             <Link href="/about">
               <a>About</a>
             </Link>
-            <div>Roadmap</div>
+            <Link href="/#roadmap">
+              <a>Roadmap</a>
+            </Link>
             <Link href="/faq">
               <a>FAQ</a>
             </Link>
@@ -74,12 +73,7 @@ export function HeaderMobile({
         )}
       </div>
       {isMobileMenuOpen ? (
-        <div className="flex justify-end items-center space-x-6">
-          <Telegram width={calcRem(24.29)} height={calcRem(20)} />
-          <GitHub width={calcRem(20.51)} height={calcRem(20)} />
-          <Medium width={calcRem(35.22)} height={calcRem(20)} />
-          <Twitter width={calcRem(24.29)} height={calcRem(20)} />
-        </div>
+        <SocialMediaLinks className="justify-end" />
       ) : (
         <div />
       )}

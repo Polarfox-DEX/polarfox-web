@@ -19,7 +19,10 @@ export function FaqMain({ className }: SectionProps) {
     >
       <div className="flex flex-col desktop:flex-row w-full">
         <div>
-          <FaqSelector selectedFaq={selectedFaq} setSelectedFaq={setSelectedFaq} />
+          <FaqSelector
+            selectedFaq={selectedFaq}
+            setSelectedFaq={setSelectedFaq}
+          />
           <FaqContact className="hidden desktop:block mt-80" />
         </div>
         <FaqPolarfox

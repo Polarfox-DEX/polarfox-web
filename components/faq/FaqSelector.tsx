@@ -83,7 +83,10 @@ function FaqSelectorButton({
           'border border-blue bg-blue text-white hover:bg-blue':
             selectedFaq === name
         },
-        { 'hover:bg-blue-light hover:text-white hover:opacity-80': selectedFaq !== name }
+        {
+          'hover:bg-blue-light hover:text-white hover:opacity-80':
+            selectedFaq !== name
+        }
       )}
       style={{ height: calcRem(55) }}
       onClick={() => setSelectedFaq(name)}
