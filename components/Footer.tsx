@@ -22,7 +22,7 @@ export function Footer({ className }: FooterProps) {
         imageUrl="/background/forest-3.jpg"
       >
         <div className="container flex flex-col justify-end desktop:flex-row desktop:justify-between desktop:items-end h-full desktop:pb-32 border-b-2 border-blue">
-          <h2 className="title font-switzer font-semibold" style={{}}>
+          <h2 className="title font-switzer font-semibold">
             Meet the worldwide community
             <style jsx>{`
               .title {
@@ -47,24 +47,25 @@ export function Footer({ className }: FooterProps) {
           </div>
         </div>
       </WithBackgroundImage>
+      <div className="container flex justify-start my-24">
+        <img src="/logo/polarfox.png" alt="Polarfox logo" />
+      </div>
+      <SiteMap />
       <WithBackgroundImage
-        className="bg-left bg-contain desktop:bg-left-top desktop:bg-cover w-full"
+        className="bg-left bg-contain desktop:bg-left-top desktop:bg-cover w-full h-full pt-28"
         imageUrl="/background/fox.jpg"
       >
-        <div className="container flex justify-start my-32">
-          <img src="/logo/polarfox.png" alt="Polarfox logo" />
-        </div>
-        <SiteMap />
         <div
-          className="container mt-32 border-t border-blue border-opacity-20 text-sm flex-1 text-gray "
+          className="container text-sm flex-1 text-gray"
           style={{
             fontSize: calcRem(12),
-            lineHeight: calcRem(22)
+            lineHeight: calcRem(22),
+            minHeight: calcRem(650)
           }}
         >
-          <div className="flex justify-end items-center space-x-6">
+          <div className="flex justify-end items-center space-x-6 border-t border-blue border-opacity-20">
             <p
-              className="text-blue my-20 flex-1"
+              className="text-blue mt-16 mb-20 flex-1"
               style={{ fontSize: '13px', lineHeight: '33px' }}
             >
               © 2021 Polarfox ltd.
