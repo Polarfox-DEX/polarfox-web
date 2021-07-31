@@ -22,3 +22,9 @@ body {
 
   background-color: #f4f6f9;
 }
+
+.tutorial-tile:hover{
+
+  opacity: 0.5;
+
+}

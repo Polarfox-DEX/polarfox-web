@@ -26,6 +26,7 @@ module.exports = {
       blue: {
         light: '#1C67FE',
         gray: "#142B47",
+        tutorials_tile: "#001937",
         DEFAULT: '#001937'
       },
       gray: {
