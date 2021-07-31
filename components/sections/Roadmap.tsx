@@ -3,6 +3,7 @@ import { calcRem } from '../../utils/styles'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionProps } from './utils/SectionProps'
 import { ReactNode } from 'react'
+import Slide from '../svg/Slide'
 
 export function Roadmap({ className }: SectionProps) {
   return (
@@ -23,9 +24,8 @@ export function Roadmap({ className }: SectionProps) {
           our vision.
         </p>
       </div>
-      {/* // TODO: Add the finger sliding image */}
       <div className="flex gap-x-10 overflow-x-scroll pb-6">
-        <Year title="2021">
+        <Year title="2021" slide>
           <Quarter title="Q1">
             <Task isDone>Creation of Polarfox Labs by the AKITA community</Task>
             <Task isDone>First ideation phase</Task>
@@ -78,19 +78,27 @@ export function Roadmap({ className }: SectionProps) {
 interface YearProps {
   title: string
   isFuture?: boolean
+  slide?: boolean
   children: ReactNode
 }
 
-function Year({ title, isFuture, children }: YearProps) {
+function Year({ title, isFuture, slide, children }: YearProps) {
   return (
     <div className="flex-none">
       <div
-        className={classNames('font-bold mt-16', {
-          'text-gray-mid3 opacity-48': isFuture
-        })}
+        className={classNames(
+          'font-bold mt-16 flex items-center justify-between',
+          {
+            'text-gray-mid3 opacity-48': isFuture
+          },
+          {
+            'w-screen laptop:w-auto': slide
+          }
+        )}
         style={{ fontSize: calcRem(50), lineHeight: calcRem(59) }}
       >
         {title}
+        {slide && <Slide className="mr-12 laptop:hidden" />}
       </div>
       <div
         className={classNames('mt-16 -ml-10', {
