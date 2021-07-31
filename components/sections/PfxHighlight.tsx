@@ -120,9 +120,14 @@ function Button({ url, className, children }: ButtonProps) {
           line-height: ${calcRem(21.15)};
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 640px) {
           .button {
             max-width: ${calcRem(209)};
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .button {
             height: ${calcRem(78)};
           }
         }

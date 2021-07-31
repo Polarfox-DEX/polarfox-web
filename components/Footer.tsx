@@ -41,7 +41,7 @@ export function Footer({ className }: FooterProps) {
               }
             `}</style>
           </h2>
-          <div className="flex justify-between space-x-1 desktop:space-x-5 my-12 desktop:my-0">
+          <div className="flex justify-between tablet:justify-center space-x-1 tablet:space-x-16 desktop:space-x-5 my-12 desktop:my-0">
             <TelegramButton />
             <GitHubButton />
             <MediumButton />
@@ -56,7 +56,6 @@ export function Footer({ className }: FooterProps) {
         </div>
       </div>
       <SiteMap />
-      {/* TODO: Make the fox bigger for mobile */}
       <div
         className="bg-no-repeat flex justify-center items-center bg-bottom-24 desktop:bg-top bg-contain desktop:bg-cover w-full h-full pt-28"
         style={{ backgroundImage: `url('${'/background/fox.jpg'}')` }}

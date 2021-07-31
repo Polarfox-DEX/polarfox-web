@@ -22,10 +22,7 @@ export function FaqPreview({ className }: SectionProps) {
         <SectionButton href="/faq">More questions</SectionButton>
       </div>
 
-      <div
-        className="divide-y divide-gray-light mt-16 desktop:mt-0"
-        style={{ width: calcRem(680) }}
-      >
+      <div className="divide-y divide-gray-light mt-16 desktop:mt-0">
         <Question question="What is Polarfox?" isOpenDefault>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps

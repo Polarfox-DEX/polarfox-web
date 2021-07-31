@@ -28,7 +28,7 @@ export function SectionButton({
             height: ${calcRem(44)};
           }
 
-          @media (min-width: 1200px) {
+          @media (min-width: 640px) {
             .section-button {
               max-width: ${calcRem(166)};
             }
