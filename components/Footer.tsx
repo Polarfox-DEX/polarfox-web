@@ -57,8 +57,8 @@ export function Footer({ className }: FooterProps) {
       </div>
       <SiteMap />
       <div
-        className="bg-no-repeat flex justify-center items-center bg-bottom-24 desktop:bg-top bg-contain desktop:bg-cover w-full h-full pt-28"
-        style={{ backgroundImage: `url('${'/background/fox.jpg'}')` }}
+        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full mt-28"
+        style={{ backgroundImage: `url('${'/background/fox.png'}')` }}
       >
         <div
           className="container text-sm flex-1 text-gray"
@@ -81,7 +81,7 @@ export function Footer({ className }: FooterProps) {
           <p className="w-72">
             <b>Disclaimer</b>
             <br />
-            The Polarfox team works hard every day to make sure you get the best
+            The Polarfox team works around the clock to make sure you get the best
             possible return on your investment.
           </p>
           <p className="w-72 mt-5">
