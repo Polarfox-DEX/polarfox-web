@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Page>
       <PfxHighlight />
-      <PfxStatements className="desktop:mt-16" />
+      <PfxStatements className="mt-64 desktop:mt-16" />
       <PfxFigures className="mt-22 desktop:mt-44" />
       <PfxTokenObjectives className="mt-22 desktop:mt-44" />
       <Products className="mt-22 desktop:mt-44" />

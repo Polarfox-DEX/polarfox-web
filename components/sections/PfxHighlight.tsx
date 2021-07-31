@@ -20,20 +20,20 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
       <div
         className={classNames(
           'container flex flex-wrap flex-col items-center',
-          { 'mt-32': isFoxSleeping },
+          { 'mt-56 desktop:mt-32': isFoxSleeping },
           className
         )}
       >
         {isFoxSleeping && (
-          <div className="flex items-center space-x-60">
-            <SleepingFox className="opacity-0" />
+          <div className="flex items-end space-x-8 desktop:space-x-60">
+            <SleepingFox className="w-14 desktop:w-32 opacity-0" />
             <h1
               className="title text-center font-switzer font-semibold"
               style={{ maxWidth: calcRem(880) }}
             >
               Pssst.
             </h1>
-            <SleepingFox />
+            <SleepingFox className="w-14 desktop:w-32 pt-14 desktop:pt-0" />
           </div>
         )}
         <h1
@@ -53,14 +53,13 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
           @media (min-width: 1200px) {
             .title {
               font-size: ${calcRem(70)};
-              line-height: ${calcRem(isFoxSleeping ? 8 : 90)};
+              line-height: ${calcRem(90)};
             }
           }
         `}</style>
         <div
           className={classNames(
-            'flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24',
-            { 'mt-32': isFoxSleeping }
+            'flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24'
           )}
         >
           <Button
@@ -81,12 +80,12 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
       </div>
       {isFoxSleeping && (
         <div
-          className="container flex justify-between mt-28 items-center"
+          className="container flex flex-col desktop:flex-row justify-between mt-48 desktop:mt-28 items-center space-y-8 desktop:space-y-0"
           style={{ fontSize: calcRem(18), lineHeight: calcRem(32) }}
         >
           <div>
-            <p>Come back in late summer.</p>
-            <p>The fox will wake to hunt!</p>
+            <p className="text">Come back in late summer.</p>
+            <p className="text">The fox will wake to hunt!</p>
           </div>
           <SocialMediaLinks />
         </div>
