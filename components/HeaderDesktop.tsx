@@ -39,7 +39,9 @@ export function HeaderDesktop({ className }: SectionProps) {
         <Link href="/about">
           <a>About</a>
         </Link>
-        <div>Roadmap</div>
+        <Link href="/#roadmap">
+          <a>Roadmap</a>
+        </Link>
         <Link href="/faq">
           <a>FAQ</a>
         </Link>

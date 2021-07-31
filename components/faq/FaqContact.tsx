@@ -23,14 +23,15 @@ export function FaqContact({ className }: SectionProps) {
       <p className="mt-12 text-gray">
         No problem, feel free to contact us directly or ask in our community
         channels on Telegram or Twitter.
-        {/* TODO: Add some links */}
       </p>
       <button
-        className="mt-12 rounded-full border border-blue bg-white font-semibold"
+        className="mt-12 rounded-full border border-blue bg-white font-semibold hover:bg-blue hover:text-white"
         style={{ width: calcRem(166), height: calcRem(44) }}
       >
-        <Link href="/faq">
-          <a>Contact us</a>
+        <Link href="https://t.me/polarfoxdex">
+          <a target="_blank" rel="noopener noreferrer">
+            Contact us
+          </a>
         </Link>
       </button>
     </div>

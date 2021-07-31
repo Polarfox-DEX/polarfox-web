@@ -35,7 +35,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
           </SectionButton>
         </div>
 
-        <div className="mt-16 flex flex-col justify-center items-center tablet:flex-1 tablet:flex-row-reverse desktop:mt-0 desktop:justify-between">
+        <div className="mt-16 flex flex-col justify-center items-center tablet:flex-1 tablet:flex-row-reverse desktop:mt-0 desktop:justify-between uppercase">
           <img
             src="/pfx-token-distribution.svg"
             width="386"

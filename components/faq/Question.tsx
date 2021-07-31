@@ -1,15 +1,17 @@
-import { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { calcRem } from '../../utils/styles'
 
 interface QuestionProps {
   question: string
-  isOpen: boolean
+  isOpenDefault?: boolean
   children: ReactNode
 }
 
-export function Question({ question, isOpen, children }: QuestionProps) {
+export function Question({ question, isOpenDefault, children }: QuestionProps) {
+  const [isOpen, setIsOpen] = useState(isOpenDefault ?? false)
+
   return (
-    <div>
+    <div className="question">
       <h3
         className={'flex justify-between py-3 font-bold'}
         style={{
@@ -18,14 +20,27 @@ export function Question({ question, isOpen, children }: QuestionProps) {
         }}
       >
         {question}
-        <div className="pl-3">{isOpen ? '-' : '+'}</div>
-        {/* TODO: Make this a button (or two distinct buttons that have the same effect) */}
+        <button
+          className="pl-3"
+          onClick={() => {
+            setIsOpen(!isOpen)
+          }}
+        >
+          {isOpen ? '-' : '+'}
+        </button>
       </h3>
       {isOpen && (
         <p className="mt-3 mb-8 text-gray" style={{ lineHeight: calcRem(30) }}>
           {children}
         </p>
       )}
+      <style jsx>{`
+        @media (min-width: 1200px) {
+          .question {
+            width: ${calcRem(780)};
+          }
+        }
+      `}</style>
     </div>
   )
 }

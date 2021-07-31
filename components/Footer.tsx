@@ -6,6 +6,8 @@ import GitHub from './svg/Github'
 import Medium from './svg/Medium'
 import Telegram from './svg/Telegram'
 import Twitter from './svg/Twitter'
+import { SiteMapLink } from './utils/SiteMapLink'
+import { SocialMediaLinks } from './utils/SocialMediaLinks'
 
 interface FooterProps {
   className?: string
@@ -39,7 +41,7 @@ export function Footer({ className }: FooterProps) {
               }
             `}</style>
           </h2>
-          <div className="flex justify-between space-x-1 desktop:space-x-5 my-12 desktop:my-0">
+          <div className="flex justify-between tablet:justify-center space-x-1 tablet:space-x-16 desktop:space-x-5 my-12 desktop:my-0">
             <TelegramButton />
             <GitHubButton />
             <MediumButton />
@@ -54,11 +56,11 @@ export function Footer({ className }: FooterProps) {
         </div>
       </div>
       <SiteMap />
-      {/* TODO: Make the fox bigger for mobile */}
       <div
-        className="bg-no-repeat flex justify-center items-center bg-bottom-24 desktop:bg-top bg-contain desktop:bg-cover w-full h-full pt-28"
-        style={{ backgroundImage: `url('${'/background/fox.jpg'}')` }}
+        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full min-h-screen mt-20 tablet:mt-0"
+        style={{ backgroundImage: `url('${'/background/fox.png'}')` }}
       >
+        {/* TODO: Remove double div */}
         <div
           className="container text-sm flex-1 text-gray"
           style={{
@@ -74,18 +76,13 @@ export function Footer({ className }: FooterProps) {
             >
               © 2021 Polarfox ltd.
             </p>
-            <div className="flex space-x-6 items">
-              <Telegram width={calcRem(24.29)} height={calcRem(20)} />
-              <GitHub width={calcRem(20.51)} height={calcRem(20)} />
-              <Medium width={calcRem(35.22)} height={calcRem(20)} />
-              <Twitter width={calcRem(24.29)} height={calcRem(20)} />
-            </div>
+            <SocialMediaLinks />
           </div>
 
           <p className="w-72">
             <b>Disclaimer</b>
             <br />
-            The Polarfox team works hard every day to make sure you get the best
+            The Polarfox team works around the clock to make sure you get the best
             possible return on your investment.
           </p>
           <p className="w-72 mt-5">
@@ -100,7 +97,7 @@ export function Footer({ className }: FooterProps) {
 
 function TelegramButton() {
   return (
-    <SocialButton url="">
+    <SocialButton url="https://t.me/polarfoxdex">
       <Telegram
         width={calcRem(24.62)}
         height={calcRem(20.51)}
@@ -112,7 +109,7 @@ function TelegramButton() {
 
 function GitHubButton() {
   return (
-    <SocialButton url="">
+    <SocialButton url="https://github.com/Polarfox-DEX">
       <GitHub
         width={calcRem(21.03)}
         height={calcRem(20.51)}
@@ -124,7 +121,7 @@ function GitHubButton() {
 
 function MediumButton() {
   return (
-    <SocialButton url="">
+    <SocialButton url="https://medium.com/polarfoxdex">
       <Medium
         width={calcRem(36.12)}
         height={calcRem(20.51)}
@@ -136,7 +133,7 @@ function MediumButton() {
 
 function TwitterButton() {
   return (
-    <SocialButton url="">
+    <SocialButton url="https://twitter.com/polarfoxdex">
       <Twitter
         width={calcRem(24.91)}
         height={calcRem(20.51)}
@@ -186,31 +183,31 @@ function SiteMap() {
       <SiteMapSection>
         <SiteMapSectionTitle>About</SiteMapSectionTitle>
         <br />
-        <SiteMapLink>About us</SiteMapLink>
-        <SiteMapLink>FAQ</SiteMapLink>
-        <SiteMapLink>Roadmap</SiteMapLink>
-        <SiteMapLink>Contact</SiteMapLink>
+        <SiteMapLink url="/about">About us</SiteMapLink>
+        <SiteMapLink url="/faq">FAQ</SiteMapLink>
+        <SiteMapLink url="/#roadmap">Roadmap</SiteMapLink>
+        <SiteMapLink url="https://t.me/polarfoxdex">Contact</SiteMapLink>
       </SiteMapSection>
       <SiteMapSection>
         <SiteMapSectionTitle>Products</SiteMapSectionTitle>
         <br />
-        <SiteMapLink>DEX</SiteMapLink>
-        <SiteMapLink>Polarfox token</SiteMapLink>
-        <SiteMapLink>Polarfox Bridge</SiteMapLink>
-        <SiteMapLink>AKITA Network</SiteMapLink>
+        <SiteMapLink url="">DEX</SiteMapLink>
+        <SiteMapLink url="">Polarfox token</SiteMapLink>
+        <SiteMapLink url="">Polarfox Bridge</SiteMapLink>
+        <SiteMapLink url="">AKITA Network</SiteMapLink>
       </SiteMapSection>
       <SiteMapSection>
         <SiteMapSectionTitle>Legal</SiteMapSectionTitle>
         <br />
-        <SiteMapLink>Privacy</SiteMapLink>
-        <SiteMapLink>Terms of use</SiteMapLink>
+        <SiteMapLink url="">Privacy</SiteMapLink>
+        <SiteMapLink url="">Terms of use</SiteMapLink>
       </SiteMapSection>
       <SiteMapSection>
         <SiteMapSectionTitle>Resources</SiteMapSectionTitle>
         <br />
-        <SiteMapLink>Blog</SiteMapLink>
-        <SiteMapLink>Litepaper</SiteMapLink>
-        <SiteMapLink>Tutorials</SiteMapLink>
+        <SiteMapLink url="">Blog</SiteMapLink>
+        <SiteMapLink url="">Litepaper</SiteMapLink>
+        <SiteMapLink url="/tutorials">Tutorials</SiteMapLink>
       </SiteMapSection>
     </div>
   )
@@ -222,19 +219,6 @@ interface SiteMapSectionProps {
 
 function SiteMapSection({ children }: SiteMapSectionProps) {
   return <div className="flex flex-col">{children}</div>
-}
-
-interface SiteMapLinkProps {
-  url?: string // TODO Make it mandatory
-  children: ReactText
-}
-
-function SiteMapLink({ url, children }: SiteMapLinkProps) {
-  return (
-    <a className="hover:underline text-gray" href={url}>
-      {children}
-    </a>
-  )
 }
 
 interface SiteMapSectionTitleProps {

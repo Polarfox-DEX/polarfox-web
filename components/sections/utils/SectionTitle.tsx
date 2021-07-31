@@ -14,7 +14,6 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
         'section-title font-switzer font-semibold',
         className
       )}
-      style={{ maxWidth: calcRem(357) }}
     >
       {children}
       <style jsx>{`
@@ -27,6 +26,7 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
           .section-title {
             font-size: ${calcRem(50)};
             line-height: ${calcRem(65)};
+            max-width: ${calcRem(357)};
           }
         }
       `}</style>
