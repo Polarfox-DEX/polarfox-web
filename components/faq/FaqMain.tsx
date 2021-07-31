@@ -4,6 +4,7 @@ import { FaqContact } from './FaqContact'
 import { FaqPolarfox } from './FaqPolarfox'
 import { FaqPfxToken } from './FaqPfxToken'
 import { FaqAkitaInu } from './FaqAkitaInu'
+import { FaqAvalanche } from './FaqAvalanche'
 import { SectionProps } from '../sections/utils/SectionProps'
 import React, { useState } from 'react'
 
@@ -33,6 +34,11 @@ export function FaqMain({ className }: SectionProps) {
         <FaqPfxToken
           className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
             hidden: selectedFaq !== 'PFX_TOKEN'
+          })}
+        />
+        <FaqAvalanche
+          className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
+            hidden: selectedFaq !== 'AVALANCHE'
           })}
         />
         <FaqAkitaInu
