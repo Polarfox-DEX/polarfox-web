@@ -15,26 +15,25 @@ export function TutorialPage({ slug }: TutorialPageProps) {
   const defaultTutorial: TutorialClass = new TutorialClass()
 
   const [selectedTutorial, setSelectedTutorial] = useState(defaultTutorial)
+  const [hasLooked, setHasLooked] = useState(false)
 
   useEffect(() => {
-    const tuto = tutorials.find((t) => {
-      return t.slug === slug
-    })
+    if (slug !== '') {
+      const tuto = tutorials.find((t) => {
+        return t.slug === slug
+      })
+  
+      if (tuto != undefined) {
+        setSelectedTutorial(tuto)
+      }
 
-    if (tuto != undefined) {
-      setSelectedTutorial(tuto)
+      setHasLooked(true)
     }
   }, [slug])
 
-  // Desired behavior:
-  // 1 --> while it's loading: display an empty page
-  // 2 --> after it's done loading, if it found something: display it
-  // 3 --> after it's done loading, if it didn't find anything: display 404
-
-  // TODO: condition does not work
   if (selectedTutorial.name !== '') {
     return (
-      <div className="container mt-32">
+      <div className="container mt-32 min-h-screen">
         <header className="container">
           <div
             className="opacity-50"
@@ -92,6 +91,8 @@ export function TutorialPage({ slug }: TutorialPageProps) {
         </header>
       </div>
     )
+  } else if (!hasLooked) {
+    return <div className="min-h-screen" />
   } else {
     return (
       <div className="container mt-32 pt-64">
@@ -103,7 +104,7 @@ export function TutorialPage({ slug }: TutorialPageProps) {
             fontWeight: 'bold'
           }}
         >
-          404 - Tutorials not found{' '}
+          404 - Tutorial not found
         </div>
       </div>
     )
