@@ -1,7 +1,7 @@
-import { TutorialInterface } from './utils/TutorialInterface'
+import { TutorialClass } from './utils/TutorialClass'
 import { calcRem } from '../../utils/styles'
 
-export function TutorialsTile(props: { tutorial: TutorialInterface }) {
+export function TutorialsTile(props: { tutorial: TutorialClass }) {
   return (
     <a
       className="pt-4 pr-4 pb-4 tile tutorial-tile"
@@ -9,7 +9,7 @@ export function TutorialsTile(props: { tutorial: TutorialInterface }) {
         fontSize: calcRem(16),
         fontWeight: 'bolder'
       }}
-      href={'tutorial/' + props.tutorial.slug}
+      href={'tutorials/' + props.tutorial.slug}
     >
       <div>
         <div

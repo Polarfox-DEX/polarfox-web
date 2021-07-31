@@ -1,14 +1,17 @@
 import { TutorialTypes } from './TutorialTypesEnum'
-import { TutorialInterface } from './TutorialInterface'
+import { TutorialClass } from './TutorialClass'
 
-export let tutorials: TutorialInterface[] = [
+export let tutorials: TutorialClass[] = [
   {
     slug: 'we-may-loose-countries',
     type: TutorialTypes.BASICS,
     tileImage: 'image1.png',
-    image: '',
+    image: 'tutorial-image.png',
     name: '"We may lose countries entirely" says Ireland\'s former President',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
   {
     slug: 'mission-1-5-inovating-for-climate-change',
@@ -16,7 +19,10 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image2.png',
     image: '',
     name: 'Mission 1.5: Innovating for Climate Change',
-    isVideo: false
+    readingTime: 12,
+    isVideo: false,
+    creationDate: new Date(),
+    creator: "Admin"
   },
   {
     slug: 'the-threat-of-becoming-climate-refugees',
@@ -24,7 +30,10 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image3.png',
     image: '',
     name: 'The threat of becoming climate refugees | Bryant Zebedy',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
   {
     slug: 'climate-sustainability-what-we-can-do-now',
@@ -32,16 +41,21 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image4.png',
     image: '',
     name: 'Climate & Sustainability: What we can do now',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
-
   {
     slug: 'metoo-isn-t-about-sex-it-s-about-power',
     type: TutorialTypes.AKITA_NETWORK,
     tileImage: 'image5.png',
     image: '',
     name: "#MeToo isn't about sex, it's about power",
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
   {
     slug: 'amanda-nguyen-unanimously-passed-the-sexual-assault',
@@ -49,7 +63,10 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image6.png',
     image: '',
     name: "Amanda Nguyen unanimously passed the Sexual Assault Survivors' Bill of rights",
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
 
   {
@@ -58,7 +75,10 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image7.png',
     image: '',
     name: 'How to shape politics through technology | Dylan Kaplan',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   },
   {
     slug: 'twitter-s-founder-on-building-a-business-for-the-future',
@@ -66,6 +86,9 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image8.png',
     image: '',
     name: "Twitter's Founder on building a business for the future | Biz Stone",
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: "Admin"
   }
 ]
