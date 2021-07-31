@@ -1,5 +1,5 @@
 export enum TutorialTypes {
-  BASICS = 'BASICS',
-  AKITA_NETWORK = 'AKITA_NETWORK',
-  PFX_DEV = 'PFX_DEV'
+  BASICS = 'Basics',
+  AKITA_NETWORK = 'Akita Network',
+  PFX_DEV = 'PFX Dev'
 }

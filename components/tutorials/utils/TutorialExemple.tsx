@@ -1,14 +1,18 @@
 import { TutorialTypes } from './TutorialTypesEnum'
-import { TutorialInterface } from './TutorialInterface'
+import { TutorialClass } from './TutorialClass'
 
-export let tutorials: TutorialInterface[] = [
+export let tutorials: TutorialClass[] = [
   {
     slug: 'article-1',
     type: TutorialTypes.BASICS,
     tileImage: 'image1.jpg',
-    image: '',
+    image: 'tutorial-image.png',
     name: 'Article #1',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
   {
     slug: 'article-2',
@@ -16,7 +20,11 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image2.jpg',
     image: '',
     name: 'Article #2',
-    isVideo: false
+    readingTime: 12,
+    isVideo: false,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
   {
     slug: 'article-3',
@@ -24,7 +32,11 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image3.jpg',
     image: '',
     name: 'Article #3',
-    isVideo: true
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
   {
     slug: 'article-4',
@@ -32,24 +44,35 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image4.jpg',
     image: '',
     name: 'Article #4',
-    isVideo: false
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
-
   {
     slug: 'article-5',
     type: TutorialTypes.AKITA_NETWORK,
     tileImage: 'image5.jpg',
     image: '',
-    name: "Article #5",
-    isVideo: false
+    name: 'Article #5',
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
   {
     slug: 'article-6',
     type: TutorialTypes.AKITA_NETWORK,
     tileImage: 'image6.jpg',
     image: '',
-    name: "Article #6",
-    isVideo: true
+    name: 'Article #6',
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
 
   {
@@ -58,14 +81,22 @@ export let tutorials: TutorialInterface[] = [
     tileImage: 'image7.jpg',
     image: '',
     name: 'Article #7',
-    isVideo: false
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   },
   {
     slug: 'article-8',
     type: TutorialTypes.PFX_DEV,
     tileImage: 'image8.jpg',
     image: '',
-    name: "Article #8",
-    isVideo: true
+    name: 'Article #8',
+    readingTime: 12,
+    isVideo: true,
+    creationDate: new Date(),
+    creator: 'Admin',
+    content: 'This is page content'
   }
 ]

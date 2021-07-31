@@ -1,22 +1,18 @@
 import { calcRem } from '../../utils/styles'
-import { TutorialInterface } from './utils/TutorialInterface'
 import { tutorials } from './utils/TutorialExemple'
 import React, { useState, useEffect } from 'react'
-import { TutorialTypes } from './utils/TutorialTypesEnum'
+import { TutorialClass } from './utils/TutorialClass'
+import ErrorPage from 'next/error'
+import context from 'next'
 
 interface TutorialPageProps {
   slug: string
 }
 
 export function TutorialPage({ slug }: TutorialPageProps) {
-  const defaultTutorial = {
-    slug: '',
-    type: TutorialTypes.BASICS,
-    tileImage: '',
-    image: '',
-    name: '',
-    isVideo: false
-  }
+  const { res } = context
+
+  const defaultTutorial: TutorialClass = new TutorialClass()
 
   const [selectedTutorial, setSelectedTutorial] = useState(defaultTutorial)
 
@@ -24,8 +20,6 @@ export function TutorialPage({ slug }: TutorialPageProps) {
     const tuto = tutorials.find((t) => {
       return t.slug === slug
     })
-
-    console.log('Slug', slug)
 
     if (tuto != undefined) {
       setSelectedTutorial(tuto)
@@ -38,7 +32,7 @@ export function TutorialPage({ slug }: TutorialPageProps) {
   // 3 --> after it's done loading, if it didn't find anything: display 404
 
   // TODO: condition does not work
-  if (selectedTutorial != defaultTutorial) {
+  if (selectedTutorial.name !== '') {
     return (
       <div className="container mt-32">
         <header className="container">
@@ -54,7 +48,7 @@ export function TutorialPage({ slug }: TutorialPageProps) {
           </div>
 
           <div
-            className="font-switzer font-semibold mt-1"
+            className="font-switzer font-semibold mt-1 pb-4"
             style={{
               fontSize: calcRem(50),
               lineHeight: calcRem(65)
@@ -62,11 +56,56 @@ export function TutorialPage({ slug }: TutorialPageProps) {
           >
             {selectedTutorial.name}
           </div>
+
+          <div className="container mb-6">
+            <div className="mb-4">
+              <div
+                className="inline mr-8 "
+                style={{
+                  padding: '3px 12px',
+                  backgroundColor: '#001937',
+                  color: 'white',
+                  borderRadius: '20px'
+                }}
+              >
+                {selectedTutorial.type}
+              </div>
+              <span className="font-bold">reading time: </span>{' '}
+              {selectedTutorial.readingTime} minutes
+            </div>
+
+            <div>
+              <span style={{ color: '#1C67FE', fontWeight: 'bold' }}>By </span>
+              <span style={{ color: '#4D6481' }}>
+                {selectedTutorial.creator +
+                  ' on ' +
+                  selectedTutorial.creationDate.toLocaleDateString()}
+              </span>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <img src={selectedTutorial.image} alt="tuturial image" />
+          </div>
+
+          <div>{selectedTutorial.content}</div>
         </header>
       </div>
     )
   } else {
-    console.log('Tutorial not found!')
-    return <div>Tutorial not found!</div>
+    return (
+      <div className="container mt-32 pt-64">
+        <div
+          className="center-center"
+          style={{
+            textAlign: 'center',
+            fontSize: calcRem(30),
+            fontWeight: 'bold'
+          }}
+        >
+          404 - Tutorials not found{' '}
+        </div>
+      </div>
+    )
   }
 }
