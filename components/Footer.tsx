@@ -82,8 +82,8 @@ export function Footer({ className }: FooterProps) {
           <p className="w-72">
             <b>Disclaimer</b>
             <br />
-            The Polarfox team works around the clock to make sure you get the best
-            possible return on your investment.
+            The Polarfox team works around the clock to make sure you get the
+            best possible return on your investment.
           </p>
           <p className="w-72 mt-5">
             However, we are not responsible for any losses on your side. Do your

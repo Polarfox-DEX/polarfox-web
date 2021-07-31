@@ -13,7 +13,7 @@ export function TutorialsHeader({ className }: SectionProps) {
           letterSpacing: calcRem(3)
         }}
       >
-        RESSOURCES
+        RESOURCES
       </div>
 
       <div
@@ -24,7 +24,7 @@ export function TutorialsHeader({ className }: SectionProps) {
           lineHeight: calcRem(65)
         }}
       >
-        TUTORIALS
+        Tutorials
       </div>
     </div>
   )

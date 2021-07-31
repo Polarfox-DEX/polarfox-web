@@ -19,7 +19,7 @@ export function TutorialsPane() {
         <div className="grid grid-cols-4 mb-4">
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.BASICS)
-              return <TutorialsTile tutorial={tuto} />
+              return <TutorialsTile tutorial={tuto} key={tuto.slug} />
           })}
         </div>
       </div>
@@ -39,7 +39,7 @@ export function TutorialsPane() {
           <div className="grid grid-cols-2 mb-4">
             {tutorials.map((tuto) => {
               if (tuto.type == TutorialTypes.AKITA_NETWORK)
-                return <TutorialsTile tutorial={tuto} />
+                return <TutorialsTile tutorial={tuto} key={tuto.slug} />
             })}
           </div>
         </div>
@@ -58,7 +58,7 @@ export function TutorialsPane() {
           <div className="grid grid-cols-2 mb-4">
             {tutorials.map((tuto) => {
               if (tuto.type == TutorialTypes.PFX_DEV)
-                return <TutorialsTile tutorial={tuto} />
+                return <TutorialsTile tutorial={tuto} key={tuto.slug} />
             })}
           </div>
         </div>

@@ -3,69 +3,69 @@ import { TutorialInterface } from './TutorialInterface'
 
 export let tutorials: TutorialInterface[] = [
   {
-    slug: 'we-may-loose-countries',
+    slug: 'article-1',
     type: TutorialTypes.BASICS,
-    tileImage: 'image1.png',
+    tileImage: 'image1.jpg',
     image: '',
-    name: '"We may lose countries entirely" says Ireland\'s former President',
+    name: 'Article #1',
     isVideo: true
   },
   {
-    slug: 'mission-1-5-inovating-for-climate-change',
+    slug: 'article-2',
     type: TutorialTypes.BASICS,
-    tileImage: 'image2.png',
+    tileImage: 'image2.jpg',
     image: '',
-    name: 'Mission 1.5: Innovating for Climate Change',
+    name: 'Article #2',
     isVideo: false
   },
   {
-    slug: 'the-threat-of-becoming-climate-refugees',
+    slug: 'article-3',
     type: TutorialTypes.BASICS,
-    tileImage: 'image3.png',
+    tileImage: 'image3.jpg',
     image: '',
-    name: 'The threat of becoming climate refugees | Bryant Zebedy',
+    name: 'Article #3',
     isVideo: true
   },
   {
-    slug: 'climate-sustainability-what-we-can-do-now',
+    slug: 'article-4',
     type: TutorialTypes.BASICS,
-    tileImage: 'image4.png',
+    tileImage: 'image4.jpg',
     image: '',
-    name: 'Climate & Sustainability: What we can do now',
+    name: 'Article #4',
+    isVideo: false
+  },
+
+  {
+    slug: 'article-5',
+    type: TutorialTypes.AKITA_NETWORK,
+    tileImage: 'image5.jpg',
+    image: '',
+    name: "Article #5",
+    isVideo: false
+  },
+  {
+    slug: 'article-6',
+    type: TutorialTypes.AKITA_NETWORK,
+    tileImage: 'image6.jpg',
+    image: '',
+    name: "Article #6",
     isVideo: true
   },
 
   {
-    slug: 'metoo-isn-t-about-sex-it-s-about-power',
-    type: TutorialTypes.AKITA_NETWORK,
-    tileImage: 'image5.png',
-    image: '',
-    name: "#MeToo isn't about sex, it's about power",
-    isVideo: true
-  },
-  {
-    slug: 'amanda-nguyen-unanimously-passed-the-sexual-assault',
-    type: TutorialTypes.AKITA_NETWORK,
-    tileImage: 'image6.png',
-    image: '',
-    name: "Amanda Nguyen unanimously passed the Sexual Assault Survivors' Bill of rights",
-    isVideo: true
-  },
-
-  {
-    slug: 'how-to-shape-politics-through-technology',
+    slug: 'article-7',
     type: TutorialTypes.PFX_DEV,
-    tileImage: 'image7.png',
+    tileImage: 'image7.jpg',
     image: '',
-    name: 'How to shape politics through technology | Dylan Kaplan',
-    isVideo: true
+    name: 'Article #7',
+    isVideo: false
   },
   {
-    slug: 'twitter-s-founder-on-building-a-business-for-the-future',
+    slug: 'article-8',
     type: TutorialTypes.PFX_DEV,
-    tileImage: 'image8.png',
+    tileImage: 'image8.jpg',
     image: '',
-    name: "Twitter's Founder on building a business for the future | Biz Stone",
+    name: "Article #8",
     isVideo: true
   }
 ]
