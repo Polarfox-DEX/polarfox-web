@@ -2,12 +2,16 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { calcRem } from '../../utils/styles'
 import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { SocialMediaLinks } from '../utils/SocialMediaLinks'
+import SleepingFox from '../svg/SleepingFox'
 
 interface PfxHighlightsProps {
   className?: string
 }
 
 export function PfxHighlight({ className }: PfxHighlightsProps) {
+  const isFoxSleeping = true
+
   return (
     <WithBackgroundImage
       className="bg-right-bottom desktop:bg-left-bottom w-full min-h-screen h-screen"
@@ -16,43 +20,77 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
       <div
         className={classNames(
           'container flex flex-wrap flex-col items-center',
+          { 'mt-32': isFoxSleeping },
           className
         )}
       >
+        {isFoxSleeping && (
+          <div className="flex items-center space-x-60">
+            <SleepingFox className="opacity-0" />
+            <h1
+              className="title text-center font-switzer font-semibold"
+              style={{ maxWidth: calcRem(880) }}
+            >
+              Pssst.
+            </h1>
+            <SleepingFox />
+          </div>
+        )}
         <h1
           className="title text-center font-switzer font-semibold"
           style={{ maxWidth: calcRem(880) }}
         >
-          Decentralized ecosystem of applications
-          <style jsx>{`
-            .title {
-              font-size: ${calcRem(40)};
-              line-height: ${calcRem(52.8)};
-            }
-
-            @media (min-width: 1200px) {
-              .title {
-                font-size: ${calcRem(70)};
-                line-height: ${calcRem(90)};
-              }
-            }
-          `}</style>
+          {isFoxSleeping
+            ? 'The fox is still sleeping.'
+            : 'Decentralized ecosystem of applications'}
         </h1>
-        <div className="flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24">
+        <style jsx>{`
+          .title {
+            font-size: ${calcRem(40)};
+            line-height: ${calcRem(52.8)};
+          }
+
+          @media (min-width: 1200px) {
+            .title {
+              font-size: ${calcRem(70)};
+              line-height: ${calcRem(isFoxSleeping ? 8 : 90)};
+            }
+          }
+        `}</style>
+        <div
+          className={classNames(
+            'flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24',
+            { 'mt-32': isFoxSleeping }
+          )}
+        >
           <Button
             url="/Polarfox Litepaper V2.6.pdf"
             className="border border-blue bg-white hover:bg-blue-light hover:text-white hover:opacity-80"
           >
             Litepaper
           </Button>
-          <Button
-            url="https://dex-test.polarfox.io/"
-            className="text-white bg-blue hover:bg-blue-light"
-          >
-            Open DEX
-          </Button>
+          {!isFoxSleeping && (
+            <Button
+              url="https://dex-test.polarfox.io/"
+              className="text-white bg-blue hover:bg-blue-light"
+            >
+              Open DEX
+            </Button>
+          )}
         </div>
       </div>
+      {isFoxSleeping && (
+        <div
+          className="container flex justify-between mt-28 items-center"
+          style={{ fontSize: calcRem(18), lineHeight: calcRem(32) }}
+        >
+          <div>
+            <p>Come back in late summer.</p>
+            <p>The fox will wake to hunt!</p>
+          </div>
+          <SocialMediaLinks />
+        </div>
+      )}
     </WithBackgroundImage>
   )
 }
