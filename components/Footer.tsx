@@ -57,9 +57,10 @@ export function Footer({ className }: FooterProps) {
       </div>
       <SiteMap />
       <div
-        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full mt-28"
+        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full min-h-screen mt-20 tablet:mt-0"
         style={{ backgroundImage: `url('${'/background/fox.png'}')` }}
       >
+        {/* TODO: Remove double div */}
         <div
           className="container text-sm flex-1 text-gray"
           style={{
