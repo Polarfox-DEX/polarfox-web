@@ -10,6 +10,7 @@ export class TutorialClass {
   readingTime: number;
   creationDate: Date;
   creator: string;
+  content: string;
 
   constructor(){
 
@@ -22,6 +23,7 @@ export class TutorialClass {
     this.readingTime = 12;
     this.creationDate = new Date();
     this.creator = "Admin";
+    this.content = "this is page content";
     
   }
 }

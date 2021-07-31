@@ -11,7 +11,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'mission-1-5-inovating-for-climate-change',
@@ -22,7 +23,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: false,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'the-threat-of-becoming-climate-refugees',
@@ -33,7 +35,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'climate-sustainability-what-we-can-do-now',
@@ -44,7 +47,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'metoo-isn-t-about-sex-it-s-about-power',
@@ -55,7 +59,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'amanda-nguyen-unanimously-passed-the-sexual-assault',
@@ -66,7 +71,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
 
   {
@@ -78,7 +84,8 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   },
   {
     slug: 'twitter-s-founder-on-building-a-business-for-the-future',
@@ -89,6 +96,7 @@ export let tutorials: TutorialClass[] = [
     readingTime: 12,
     isVideo: true,
     creationDate: new Date(),
-    creator: "Admin"
+    creator: "Admin",
+    content: "This is page content"
   }
 ]

@@ -84,13 +84,17 @@ export function TutorialPage({ slug }: TutorialPageProps) {
           </div>
 
           
-          <div>
+          <div className="mb-8">
 
             <img 
             src={selectedTutorial.image}
             alt="tuturial image"
             />
 
+          </div>
+
+          <div>
+            {selectedTutorial.content}
           </div>
 
         </header>
