@@ -11,7 +11,7 @@ export function Question({ question, isOpenDefault, children }: QuestionProps) {
   const [isOpen, setIsOpen] = useState(isOpenDefault ?? false)
 
   return (
-    <div className="question">
+    <div>
       <h3
         className={'flex justify-between py-3 font-bold'}
         style={{
@@ -34,13 +34,6 @@ export function Question({ question, isOpenDefault, children }: QuestionProps) {
           {children}
         </p>
       )}
-      <style jsx>{`
-        @media (min-width: 1200px) {
-          .question {
-            width: ${calcRem(780)};
-          }
-        }
-      `}</style>
     </div>
   )
 }

@@ -18,7 +18,7 @@ export function Footer({ className }: FooterProps) {
     <>
       <WithBackgroundImage
         className={classNames(
-          'bg-left-top bg-contain w-full h-screen min-h-screen',
+          'bg-left-top bg-contain w-full h-screen min-h-screen desktop:px-4',
           className
         )}
         imageUrl="/background/forest-3.jpg"
@@ -50,14 +50,14 @@ export function Footer({ className }: FooterProps) {
         </div>
       </WithBackgroundImage>
       {/* TODO: Remove double div */}
-      <div className="container">
+      <div className="container desktop:px-4">
         <div className="py-16 mt-4 desktop:py-20 border-t-2 border-blue">
           <img src="/logo/polarfox.png" alt="Polarfox logo" />
         </div>
       </div>
       <SiteMap />
       <div
-        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full min-h-screen mt-20 tablet:mt-0"
+        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full min-h-screen mt-20 tablet:mt-0 desktop:px-4"
         style={{ backgroundImage: `url('${'/background/fox.png'}')` }}
       >
         {/* TODO: Remove double div */}
@@ -177,7 +177,7 @@ function SocialButton({ url, children }: SocialButtonProps) {
 function SiteMap() {
   return (
     <div
-      className="container grid gap-y-16 grid-cols-2 desktop:flex desktop:justify-between"
+      className="container grid gap-y-16 grid-cols-2 desktop:flex desktop:justify-between desktop:px-4"
       style={{ fontSize: '13px', lineHeight: '33px' }}
     >
       <SiteMapSection>

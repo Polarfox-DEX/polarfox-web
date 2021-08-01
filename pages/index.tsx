@@ -11,7 +11,11 @@ import { WithBackgroundImageNew } from '../components/utils/WithBackgroundImage'
 export default function Home() {
   return (
     <Page>
-      <WithBackgroundImageNew imageUrl="/background/forest-1.jpg">
+      <WithBackgroundImageNew
+        imageUrl="/background/forest-1.jpg"
+        imageWidth={1440}
+        imageHeight={821}
+      >
         <PfxHighlight />
         <PfxStatements />
         <PfxFigures className="mt-22 desktop:mt-44" />

@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
-import { WithBackgroundImageNew } from '../utils/WithBackgroundImage'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionProps } from './utils/SectionProps'
 
