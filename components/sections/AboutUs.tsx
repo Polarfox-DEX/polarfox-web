@@ -1,18 +1,14 @@
 import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
-import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { WithBackgroundImageNew } from '../utils/WithBackgroundImage'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionProps } from './utils/SectionProps'
 
 export function AboutUs({ className }: SectionProps) {
   return (
-    <WithBackgroundImage
-      className="bg-right-bottom tablet:bg-left-bottom w-full min-h-screen tablet:h-full"
-      imageUrl="/background/forest-1.jpg"
-    >
       <div
         className={classNames(
-          'container flex flex-wrap justify-between desktop:items-baseline gap-x-16',
+          'container flex flex-wrap tablet:flex-nowrap tablet:flex-auto tablet:justify-center tablet:items-baseline tablet:gap-x-12 laptop:gap-x-16',
           className
         )}
       >
@@ -36,6 +32,20 @@ export function AboutUs({ className }: SectionProps) {
               line-height: ${calcRem(32)};
             }
 
+            @media (min-width: 640px) {
+              .text {
+                max-width: ${calcRem(500)};
+              }
+            }
+
+            @media (min-width: 1024px) {
+              .text {
+                max-width: ${calcRem(645)};
+                font-size: ${calcRem(26)};
+                line-height: ${calcRem(46)};
+              }
+            }
+
             @media (min-width: 1200px) {
               .text {
                 max-width: ${calcRem(745)};
@@ -46,6 +56,5 @@ export function AboutUs({ className }: SectionProps) {
           `}</style>
         </div>
       </div>
-    </WithBackgroundImage>
   )
 }

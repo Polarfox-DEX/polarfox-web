@@ -24,3 +24,21 @@ export function WithBackgroundImage({
     </div>
   )
 }
+
+export function WithBackgroundImageNew({
+  imageUrl,
+  children,
+  className
+}: WithBackGroundImageProps) {
+  return (
+    <div
+      className={classNames(
+        'bg-no-repeat flex flex-col tablet:items-center w-full',
+        className
+      )}
+      style={{ backgroundImage: `url('${imageUrl}')` }}
+    >
+      {children}
+    </div>
+  )
+}
