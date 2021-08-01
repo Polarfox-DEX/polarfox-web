@@ -4,7 +4,7 @@ import { calcRem } from '../../utils/styles'
 export function TutorialsTile(props: { tutorial: TutorialClass }) {
   return (
     <a
-      className="pt-4 pr-4 pb-4 tile tutorial-tile"
+      className="py-4 tile hover:opacity-50"
       style={{
         fontSize: calcRem(16),
         fontWeight: 'bolder'
@@ -13,13 +13,11 @@ export function TutorialsTile(props: { tutorial: TutorialClass }) {
     >
       <div>
         <div
+        className="relative bg-center bg-cover"
           style={{
-            position: 'relative',
             backgroundImage: 'url(tutorials/' + props.tutorial.tileImage + ')',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            width: 280,
-            height: 170
+            width: calcRem(280),
+            height: calcRem(170)
           }}
         >
           {props.tutorial.isVideo && (

@@ -8,7 +8,7 @@ export default function Tutorial() {
 
   return (
     <Page>
-      <TutorialPage slug={slug} />
+      <TutorialPage slug={slug} className="mt-32" />
     </Page>
   )
 }

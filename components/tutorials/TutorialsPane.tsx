@@ -1,22 +1,24 @@
 import { TutorialsTile } from './TutorialsTile'
 import { TutorialTypes } from './utils/TutorialTypesEnum'
 import { tutorials } from './utils/TutorialExemple'
+import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
+import classNames from 'classnames'
 
-export function TutorialsPane() {
+export function TutorialsPane({ className }: SectionProps) {
   return (
     <div>
       <div>
         <div
-          className="mt-10 border-b-4 border-tutorials_tile pb-8"
+          className={classNames("border-b-4 border-tutorials_tile pb-8 font-bold", className)}
           style={{
-            fontSize: 12,
-            fontWeight: 'bold'
+            fontSize: calcRem(12)
           }}
         >
           BASICS
         </div>
 
-        <div className="grid grid-cols-4 mb-4">
+        <div className="grid grid-cols-4 mb-4 gap-x-4">
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.BASICS)
               return <TutorialsTile tutorial={tuto} key={tuto.slug} />
@@ -27,7 +29,7 @@ export function TutorialsPane() {
       <div className="grid grid-cols-2">
         <div>
           <div
-            className="mt-10 mr-10 border-b-4 border-tutorials_tile pb-8"
+            className="mt-10 mr-10 border-b-4 pb-8"
             style={{
               fontSize: 12,
               fontWeight: 'bold'

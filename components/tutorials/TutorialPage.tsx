@@ -2,15 +2,12 @@ import { calcRem } from '../../utils/styles'
 import { tutorials } from './utils/TutorialExemple'
 import React, { useState, useEffect } from 'react'
 import { TutorialClass } from './utils/TutorialClass'
-import ErrorPage from 'next/error'
-import context from 'next'
+import { SectionProps } from '../sections/utils/SectionProps'
+import classNames from 'classnames'
 
-interface TutorialPageProps {
-  slug: string
-}
+export function TutorialPage({slug, className} : any) {
 
-export function TutorialPage({ slug }: TutorialPageProps) {
-  const { res } = context
+  console.log(slug)
 
   const defaultTutorial: TutorialClass = new TutorialClass()
 
@@ -33,8 +30,7 @@ export function TutorialPage({ slug }: TutorialPageProps) {
 
   if (selectedTutorial.name !== '') {
     return (
-      <div className="container mt-32 min-h-screen">
-        <header className="container">
+      <div className={classNames("container min-h-screen",className)}>
           <div
             className="opacity-50"
             style={{
@@ -56,15 +52,12 @@ export function TutorialPage({ slug }: TutorialPageProps) {
             {selectedTutorial.name}
           </div>
 
-          <div className="container mb-6">
+          <div className="container mb-6 text-white">
             <div className="mb-4">
               <div
-                className="inline mr-8 "
+                className="inline mr-8 px-3 py-1 bg-blue rounded-2x1    "
                 style={{
-                  padding: '3px 12px',
-                  backgroundColor: '#001937',
-                  color: 'white',
-                  borderRadius: '20px'
+                  borderRadius: calcRem(20)
                 }}
               >
                 {selectedTutorial.type}
@@ -74,38 +67,32 @@ export function TutorialPage({ slug }: TutorialPageProps) {
             </div>
 
             <div>
-              <span style={{ color: '#1C67FE', fontWeight: 'bold' }}>By </span>
-              <span style={{ color: '#4D6481' }}>
-                {selectedTutorial.creator +
-                  ' on ' +
-                  selectedTutorial.creationDate.toLocaleDateString()}
+              <span className="text-blue-light font-bold" >By {selectedTutorial.creator} </span>
+              <span className="text-blue-tutorial">
+                  {'on ' + selectedTutorial.creationDate.toLocaleDateString()}
               </span>
             </div>
           </div>
 
           <div className="mb-8">
-            <img src={selectedTutorial.image} alt="tuturial image" />
+            <img src={selectedTutorial.image} alt="image" />
           </div>
 
-          <div>{selectedTutorial.content}</div>
-        </header>
+          {selectedTutorial.content}
       </div>
     )
   } else if (!hasLooked) {
     return <div className="min-h-screen" />
   } else {
     return (
-      <div className="container mt-32 pt-64">
-        <div
-          className="center-center"
-          style={{
-            textAlign: 'center',
-            fontSize: calcRem(30),
-            fontWeight: 'bold'
-          }}
-        >
+      <div 
+        className="container mt-32 pt-64 center-center" 
+        style={{
+          textAlign: 'center',
+          fontSize: calcRem(30),
+          fontWeight: 'bold'
+        }}>
           404 - Tutorial not found
-        </div>
       </div>
     )
   }

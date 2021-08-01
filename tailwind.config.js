@@ -26,8 +26,8 @@ module.exports = {
       blue: {
         light: '#1C67FE',
         gray: "#142B47",
-        tutorials_tile: "#001937",
-        DEFAULT: '#001937'
+        DEFAULT: '#001937',
+        tutorial: '#4D6481'
       },
       gray: {
         light: '#D8D8D8',
@@ -37,7 +37,7 @@ module.exports = {
         dark: '#F4F6F9',
         DEFAULT: '#4D6481'
       },
-      white: colors.white
+      white: colors.white,
     },
     backgroundPosition: {
       center: 'center',

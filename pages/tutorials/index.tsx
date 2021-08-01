@@ -5,10 +5,8 @@ import { TutorialsHeader } from '../../components/tutorials/TutorialsHeader'
 export default function Tutorials() {
   return (
     <Page>
-      <div className="container mt-32">
-        <TutorialsHeader />
-        <TutorialsPane />
-      </div>
+        <TutorialsHeader className="container mt-32"/>
+        <TutorialsPane className="mt-10" />
     </Page>
   )
 }
