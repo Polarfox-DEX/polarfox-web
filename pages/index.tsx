@@ -6,17 +6,20 @@ import { PfxStatements } from '../components/sections/PfxStatements'
 import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives'
 import { Products } from '../components/sections/Products'
 import { Roadmap } from '../components/sections/Roadmap'
+import { WithBackgroundImageNew } from '../components/utils/WithBackgroundImage'
 
 export default function Home() {
   return (
     <Page>
-      <PfxHighlight />
-      <PfxStatements className="mt-64 desktop:mt-16" />
-      <PfxFigures className="mt-22 desktop:mt-44" />
-      <PfxTokenObjectives className="mt-22 desktop:mt-44" />
-      <Products className="mt-22 desktop:mt-44" />
-      <Roadmap className="mt-22 desktop:mt-44" />
-      <FaqPreview className="mt-8 desktop:mt-44" />
+      <WithBackgroundImageNew imageUrl="/background/forest-1.jpg">
+        <PfxHighlight />
+        <PfxStatements />
+        <PfxFigures className="mt-22 desktop:mt-44" />
+        <PfxTokenObjectives className="mt-22 desktop:mt-44" />
+        <Products className="mt-22 desktop:mt-44" />
+        <Roadmap className="mt-22 desktop:mt-44" />
+        <FaqPreview className="mt-8 desktop:mt-44" />
+      </WithBackgroundImageNew>
     </Page>
   )
 }

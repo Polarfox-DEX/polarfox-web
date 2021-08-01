@@ -8,10 +8,7 @@ import { WithBackgroundImageNew } from '../components/utils/WithBackgroundImage'
 export default function About() {
   return (
     <Page>
-      <WithBackgroundImageNew
-        className=""
-        imageUrl="/background/forest-1.jpg"
-      >
+      <WithBackgroundImageNew imageUrl="/background/forest-1.jpg">
         <AboutUs className="mt-32 tablet:mt-60" />
         <OurMission className="mt-44 tablet:mt-72" />
         <TeamMap className="mt-22 tablet:mt-44" />
