@@ -1,11 +1,11 @@
 import { Page } from '../components/Page'
 import { FaqMain } from '../components/faq/FaqMain'
-import { WithBackgroundImageNew } from '../components/utils/WithBackgroundImage'
+import { WithBackgroundImageStretch } from '../components/utils/WithBackgroundImage'
 
 export default function Faq() {
   return (
     <Page>
-      <WithBackgroundImageNew
+      <WithBackgroundImageStretch
         className="bg-hidden"
         imageUrl="/background/forest-1.jpg"
         imageWidth={1440}
@@ -13,7 +13,7 @@ export default function Faq() {
         minWidth={1024}
       >
         <FaqMain className="mt-32 laptop:mt-48 desktop:mt-64" />
-      </WithBackgroundImageNew>
+      </WithBackgroundImageStretch>
     </Page>
   )
 }

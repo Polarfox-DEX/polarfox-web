@@ -6,12 +6,12 @@ import { PfxStatements } from '../components/sections/PfxStatements'
 import { PfxTokenObjectives } from '../components/sections/PfxTokenObjectives'
 import { Products } from '../components/sections/Products'
 import { Roadmap } from '../components/sections/Roadmap'
-import { WithBackgroundImageNew } from '../components/utils/WithBackgroundImage'
+import { WithBackgroundImageStretch } from '../components/utils/WithBackgroundImage'
 
 export default function Home() {
   return (
     <Page>
-      <WithBackgroundImageNew
+      <WithBackgroundImageStretch
         imageUrl="/background/forest-1.jpg"
         imageWidth={1440}
         imageHeight={821}
@@ -23,7 +23,7 @@ export default function Home() {
         <Products className="mt-22 desktop:mt-44" />
         <Roadmap className="mt-22 desktop:mt-44" />
         <FaqPreview className="mt-8 desktop:mt-44" />
-      </WithBackgroundImageNew>
+      </WithBackgroundImageStretch>
     </Page>
   )
 }
