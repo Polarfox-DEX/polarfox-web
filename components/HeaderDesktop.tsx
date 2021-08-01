@@ -17,7 +17,7 @@ export function HeaderDesktop({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'hidden desktop:flex justify-between w-full px-14 py-4 absolute',
+        'hidden laptop:flex justify-between w-full px-14 py-4 absolute',
         className
       )}
     >
