@@ -26,7 +26,7 @@ export function WithBackgroundImage({
   )
 }
 
-interface WithBackGroundImageNewProps {
+interface WithBackGroundImageStretchProps {
   imageUrl: string
   imageWidth: number
   imageHeight: number
@@ -35,14 +35,14 @@ interface WithBackGroundImageNewProps {
   className?: string
 }
 
-export function WithBackgroundImageNew({
+export function WithBackgroundImageStretch({
   imageUrl,
   imageWidth,
   imageHeight,
   minWidth,
   children,
   className
-}: WithBackGroundImageNewProps) {
+}: WithBackGroundImageStretchProps) {
   console.log(`url('${imageUrl}')`)
   return (
     <div
@@ -65,6 +65,25 @@ export function WithBackgroundImageNew({
           }
         }
       `}</style>
+    </div>
+  )
+}
+
+export function WithBackgroundImageFox({
+  imageUrl,
+  children,
+  className
+}: WithBackGroundImageProps) {
+  console.log(`url('${imageUrl}')`)
+  return (
+    <div
+      className={classNames(
+        'bg-no-repeat flex flex-col w-full bg-contain bg-bottom tablet:bg-top tablet:items-center tablet:bg-cover desktop:bg-bottom-28-vw desktop:px-4',
+        className
+      )}
+      style={{ backgroundImage: `url('${imageUrl}')` }}
+    >
+      {children}
     </div>
   )
 }

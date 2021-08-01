@@ -42,7 +42,7 @@ module.exports = {
       center: 'center',
       top: 'top',
       bottom: 'bottom',
-      'bottom-24': 'center bottom -6rem'
+      'bottom-28-vw': 'center bottom -28vw'
     },
     extend: {
       fontFamily: {

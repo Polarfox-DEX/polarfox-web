@@ -1,6 +1,9 @@
 import classNames from 'classnames'
 import React, { ReactNode, ReactText } from 'react'
-import { WithBackgroundImage } from '../components/utils/WithBackgroundImage'
+import {
+  WithBackgroundImageStretch,
+  WithBackgroundImageFox
+} from '../components/utils/WithBackgroundImage'
 import { calcRem } from '../utils/styles'
 import GitHub from './svg/Github'
 import Medium from './svg/Medium'
@@ -16,62 +19,76 @@ interface FooterProps {
 export function Footer({ className }: FooterProps) {
   return (
     <>
-      <WithBackgroundImage
+      <WithBackgroundImageStretch
         className={classNames(
-          'bg-left-top bg-contain w-full h-screen min-h-screen desktop:px-4',
+          'bg-contain',
           className
         )}
-        imageUrl="/background/forest-3.jpg"
+        imageUrl="/background/forest-3.png"
+        imageWidth={1440}
+        imageHeight={852}
       >
-        <div className="container flex flex-col justify-end desktop:flex-row desktop:justify-between desktop:items-end h-full desktop:pb-32">
+        <div className="forest3 container flex flex-col laptop:flex-row laptop:justify-between laptop:items-center laptop:pb-32">
           <h2 className="title font-switzer font-semibold">
             Meet the worldwide community.
-            <style jsx>{`
-              .title {
-                font-size: ${calcRem(30)};
-                line-height: ${calcRem(39.6)};
-              }
-
-              @media (min-width: 1200px) {
-                .title {
-                  font-size: ${calcRem(50)};
-                  line-height: ${calcRem(65)};
-                  max-width: ${calcRem(514)};
-                }
-              }
-            `}</style>
           </h2>
-          <div className="flex justify-between tablet:justify-center space-x-1 tablet:space-x-16 desktop:space-x-5 my-12 desktop:my-0">
+          <div className="flex justify-between tablet:justify-center space-x-1 tablet:space-x-16 laptop:space-x-5 my-12 laptop:my-0">
             <TelegramButton />
             <GitHubButton />
             <MediumButton />
             <TwitterButton />
           </div>
         </div>
-      </WithBackgroundImage>
-      {/* TODO: Remove double div */}
-      <div className="container desktop:px-4">
-        <div className="py-16 mt-4 desktop:py-20 border-t-2 border-blue">
-          <img src="/logo/polarfox.png" alt="Polarfox logo" />
+        {/* TODO: Remove double div */}
+        <div className="container laptop:px-4">
+          <div className="py-16 mt-4 laptop:py-20 border-t-2 border-blue">
+            <img src="/logo/polarfox.png" alt="Polarfox logo" />
+          </div>
         </div>
-      </div>
-      <SiteMap />
-      <div
-        className="bg-no-repeat flex justify-center items-center bg-bottom-24 tablet:bg-top bg-contain tablet:bg-cover w-full h-full min-h-screen mt-20 tablet:mt-0 desktop:px-4"
-        style={{ backgroundImage: `url('${'/background/fox.png'}')` }}
+        <SiteMap />
+      </WithBackgroundImageStretch>
+      <style jsx>{`
+        .forest3 {
+          margin-top: 40vw;
+        }
+
+        @media (min-width: 1440px) {
+          .forest3 {
+            margin-top: ${calcRem(580)};
+          }
+        }
+
+        .title {
+          font-size: ${calcRem(30)};
+          line-height: ${calcRem(39.6)};
+        }
+
+        @media (min-width: 1200px) {
+          .title {
+            font-size: ${calcRem(50)};
+            line-height: ${calcRem(65)};
+            max-width: ${calcRem(514)};
+          }
+        }
+      `}</style>
+      <WithBackgroundImageFox
+        className={classNames(
+          'mt-10 desktop:mt-44'
+        )}
+        imageUrl="/background/fox.png"
       >
         {/* TODO: Remove double div */}
         <div
-          className="container text-sm flex-1 text-gray"
+          className="container text-sm flex-1 text-gray space-y-10"
           style={{
             fontSize: calcRem(12),
             lineHeight: calcRem(22),
             minHeight: calcRem(650)
           }}
         >
-          <div className="flex flex-col-reverse desktop:flex-row desktop:items-center desktop:space-x-6 border-t border-blue border-opacity-20 pt-16 mb-20">
+          <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16">
             <p
-              className="text-blue flex-1 mt-8 desktop:mt-0"
+              className="text-blue flex-1 mt-8 tablet:mt-0"
               style={{ fontSize: '13px', lineHeight: '33px' }}
             >
               © 2021 Polarfox ltd.
@@ -90,7 +107,7 @@ export function Footer({ className }: FooterProps) {
             own research and only invest what you can afford to lose.
           </p>
         </div>
-      </div>
+      </WithBackgroundImageFox>
     </>
   )
 }
@@ -159,8 +176,15 @@ function SocialButton({ url, children }: SocialButtonProps) {
       {children}
       <style jsx>{`
         a {
-          width: ${calcRem(74)};
-          height: ${calcRem(74)};
+          width: ${calcRem(65)};
+          height: ${calcRem(65)};
+        }
+
+        @media (min-width: 355px) {
+          a {
+            width: ${calcRem(74)};
+            height: ${calcRem(74)};
+          }
         }
 
         @media (min-width: 640px) {
