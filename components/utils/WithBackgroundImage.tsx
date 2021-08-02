@@ -43,7 +43,6 @@ export function WithBackgroundImageStretch({
   children,
   className
 }: WithBackGroundImageStretchProps) {
-  console.log(`url('${imageUrl}')`)
   return (
     <div
       className={classNames(
@@ -69,21 +68,37 @@ export function WithBackgroundImageStretch({
   )
 }
 
+interface WithBackgroundImageFoxProps {
+  children: ReactNode
+  className?: string
+}
+
 export function WithBackgroundImageFox({
-  imageUrl,
   children,
   className
-}: WithBackGroundImageProps) {
-  console.log(`url('${imageUrl}')`)
+}: WithBackgroundImageFoxProps) {
+  const FOX_MOBILE = '/background/mobile_fox@2x.jpg'
+  const FOX_DESKTOP = '/background/fox_footer@2x.jpg'
+
   return (
     <div
       className={classNames(
-        'bg-no-repeat flex flex-col w-full bg-contain bg-bottom tablet:bg-top tablet:items-center tablet:bg-cover desktop:bg-bottom-28-vw desktop:px-4',
+        'background bg-no-repeat flex flex-col w-full bg-bottom-40-vw bg-100% tablet:bg-bottom tablet:bg-cover tablet:items-center desktop:px-4 mt-10',
         className
       )}
-      style={{ backgroundImage: `url('${imageUrl}')` }}
     >
       {children}
+      <style jsx>{`
+        .background {
+          background-image: url('${FOX_MOBILE}')};
+        }
+        
+        @media (min-width: 640px) {
+          .background {
+            background-image: url('${FOX_DESKTOP}')};
+          }
+        }
+      `}</style>
     </div>
   )
 }

@@ -14,7 +14,7 @@ export function AboutUs({ className }: SectionProps) {
       <SectionHeading>ABOUT US</SectionHeading>
       <div className="text font-switzer mt-2 desktop:mt-0">
         <p>
-          Polarfox is a self-funding community-based team of crypto enthusiasts
+          Polarfox is a self-funding, community-based team of crypto enthusiasts
           who urge to build a great financial ecosystem, based on a highly
           efficient blockchain technology allowing for infinite use cases.
         </p>

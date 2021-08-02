@@ -71,12 +71,7 @@ export function Footer({ className }: FooterProps) {
           }
         }
       `}</style>
-      <WithBackgroundImageFox
-        className={classNames(
-          'mt-10 desktop:mt-44'
-        )}
-        imageUrl="/background/fox.png"
-      >
+      <WithBackgroundImageFox>
         {/* TODO: Remove double div */}
         <div
           className="container text-sm flex-1 text-gray space-y-10"

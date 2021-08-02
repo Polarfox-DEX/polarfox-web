@@ -42,7 +42,13 @@ module.exports = {
       center: 'center',
       top: 'top',
       bottom: 'bottom',
-      'bottom-28-vw': 'center bottom -28vw'
+      'bottom-40-vw': 'center bottom -40vw'
+    },
+    backgroundSize: {
+      auto: 'auto',
+      cover: 'cover',
+      contain: 'contain',
+      '100%': '100%'
     },
     extend: {
       fontFamily: {
