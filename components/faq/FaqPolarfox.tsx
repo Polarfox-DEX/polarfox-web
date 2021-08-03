@@ -6,7 +6,7 @@ export function FaqPolarfox({ className }: SectionProps) {
   return (
     <div className={classNames('divide-y divide-gray-light w-full', className)}>
       <Question question="What is Polarfox Labs?" isOpenDefault>
-        Polarfox Labs is a self-funding community-based team of crypto
+        Polarfox Labs is a self-funding, community-based team of crypto
         enthusiasts who urged to give purpose to the AKITA token. Now they are
         building the path to an entire financial ecosystem. The entire core team
         is public and you can find them here: [insert link to about-page]

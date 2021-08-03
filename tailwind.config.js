@@ -15,7 +15,7 @@ module.exports = {
       screens: {
         tablet: '100%',
         laptop: '100%',
-        desktop: '1200px'
+        desktop: '1280px'
       },
       padding: {
         DEFAULT: '1.25rem',
@@ -42,7 +42,13 @@ module.exports = {
       center: 'center',
       top: 'top',
       bottom: 'bottom',
-      'bottom-24': 'center bottom -6rem'
+      'bottom-40-vw': 'center bottom -40vw'
+    },
+    backgroundSize: {
+      auto: 'auto',
+      cover: 'cover',
+      contain: 'contain',
+      '100%': '100%'
     },
     extend: {
       fontFamily: {

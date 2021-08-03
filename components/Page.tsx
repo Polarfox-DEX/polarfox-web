@@ -59,7 +59,7 @@ export function Page({ children }: PageProps) {
       />
       {children}
 
-      <Footer className="mt-22 desktop:mt-44" />
+      <Footer className="mt-10" />
     </div>
   )
 }

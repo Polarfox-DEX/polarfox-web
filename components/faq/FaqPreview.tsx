@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import { calcRem } from '../../utils/styles'
 import { Question } from './Question'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { SectionHeading } from '../sections/utils/SectionHeading'
@@ -10,7 +9,7 @@ export function FaqPreview({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'container flex flex-wrap justify-between',
+        'container flex flex-wrap laptop:flex-nowrap justify-between laptop:space-x-20 desktop:space-x-44',
         className
       )}
     >

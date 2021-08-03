@@ -17,7 +17,7 @@ export function HeaderDesktop({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'hidden desktop:flex justify-between w-full px-14 py-4 absolute',
+        'hidden laptop:flex justify-between w-full px-14 py-4 absolute',
         className
       )}
     >
@@ -82,7 +82,7 @@ function ProductsDropdown() {
     <div className="group absolute flex items-center z-10">
       <HoverableItem width={110}>Products</HoverableItem>
       <div
-        className="bg-white rounded-xl absolute justify-between px-4 py-6 hidden group-hover:flex"
+        className="dropdown bg-white rounded-xl absolute justify-between px-4 py-6 hidden group-hover:flex"
         style={{
           width: calcRem(779),
           height: calcRem(219),
@@ -131,6 +131,11 @@ function ProductsDropdown() {
           AKITA Network
         </Product>
       </div>
+      <style jsx>{`
+        .dropdown {
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+        }
+      `}</style>
     </div>
   )
 }
@@ -190,7 +195,7 @@ function LanguageDropdown() {
         <USFlag /> English
       </HoverableItem>
       <div
-        className="bg-white rounded-xl absolute justify-between p-5 hidden group-hover:block"
+        className="dropdown bg-white rounded-xl absolute justify-between p-5 hidden group-hover:block"
         style={{
           width: calcRem(175),
           marginTop: calcRem(220)
@@ -209,6 +214,11 @@ function LanguageDropdown() {
           <GermanFlag />
         </Language>
       </div>
+      <style jsx>{`
+        .dropdown {
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+        }
+      `}</style>
     </div>
   )
 }

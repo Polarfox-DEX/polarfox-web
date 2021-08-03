@@ -14,40 +14,52 @@ export function FaqMain({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'container flex desktop:space-x-24 w-full flex-col desktop:flex-row',
+        'container flex w-full flex-col laptop:flex-row',
         className
       )}
     >
-      <div className="flex flex-col desktop:flex-row w-full">
+      <div className="flex flex-col laptop:flex-row w-full">
         <div>
           <FaqSelector
             selectedFaq={selectedFaq}
             setSelectedFaq={setSelectedFaq}
           />
-          <FaqContact className="hidden desktop:block mt-80" />
+          <FaqContact className="hidden laptop:block mt-60" />
         </div>
         <FaqPolarfox
-          className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
-            hidden: selectedFaq !== 'POLARFOX'
-          })}
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'POLARFOX'
+            }
+          )}
         />
         <FaqPfxToken
-          className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
-            hidden: selectedFaq !== 'PFX_TOKEN'
-          })}
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'PFX_TOKEN'
+            }
+          )}
         />
         <FaqAvalanche
-          className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
-            hidden: selectedFaq !== 'AVALANCHE'
-          })}
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'AVALANCHE'
+            }
+          )}
         />
         <FaqAkitaInu
-          className={classNames('mt-8 desktop:mt-32 desktop:pl-44', {
-            hidden: selectedFaq !== 'AKITA_INU'
-          })}
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'AKITA_INU'
+            }
+          )}
         />
       </div>
-      <FaqContact className="desktop:hidden mt-12" />
+      <FaqContact className="laptop:hidden mt-12" />
     </div>
   )
 }

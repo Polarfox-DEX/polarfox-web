@@ -9,11 +9,7 @@ interface FaqSelectorProps {
 
 export function FaqSelector({ selectedFaq, setSelectedFaq }: FaqSelectorProps) {
   return (
-    <div
-      style={{
-        maxWidth: calcRem(390)
-      }}
-    >
+    <div className="selector">
       <div
         className="opacity-50"
         style={{
@@ -63,6 +59,13 @@ export function FaqSelector({ selectedFaq, setSelectedFaq }: FaqSelectorProps) {
           setSelectedFaq={setSelectedFaq}
         />
       </div>
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .selector {
+            max-width: ${calcRem(390)};
+          }
+        }
+      `}</style>
     </div>
   )
 }
@@ -98,7 +101,7 @@ function FaqSelectorButton({
       style={{ height: calcRem(55) }}
       onClick={() => setSelectedFaq(name)}
     >
-      <div>
+      <div className="flex justify-between items-center">
         <h3
           className="float-left mx-5 font-bold"
           style={{ fontSize: calcRem(20) }}
@@ -106,12 +109,11 @@ function FaqSelectorButton({
           {title}
         </h3>
         <span
-          className="float-right mx-5 font-normal mt-1"
+          className="float-right mx-5 font-normal"
           style={{ fontSize: calcRem(14) }}
         >
           {numberOfItems}
         </span>
-        {/* TODO: Should not have to use mt-1 above */}
       </div>
     </button>
   )
