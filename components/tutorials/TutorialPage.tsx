@@ -1,8 +1,7 @@
 import { calcRem } from '../../utils/styles'
-import { tutorials } from './utils/TutorialExemple'
+import { tutorials } from './utils/TutorialExample'
 import React, { useState, useEffect } from 'react'
 import { TutorialClass } from './utils/TutorialClass'
-import { SectionProps } from '../sections/utils/SectionProps'
 import classNames from 'classnames'
 
 export function TutorialPage({ slug, className }: any) {

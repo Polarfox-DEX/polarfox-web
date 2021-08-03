@@ -1,6 +1,6 @@
 import { TutorialsTile } from './TutorialsTile'
 import { TutorialTypes } from './utils/TutorialTypesEnum'
-import { tutorials } from './utils/TutorialExemple'
+import { tutorials } from './utils/TutorialExample'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import classNames from 'classnames'
