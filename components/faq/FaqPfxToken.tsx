@@ -6,19 +6,19 @@ export function FaqPfxToken({ className }: SectionProps) {
   return (
     <div className={classNames('divide-y divide-gray-light w-full', className)}>
       <Question question="What is PFX?" isOpenDefault>
-        PFX is the native governance token of the Polarfox DEX. It will be
-        launched on the Avalanche blockchain. It establishes deflation by
-        providing on every transaction: 0.27% burned (sent to 0x0) 0.03% sent to
-        a dev wallet to fund future development [changed maybe]
+        TODO
       </Question>
-      <Question question="What are the PFX tokenomics?">
-        Token supply: 30,000,000 PFX [maybe add new tokenomics here when they
-        are finished]
-      </Question>
+      <Question question="What are the PFX tokenomics?">TODO</Question>
       <Question question="How to get PFX?">
-        Participating in the PFX presale Staking PFX or AVAX with another token
-        in the Polarfox liquidity mining pools Swapping another token for PFX on
-        Polarfox
+        You can get PFX in a number of ways:
+        <ul className="list-disc list-inside">
+          <li>Participating in the PFX presale</li>
+          <li>
+            Staking PFX or AVAX with another token in the Polarfox liquidity
+            mining pools
+          </li>
+          <li>Swapping another token for PFX on Polarfox</li>
+        </ul>
       </Question>
     </div>
   )
