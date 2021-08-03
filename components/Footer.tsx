@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React, { ReactNode, ReactText } from 'react'
 import {
   WithBackgroundImageStretch,
-  WithBackgroundImageFox
+  WithBackgroundFox
 } from '../components/utils/WithBackgroundImage'
 import { calcRem } from '../utils/styles'
 import GitHub from './svg/Github'
@@ -20,10 +20,7 @@ export function Footer({ className }: FooterProps) {
   return (
     <>
       <WithBackgroundImageStretch
-        className={classNames(
-          'bg-contain',
-          className
-        )}
+        className={classNames('bg-contain', className)}
         imageUrl="/background/forest-3.png"
         imageWidth={1440}
         imageHeight={852}
@@ -71,7 +68,7 @@ export function Footer({ className }: FooterProps) {
           }
         }
       `}</style>
-      <WithBackgroundImageFox>
+      <WithBackgroundFox>
         {/* TODO: Remove double div */}
         <div
           className="container text-sm flex-1 text-gray space-y-10"
@@ -102,7 +99,7 @@ export function Footer({ className }: FooterProps) {
             own research and only invest what you can afford to lose.
           </p>
         </div>
-      </WithBackgroundImageFox>
+      </WithBackgroundFox>
     </>
   )
 }
