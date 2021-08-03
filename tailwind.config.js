@@ -54,7 +54,8 @@ module.exports = {
       fontFamily: {
         publicSans: ['Public Sans', ...defaultTheme.fontFamily.sans],
         switzer: ['Switzer', ...defaultTheme.fontFamily.sans],
-        graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
+        graphik: ['Graphik', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', ...defaultTheme.fontFamily.sans]
       },
       opacity: {
         12: '0.12',

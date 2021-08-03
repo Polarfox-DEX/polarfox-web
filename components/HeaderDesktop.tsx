@@ -22,8 +22,18 @@ export function HeaderDesktop({ className }: SectionProps) {
       )}
     >
       <Link href="/">
-        <a>
-          <img src="/logo/polarfox.png" alt="Polarfox logo" />
+        <a className="flex items-center space-x-7">
+          <img
+            src="/logo/polarfox.png"
+            alt="Polarfox logo"
+            style={{ width: calcRem(44), height: calcRem(44) }}
+          />
+          <span
+            className="font-poppins font-bold"
+            style={{ fontSize: calcRem(25), lineHeight: calcRem(20) }}
+          >
+            polarfox
+          </span>
         </a>
       </Link>
       <div
