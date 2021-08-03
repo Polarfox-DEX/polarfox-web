@@ -62,7 +62,7 @@ export function TutorialPage({ slug, className }: any) {
             <span className="text-blue-light font-bold">
               By {selectedTutorial.creator}{' '}
             </span>
-            <span className="text-blue-tutorial">
+            <span className="text-gray">
               {'on ' + selectedTutorial.creationDate.toLocaleDateString()}
             </span>
           </div>

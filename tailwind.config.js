@@ -27,7 +27,6 @@ module.exports = {
         light: '#1C67FE',
         gray: "#142B47",
         DEFAULT: '#001937',
-        tutorial: '#4D6481'
       },
       gray: {
         light: '#D8D8D8',
