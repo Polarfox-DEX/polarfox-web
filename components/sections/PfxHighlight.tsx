@@ -132,7 +132,7 @@ function Button({ url, className, children }: ButtonProps) {
         .small-shadow {
           box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.27);
         }
-        
+
         .large-shadow {
           box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.29748);
         }

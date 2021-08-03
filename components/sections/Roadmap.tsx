@@ -7,7 +7,13 @@ import Slide from '../svg/Slide'
 
 export function Roadmap({ className }: SectionProps) {
   return (
-    <div id="roadmap" className={classNames('container bg-white pt-12 desktop:pt-22 pb-8', className)}>
+    <div
+      id="roadmap"
+      className={classNames(
+        'container bg-white pt-12 desktop:pt-22 pb-8',
+        className
+      )}
+    >
       <div className="flex flex-wrap justify-between gap-y-5">
         <SectionHeading>ROADMAP</SectionHeading>
         <p
