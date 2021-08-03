@@ -52,19 +52,18 @@ export function TutorialPage({slug, className} : any) {
             {selectedTutorial.name}
           </div>
 
-          <div className="container mb-6 text-white">
-            <div className="mb-4">
-              <div
-                className="inline mr-8 px-3 py-1 bg-blue rounded-2x1    "
-                style={{
-                  borderRadius: calcRem(20)
-                }}
-              >
-                {selectedTutorial.type}
-              </div>
-              <span className="font-bold">reading time: </span>{' '}
-              {selectedTutorial.readingTime} minutes
+          <div className="container mb-6 text-white space-y-4">
+            <div
+              className="inline mr-8 px-3 py-1 bg-blue rounded-2x1"
+              style={{
+                borderRadius: calcRem(20)
+              }}
+            >
+              {selectedTutorial.type}
             </div>
+            <span className="font-bold">reading time: </span>{' '}
+            {selectedTutorial.readingTime} minutes
+            
 
             <div>
               <span className="text-blue-light font-bold" >By {selectedTutorial.creator} </span>
@@ -74,9 +73,7 @@ export function TutorialPage({slug, className} : any) {
             </div>
           </div>
 
-          <div className="mb-8">
-            <img src={selectedTutorial.image} alt="image" />
-          </div>
+          <img className="mb-8" src={selectedTutorial.image} alt="image" />
 
           {selectedTutorial.content}
       </div>
@@ -86,11 +83,9 @@ export function TutorialPage({slug, className} : any) {
   } else {
     return (
       <div 
-        className="container mt-32 pt-64 center-center" 
+        className="container grid items-end justify-center font-bold min-h-40% text-center" 
         style={{
-          textAlign: 'center',
-          fontSize: calcRem(30),
-          fontWeight: 'bold'
+          fontSize: calcRem(30)
         }}>
           404 - Tutorial not found
       </div>

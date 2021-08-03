@@ -37,7 +37,7 @@ module.exports = {
         dark: '#F4F6F9',
         DEFAULT: '#4D6481'
       },
-      white: colors.white,
+      white: colors.white
     },
     backgroundPosition: {
       center: 'center',
@@ -64,6 +64,9 @@ module.exports = {
         '22': '5.5rem'
       }
     },
+    minHeight: {
+      '40%': '40%'
+     }
   },
   variants: {
     extend: {},
