@@ -2,23 +2,64 @@ import classNames from 'classnames'
 import { FaqSelector } from './FaqSelector'
 import { FaqContact } from './FaqContact'
 import { FaqPolarfox } from './FaqPolarfox'
-import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { FaqPfxToken } from './FaqPfxToken'
+import { FaqAkitaInu } from './FaqAkitaInu'
+import { FaqAvalanche } from './FaqAvalanche'
 import { SectionProps } from '../sections/utils/SectionProps'
+import React, { useState } from 'react'
 
 export function FaqMain({ className }: SectionProps) {
+  const [selectedFaq, setSelectedFaq] = useState('POLARFOX')
+
   return (
-    <WithBackgroundImage
-      className="bg-left-bottom w-screen min-h-screen h-screen"
-      imageUrl="/background/forest-1.jpg"
+    <div
+      className={classNames(
+        'container flex w-full flex-col laptop:flex-row',
+        className
+      )}
     >
-      <div className={classNames('container flex justify-between', className)}>
+      <div className="flex flex-col laptop:flex-row w-full">
         <div>
-          <FaqSelector />
-          <FaqContact />
+          <FaqSelector
+            selectedFaq={selectedFaq}
+            setSelectedFaq={setSelectedFaq}
+          />
+          <FaqContact className="hidden laptop:block mt-60" />
         </div>
-        {/* TODO: FaqPolarfox should be lower (at the same level as "Polarfox" on the the selector) */}
-        <FaqPolarfox className="pl-44" />
+        <FaqPolarfox
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'POLARFOX'
+            }
+          )}
+        />
+        <FaqPfxToken
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'PFX_TOKEN'
+            }
+          )}
+        />
+        <FaqAvalanche
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'AVALANCHE'
+            }
+          )}
+        />
+        <FaqAkitaInu
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'AKITA_INU'
+            }
+          )}
+        />
       </div>
-    </WithBackgroundImage>
+      <FaqContact className="laptop:hidden mt-12" />
+    </div>
   )
 }

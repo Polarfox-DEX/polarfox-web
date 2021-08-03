@@ -1,59 +1,105 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { calcRem } from '../../utils/styles'
-import { WithBackgroundImage } from '../utils/WithBackgroundImage'
+import { SocialMediaLinks } from '../utils/SocialMediaLinks'
+import SleepingFox from '../svg/SleepingFox'
 
 interface PfxHighlightsProps {
   className?: string
 }
 
 export function PfxHighlight({ className }: PfxHighlightsProps) {
+  const isFoxSleeping = true
+
   return (
-    <WithBackgroundImage
-      className="bg-right-bottom desktop:bg-left-bottom w-full min-h-screen h-screen"
-      imageUrl="/background/forest-1.jpg"
+    <div
+      className={classNames(
+        'container flex flex-wrap flex-col items-center',
+        { 'mt-40 tablet:mt-56 mb-72 tablet:mb-96': !isFoxSleeping },
+        { 'mt-20 tablet:mt-32 mb-32 tablet:mb-44': isFoxSleeping },
+        className
+      )}
     >
+      {isFoxSleeping && (
+        <div className="flex items-end space-x-8 desktop:space-x-60">
+          <SleepingFox className="w-14 desktop:w-32 opacity-0" />
+          <h1
+            className="title text-center font-switzer font-semibold"
+            style={{ maxWidth: calcRem(880) }}
+          >
+            Pssst.
+          </h1>
+          <SleepingFox className="w-14 desktop:w-32 pt-14 desktop:pt-0" />
+        </div>
+      )}
+      <h1
+        className="title text-center font-switzer font-semibold"
+        style={{ maxWidth: calcRem(880) }}
+      >
+        {isFoxSleeping
+          ? 'The fox is still sleeping.'
+          : 'Decentralized ecosystem of applications'}
+      </h1>
+      <style jsx>{`
+        .title {
+          font-size: ${calcRem(40)};
+          line-height: ${calcRem(52.8)};
+        }
+
+        @media (min-width: 640px) {
+          .title {
+            font-size: ${calcRem(50)};
+            line-height: ${calcRem(65)};
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .title {
+            font-size: ${calcRem(60)};
+            line-height: ${calcRem(80)};
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .title {
+            font-size: ${calcRem(70)};
+            line-height: ${calcRem(90)};
+          }
+        }
+      `}</style>
       <div
         className={classNames(
-          'container flex flex-wrap flex-col items-center',
-          className
+          'flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24'
         )}
       >
-        <h1
-          className="title text-center font-switzer font-semibold"
-          style={{ maxWidth: calcRem(880) }}
+        <Button
+          url="/Polarfox Litepaper V2.6.pdf"
+          className="large-shadow border border-blue bg-white hover:border-blue-light hover:bg-blue-light hover:text-white hover:opacity-80"
         >
-          Decentralized ecosystem of applications
-          <style jsx>{`
-            .title {
-              font-size: ${calcRem(40)};
-              line-height: ${calcRem(52.8)};
-            }
-
-            @media (min-width: 1200px) {
-              .title {
-                font-size: ${calcRem(70)};
-                line-height: ${calcRem(90)};
-              }
-            }
-          `}</style>
-        </h1>
-        <div className="flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24">
-          <Button
-            url="/Polarfox Litepaper V2.6.pdf"
-            className="border border-blue bg-white"
-          >
-            Litepaper
-          </Button>
+          Litepaper
+        </Button>
+        {!isFoxSleeping && (
           <Button
             url="https://dex-test.polarfox.io/"
-            className="text-white bg-blue"
+            className="small-shadow text-white bg-blue hover:bg-blue-light"
           >
             Open DEX
           </Button>
-        </div>
+        )}
       </div>
-    </WithBackgroundImage>
+      {isFoxSleeping && (
+        <div
+          className="container flex flex-col desktop:flex-row justify-between mt-24 tablet:mt-28 items-center space-y-8 desktop:space-y-0"
+          style={{ fontSize: calcRem(18), lineHeight: calcRem(32) }}
+        >
+          <div>
+            <p className="text">Come back in late summer.</p>
+            <p className="text">The fox will wake to hunt!</p>
+          </div>
+          <SocialMediaLinks />
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -83,9 +129,22 @@ function Button({ url, className, children }: ButtonProps) {
           line-height: ${calcRem(21.15)};
         }
 
-        @media (min-width: 1200px) {
+        .small-shadow {
+          box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.27);
+        }
+
+        .large-shadow {
+          box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.29748);
+        }
+
+        @media (min-width: 640px) {
           .button {
             max-width: ${calcRem(209)};
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .button {
             height: ${calcRem(78)};
           }
         }

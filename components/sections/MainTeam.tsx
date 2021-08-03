@@ -11,13 +11,10 @@ import LinkedIn from '../svg/LinkedIn'
 import Twitter from '../svg/Twitter'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionTitle } from './utils/SectionTitle'
-
-interface LeadershipProps {
-  className?: string
-}
+import { SectionProps } from './utils/SectionProps'
 
 // TODO extract tile component
-export function MainTeam({ className }: LeadershipProps) {
+export function MainTeam({ className }: SectionProps) {
   return (
     <div className={classNames('container', className)}>
       <SectionHeading>POLARFOX TEAM</SectionHeading>

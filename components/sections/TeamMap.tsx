@@ -1,17 +1,14 @@
 import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
 import { SectionTitle } from './utils/SectionTitle'
+import { SectionProps } from './utils/SectionProps'
 
-interface LeadershipProps {
-  className?: string
-}
-
-export function TeamMap({ className }: LeadershipProps) {
+export function TeamMap({ className }: SectionProps) {
   return (
     <div className={classNames('container', className)}>
       <div className="grid grid-cols-1 tablet:grid-cols-2">
         <SectionTitle>Let&apos;s get familiar!</SectionTitle>
-        <div className="flex flex-wrap justify-center tablet:justify-end space-x-10 mt-10 tablet:mt-0">
+        <div className="flex flex-wrap justify-center tablet:justify-end gap-x-10 mt-10 tablet:mt-0">
           <Figure figure="30" label="members" />
           <Figure figure="12" label="countries" />
           <Figure figure="14" label="personalities" />

@@ -1,12 +1,9 @@
 import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { calcRem } from '../../utils/styles'
+import { SectionProps } from './utils/SectionProps'
 
-interface OurMissionProps {
-  className: string
-}
-
-export function OurMission({ className }: OurMissionProps) {
+export function OurMission({ className }: SectionProps) {
   return (
     <div
       className={classNames(

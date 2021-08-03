@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
-import { calcRem } from '../../../utils/styles';
+import classNames from 'classnames'
+import { ReactNode } from 'react'
+import { calcRem } from '../../../utils/styles'
 
 interface SectionTitleProps {
-  className?: string;
-  children: ReactNode;
+  className?: string
+  children: ReactNode
 }
 
 export function SectionTitle({ className, children }: SectionTitleProps) {
@@ -14,7 +14,6 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
         'section-title font-switzer font-semibold',
         className
       )}
-      style={{ maxWidth: calcRem(357) }}
     >
       {children}
       <style jsx>{`
@@ -27,9 +26,10 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
           .section-title {
             font-size: ${calcRem(50)};
             line-height: ${calcRem(65)};
+            max-width: ${calcRem(357)};
           }
         }
       `}</style>
     </h2>
-  );
+  )
 }

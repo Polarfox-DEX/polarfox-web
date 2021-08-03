@@ -1,9 +1,15 @@
 import classNames from 'classnames'
+import { Dispatch, SetStateAction } from 'react'
 import { calcRem } from '../../utils/styles'
 
-export function FaqSelector() {
+interface FaqSelectorProps {
+  selectedFaq: string
+  setSelectedFaq: Dispatch<SetStateAction<string>>
+}
+
+export function FaqSelector({ selectedFaq, setSelectedFaq }: FaqSelectorProps) {
   return (
-    <div>
+    <div className="selector">
       <div
         className="opacity-50"
         style={{
@@ -17,7 +23,6 @@ export function FaqSelector() {
       <h2
         className="font-switzer font-semibold mt-1"
         style={{
-          maxWidth: calcRem(357),
           fontSize: calcRem(50),
           lineHeight: calcRem(65)
         }}
@@ -25,10 +30,42 @@ export function FaqSelector() {
         Help Center
       </h2>
       <div className="mt-12">
-        <FaqSelectorButton title="Polarfox" numberOfItems={12} isSelected />
-        <FaqSelectorButton title="PFX token" numberOfItems={8} />
-        <FaqSelectorButton title="Akita Inu" numberOfItems={6} />
+        <FaqSelectorButton
+          title="Polarfox"
+          numberOfItems={12}
+          name={'POLARFOX'}
+          selectedFaq={selectedFaq}
+          setSelectedFaq={setSelectedFaq}
+        />
+        <FaqSelectorButton
+          title="PFX token"
+          numberOfItems={8}
+          name={'PFX_TOKEN'}
+          selectedFaq={selectedFaq}
+          setSelectedFaq={setSelectedFaq}
+        />
+        <FaqSelectorButton
+          title="Avalanche"
+          numberOfItems={3}
+          name={'AVALANCHE'}
+          selectedFaq={selectedFaq}
+          setSelectedFaq={setSelectedFaq}
+        />
+        <FaqSelectorButton
+          title="Akita Inu"
+          numberOfItems={6}
+          name={'AKITA_INU'}
+          selectedFaq={selectedFaq}
+          setSelectedFaq={setSelectedFaq}
+        />
       </div>
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .selector {
+            max-width: ${calcRem(390)};
+          }
+        }
+      `}</style>
     </div>
   )
 }
@@ -36,22 +73,35 @@ export function FaqSelector() {
 interface FaqSelectorButtonProps {
   title: String
   numberOfItems: number
-  isSelected?: boolean
+  name: string
+  selectedFaq: string
+  setSelectedFaq: Dispatch<SetStateAction<string>>
 }
 
 function FaqSelectorButton({
   title,
   numberOfItems,
-  isSelected
+  name,
+  selectedFaq,
+  setSelectedFaq
 }: FaqSelectorButtonProps) {
   return (
     <button
-      className={classNames('mt-5 rounded-lg', {
-        'border border-blue bg-blue text-white': isSelected
-      })}
-      style={{ width: calcRem(386), height: calcRem(55) }}
+      className={classNames(
+        'mt-5 rounded-lg w-full',
+        {
+          'border border-blue bg-blue text-white hover:bg-blue':
+            selectedFaq === name
+        },
+        {
+          'hover:bg-blue-light hover:text-white hover:opacity-80':
+            selectedFaq !== name
+        }
+      )}
+      style={{ height: calcRem(55) }}
+      onClick={() => setSelectedFaq(name)}
     >
-      <div>
+      <div className="flex justify-between items-center">
         <h3
           className="float-left mx-5 font-bold"
           style={{ fontSize: calcRem(20) }}
@@ -59,12 +109,11 @@ function FaqSelectorButton({
           {title}
         </h3>
         <span
-          className="float-right mx-5 font-normal mt-1"
+          className="float-right mx-5 font-normal"
           style={{ fontSize: calcRem(14) }}
         >
           {numberOfItems}
         </span>
-        {/* TODO: Should not have to use mt-1 above */}
       </div>
     </button>
   )

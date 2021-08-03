@@ -1,12 +1,15 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { calcRem } from '../../utils/styles'
+import { SectionProps } from '../sections/utils/SectionProps'
 
-export function FaqContact() {
+export function FaqContact({ className }: SectionProps) {
   return (
     <div
-      className={classNames('border-t-2 border-blue pt-8')}
-      style={{ width: calcRem(357) }}
+      className={classNames(
+        'border-t-2 border-blue pt-8 w-full desktop:w-96',
+        className
+      )}
     >
       <h3
         className="font-switzer font-semibold"
@@ -20,14 +23,15 @@ export function FaqContact() {
       <p className="mt-12 text-gray">
         No problem, feel free to contact us directly or ask in our community
         channels on Telegram or Twitter.
-        {/* TODO: Add some links */}
       </p>
       <button
-        className="mt-12 rounded-full border border-blue bg-white font-semibold"
+        className="mt-12 rounded-full border border-blue bg-white font-semibold hover:bg-blue hover:text-white"
         style={{ width: calcRem(166), height: calcRem(44) }}
       >
-        <Link href="/faq">
-          <a>Contact us</a>
+        <Link href="https://t.me/polarfoxdex">
+          <a target="_blank" rel="noopener noreferrer">
+            Contact us
+          </a>
         </Link>
       </button>
     </div>
