@@ -9,13 +9,13 @@ module.exports = {
     screens: {
       tablet: '640px',
       laptop: '1024px',
-      desktop: '1280px',
+      desktop: '1280px'
     },
     container: {
       screens: {
         tablet: '100%',
         laptop: '100%',
-        desktop: '1200px',
+        desktop: '1200px'
       },
       padding: {
         DEFAULT: '1.25rem',
@@ -25,8 +25,8 @@ module.exports = {
     colors: {
       blue: {
         light: '#1C67FE',
-        gray: "#142B47",
-        DEFAULT: '#001937',
+        gray: '#142B47',
+        DEFAULT: '#001937'
       },
       gray: {
         light: '#D8D8D8',
@@ -51,24 +51,24 @@ module.exports = {
         graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
       },
       opacity: {
-        '12': '0.12',
-        '36': '0.36',
-        '48': '0.48',
-        '98': '0.98',
+        12: '0.12',
+        36: '0.36',
+        48: '0.48',
+        98: '0.98'
       },
       spacing: {
-        '5.5': '1.375rem'
+        5.5: '1.375rem'
       },
       margin: {
-        '22': '5.5rem'
+        22: '5.5rem'
       }
     },
     minHeight: {
       '40%': '40%'
-     }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
-};
+  plugins: []
+}
