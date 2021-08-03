@@ -10,7 +10,7 @@ export default function About() {
     <Page>
       <WithBackgroundForest1>
         <AboutUs className="mt-32 tablet:mt-60" />
-        <OurMission className="mt-44 tablet:mt-72" />
+        <OurMission className="mt-32 tablet:mt-60" />
         <TeamMap className="mt-22 tablet:mt-44" />
         <MainTeam className="mt-22 tablet:mt-44" />
       </WithBackgroundForest1>

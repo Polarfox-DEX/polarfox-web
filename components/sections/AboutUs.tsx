@@ -14,15 +14,17 @@ export function AboutUs({ className }: SectionProps) {
       <SectionHeading>ABOUT US</SectionHeading>
       <div className="text font-switzer mt-2 desktop:mt-0">
         <p>
-          Polarfox is a self-funding, community-based team of crypto enthusiasts
-          who urge to build a great financial ecosystem, based on a highly
-          efficient blockchain technology allowing for infinite use cases.
+          Polarfox is a self-funding community-based team of crypto enthusiasts
+          who urge to build a great financial ecosystem for its users. We are
+          built on Avalanche&apos;s highly efficient, next-gen blockchain
+          technology.
         </p>
         <br />
         <p>
-          We are convinced that cryptocurrency will shape the future of the
-          world&apos;s financial system and feel drifted to contribute to its
-          new form.
+          We are convinced that blockchain based decentralized products will
+          shape the future of the worlds financial ecosystem, and as
+          enthusiasts, we feel passionate about contributing to this
+          generational paradigm shift in technology.
         </p>
         <style jsx>{`
           .text {

@@ -170,6 +170,7 @@ function SocialButton({ url, children }: SocialButtonProps) {
         a {
           width: ${calcRem(65)};
           height: ${calcRem(65)};
+          box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.29);
         }
 
         @media (min-width: 355px) {

@@ -92,6 +92,7 @@ function Product({ label, url, logo }: ProductProps) {
         .product {
           height: ${calcRem(195)};
           border-radius: ${calcRem(10)};
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
         }
 
         @media (min-width: 1200px) {

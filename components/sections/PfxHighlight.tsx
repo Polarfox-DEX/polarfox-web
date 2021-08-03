@@ -74,14 +74,14 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
       >
         <Button
           url="/Polarfox Litepaper V2.6.pdf"
-          className="border border-blue bg-white hover:bg-blue-light hover:text-white hover:opacity-80"
+          className="large-shadow border border-blue bg-white hover:border-blue-light hover:bg-blue-light hover:text-white hover:opacity-80"
         >
           Litepaper
         </Button>
         {!isFoxSleeping && (
           <Button
             url="https://dex-test.polarfox.io/"
-            className="text-white bg-blue hover:bg-blue-light"
+            className="small-shadow text-white bg-blue hover:bg-blue-light"
           >
             Open DEX
           </Button>
@@ -127,6 +127,14 @@ function Button({ url, className, children }: ButtonProps) {
           height: ${calcRem(60)};
           font-size: ${calcRem(18)};
           line-height: ${calcRem(21.15)};
+        }
+
+        .small-shadow {
+          box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.27);
+        }
+        
+        .large-shadow {
+          box-shadow: 0px 2px 4px rgba(0, 25, 55, 0.29748);
         }
 
         @media (min-width: 640px) {
