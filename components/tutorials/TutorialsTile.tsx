@@ -11,7 +11,7 @@ export function TutorialsTile(props: { tutorial: TutorialClass }) {
       href={'tutorials/' + props.tutorial.slug}
     >
       <div
-      className="bg-center bg-cover flex justify-center"
+        className="bg-center bg-cover flex justify-center"
         style={{
           backgroundImage: `url('tutorials/${props.tutorial.tileImage}')`,
           width: calcRem(280),
