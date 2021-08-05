@@ -217,6 +217,11 @@ function ProfilePicture({ src, alt }: ProfilePictureProps) {
         alt={alt}
         style={{ width: calcRem(285), height: calcRem(285) }}
       />
+      <style jsx>{`
+        .profile-picture {
+          box-shadow: 0px 7px 31px rgba(16, 23, 39, 0.21);
+        }
+      `}</style>
     </>
   )
 }
