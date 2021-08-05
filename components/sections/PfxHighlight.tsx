@@ -74,7 +74,10 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
       >
         <Button
           url="/Polarfox Litepaper V2.6.pdf"
-          className="large-shadow border border-blue bg-white hover:border-blue hover:bg-blue hover:text-white hover:opacity-80"
+          className={classNames(
+            'large-shadow border border-blue bg-white hover:border-blue hover:bg-blue hover:text-white',
+            { 'hover:opacity-80': !isFoxSleeping }
+          )}
         >
           Litepaper
         </Button>
