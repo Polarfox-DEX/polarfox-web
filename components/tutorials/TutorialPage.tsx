@@ -66,7 +66,6 @@ export function TutorialPage({ slug, className }: any) {
             </span>
           </div>
         </div>
-
         <img className="mb-8" src={selectedTutorial.image} alt="image" />
         {selectedTutorial.content}
       </div>

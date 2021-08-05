@@ -7,12 +7,11 @@ import classNames from 'classnames'
 
 export function TutorialsPane({ className }: SectionProps) {
   return (
-
-    <div className=" container grid grid-cols-2 gap-x-6 tablet:grid-cols-1 tablet:grid-x-0 tablet:w-full tablet:grid-gap-x-0
-      laptop:grid-cols-2">
-
+    <div
+      className=" container grid grid-cols-2 gap-x-6 tablet:grid-cols-1 tablet:grid-x-0 tablet:w-full tablet:grid-gap-x-0
+      laptop:grid-cols-2"
+    >
       <div className="col-span-2 tablet:w-full tablet:col-span-1 laptop:col-span-2">
-
         <div
           className={classNames(
             'border-b-4 border-tutorials_tile pb-8 font-bold',
@@ -25,17 +24,13 @@ export function TutorialsPane({ className }: SectionProps) {
           BASICS
         </div>
         <div className="grid grid-cols-2 mb-4 gap-x-4 tablet:grid-cols-3 laptop:grid-cols-4">
-
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.BASICS)
               return <TutorialsTile tutorial={tuto} key={tuto.slug} />
           })}
         </div>
       </div>
-
-
       <div className="col-span-2 tablet:col-span-2 laptop:col-span-1">
-
         <div
           className="mt-10 border-b-4 pb-8"
           style={{
@@ -52,8 +47,6 @@ export function TutorialsPane({ className }: SectionProps) {
           })}
         </div>
       </div>
-
-
       <div className="col-span-2 tablet:col-span-2laptop:col-span-1">
         <div
           className="mt-10 border-b-4 border-tutorials_tile pb-8 font-bold"
