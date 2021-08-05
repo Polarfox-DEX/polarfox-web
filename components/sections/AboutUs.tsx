@@ -46,7 +46,7 @@ export function AboutUs({ className }: SectionProps) {
             }
           }
 
-          @media (min-width: 1200px) {
+          @media (min-width: 1280px) {
             .text {
               max-width: ${calcRem(745)};
               font-size: ${calcRem(30)};

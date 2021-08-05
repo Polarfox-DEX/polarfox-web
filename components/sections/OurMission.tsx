@@ -48,7 +48,7 @@ export function Mission({ title, children }: MissionProps) {
         {children}
       </p>
       <style jsx>{`
-        @media (min-width: 1200px) {
+        @media (min-width: 1280px) {
           .mission {
             width: ${calcRem(385)};
           }

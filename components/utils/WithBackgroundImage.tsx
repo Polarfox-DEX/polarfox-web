@@ -2,94 +2,32 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import { calcRem } from '../../utils/styles'
 
-const FOREST_1_2x_MOBILE = '/background/bg_header_mobile@2x.jpg'
-const FOREST_1_2x_DESKTOP = '/background/forest-1.jpg' // TODO: Add @2x version
-// const FOREST_1_2x_MOBILE_WIDTH = 750
-const FOREST_1_2x_MOBILE_HEIGHT = 1580 // Actual height: 1462
-const FOREST_1_2x_DESKTOP_WIDTH = 1440 // TODO: Add @2x version
-const FOREST_1_2x_DESKTOP_HEIGHT = 821 // TODO: Add @2x version
+// TODO: Process all the images through TinyPNG
+const BG_HEADER_MOBILE = '/background/bg_header_mobile@2x.jpg'
+const BG_HEADER_DESKTOP = '/background/bg_header@2x.jpg'
+const BG_HEADER_MOBILE_HEIGHT = 1580 // Actual height: 1462
+const BG_HEADER_DESKTOP_HEIGHT = 821 // Actual height: 1642
 
-const FOREST_3_2x_MOBILE = '' // TODO: Add
-const FOREST_3_2x_DESKTOP = 'forest-3.jpg' // TODO: Add @2x version
+const BG_PFX_OBJECTIVES = '/background/pfx_objectives_logo@2x.png'
+const BG_PFX_OBJECTIVES_DESKTOP_HEIGHT = 1100 // Actual height: 1930
 
-const FOX_2x_MOBILE = '/background/mobile_fox@2x.jpg'
-const FOX_2x_DESKTOP = '/background/fox_footer@2x.jpg'
+const BG_FOOTER_MOBILE = '/background/footer_bg_mobile@2x.png'
+const BG_FOOTER_DESKTOP = '/background/footer_bg@2x.png'
+const BG_FOOTER_DESKTOP_WIDTH = 1440 // Actual width: 2880
+const BG_FOOTER_DESKTOP_HEIGHT = 852 // Actual height: 1700
+
+const FOX_FOOTER_MOBILE = '/background/mobile_fox@2x.jpg'
+const FOX_FOOTER_DESKTOP = '/background/fox_footer@2x.jpg'
 
 interface WithBackGroundImageProps {
-  imageUrl: string
   children: ReactNode
   className?: string
 }
 
-interface WithBackGroundImageConstProps {
-  children: ReactNode
-  className?: string
-}
-
-export function WithBackgroundImage({
-  imageUrl,
+export function WithBackgroundHeader({
   children,
   className
 }: WithBackGroundImageProps) {
-  return (
-    <div
-      className={classNames(
-        'bg-cover bg-no-repeat flex flex-col justify-center items-center',
-        className
-      )}
-      style={{ backgroundImage: `url('${imageUrl}')` }}
-    >
-      {children}
-    </div>
-  )
-}
-
-interface WithBackGroundImageStretchProps {
-  imageUrl: string
-  imageWidth: number
-  imageHeight: number
-  minWidth?: number
-  children: ReactNode
-  className?: string
-}
-
-export function WithBackgroundImageStretch({
-  imageUrl,
-  imageWidth,
-  imageHeight,
-  minWidth,
-  children,
-  className
-}: WithBackGroundImageStretchProps) {
-  return (
-    <div
-      className={classNames(
-        'background bg-no-repeat flex flex-col tablet:items-center w-full bg-stretch desktop:px-4',
-        className
-      )}
-    >
-      {children}
-      <style jsx>{`
-        @media (min-width: ${calcRem(minWidth ?? 0)}) {
-          .background {
-            background-image: url('${imageUrl}')};
-          }
-        }
-
-        @media (min-width: ${calcRem(imageWidth)}) {
-          .background {
-            background-size: 100% ${calcRem(imageHeight)};
-          }
-        }
-      `}</style>
-    </div>
-  )
-}
-
-export function WithBackgroundForest1({
-  children,
-  className
-}: WithBackGroundImageConstProps) {
   return (
     <div
       className={classNames(
@@ -100,20 +38,93 @@ export function WithBackgroundForest1({
       {children}
       <style jsx>{`
         .background {
-          background-image: url('${FOREST_1_2x_MOBILE}')};
-          // background-size: contain;
-          background-size: 100% ${calcRem(FOREST_1_2x_MOBILE_HEIGHT / 2)};
+          background-image: url('${BG_HEADER_MOBILE}')};
+          background-size: 100% ${calcRem(BG_HEADER_MOBILE_HEIGHT / 2)};
         }
         
         @media (min-width: 640px) {
           .background {
-            background-image: url('${FOREST_1_2x_DESKTOP}')};
+            background-image: url('${BG_HEADER_DESKTOP}')};
+            background-size: 100% ${calcRem(BG_HEADER_DESKTOP_HEIGHT)};
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export function WithBackgroundPfxObjectives({
+  children,
+  className
+}: WithBackGroundImageProps) {
+  return (
+    <div
+      className={classNames(
+        'background bg-no-repeat flex flex-col tablet:items-center w-full bg-stretch desktop:px-4',
+        className
+      )}
+    >
+      {children}
+      <style jsx>{`
+        @media (min-width: 1280px) {
+          .background {
+            background-image: url('${BG_PFX_OBJECTIVES}')};
+            background-size: 100% ${calcRem(BG_PFX_OBJECTIVES_DESKTOP_HEIGHT)};
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export function WithBackgroundRoadmap({
+  children,
+  className
+}: WithBackGroundImageProps) {
+  return (
+    <div
+      className={classNames(
+        'background bg-white bg-no-repeat flex flex-col tablet:items-center w-full bg-stretch desktop:px-4',
+        className
+      )}
+    >
+      {children}
+      <style jsx>{`
+        .background {
+          background-size: 100%;
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export function WithBackgroundFooter({
+  children,
+  className
+}: WithBackGroundImageProps) {
+  return (
+    <div
+      className={classNames(
+        'background bg-no-repeat flex flex-col tablet:items-center w-full bg-stretch desktop:px-4',
+        className
+      )}
+    >
+      {children}
+      <style jsx>{`
+        .background {
+          background-image: url('${BG_FOOTER_MOBILE}')};
+          background-size: 100% 60vw;
+        }
+        
+        @media (min-width: 640px) {
+          .background {
+            background-image: url('${BG_FOOTER_DESKTOP}')};
           }
         }
 
-        @media (min-width: ${calcRem(FOREST_1_2x_DESKTOP_WIDTH)}) {
+        @media (min-width: ${calcRem(BG_FOOTER_DESKTOP_WIDTH)}) {
           .background {
-            background-size: 100% ${calcRem(FOREST_1_2x_DESKTOP_HEIGHT)};
+            background-size: 100% ${calcRem(BG_FOOTER_DESKTOP_HEIGHT)};
           }
         }
       `}</style>
@@ -124,7 +135,7 @@ export function WithBackgroundForest1({
 export function WithBackgroundFox({
   children,
   className
-}: WithBackGroundImageConstProps) {
+}: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
@@ -135,12 +146,12 @@ export function WithBackgroundFox({
       {children}
       <style jsx>{`
         .background {
-          background-image: url('${FOX_2x_MOBILE}')};
+          background-image: url('${FOX_FOOTER_MOBILE}')};
         }
         
         @media (min-width: 640px) {
           .background {
-            background-image: url('${FOX_2x_DESKTOP}')};
+            background-image: url('${FOX_FOOTER_DESKTOP}')};
           }
         }
       `}</style>

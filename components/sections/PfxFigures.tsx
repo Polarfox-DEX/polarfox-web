@@ -9,7 +9,7 @@ export function PfxFigures({ className }: PfxFiguresProps) {
   return (
     <div
       className={classNames(
-        'container flex flex-wrap justify-between gap-5',
+        'container flex flex-wrap justify-between gap-5 desktop:px-4',
         className
       )}
     >

@@ -9,7 +9,7 @@ export function FaqPreview({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'container flex flex-wrap laptop:flex-nowrap justify-between laptop:space-x-20 desktop:space-x-44',
+        'container flex flex-wrap laptop:flex-nowrap justify-between laptop:space-x-20 desktop:space-x-44 desktop:px-4',
         className
       )}
     >
