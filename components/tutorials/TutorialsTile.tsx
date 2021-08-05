@@ -11,11 +11,10 @@ export function TutorialsTile(props: { tutorial: TutorialClass }) {
       href={'tutorials/' + props.tutorial.slug}
     >
       <div
-        className="bg-center bg-cover flex justify-center"
+        className="bg-center bg-cover flex justify-center w-full"
         style={{
           backgroundImage: `url('tutorials/${props.tutorial.tileImage}')`,
-          width: calcRem(280),
-          height: calcRem(170)
+          height: calcRem(190)
         }}
       >
         {props.tutorial.isVideo && (
