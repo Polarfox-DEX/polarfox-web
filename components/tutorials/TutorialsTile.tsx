@@ -14,8 +14,7 @@ export function TutorialsTile(props: { tutorial: TutorialClass }) {
         className="bg-center bg-cover flex justify-center w-full"
         style={{
           backgroundImage: `url('tutorials/${props.tutorial.tileImage}')`,
-          height: calcRem(190),
-          margin: '0 auto'
+          height: calcRem(190)
         }}
       >
         {props.tutorial.isVideo && (

@@ -46,7 +46,6 @@ export function TutorialPage({ slug, className }: any) {
         >
           {selectedTutorial.name}
         </div>
-
         <div className="mb-6 text-blue space-y-4">
           <div
             className="inline mr-8 px-3 text-white py-1 bg-blue rounded-2x1"

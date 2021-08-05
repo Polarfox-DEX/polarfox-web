@@ -8,16 +8,11 @@ import classNames from 'classnames'
 export function TutorialsPane({ className }: SectionProps) {
   return (
 
-    <div className="
-      container grid grid-cols-2 gap-x-6
-      tablet:grid-cols-1 tablet:grid-x-0 tablet:w-full tablet:grid-gap-x-0
+    <div className=" container grid grid-cols-2 gap-x-6 tablet:grid-cols-1 tablet:grid-x-0 tablet:w-full tablet:grid-gap-x-0
       laptop:grid-cols-2
     ">
 
-      <div className="
-        col-span-2
-        tablet:w-full tablet:col-span-1
-        laptop:col-span-2
+      <div className="col-span-2 tablet:w-full tablet:col-span-1 laptop:col-span-2
       ">
 
         <div
@@ -31,10 +26,7 @@ export function TutorialsPane({ className }: SectionProps) {
         >
           BASICS
         </div>
-        <div className="
-          grid grid-cols-2 mb-4 gap-x-4
-          tablet:grid-cols-3
-          laptop:grid-cols-4
+        <div className="grid grid-cols-2 mb-4 gap-x-4 tablet:grid-cols-3 laptop:grid-cols-4
         ">
 
           {tutorials.map((tuto) => {
@@ -45,10 +37,7 @@ export function TutorialsPane({ className }: SectionProps) {
       </div>
 
 
-      <div className="
-        col-span-2
-        tablet:col-span-2
-        laptop:col-span-1
+      <div className="col-span-2 tablet:col-span-2 laptop:col-span-1
       ">
 
         <div
@@ -60,10 +49,7 @@ export function TutorialsPane({ className }: SectionProps) {
         >
           AKITA NETWORK
         </div>
-        <div className="
-          grid grid-cols-2 gap-x-4 mb-4
-          tablet:grid-cols-3
-          laptop:grid-cols-2
+        <div className=" grid grid-cols-2 gap-x-4 mb-4 tablet:grid-cols-3 laptop:grid-cols-2
         ">
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.AKITA_NETWORK)
@@ -74,12 +60,7 @@ export function TutorialsPane({ className }: SectionProps) {
       </div>
 
 
-      <div className="
-        col-span-2
-        tablet:col-span-2
-        laptop:col-span-1
-       
-      ">
+      <div className="col-span-2 tablet:col-span-2laptop:col-span-1">
         <div
           className="mt-10 border-b-4 border-tutorials_tile pb-8 font-bold"
           style={{
@@ -88,11 +69,7 @@ export function TutorialsPane({ className }: SectionProps) {
         >
           PFX DEV
         </div>
-        <div className="
-          grid grid-cols-2 gap-x-4 mb-4
-          tablet:grid-cols-3
-          laptop:grid-cols-2
-        ">
+        <div className="grid grid-cols-2 gap-x-4 mb-4tablet:grid-cols-3laptop:grid-cols-2">
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.PFX_DEV)
               return <TutorialsTile tutorial={tuto} key={tuto.slug} />
