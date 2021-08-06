@@ -79,8 +79,7 @@ export function Footer({ className }: FooterProps) {
           className="container text-sm flex-1 text-gray space-y-10"
           style={{
             fontSize: calcRem(12),
-            lineHeight: calcRem(22),
-            minHeight: calcRem(650)
+            lineHeight: calcRem(22)
           }}
         >
           <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16">

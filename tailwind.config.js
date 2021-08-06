@@ -41,8 +41,7 @@ module.exports = {
     backgroundPosition: {
       center: 'center',
       top: 'top',
-      bottom: 'bottom',
-      'bottom-40-vw': 'center bottom -40vw'
+      bottom: 'bottom'
     },
     backgroundSize: {
       auto: 'auto',

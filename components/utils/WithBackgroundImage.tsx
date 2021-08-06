@@ -139,7 +139,7 @@ export function WithBackgroundFox({
   return (
     <div
       className={classNames(
-        'background bg-no-repeat flex flex-col w-full bg-bottom-40-vw bg-100% tablet:bg-bottom tablet:bg-cover tablet:items-center desktop:px-4 mt-10',
+        'background bg-no-repeat flex flex-col w-full bg-100% tablet:bg-cover tablet:items-center desktop:px-4 mt-10',
         className
       )}
     >
@@ -147,11 +147,20 @@ export function WithBackgroundFox({
       <style jsx>{`
         .background {
           background-image: url('${FOX_FOOTER_MOBILE}')};
+          background-position: center bottom -40vw;
+          min-height: ${calcRem(650)};
         }
         
         @media (min-width: 640px) {
           .background {
             background-image: url('${FOX_FOOTER_DESKTOP}')};
+            background-position: center bottom;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          .background {
+            min-height: 45vw;
           }
         }
       `}</style>
