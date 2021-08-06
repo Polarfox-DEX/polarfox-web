@@ -1,17 +1,15 @@
 import classNames from 'classnames'
+import Slide from '../svg/Slide'
 import { calcRem } from '../../utils/styles'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionProps } from './utils/SectionProps'
 import { ReactNode } from 'react'
-import Slide from '../svg/Slide'
+import { WithBackgroundRoadmap } from '../utils/WithBackgroundImage'
 
 export function Roadmap({ className }: SectionProps) {
   return (
-    // TODO: Remove double div
-    <div
-      className={classNames('bg-white w-screen flex justify-center', className)}
-    >
-      <div id="roadmap" className="container pt-12 desktop:pt-22 pb-8">
+    <WithBackgroundRoadmap className={className}>
+      <div id="roadmap" className="container pt-24 pb-16">
         <div className="flex flex-wrap justify-between gap-y-5">
           <SectionHeading>ROADMAP</SectionHeading>
           <p
@@ -22,7 +20,7 @@ export function Roadmap({ className }: SectionProps) {
               lineHeight: calcRem(46)
             }}
           >
-            {/* // TODO: This should not be on the right. See Figma */}
+            {/* TODO: This should not be on the right. See Figma */}
             The launch of Polarfox is one step in our journey towards realizing
             a fully decentralized ecosystem. More projects are underway to
             reinforce our vision.
@@ -80,7 +78,7 @@ export function Roadmap({ className }: SectionProps) {
           </Year>
         </div>
       </div>
-    </div>
+    </WithBackgroundRoadmap>
   )
 }
 

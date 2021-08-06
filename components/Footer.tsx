@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React, { ReactNode, ReactText } from 'react'
 import {
-  WithBackgroundImageStretch,
+  WithBackgroundFooter,
   WithBackgroundFox
 } from '../components/utils/WithBackgroundImage'
 import { calcRem } from '../utils/styles'
@@ -19,12 +19,7 @@ interface FooterProps {
 export function Footer({ className }: FooterProps) {
   return (
     <>
-      <WithBackgroundImageStretch
-        className={classNames('bg-contain', className)}
-        imageUrl="/background/forest-3.png"
-        imageWidth={1440}
-        imageHeight={852}
-      >
+      <WithBackgroundFooter className={classNames('bg-contain', className)}>
         <div className="forest3 container flex flex-col laptop:flex-row laptop:justify-between laptop:items-center laptop:pb-32">
           <h2 className="title font-switzer font-semibold">
             Meet the worldwide community.
@@ -38,12 +33,22 @@ export function Footer({ className }: FooterProps) {
         </div>
         {/* TODO: Remove double div */}
         <div className="container laptop:px-4">
-          <div className="py-16 mt-4 laptop:py-20 border-t-2 border-blue">
-            <img src="/logo/polarfox.png" alt="Polarfox logo" />
+          <div className="py-16 mt-4 laptop:py-20 border-t-2 border-blue flex items-center space-x-4">
+            <img
+              src="/logo/polarfox.png"
+              alt="Polarfox logo"
+              style={{ width: calcRem(44), height: calcRem(44) }}
+            />
+            <span
+              className="font-poppins font-bold"
+              style={{ fontSize: calcRem(25), lineHeight: calcRem(20) }}
+            >
+              polarfox
+            </span>
           </div>
         </div>
         <SiteMap />
-      </WithBackgroundImageStretch>
+      </WithBackgroundFooter>
       <style jsx>{`
         .forest3 {
           margin-top: 40vw;
@@ -60,7 +65,7 @@ export function Footer({ className }: FooterProps) {
           line-height: ${calcRem(39.6)};
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1280px) {
           .title {
             font-size: ${calcRem(50)};
             line-height: ${calcRem(65)};
@@ -74,8 +79,7 @@ export function Footer({ className }: FooterProps) {
           className="container text-sm flex-1 text-gray space-y-10"
           style={{
             fontSize: calcRem(12),
-            lineHeight: calcRem(22),
-            minHeight: calcRem(650)
+            lineHeight: calcRem(22)
           }}
         >
           <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16">

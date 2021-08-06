@@ -12,6 +12,7 @@ import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
 import { ReactNode } from 'react'
+import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 export function HeaderDesktop({ className }: SectionProps) {
   return (
@@ -21,11 +22,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         className
       )}
     >
-      <Link href="/">
-        <a>
-          <img src="/logo/polarfox.png" alt="Polarfox logo" />
-        </a>
-      </Link>
+      <PolarfoxLogo />
       <div
         className="flex items-center space-x-20 font-semibold"
         style={{

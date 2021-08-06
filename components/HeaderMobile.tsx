@@ -15,6 +15,7 @@ import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
 import { SocialMediaLinks } from './utils/SocialMediaLinks'
 import { HeaderProps } from './Header'
+import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 // TODO: Define the behavior we want when the user clicks on a link to the current page
 
@@ -31,16 +32,7 @@ export function HeaderMobile({
     >
       <div>
         <div className="items-center flex justify-between">
-          <Link href="/">
-            <a>
-              {/* TODO: The "polarfox" in the logo should not be an image */}
-              <img
-                src="/logo/polarfox.png"
-                alt="Polarfox logo"
-                style={{ width: calcRem(175) }}
-              />
-            </a>
-          </Link>
+          <PolarfoxLogo />
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <Cross /> : <MenuMobile />}
           </button>
