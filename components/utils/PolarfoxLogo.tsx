@@ -8,7 +8,7 @@ export function PolarfoxLogo({ className }: SectionProps) {
     <Link href="/">
       <a className={classNames('flex items-center space-x-4', className)}>
         <img
-          src="/logo/polarfox.png"
+          src="/logo/polarfox-tmp.png"
           alt="Polarfox logo"
           className="polarfox-logo"
         />

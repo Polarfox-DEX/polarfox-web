@@ -35,7 +35,7 @@ export function Footer({ className }: FooterProps) {
         <div className="container laptop:px-4">
           <div className="py-16 mt-4 laptop:py-20 border-t-2 border-blue flex items-center space-x-4">
             <img
-              src="/logo/polarfox.png"
+              src="/logo/polarfox-tmp.png"
               alt="Polarfox logo"
               style={{ width: calcRem(44), height: calcRem(44) }}
             />
