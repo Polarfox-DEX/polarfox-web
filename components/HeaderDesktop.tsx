@@ -16,9 +16,9 @@ import React, { LegacyRef, ReactNode, RefObject, useRef, useState } from 'react'
 export function HeaderDesktop({ className }: SectionProps) {
   return (
     <div
-      className={classNames('w-full grid py-4 pl-8', className)}
+      className={classNames('hidden w-full laptop:grid py-4 pl-8', className)}
       style={{
-        gridTemplateColumns: '50% 50%'
+        gridTemplateColumns: 'auto auto'
       }}
     >
       <Link href="/">
@@ -27,7 +27,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         </a>
       </Link>
       <div
-        className="grid grid-flow-col items-center justify-center text-center"
+        className="grid grid-flow-col items-center justify-end text-center"
         style={{
           fontSize: calcRem(14),
           lineHeight: calcRem(16.45)
@@ -250,7 +250,7 @@ function LanguageDropdown() {
     <Dropdown
       name="Language"
       className="absolute block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
-      rightAlignment="2%"
+      rightAlignment="0.5%"
     >
       <Language href="/">
         {' '}
