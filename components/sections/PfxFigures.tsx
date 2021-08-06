@@ -19,18 +19,18 @@ export function PfxFigures({ className }: PfxFiguresProps) {
         backgroundColor="#939EAC"
       />
       <PfxFigureBox
-        title="Circulation supply"
+        title="Circulating supply"
         figure="6,739,207 PFX"
         backgroundColor="#738193"
       />
       <PfxFigureBox
-        title="Burned"
-        figure="1,349,829 PFX"
-        backgroundColor="#9EAEC1"
-      />
-      <PfxFigureBox
         title="Market Cap"
         figure="$1,283,829,429"
+        backgroundColor="#9EAEC1"
+        />
+      <PfxFigureBox
+        title="Holders"
+        figure="3"
         backgroundColor="#667F9F"
       />
     </div>

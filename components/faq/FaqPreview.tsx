@@ -30,7 +30,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What is the Polarfox DEX?">
+        <Question question="What is the Polarfox DEX?" isOpenDefault>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -38,7 +38,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What is PFX?">
+        <Question question="What is PFX?" isOpenDefault>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,
@@ -46,7 +46,7 @@ export function FaqPreview({ className }: SectionProps) {
           open-source and decentralized. Polarfox’s main values are trust,
           honesty and transparency.
         </Question>
-        <Question question="What are the PFX tokenomics?">
+        <Question question="What are the PFX tokenomics?" isOpenDefault>
           Polarfox is a crypto ecosystem, based on Avalanche, which will bring
           many apps together. Its main app is the Polarfox DEX; some other apps
           have already been added to the ecosystem, such as the Polarfox bridge,

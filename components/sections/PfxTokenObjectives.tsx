@@ -48,12 +48,12 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
               <LegendItem color="#001937">
                 Presale
                 <br />
-                37%
+                33%
               </LegendItem>
               <LegendItem color="#66AEFF">
                 Liquidity mining
                 <br />
-                37%
+                33%
               </LegendItem>
               <LegendItem color="#2DBCC4">
                 Initial Liquidity
@@ -61,14 +61,19 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
                 17%
               </LegendItem>
               <LegendItem color="#0130A6">
-                Team treasury
+                Team funding
                 <br />
-                6.5%
+                7%
+              </LegendItem>
+              <LegendItem color="#03DDAF">
+                Marketing funding
+                <br />
+                7%
               </LegendItem>
               <LegendItem color="#086AD9">
                 Governance treasury
                 <br />
-                2.5%
+                3%
               </LegendItem>
             </div>
           </div>
@@ -76,19 +81,19 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
         <div className="flex flex-wrap justify-between gap-y-9 mt-20 desktop:mt-32">
           <PfxTokenObjective title="Tokenomics">
             The PFX tokenomics are designed to provide a long-term increase in
-            value while rewarding liquidity providers with even more PFX gains.
+            value while rewarding liquidity providers with even more PFX and AVAX gains.
           </PfxTokenObjective>
           <PfxTokenObjective title="Effective ecosystem">
             PFX funds the Polarfox ecosystem, initially with a percentage of the
             token supply, and then with a dev fee on each PFX transaction.
           </PfxTokenObjective>
-          <PfxTokenObjective title="Governance protocol">
-            2.5% of the total supply will be given to the governance for use
-            over a time period of sixteen years.
+          <PfxTokenObjective title="Liquidity provider rewards">
+            On every transaction involving PFX, 0.9% of the transferred PFX
+            amount is converted to AVAX and distributed among liquidity providers.
           </PfxTokenObjective>
-          <PfxTokenObjective title="Deflationary">
-            On every transaction involving PFX, 0.27% of the transferred PFX
-            amount is burned forever, effectively making it deflationary.
+          <PfxTokenObjective title="Governance protocol">
+            3% of the total supply will be given to the governance for use
+            over a time period of sixteen years.
           </PfxTokenObjective>
         </div>
       </div>
