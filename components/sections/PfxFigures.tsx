@@ -27,12 +27,8 @@ export function PfxFigures({ className }: PfxFiguresProps) {
         title="Market Cap"
         figure="$1,283,829,429"
         backgroundColor="#9EAEC1"
-        />
-      <PfxFigureBox
-        title="Holders"
-        figure="3"
-        backgroundColor="#667F9F"
       />
+      <PfxFigureBox title="Holders" figure="3" backgroundColor="#667F9F" />
     </div>
   )
 }

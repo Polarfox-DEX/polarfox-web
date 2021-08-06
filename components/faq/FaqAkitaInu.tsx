@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { calcRem } from '../../utils/styles'
 import { Question } from './Question'
 import { SectionProps } from '../sections/utils/SectionProps'
 
@@ -13,7 +14,10 @@ export function FaqAkitaInu({ className }: SectionProps) {
         <br />A goal of the team is to convert this coin from a meme token to a
         real, useful token with various use cases. The first two use cases of
         AKITA will be:
-        <ul className="list-disc list-inside">
+        <ul
+          className="list-disc list-inside pl-4"
+          style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
+        >
           <li>Staking AKITA on Polarfox to earn gAKITA</li>
           <li>Staking AKITA with other dog tokens on the Dreamswap exchange</li>
         </ul>

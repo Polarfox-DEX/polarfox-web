@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Link from 'next/link'
+import { calcRem } from '../../utils/styles'
 import { Question } from './Question'
 import { SectionProps } from '../sections/utils/SectionProps'
 
@@ -20,7 +21,10 @@ export function FaqAvalanche({ className }: SectionProps) {
       </Question>
       <Question question="Why is Polarfox running on Avalanche?">
         Polarfox is built on Avalanche for a number of reasons, notably:
-        <ul className="list-disc list-inside">
+        <ul
+          className="list-disc list-inside pl-4"
+          style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
+        >
           <li>Ridiculously low gas fees</li>
           <li>Extremely fast transactions</li>
           <li>Responsive developer team</li>

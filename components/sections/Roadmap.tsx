@@ -87,9 +87,7 @@ export function Roadmap({ className }: SectionProps) {
                 Development of Polarfox DEX V3 - yield farming, limit orders
                 and/or other features
               </Task>
-              <Task isFuture>
-                Establishment of further partnerships
-              </Task>
+              <Task isFuture>Establishment of further partnerships</Task>
             </Quarter>
             <Quarter title="Q3 Q4" isFuture>
               <Task isFuture>Third ideation phase</Task>

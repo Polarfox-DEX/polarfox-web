@@ -35,7 +35,8 @@ export function PfxStatements({ className }: PfxStatementsProps) {
         icon={<Avalanche width={calcRem(46.39)} height={calcRem(40)} />}
         title="Created on Avalanche"
       >
-        Avalanche is a comprehensive, decentralized network of blockchains with both very cheap and extremely fast transactions.
+        Avalanche is a comprehensive, decentralized network of blockchains with
+        both very cheap and extremely fast transactions.
       </PfxStatement>
     </div>
   )

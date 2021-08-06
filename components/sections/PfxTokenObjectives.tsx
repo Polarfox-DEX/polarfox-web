@@ -81,7 +81,8 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
         <div className="flex flex-wrap justify-between gap-y-9 mt-20 desktop:mt-32">
           <PfxTokenObjective title="Tokenomics">
             The PFX tokenomics are designed to provide a long-term increase in
-            value while rewarding liquidity providers with even more PFX and AVAX gains.
+            value while rewarding liquidity providers with even more PFX and
+            AVAX gains.
           </PfxTokenObjective>
           <PfxTokenObjective title="Effective ecosystem">
             PFX funds the Polarfox ecosystem, initially with a percentage of the
@@ -89,11 +90,12 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
           </PfxTokenObjective>
           <PfxTokenObjective title="Liquidity provider rewards">
             On every transaction involving PFX, 0.9% of the transferred PFX
-            amount is converted to AVAX and distributed among liquidity providers.
+            amount is converted to AVAX and distributed among liquidity
+            providers.
           </PfxTokenObjective>
           <PfxTokenObjective title="Governance protocol">
-            3% of the total supply will be given to the governance for use
-            over a time period of sixteen years.
+            3% of the total supply will be given to the governance for use over
+            a time period of sixteen years.
           </PfxTokenObjective>
         </div>
       </div>
