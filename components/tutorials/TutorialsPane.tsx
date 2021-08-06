@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 export function TutorialsPane({ className }: SectionProps) {
   return (
-    <div className="grid grid-cols-2 gap-x-6">
+    <div className="container grid grid-cols-2 gap-x-6">
       <div className="col-span-2">
         <div
           className={classNames(
