@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
-import { Question } from '../faq/Question'
+import { Question } from '../faq/utils/Question'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 export function PresaleFaqQuestions({ className }: SectionProps) {

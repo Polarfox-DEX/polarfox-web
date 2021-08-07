@@ -3,8 +3,9 @@ import { FaqSelector } from './FaqSelector'
 import { FaqContact } from './FaqContact'
 import { FaqPolarfox } from './FaqPolarfox'
 import { FaqPfxToken } from './FaqPfxToken'
-import { FaqAkitaInu } from './FaqAkitaInu'
+import { FaqPresale } from './FaqPresale'
 import { FaqAvalanche } from './FaqAvalanche'
+import { FaqAkitaInu } from './FaqAkitaInu'
 import { SectionProps } from '../sections/utils/SectionProps'
 import React, { useState } from 'react'
 
@@ -24,7 +25,7 @@ export function FaqMain({ className }: SectionProps) {
             selectedFaq={selectedFaq}
             setSelectedFaq={setSelectedFaq}
           />
-          <FaqContact className="hidden laptop:block mt-60" />
+          <FaqContact className="hidden laptop:block mt-32" />
         </div>
         <FaqPolarfox
           className={classNames(
@@ -39,6 +40,14 @@ export function FaqMain({ className }: SectionProps) {
             'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
             {
               hidden: selectedFaq !== 'PFX_TOKEN'
+            }
+          )}
+        />
+        <FaqPresale
+          className={classNames(
+            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
+            {
+              hidden: selectedFaq !== 'PRESALE'
             }
           )}
         />

@@ -20,7 +20,10 @@ export function Footer({ className }: FooterProps) {
   return (
     <>
       <WithBackgroundFooter className={classNames('bg-contain', className)}>
-        <div className="forest3 container flex flex-col laptop:flex-row laptop:justify-between laptop:items-center laptop:pb-32">
+        <div
+          id="footer"
+          className="forest3 container flex flex-col laptop:flex-row laptop:justify-between laptop:items-center laptop:pb-32"
+        >
           <h2 className="title font-switzer font-semibold">
             Meet the worldwide community.
           </h2>
