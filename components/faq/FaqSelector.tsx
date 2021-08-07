@@ -32,15 +32,22 @@ export function FaqSelector({ selectedFaq, setSelectedFaq }: FaqSelectorProps) {
       <div className="mt-12">
         <FaqSelectorButton
           title="Polarfox"
-          numberOfItems={5}
+          numberOfItems={7}
           name={'POLARFOX'}
           selectedFaq={selectedFaq}
           setSelectedFaq={setSelectedFaq}
         />
         <FaqSelectorButton
           title="PFX token"
-          numberOfItems={3}
+          numberOfItems={4}
           name={'PFX_TOKEN'}
+          selectedFaq={selectedFaq}
+          setSelectedFaq={setSelectedFaq}
+        />
+        <FaqSelectorButton
+          title="Presale"
+          numberOfItems={3}
+          name={'PRESALE'}
           selectedFaq={selectedFaq}
           setSelectedFaq={setSelectedFaq}
         />

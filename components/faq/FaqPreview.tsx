@@ -20,7 +20,6 @@ export function FaqPreview({ className }: SectionProps) {
         </SectionTitle>
         <SectionButton href="/faq">More questions</SectionButton>
       </div>
-
       <FaqPolarfox />
     </div>
   )

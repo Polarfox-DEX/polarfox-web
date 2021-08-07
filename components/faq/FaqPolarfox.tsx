@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import Link from 'next/link'
 import { calcRem } from '../../utils/styles'
-import { Question } from './Question'
+import { FaqLink } from './utils/FaqLink'
+import { Question } from './utils/Question'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqPolarfox({ className }: SectionProps) {
@@ -15,10 +15,7 @@ export function FaqPolarfox({ className }: SectionProps) {
         <br />
         <br />
         The core team is entirely public — you can find them{' '}
-        <Link href="/about">
-          <a className="hover:underline text-blue-light">here</a>
-        </Link>
-        .
+        <FaqLink href="/about">here</FaqLink>.
       </Question>
       <Question question="What is the Polarfox DEX?">
         Polarfox is a decentralized exchange (DEX) running on the Avalanche
@@ -28,10 +25,7 @@ export function FaqPolarfox({ className }: SectionProps) {
         <br />
         <br />
         If you need help using the Polarfox DEX, see our{' '}
-        <Link href="/tutorials">
-          <a className="hover:underline text-blue-light">tutorials</a>
-        </Link>{' '}
-        (will be added soon!).
+        <FaqLink href="/tutorials">tutorials</FaqLink> (will be added soon!).
       </Question>
       <Question question="What are the Polarfox DEX's features?">
         At launch, the Polarfox DEX will boast the following features:
@@ -48,14 +42,8 @@ export function FaqPolarfox({ className }: SectionProps) {
         </ul>
         <br />
         As time goes on, more features will be added to it. You can check our{' '}
-        <Link href="/#roadmap">
-          <a className="hover:underline text-blue-light">roadmap</a>
-        </Link>{' '}
-        and join us on{' '}
-        <Link href="/#footer">
-          <a className="hover:underline text-blue-light">social media</a>
-        </Link>{' '}
-        for more information.
+        <FaqLink href="/#roadmap">roadmap</FaqLink> and join us on{' '}
+        <FaqLink href="/#footer">social media</FaqLink> for more information.
       </Question>
       <Question question="What is the Polarfox ecosystem?">
         Polarfox will start as a decentralized exchange, but as time goes on, it

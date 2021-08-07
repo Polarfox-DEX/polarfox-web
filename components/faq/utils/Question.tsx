@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react'
-import { calcRem } from '../../utils/styles'
+import { calcRem } from '../../../utils/styles'
 
 interface QuestionProps {
   question: string
