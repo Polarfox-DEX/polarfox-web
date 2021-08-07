@@ -65,7 +65,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
                 <br />
                 7%
               </LegendItem>
-              <LegendItem color="#03DDAF">
+              <LegendItem color="#9BCEF3">
                 Marketing funding
                 <br />
                 7%
