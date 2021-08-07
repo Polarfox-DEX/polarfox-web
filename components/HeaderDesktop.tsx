@@ -30,7 +30,7 @@ export function HeaderDesktop({ className }: SectionProps) {
           lineHeight: calcRem(16.45)
         }}
       >
-        <ProductsDropdown />
+        {/* <ProductsDropdown /> */}
         {/* TODO: Remove the div below */}
         <div />
         <Link href="/about">
@@ -43,9 +43,9 @@ export function HeaderDesktop({ className }: SectionProps) {
           <a>FAQ</a>
         </Link>
         {/* // TODO: The mr-5 below does not work - fix this */}
-        <HoverableItem className="mr-5" width={119}>
+        {/* <HoverableItem className="mr-5" width={119}>
           Resources
-        </HoverableItem>
+        </HoverableItem> */}
         {/* <LanguageDropdown /> */}
         {/* <div>Account</div> */}
       </div>

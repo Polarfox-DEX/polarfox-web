@@ -42,10 +42,10 @@ export function HeaderMobile({
             className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
             style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
           >
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
               Products
               <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
-            </div>
+            </div> */}
             <Link href="/about">
               <a>About</a>
             </Link>
@@ -55,10 +55,10 @@ export function HeaderMobile({
             <Link href="/faq">
               <a>FAQ</a>
             </Link>
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
               Resources
               <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
-            </div>
+            </div> */}
           </div>
         ) : (
           <div />

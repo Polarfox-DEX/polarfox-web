@@ -50,7 +50,7 @@ export function Footer({ className }: FooterProps) {
             </span>
           </div>
         </div>
-        <SiteMap />
+        {/* <SiteMap /> */}
       </WithBackgroundFooter>
       <style jsx>{`
         .forest3 {
@@ -85,7 +85,8 @@ export function Footer({ className }: FooterProps) {
             lineHeight: calcRem(22)
           }}
         >
-          <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16">
+          {/* <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16"> */}
+          <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6">
             <p
               className="text-blue flex-1 mt-8 tablet:mt-0"
               style={{ fontSize: '13px', lineHeight: '33px' }}

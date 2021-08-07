@@ -14,8 +14,8 @@ export function FaqAvalanche({ className }: SectionProps) {
         <br />
         <br />
         If you need help using Avalanche, see this{' '}
-        <FaqLink href="/tutorials/avalanchet">tutorial</FaqLink> (will be added
-        soon!).
+        {/* <FaqLink href="/tutorials/avalanche">tutorial</FaqLink> (will be added soon!). */}
+        <FaqLink href="/">tutorial</FaqLink> (will be added soon!).
       </Question>
       <Question question="Why is Polarfox running on Avalanche?">
         Polarfox is built on Avalanche for a number of reasons, notably:

@@ -14,7 +14,7 @@ export default function Home() {
       <PfxStatements />
       <PfxFigures className="mt-22 desktop:mt-44" />
       <PfxTokenObjectives className="mt-22 desktop:mt-44" />
-      <Products className="mt-22 desktop:mt-44" />
+      {/* <Products className="mt-22 desktop:mt-44" /> */}
       <Roadmap className="mt-22" />
       <FaqPreview className="mt-22 desktop:mt-44" />
     </Page>

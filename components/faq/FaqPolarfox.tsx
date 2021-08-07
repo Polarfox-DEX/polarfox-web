@@ -25,7 +25,8 @@ export function FaqPolarfox({ className }: SectionProps) {
         <br />
         <br />
         If you need help using the Polarfox DEX, see our{' '}
-        <FaqLink href="/tutorials">tutorials</FaqLink> (will be added soon!).
+        {/* <FaqLink href="/tutorials">tutorials</FaqLink> (will be added soon!). */}
+        <FaqLink href="/">tutorials</FaqLink> (will be added soon!).
       </Question>
       <Question question="What are the Polarfox DEX's features?">
         At launch, the Polarfox DEX will boast the following features:
