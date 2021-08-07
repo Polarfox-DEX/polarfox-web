@@ -27,7 +27,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         </a>
       </Link>
       <div
-        className="grid grid-flow-col items-center justify-end text-center"
+        className="grid grid-flow-col items-center justify-end text-center font-semibold"
         style={{
           fontSize: calcRem(14),
           lineHeight: calcRem(16.45)
