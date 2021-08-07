@@ -11,7 +11,7 @@ import FrenchFlag from './svg/flags/FrenchFlag'
 import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
-import React, { LegacyRef, ReactNode, RefObject, useRef, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 
 export function HeaderDesktop({ className }: SectionProps) {
   return (
@@ -89,7 +89,7 @@ function Dropdown({
         <MenuArrow />
       </div>
       <div
-        className={classNames(menuOpened || locked ? '' : 'hidden',className)}
+        className={classNames(menuOpened || locked ? '' : 'hidden', className)}
         style={{
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',
           backgroundColor: 'white',
