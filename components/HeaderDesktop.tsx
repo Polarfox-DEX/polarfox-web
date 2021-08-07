@@ -89,7 +89,7 @@ function Dropdown({
         <MenuArrow />
       </div>
       <div
-        className={classNames(menuOpened || locked ? '' : 'hidden', className)}
+        className={classNames(menuOpened || locked ? '' : 'hidden',className)}
         style={{
           boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',
           backgroundColor: 'white',
@@ -216,7 +216,7 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
         >
           {logo}
           <div
-            className="absolute self-end font-semibold"
+            className="absolute self-end text-left font-semibold"
             style={{
               fontSize: calcRem(12),
               lineHeight: calcRem(14),
