@@ -78,9 +78,7 @@ function Dropdown({
   return (
     <div>
       <div
-        className={classNames(
-          'grid items-center hover:bg-gray-mid2 rounded-3xl px-6 py-4 gap-x-2'
-        )}
+        className={classNames(menuOpened || locked ? 'bg-gray-mid2' : '', 'grid items-center hover:bg-gray-mid2 rounded-3xl px-6 py-4 gap-x-2')}
         style={{ gridTemplateColumns: '0.9fr 0.1fr' }}
         onMouseEnter={() => setMenuOpened(true)}
         onMouseLeave={() => hideMenu()}
@@ -113,7 +111,7 @@ function RessourceDropdown() {
       className={classNames(
         'absolute grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl'
       )}
-      rightAlignment="8%"
+      rightAlignment="3%"
     >
       <MenuItem href="/tutorials" linkTitle="Tutorials">
         Tutorials
@@ -205,11 +203,18 @@ interface ProductProps {
 }
 
 function Product({ logo, href, linkTitle, children }: ProductProps) {
+
+  const [buttonHover,setButtonHover] = useState(false)
+
+  const call = () => {
+    console.log('ok')
+  }
+
   return (
     <div style={{ width: calcRem(137) }}>
       <Link href={href}>
         <a
-          className="flex rounded-xl hover:bg-gray-dark mx-3 p-3 pt-4"
+          className={classNames(buttonHover ? 'bg-gray-dark' : '','flex w-full rounded-xl hover:bg-gray-dark p-3 pt-4')}
           style={{
             height: calcRem(121)
           }}
@@ -227,20 +232,22 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
           </div>
         </a>
       </Link>
-      <Link href={href}>
-        <a
-          className="border border-blue rounded-xl border-opacity-10 mt-2 flex items-center justify-between font-semibold pl-4 hover:bg-blue hover:text-white"
-          style={{
-            height: calcRem(40)
-          }}
-        >
-          {linkTitle}
-          <TopRightArrow
-            className="fill-current mx-4"
-            style={{ height: calcRem(7), width: calcRem(7) }}
-          />
-        </a>
-      </Link>
+      <a
+        className="border border-blue rounded-xl border-opacity-10 mt-2 flex items-center justify-between font-semibold pl-4 hover:bg-blue hover:text-white"
+        style={{
+          height: calcRem(40)
+        }}
+        href={href}
+        onMouseEnter={() => setButtonHover(true)}
+        onMouseLeave={() => setButtonHover(false)}
+      >
+        {linkTitle}
+        <TopRightArrow
+          className="fill-current mx-4"
+          style={{ height: calcRem(7), width: calcRem(7) }}
+        />
+      </a>
+
     </div>
   )
 }
