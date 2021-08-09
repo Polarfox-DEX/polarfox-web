@@ -4,8 +4,8 @@ import DownArrow from '../svg/DownArrow'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
-import { PresaleCountdown } from './PresaleCountdown'
-import moment from 'moment'
+import { Countdown } from '../countdown/Countdown'
+import GlobalVars from './../GlobalVars'
 
 export function PresaleInterface({ className }: SectionProps) {
   return (
@@ -23,8 +23,7 @@ export function PresaleInterface({ className }: SectionProps) {
         }}
       >
         <div className="flex text-white h-full items-center space-x-7">
-            <PresaleCountdown 
-            eventDateUTC={ moment.utc('2021-08-09 14:00:00','YYYY-MM-DD HH:mm:ss') }/>
+            <Countdown eventDateUTC={ GlobalVars.presaleEndUTCDate }/>
           <Clock />
         </div>
       </div>

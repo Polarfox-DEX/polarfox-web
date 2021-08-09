@@ -7,14 +7,7 @@ interface PresaleCountdownInterface{
     eventDateUTC: moment.Moment
 }
 
-interface TimeLeft{
-    days: number,
-    hours: number,
-    minutes: number,
-    seconds: number
-}
-
-export function PresaleCountdown({eventDateUTC} : PresaleCountdownInterface){
+export function Countdown({eventDateUTC} : PresaleCountdownInterface){
 
     var now = moment.utc();
 
@@ -87,7 +80,7 @@ interface PresaleTimerWindowProps {
     suffix : string
   }
   
-  function PresaleTimerWindow({ className, value, suffix }: PresaleTimerWindowProps) {
+function PresaleTimerWindow({ className, value, suffix }: PresaleTimerWindowProps) {
 
     const display = value < 9 ? '0'+value : value;
 

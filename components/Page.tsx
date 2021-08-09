@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export function Page({ children }: PageProps) {
-  const displayPresale = false
+  const displayPresale = true
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
