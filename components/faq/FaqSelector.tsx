@@ -44,13 +44,13 @@ export function FaqSelector({ selectedFaq, setSelectedFaq }: FaqSelectorProps) {
           selectedFaq={selectedFaq}
           setSelectedFaq={setSelectedFaq}
         />
-        <FaqSelectorButton
+        {/* <FaqSelectorButton
           title="Presale"
           numberOfItems={3}
           name={'PRESALE'}
           selectedFaq={selectedFaq}
           setSelectedFaq={setSelectedFaq}
-        />
+        /> */}
         <FaqSelectorButton
           title="Avalanche"
           numberOfItems={2}

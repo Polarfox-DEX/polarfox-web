@@ -43,14 +43,14 @@ export function FaqMain({ className }: SectionProps) {
             }
           )}
         />
-        <FaqPresale
+        {/* <FaqPresale
           className={classNames(
             'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
             {
               hidden: selectedFaq !== 'PRESALE'
             }
           )}
-        />
+        /> */}
         <FaqAvalanche
           className={classNames(
             'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
