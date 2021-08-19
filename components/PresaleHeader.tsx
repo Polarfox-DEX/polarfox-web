@@ -9,16 +9,32 @@ import { Countdown } from './countdown/Countdown'
 import moment from 'moment'
 
 export function PresaleHeader({ className }: SectionProps) {
-  // TODO remove Hidden when implementing responsive
+
   return (
     <div
       className={classNames(
-        'hidden desktop:flex w-full absolute bg-blue text-white font-graphik justify-between h-28',
+        'desktop:container w-full grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:absolute laptop:h-28 desktop:px-14',
+        'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader ',
         className
-      )}
+      )} 
+      style={{
+        height: calcRem(80)
+      }}
     >
+
+      <div 
+        className={classNames("laptop:hidden bg-blue-light grid items-center h-full w-full")}
+        style={{
+          fontSize: calcRem(10)
+        }}
+      >
+        <div className="-rotate-90 text-center">
+          { GlobalVars.showPresaleStartDate ? "NOW" : "SOON" }
+        </div>
+      </div>
+
       <div
-        className="self-center ml-16"
+        className={classNames(GlobalVars.showPresaleStartDate ? "laptop:self-center laptop:ml-16 pl-2" : 'hidden')}
         style={{ fontSize: calcRem(18) }}
       >
 
@@ -31,7 +47,26 @@ export function PresaleHeader({ className }: SectionProps) {
         }
         
       </div>
-      <div className="flex">
+
+      <div className={classNames(GlobalVars.showPresaleStartDate ? 'hidden' : 'ml-1 laptop:justify-center laptop:ml-8')}>
+        PFX presale starts mid-September
+      </div>
+
+      <a 
+        className={classNames(GlobalVars.showPresaleStartDate ? "laptop:hidden" : "", 
+          "mr-4 bg-white text-blue grid items-center justify-self-end text-center rounded-full px-2 font-semibold ")
+        } 
+        style={{
+          height: calcRem(50),
+          width: calcRem(140),
+          fontSize: calcRem(14)
+        }}
+        href={GlobalVars.showPresaleStartDate ? "/presale" : "https://t.me/pfxannouncements"}
+      >
+        { GlobalVars.showPresaleStartDate ? "OPEN" : "MORE INFO" }
+      </a>
+
+      <div className={classNames(GlobalVars.showPresaleStartDate ? "hidden laptop:flex": 'hidden')}>
         <div
           className="container flex justify-between items-center space-x-5 mx-24"
           style={{ width: calcRem(312) }}
@@ -54,21 +89,6 @@ export function PresaleHeader({ className }: SectionProps) {
           </Link>
         </div>
       </div>
-    </div>
-  )
-}
-
-interface PresaleTimerBoxProps {
-  children: ReactNode
-}
-
-function PresaleTimerBox({ children }: PresaleTimerBoxProps) {
-  return (
-    <div
-      className="border border-white rounded-lg border-opacity-25 pt-4 text-center"
-      style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
-    >
-      {children}
     </div>
   )
 }
