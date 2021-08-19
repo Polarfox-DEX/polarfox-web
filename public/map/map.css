@@ -1,0 +1,9 @@
+.cluster{
+    width: 20px !important;
+    height: 20px !important;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    text-align: center;
+}

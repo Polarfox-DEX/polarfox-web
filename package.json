@@ -21,6 +21,7 @@
     "next-optimized-images": "^2.6.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
     "react-leaflet": "npm:@monsonjeremy/react-leaflet",
     "react-leaflet-markercluster": "^3.0.0-rc1",
     "react-loadable": "^5.5.0"
