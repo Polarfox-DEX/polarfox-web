@@ -1,16 +1,9 @@
-import { MapContainer, TileLayer } from "react-leaflet"
-import 'leaflet/dist/leaflet.css'
-import MarkerClusterGroup from 'react-leaflet-markercluster';
-import * as L from 'leaflet'
-
-import memberJobs from "./MemberJobs"
 import { TeamMemberInterface } from "./TeamMemberInterface"
-import MapMarker from "./MapMarker"
-import FrenchFlag from "../svg/flags/FrenchFlag"
+import memberJobs from "./MemberJobs"
 import CzechRepublic from "../svg/flags/CzechRepublic"
+import FrenchFlag from "../svg/flags/FrenchFlag"
 import GermanFlag from "../svg/flags/GermanFlag"
 import USFlag from "../svg/flags/USFlag"
-import { LeafletContext } from "@react-leaflet/core";
 
 export default function Map(){
 
@@ -38,32 +31,13 @@ export default function Map(){
       }
 
     return(
+
         <div>
-            <MapContainer 
-                style={{ height: '500px', width: '800px' }} 
-                center={[0,0]} 
-                zoom={1}
-                crollWheelZoom={true}
-            >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-                <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon(EuropeeanMembers)}>
-                    {EuropeeanMembers.map((member) => {
-                        return(
-                            <MapMarker member={member}></MapMarker>
-                        )
-                    })}
-                </MarkerClusterGroup>
-
-                <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon(NorthAmericaMembers)}>
-                    {NorthAmericaMembers.map((member) => {
-                        return(
-                            <MapMarker member={member}></MapMarker>
-                        )
-                    })}
-                </MarkerClusterGroup>
-
-            </MapContainer>
+            <div id="mapid" style={{ height: '500px', width: '800px' }} ></div>
+            <script src="/map.js"></script>
         </div>
         
     )
