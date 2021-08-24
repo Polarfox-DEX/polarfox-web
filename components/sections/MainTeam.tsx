@@ -30,7 +30,7 @@ export function MainTeam({ className }: SectionProps) {
       <div className="flex justify-around flex-wrap mt-10 desktop:mt-28 gap-x-16 desktop:gap-x-0 gap-y-16">
         <Profile>
           <ProfilePicture
-            src="/team-pictures/jf.jpg"
+            src="/team-pictures/jf.png"
             alt="Justin French picture"
           />
           <ProfileHeading
@@ -48,7 +48,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/ca.jpg"
+            src="/team-pictures/ca.png"
             alt="Clément Aguilar picture"
           />
           <ProfileHeading
@@ -67,7 +67,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/rmg.jpg"
+            src="/team-pictures/rmg.png"
             alt="Ryan MacGavin picture"
           />
           <ProfileHeading
@@ -84,7 +84,7 @@ export function MainTeam({ className }: SectionProps) {
           </SocialLinks>
         </Profile>
         <Profile>
-          <ProfilePicture src="/team-pictures/jh.jpg" alt="John Hua picture" />
+          <ProfilePicture src="/team-pictures/jh.png" alt="John Hua picture" />
           <ProfileHeading
             name="John Hua"
             job="PR & Marketing Coordinator"
@@ -100,7 +100,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/nh.jpg"
+            src="/team-pictures/nh.png"
             alt="Nicolas Hebrard picture"
           />
           <ProfileHeading
@@ -119,7 +119,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/vk.jpg"
+            src="/team-pictures/vk.png"
             alt="Vladimír Krajčovič picture"
           />
           <ProfileHeading
@@ -137,7 +137,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/gs.jpg"
+            src="/team-pictures/gs.png"
             alt="Geena Scalzo picture"
           />
           <ProfileHeading
@@ -155,7 +155,7 @@ export function MainTeam({ className }: SectionProps) {
         </Profile>
         <Profile>
           <ProfilePicture
-            src="/team-pictures/bg.jpg"
+            src="/team-pictures/bg.png"
             alt="Bastian Gerheim picture"
           />
           <ProfileHeading
@@ -172,7 +172,7 @@ export function MainTeam({ className }: SectionProps) {
           </SocialLinks>
         </Profile>
         <Profile>
-          <ProfilePicture src="/team-pictures/ai.jpg" alt="Akita Inu picture" />
+          <ProfilePicture src="/team-pictures/ai.png" alt="Akita Inu picture" />
           <ProfileHeading
             name="Akita Inu"
             job="Supervisor"
