@@ -1,20 +1,27 @@
 import classNames from 'classnames'
 import Link from 'next/link'
-import Analytics from './svg/Analytics'
-import Bridge from './svg/Bridge'
-import DoubleArrow from './svg/DoubleArrow'
 import MenuArrow from './svg/MenuArrow'
-import Mining from './svg/Mining'
 import TopRightArrow from './svg/TopRightArrow'
-import USFlag from './svg/flags/USFlag'
-import FrenchFlag from './svg/flags/FrenchFlag'
-import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
 import { SocialMediaLinks } from './utils/SocialMediaLinks'
 import { HeaderProps } from './Header'
+import {
+  ABOUT_LINK,
+  AKITA_LINK,
+  ANALYTICS_LINK,
+  BRIDGE_LINK,
+  DEX_LINK,
+  FAQ_LINK,
+  GITHUB_LINK,
+  HOME_LINK,
+  LITEPAPER_LINK,
+  MININGPOOL_LINK,
+  ROADMAP_LINK,
+  TUTORIALS_LINK
+} from '../components/const/links'
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 // TODO: Define the behavior we want when the user clicks on a link to the current page
@@ -23,6 +30,24 @@ export function HeaderMobile({
   isMobileMenuOpen,
   setIsMobileMenuOpen
 }: HeaderProps) {
+  function SmartLink({ href, name }: SmartLinkProp) {
+    var verifyLink = (event: React.MouseEvent) => {
+      event.preventDefault
+
+      var nextLocation = document.location.origin + href
+
+      //We are on the same page that we try to go
+      if (window.location.href === nextLocation) {
+        //Close menu
+        setIsMobileMenuOpen(false)
+      } else {
+        window.location.href = href
+      }
+    }
+
+    return <a onClick={(event) => verifyLink(event)}>{name}</a>
+  }
+
   return (
     <div
       className={classNames('laptop:hidden absolute w-full px-5 py-7', {
@@ -42,23 +67,12 @@ export function HeaderMobile({
             className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
             style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
           >
-            <div className="flex justify-between items-center">
-              Products
-              <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
-            </div>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-            <Link href="/#roadmap">
-              <a>Roadmap</a>
-            </Link>
-            <Link href="/faq">
-              <a>FAQ</a>
-            </Link>
-            <div className="flex justify-between items-center">
-              Resources
-              <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
-            </div>
+            <SmartLink href={HOME_LINK} name="Home" />
+            <ProductsAccordionMenu />
+            <SmartLink href={ABOUT_LINK} name="About" />
+            <SmartLink href={ROADMAP_LINK} name="Roadmap" />
+            <SmartLink href={FAQ_LINK} name="FAQ" />
+            <ResourcesAccordionMenu />
           </div>
         ) : (
           <div />
@@ -73,120 +87,98 @@ export function HeaderMobile({
   )
 }
 
-interface HoverableItemProps {
-  className?: string
-  width: number
+function ProductsAccordionMenu() {
+  return (
+    <AccordionMenu name="Products">
+      <AccordionMenuItem
+        href={DEX_LINK}
+        linkTitle="Open app"
+        name="Decentralized Exchange"
+      />
+      <AccordionMenuItem
+        href={ANALYTICS_LINK}
+        linkTitle="Open app"
+        name="Analytics"
+      />
+      <AccordionMenuItem
+        href={MININGPOOL_LINK}
+        linkTitle="Open app"
+        name="Mining Pools"
+      />
+      <AccordionMenuItem
+        href={BRIDGE_LINK}
+        linkTitle="Open app"
+        name="Bridge"
+      />
+      <AccordionMenuItem
+        href={AKITA_LINK}
+        linkTitle="Visit site"
+        name="AKITA Network"
+      />
+    </AccordionMenu>
+  )
+}
+
+function ResourcesAccordionMenu() {
+  return (
+    <AccordionMenu name="Resources">
+      <AccordionMenuItem
+        href={TUTORIALS_LINK}
+        linkTitle="Visit site"
+        name="Tutorials"
+      />
+      <AccordionMenuItem
+        href={LITEPAPER_LINK}
+        linkTitle="Read"
+        name="Litepaper"
+      />
+      <AccordionMenuItem href={GITHUB_LINK} linkTitle="View" name="Code" />
+    </AccordionMenu>
+  )
+}
+
+interface AccordionMenuProps {
+  name: string
   children: ReactNode
+  className?: string
 }
 
-function HoverableItem({ className, width, children }: HoverableItemProps) {
-  return (
-    <div
-      className={classNames(
-        'rounded-3xl flex items-center justify-between px-4 group-hover:bg-gray-mid2',
-        className
-      )}
-      style={{ width: calcRem(width), height: calcRem(44) }}
-    >
-      {children}
-      <MenuArrow />
-    </div>
-  )
-}
+function AccordionMenu({ children, className, name }: AccordionMenuProps) {
+  var [menuOpened, setMenuOpened] = useState(false)
 
-function ProductsDropdown() {
   return (
-    <div className="group absolute flex items-center z-10">
-      <HoverableItem width={110}>Products</HoverableItem>
+    <div>
       <div
-        className="bg-white rounded-xl absolute justify-between px-4 py-6 hidden group-hover:flex"
-        style={{
-          width: calcRem(779),
-          height: calcRem(219),
-          marginTop: calcRem(280)
-        }}
+        className={classNames('flex justify-between items-center')}
+        onClick={() => setMenuOpened(!menuOpened)}
       >
-        <Product
-          logo={<DoubleArrow />}
-          href="https://dex.polarfox.io"
-          linkTitle="Open app"
-        >
-          Decentralized Exchange
-        </Product>
-        <Product
-          logo={<Analytics />}
-          href="https://analytics.polarfox.io"
-          linkTitle="Open app"
-        >
-          Analytics
-        </Product>
-        <Product
-          logo={<Mining />}
-          href="https://dex.polarfox.io/#/pfx"
-          linkTitle="Open app"
-        >
-          Mining Pools
-        </Product>
-        <Product
-          logo={<Bridge />}
-          href="https://bridge.polarfox.io"
-          linkTitle="Open app"
-        >
-          Bridge
-        </Product>
-        <Product
-          logo={
-            <img
-              src="akita.png"
-              alt="akita"
-              style={{ height: calcRem(24), width: calcRem(24) }}
-            />
-          }
-          href="https://akita.network"
-          linkTitle="Visit site"
-        >
-          AKITA Network
-        </Product>
+        {name}
+        <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
       </div>
+      <div className={classNames({ hidden: !menuOpened })}>{children}</div>
     </div>
   )
 }
 
-interface ProductProps {
-  logo: ReactNode
+interface AccordionMenuItemProps {
   href: string
   linkTitle: string
-  children: ReactNode
+  name: string
 }
 
-function Product({ logo, href, linkTitle, children }: ProductProps) {
+function AccordionMenuItem({ href, linkTitle, name }: AccordionMenuItemProps) {
   return (
-    <div style={{ width: calcRem(137) }}>
-      <Link href={href}>
-        <a
-          className="flex rounded-xl hover:bg-gray-dark mx-3 p-3 pt-4"
-          style={{
-            height: calcRem(121)
-          }}
-        >
-          {logo}
-          <div
-            className="absolute self-end font-semibold"
-            style={{
-              fontSize: calcRem(12),
-              lineHeight: calcRem(14),
-              width: calcRem(80)
-            }}
-          >
-            {children}
-          </div>
-        </a>
-      </Link>
+    <div
+      className="flex justify-between items-center"
+      style={{ fontSize: calcRem(16) }}
+    >
+      {name}
       <Link href={href}>
         <a
           className="border border-blue rounded-xl border-opacity-10 mt-2 flex items-center justify-between font-semibold pl-4 hover:bg-blue hover:text-white"
           style={{
-            height: calcRem(40)
+            height: calcRem(40),
+            width: calcRem(130)
           }}
         >
           {linkTitle}
@@ -200,55 +192,7 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
   )
 }
 
-function LanguageDropdown() {
-  return (
-    <div className="group flex items-center">
-      <HoverableItem width={131}>
-        <USFlag /> English
-      </HoverableItem>
-      <div
-        className="bg-white rounded-xl absolute justify-between p-5 hidden group-hover:block"
-        style={{
-          width: calcRem(175),
-          marginTop: calcRem(220)
-        }}
-      >
-        <Language href="/">
-          English
-          <USFlag />
-        </Language>
-        <Language href="/">
-          Français
-          <FrenchFlag />
-        </Language>
-        <Language href="/">
-          Deutsch
-          <GermanFlag />
-        </Language>
-      </div>
-    </div>
-  )
-}
-
-interface LanguageProps {
+interface SmartLinkProp {
   href: string
-  children: ReactNode
-}
-
-function Language({ href, children }: LanguageProps) {
-  return (
-    <Link href={href}>
-      <a
-        className="flex items-center justify-between rounded-xl hover:bg-gray-dark p-3 pt-4 font-semibold"
-        style={{
-          width: calcRem(137),
-          height: calcRem(40),
-          fontSize: calcRem(12),
-          lineHeight: calcRem(14)
-        }}
-      >
-        {children}
-      </a>
-    </Link>
-  )
+  name: string
 }
