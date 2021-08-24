@@ -12,11 +12,12 @@ import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
 import React, { ReactNode, useState } from 'react'
+import { ABOUT_LINK, AKITA_LINK, ANALYTICS_LINK, BRIDGE_LINK, DEX_LINK, FAQ_LINK, GITHUB_LINK, LITEPAPER_LINK, MININGPOOL_LINK, ROADMAP_LINK, TUTORIALS_LINK } from './const/links'
 
 export function HeaderDesktop({ className }: SectionProps) {
   return (
     <div
-      className={classNames('hidden w-full laptop:grid py-4 pl-8', className)}
+      className={classNames('hidden w-full laptop:grid py-4 px-8', className)}
       style={{
         gridTemplateColumns: 'auto auto'
       }}
@@ -27,20 +28,19 @@ export function HeaderDesktop({ className }: SectionProps) {
         </a>
       </Link>
       <div
-        className="grid grid-flow-col items-center justify-end text-center font-semibold"
+        className="grid grid-flow-col gap-x-2 items-center justify-end text-center font-semibold"
         style={{
-          fontSize: calcRem(14),
-          lineHeight: calcRem(16.45)
+          fontSize: calcRem(14)
         }}
       >
         <ProductsDropdown />
-        <Link href="/about">
+        <Link href={ ABOUT_LINK }>
           <a className="px-6">About</a>
         </Link>
-        <Link href="/#roadmap">
+        <Link href={ ROADMAP_LINK }>
           <a className="px-6">Roadmap</a>
         </Link>
-        <Link href="/faq">
+        <Link href={ FAQ_LINK }>
           <a className="px-6">FAQ</a>
         </Link>
         <RessourceDropdown />
@@ -51,9 +51,10 @@ export function HeaderDesktop({ className }: SectionProps) {
   )
 }
 
-interface HoverableItemProps {
+interface DropdownItemProps {
   className?: string
-  name: string
+  logo?: any
+  name: any
   children: ReactNode
   width?: string
   rightAlignment?: string
@@ -61,43 +62,37 @@ interface HoverableItemProps {
 
 function Dropdown({
   className,
+  logo,
   name,
   children,
   width,
   rightAlignment
-}: HoverableItemProps) {
-  const [menuOpened, setMenuOpened] = useState(false)
-  const [locked, setLocked] = useState(false)
-
-  const hideMenu = () => {
-    setTimeout(function () {
-      setMenuOpened(false)
-    }, 200)
-  }
+}: DropdownItemProps) {
 
   return (
-    <div>
+    <div className="group relative">
       <div
-        className={classNames(menuOpened || locked ? 'bg-gray-mid2' : '', 'grid items-center hover:bg-gray-mid2 rounded-3xl px-6 py-4 gap-x-2')}
+        className='grid items-center group-hover:bg-gray-mid2 rounded-3xl px-6 py-4 gap-x-2'
         style={{ gridTemplateColumns: '0.9fr 0.1fr' }}
-        onMouseEnter={() => setMenuOpened(true)}
-        onMouseLeave={() => hideMenu()}
       >
-        {name}
+        <span className="flex justify-items items-center gap-x-2">{logo} {name}</span>
         <MenuArrow />
       </div>
-      <div
-        className={classNames(menuOpened || locked ? '' : 'hidden', className)}
+      <div 
+        className="absolute group-hover:block hidden"
         style={{
-          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',
-          backgroundColor: 'white',
           right: rightAlignment,
-          width: width
         }}
-        onMouseEnter={() => setLocked(true)}
-        onMouseLeave={() => setLocked(false)}
       >
-        {children}
+        <div
+          className={classNames('top-0 bg-white', className)}
+          style={{
+            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',           
+            width: width
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )
@@ -109,17 +104,17 @@ function RessourceDropdown() {
       name="Resources"
       width={calcRem(220)}
       className={classNames(
-        'absolute grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl'
+        'grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl'
       )}
-      rightAlignment="3%"
+      rightAlignment="-35%"
     >
-      <MenuItem href="/tutorials" linkTitle="Tutorials">
+      <MenuItem href={ TUTORIALS_LINK } linkTitle="Tutorials">
         Tutorials
       </MenuItem>
-      <MenuItem href="/Polarfox Litepaper V2.6.pdf" linkTitle="Litepaper">
+      <MenuItem href={ LITEPAPER_LINK } linkTitle="Litepaper">
         Litepaper
       </MenuItem>
-      <MenuItem href="https://github.com/Polarfox-DEX" linkTitle="Code">
+      <MenuItem href={ GITHUB_LINK } linkTitle="Code">
         Code
       </MenuItem>
     </Dropdown>
@@ -130,33 +125,33 @@ function ProductsDropdown() {
   return (
     <Dropdown
       name="Products"
-      className="absolute grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl"
-      rightAlignment="10%"
+      className="grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl"
+      rightAlignment="-350%"
     >
       <Product
         logo={<DoubleArrow />}
-        href="https://dex.polarfox.io"
+        href={ DEX_LINK }
         linkTitle="Open app"
       >
         Decentralized Exchange
       </Product>
       <Product
         logo={<Analytics />}
-        href="https://analytics.polarfox.io"
+        href={ ANALYTICS_LINK }
         linkTitle="Open app"
       >
         Analytics
       </Product>
       <Product
         logo={<Mining />}
-        href="https://dex.polarfox.io/#/pfx"
+        href={ MININGPOOL_LINK }
         linkTitle="Open app"
       >
         Mining Pools
       </Product>
       <Product
         logo={<Bridge />}
-        href="https://bridge.polarfox.io"
+        href={ BRIDGE_LINK }
         linkTitle="Open app"
       >
         Bridge
@@ -169,7 +164,7 @@ function ProductsDropdown() {
             style={{ height: calcRem(24), width: calcRem(24) }}
           />
         }
-        href="https://akita.network"
+        href={ AKITA_LINK }
         linkTitle="Visit site"
       >
         AKITA Network
@@ -205,10 +200,6 @@ interface ProductProps {
 function Product({ logo, href, linkTitle, children }: ProductProps) {
 
   const [buttonHover,setButtonHover] = useState(false)
-
-  const call = () => {
-    console.log('ok')
-  }
 
   return (
     <div style={{ width: calcRem(137) }}>
@@ -255,21 +246,19 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
 function LanguageDropdown() {
   return (
     <Dropdown
-      name="Language"
-      className="absolute block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
-      rightAlignment="0.5%"
+      name="English"
+      logo={<USFlag/>}
+      className="block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
+      rightAlignment="-10%"
     >
       <Language href="/">
-        {' '}
-        English <USFlag />{' '}
+        English <USFlag />
       </Language>
       <Language href="/">
-        {' '}
-        Français <FrenchFlag />{' '}
+        Français <FrenchFlag />
       </Language>
       <Language href="/">
-        {' '}
-        Deutsch <GermanFlag />{' '}
+        Deutsch <GermanFlag />
       </Language>
     </Dropdown>
   )

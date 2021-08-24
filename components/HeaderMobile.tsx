@@ -1,20 +1,15 @@
 import classNames from 'classnames'
 import Link from 'next/link'
-import Analytics from './svg/Analytics'
-import Bridge from './svg/Bridge'
-import DoubleArrow from './svg/DoubleArrow'
 import MenuArrow from './svg/MenuArrow'
-import Mining from './svg/Mining'
 import TopRightArrow from './svg/TopRightArrow'
-import USFlag from './svg/flags/USFlag'
-import FrenchFlag from './svg/flags/FrenchFlag'
-import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { ReactNode, useState } from 'react'
 import Cross from './svg/Cross'
 import MenuMobile from './svg/MenuMobile'
 import { SocialMediaLinks } from './utils/SocialMediaLinks'
 import { HeaderProps } from './Header'
+import { ABOUT_LINK, AKITA_LINK, ANALYTICS_LINK, BRIDGE_LINK, DEX_LINK, FAQ_LINK, GITHUB_LINK, HOME_LINK, LITEPAPER_LINK, MININGPOOL_LINK, 
+  ROADMAP_LINK, TUTORIALS_LINK } from '../components/const/links'
 
 // TODO: Define the behavior we want when the user clicks on a link to the current page
 
@@ -22,6 +17,33 @@ export function HeaderMobile({
   isMobileMenuOpen,
   setIsMobileMenuOpen
 }: HeaderProps) {
+
+  function SmartLink({href, name}: SmartLinkProp){
+
+    var verifyLink = (event: React.MouseEvent) => {
+  
+      event.preventDefault
+
+      var nextLocation = document.location.origin + href
+  
+      //We are on the same page that we try to go
+      if(window.location.href === nextLocation){
+        //Close menu
+        setIsMobileMenuOpen(false)
+      }else{
+        window.location.href = href
+      }
+      
+    }
+  
+    return(
+      <a onClick={(event) => verifyLink(event)}>
+        {name}
+      </a>
+    )
+  
+  }
+
   return (
     <div
       className={classNames('laptop:hidden absolute w-full px-5 py-7', {
@@ -50,17 +72,11 @@ export function HeaderMobile({
             className="flex flex-col justify-between z-5 font-semibold mt-4 overflow-hidden"
             style={{ fontSize: calcRem(24), lineHeight: calcRem(58) }}
           >
-
+            <SmartLink href={ HOME_LINK } name="Home"/>
             <ProductsAccordionMenu/>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-            <Link href="/#roadmap">
-              <a>Roadmap</a>
-            </Link>
-            <Link href="/faq">
-              <a>FAQ</a>
-            </Link>
+            <SmartLink href={ ABOUT_LINK } name="About"/>
+            <SmartLink href={ ROADMAP_LINK } name="Roadmap"/>
+            <SmartLink href={ FAQ_LINK } name="FAQ"/>
             <ResourcesAccordionMenu/>
             
           </div>
@@ -78,67 +94,55 @@ export function HeaderMobile({
 }
 
 function ProductsAccordionMenu(){
-
   return(
     <AccordionMenu name="Products">
-
       <AccordionMenuItem
-        href="https://dex.polarfox.io"
+        href={ DEX_LINK }
         linkTitle="Open app"
         name="Decentralized Exchange"
       />
-
       <AccordionMenuItem
-        href="https://analytics.polarfox.io"
+        href={ ANALYTICS_LINK }
         linkTitle="Open app"
         name="Analytics"
       />
-        
       <AccordionMenuItem
-        href="https://dex.polarfox.io/#/pfx"
+        href={ MININGPOOL_LINK }
         linkTitle="Open app"
         name="Mining Pools"
-      />            
-
+      />           
       <AccordionMenuItem
-        href="https://bridge.polarfox.io"
+        href={ BRIDGE_LINK }
         linkTitle="Open app"
         name="Bridge"
       />
-
       <AccordionMenuItem
-        href="https://akita.network"
+        href={ AKITA_LINK } 
         linkTitle="Visit site"
         name="AKITA Network"
       />
-
     </AccordionMenu>
   )
-
 }
 
 function ResourcesAccordionMenu(){
   return(
     <AccordionMenu name="Resources">
-
       <AccordionMenuItem
-        href="/tutorials"
+        href={ TUTORIALS_LINK }
         linkTitle="Visit site"
         name="Tutorials"
       />
-
       <AccordionMenuItem
-        href="/Polarfox Litepaper V2.6.pdf"
+        href={ LITEPAPER_LINK }
         linkTitle="Read"
         name="Litepaper"
       />
-
       <AccordionMenuItem
-        href="https://github.com/Polarfox-DEX"
-        linkTitle="Examine"
+        href={ GITHUB_LINK }
+        linkTitle="View"
         name="Code"
       />
-
     </AccordionMenu>
   )
 }
@@ -162,13 +166,10 @@ function AccordionMenu({ children, className, name }: AccordionMenuProps){
         {name}
         <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
       </div>
-      
-      <div className={classNames(menuOpened ? '': 'hidden')}>
+      <div className={classNames({'hidden': !menuOpened})}>
         {children}
       </div>
-      
     </div>
-    
   )
 
 }
@@ -202,4 +203,9 @@ function AccordionMenuItem( { href, linkTitle, name }: AccordionMenuItemProps ){
     </div>
   )
 
+}
+
+interface SmartLinkProp {
+  href: string, 
+  name: string
 }
