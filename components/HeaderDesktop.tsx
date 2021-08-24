@@ -12,7 +12,19 @@ import GermanFlag from './svg/flags/GermanFlag'
 import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
 import React, { ReactNode, useState } from 'react'
-import { ABOUT_LINK, AKITA_LINK, ANALYTICS_LINK, BRIDGE_LINK, DEX_LINK, FAQ_LINK, GITHUB_LINK, LITEPAPER_LINK, MININGPOOL_LINK, ROADMAP_LINK, TUTORIALS_LINK } from './const/links'
+import {
+  ABOUT_LINK,
+  AKITA_LINK,
+  ANALYTICS_LINK,
+  BRIDGE_LINK,
+  DEX_LINK,
+  FAQ_LINK,
+  GITHUB_LINK,
+  LITEPAPER_LINK,
+  MININGPOOL_LINK,
+  ROADMAP_LINK,
+  TUTORIALS_LINK
+} from './const/links'
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 export function HeaderDesktop({ className }: SectionProps) {
@@ -31,13 +43,13 @@ export function HeaderDesktop({ className }: SectionProps) {
         }}
       >
         <ProductsDropdown />
-        <Link href={ ABOUT_LINK }>
+        <Link href={ABOUT_LINK}>
           <a>About</a>
         </Link>
-        <Link href={ ROADMAP_LINK }>
+        <Link href={ROADMAP_LINK}>
           <a>Roadmap</a>
         </Link>
-        <Link href={ FAQ_LINK }>
+        <Link href={FAQ_LINK}>
           <a>FAQ</a>
         </Link>
         <RessourceDropdown />
@@ -65,26 +77,27 @@ function Dropdown({
   width,
   rightAlignment
 }: DropdownItemProps) {
-
   return (
     <div className="group relative">
       <div
-        className='grid items-center group-hover:bg-gray-mid2 rounded-3xl py-4 gap-x-2'
+        className="grid items-center group-hover:bg-gray-mid2 rounded-3xl py-4 gap-x-2"
         style={{ gridTemplateColumns: '0.9fr 0.1fr' }}
       >
-        <span className="flex justify-items items-center gap-x-2">{logo} {name}</span>
+        <span className="flex justify-items items-center gap-x-2">
+          {logo} {name}
+        </span>
         <MenuArrow />
       </div>
-      <div 
+      <div
         className="absolute group-hover:block hidden"
         style={{
-          right: rightAlignment,
+          right: rightAlignment
         }}
       >
         <div
           className={classNames('top-0 bg-white', className)}
           style={{
-            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',           
+            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.12)',
             width: width
           }}
         >
@@ -100,18 +113,16 @@ function RessourceDropdown() {
     <Dropdown
       name="Resources"
       width={calcRem(220)}
-      className={classNames(
-        'grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl'
-      )}
+      className={classNames('grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl')}
       rightAlignment="-35%"
     >
-      <MenuItem href={ TUTORIALS_LINK } linkTitle="Tutorials">
+      <MenuItem href={TUTORIALS_LINK} linkTitle="Tutorials">
         Tutorials
       </MenuItem>
-      <MenuItem href={ LITEPAPER_LINK } linkTitle="Litepaper">
+      <MenuItem href={LITEPAPER_LINK} linkTitle="Litepaper">
         Litepaper
       </MenuItem>
-      <MenuItem href={ GITHUB_LINK } linkTitle="Code">
+      <MenuItem href={GITHUB_LINK} linkTitle="Code">
         Code
       </MenuItem>
     </Dropdown>
@@ -125,32 +136,16 @@ function ProductsDropdown() {
       className="grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl"
       rightAlignment="-350%"
     >
-      <Product
-        logo={<DoubleArrow />}
-        href={ DEX_LINK }
-        linkTitle="Open app"
-      >
+      <Product logo={<DoubleArrow />} href={DEX_LINK} linkTitle="Open app">
         Decentralized Exchange
       </Product>
-      <Product
-        logo={<Analytics />}
-        href={ ANALYTICS_LINK }
-        linkTitle="Open app"
-      >
+      <Product logo={<Analytics />} href={ANALYTICS_LINK} linkTitle="Open app">
         Analytics
       </Product>
-      <Product
-        logo={<Mining />}
-        href={ MININGPOOL_LINK }
-        linkTitle="Open app"
-      >
+      <Product logo={<Mining />} href={MININGPOOL_LINK} linkTitle="Open app">
         Mining Pools
       </Product>
-      <Product
-        logo={<Bridge />}
-        href={ BRIDGE_LINK }
-        linkTitle="Open app"
-      >
+      <Product logo={<Bridge />} href={BRIDGE_LINK} linkTitle="Open app">
         Bridge
       </Product>
       <Product
@@ -161,7 +156,7 @@ function ProductsDropdown() {
             style={{ height: calcRem(24), width: calcRem(24) }}
           />
         }
-        href={ AKITA_LINK }
+        href={AKITA_LINK}
         linkTitle="Visit site"
       >
         AKITA Network
@@ -195,14 +190,16 @@ interface ProductProps {
 }
 
 function Product({ logo, href, linkTitle, children }: ProductProps) {
-
-  const [buttonHover,setButtonHover] = useState(false)
+  const [buttonHover, setButtonHover] = useState(false)
 
   return (
     <div style={{ width: calcRem(137) }}>
       <Link href={href}>
         <a
-          className={classNames(buttonHover ? 'bg-gray-dark' : '','flex w-full rounded-xl hover:bg-gray-dark p-3 pt-4')}
+          className={classNames(
+            buttonHover ? 'bg-gray-dark' : '',
+            'flex w-full rounded-xl hover:bg-gray-dark p-3 pt-4'
+          )}
           style={{
             height: calcRem(121)
           }}
@@ -235,7 +232,6 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
           style={{ height: calcRem(7), width: calcRem(7) }}
         />
       </a>
-
     </div>
   )
 }
@@ -244,7 +240,7 @@ function LanguageDropdown() {
   return (
     <Dropdown
       name="English"
-      logo={<USFlag/>}
+      logo={<USFlag />}
       className="block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
       rightAlignment="-10%"
     >
