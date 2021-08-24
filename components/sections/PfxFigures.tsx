@@ -9,7 +9,7 @@ export function PfxFigures({ className }: PfxFiguresProps) {
   return (
     <div
       className={classNames(
-        'container flex flex-wrap justify-between gap-5',
+        'container flex flex-wrap justify-between gap-5 desktop:px-4',
         className
       )}
     >
@@ -19,20 +19,12 @@ export function PfxFigures({ className }: PfxFiguresProps) {
         backgroundColor="#939EAC"
       />
       <PfxFigureBox
-        title="Circulation supply"
-        figure="6,739,207 PFX"
+        title="Circulating supply"
+        figure="0 PFX"
         backgroundColor="#738193"
       />
-      <PfxFigureBox
-        title="Burned"
-        figure="1,349,829 PFX"
-        backgroundColor="#9EAEC1"
-      />
-      <PfxFigureBox
-        title="Market Cap"
-        figure="$1,283,829,429"
-        backgroundColor="#667F9F"
-      />
+      <PfxFigureBox title="Market Cap" figure="$0" backgroundColor="#9EAEC1" />
+      <PfxFigureBox title="Holders" figure="0" backgroundColor="#667F9F" />
     </div>
   )
 }

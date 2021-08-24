@@ -1,17 +1,15 @@
 import classNames from 'classnames'
+import Slide from '../svg/Slide'
 import { calcRem } from '../../utils/styles'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionProps } from './utils/SectionProps'
 import { ReactNode } from 'react'
-import Slide from '../svg/Slide'
+import { WithBackgroundRoadmap } from '../utils/WithBackgroundImage'
 
 export function Roadmap({ className }: SectionProps) {
   return (
-    // TODO: Remove double div
-    <div
-      className={classNames('bg-white w-screen flex justify-center', className)}
-    >
-      <div id="roadmap" className="container pt-12 desktop:pt-22 pb-8">
+    <WithBackgroundRoadmap className={className}>
+      <div id="roadmap" className="container pt-24 pb-16">
         <div className="flex flex-wrap justify-between gap-y-5">
           <SectionHeading>ROADMAP</SectionHeading>
           <p
@@ -22,7 +20,7 @@ export function Roadmap({ className }: SectionProps) {
               lineHeight: calcRem(46)
             }}
           >
-            {/* // TODO: This should not be on the right. See Figma */}
+            {/* TODO: This should not be on the right. See Figma */}
             The launch of Polarfox is one step in our journey towards realizing
             a fully decentralized ecosystem. More projects are underway to
             reinforce our vision.
@@ -35,36 +33,61 @@ export function Roadmap({ className }: SectionProps) {
                 Creation of Polarfox Labs by the AKITA community
               </Task>
               <Task isDone>First ideation phase</Task>
+              <Task isDone>Creation of the first Polarfox roadmap</Task>
             </Quarter>
             <Quarter title="Q2">
               <Task isDone>Development of Polarfox DEX V1</Task>
               <Task isDone>
                 Development of the Polarfox Avalanche-Ethereum bridge
               </Task>
+              <Task isDone>Development of the AKITA website</Task>
+              <Task isDone>Litepaper release</Task>
+              <Task isDone>Contact potential investors and partners</Task>
+              <Task isDone>Design of the Polarfox website</Task>
             </Quarter>
             <Quarter title="Q3">
+              <Task isDone>Pre-launch partnerships</Task>
               <Task>Development of the Polarfox website</Task>
+              <Task>Rework of the AKITA website</Task>
+              <Task>Earliest deals with investors</Task>
               <Task isFuture>PFX presale</Task>
               <Task isFuture>Polarfox DEX V1 launch</Task>
-              <Task isFuture>
-                Development of Polarfox DEX V2 - front-end overhaul
-              </Task>
+              <Task isFuture>Pitchdeck release</Task>
+              <Task isFuture>Design of whyavax.com</Task>
+              <Task isFuture>Redesign of the Polarfox DEX</Task>
             </Quarter>
             <Quarter title="Q4" isFuture>
               <Task isFuture>Second ideation phase</Task>
+              <Task isFuture>Development of Polarfox DEX V2 - new design</Task>
               <Task isFuture>
-                Development of new apps on the Polarfox ecosystem
+                Translation of our products into multiple languages
+              </Task>
+              <Task isFuture>Development of whyavax.com</Task>
+              <Task isFuture>Boot of the Polarfox community AVAX node</Task>
+              {/* TODO: Does this fit here? */}
+              <Task isFuture>
+                Improve accessibility to Avalanche and Polarfox
               </Task>
             </Quarter>
           </Year>
           <Year title="2022" isFuture>
-            <Quarter title="Q1 Q2" isFuture>
+            <Quarter title="Q1" isFuture>
               <Task isFuture>
-                Development of Polarfox DEX V3 - Add more features
+                Improve user experience further, make it easier for crypto
+                newcomers
               </Task>
-              <Task isFuture>Polarfox DEX V3 launch</Task>
-              <Task isFuture>Development of new apps</Task>
-              <Task isFuture>Development of AKITA Network starts</Task>
+              <Task isFuture>Redesign of the Polarfox analytics</Task>
+              <Task isFuture>
+                Start the development of new apps on the Polarfox ecosystem
+              </Task>
+              <Task isFuture>Start development of AKITA Network</Task>
+            </Quarter>
+            <Quarter title="Q2" isFuture>
+              <Task isFuture>
+                Development of Polarfox DEX V3 - yield farming, limit orders
+                and/or other features
+              </Task>
+              <Task isFuture>Establishment of further partnerships</Task>
             </Quarter>
             <Quarter title="Q3 Q4" isFuture>
               <Task isFuture>Third ideation phase</Task>
@@ -80,7 +103,7 @@ export function Roadmap({ className }: SectionProps) {
           </Year>
         </div>
       </div>
-    </div>
+    </WithBackgroundRoadmap>
   )
 }
 

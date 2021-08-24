@@ -13,6 +13,7 @@ import { calcRem } from '../utils/styles'
 import { SectionProps } from './sections/utils/SectionProps'
 import React, { ReactNode, useState } from 'react'
 import { ABOUT_LINK, AKITA_LINK, ANALYTICS_LINK, BRIDGE_LINK, DEX_LINK, FAQ_LINK, GITHUB_LINK, LITEPAPER_LINK, MININGPOOL_LINK, ROADMAP_LINK, TUTORIALS_LINK } from './const/links'
+import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 export function HeaderDesktop({ className }: SectionProps) {
   return (
@@ -22,11 +23,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         gridTemplateColumns: 'auto auto'
       }}
     >
-      <Link href="/">
-        <a>
-          <img src="/logo/polarfox.png" alt="Polarfox logo" />
-        </a>
-      </Link>
+      <PolarfoxLogo />
       <div
         className="grid grid-flow-col gap-x-2 items-center justify-end font-semibold gap-x-14"
         style={{
