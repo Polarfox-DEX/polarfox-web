@@ -44,7 +44,7 @@ export function TutorialsPane({ className }: SectionProps) {
           })}
         </div>
       </div>
-      <div className="col-span-2 tablet:col-span-2laptop:col-span-1">
+      <div className="col-span-2 tablet:col-span-2 laptop:col-span-1">
         <div
           className="mt-10 border-b-4 border-tutorials_tile pb-8 font-bold"
           style={{
@@ -53,7 +53,7 @@ export function TutorialsPane({ className }: SectionProps) {
         >
           PFX DEV
         </div>
-        <div className="grid grid-cols-2 gap-x-4 mb-4tablet:grid-cols-3laptop:grid-cols-2">
+        <div className="grid grid-cols-2 gap-x-4 mb-4 tablet:grid-cols-3 laptop:grid-cols-2">
           {tutorials.map((tuto) => {
             if (tuto.type == TutorialTypes.PFX_DEV)
               return <TutorialsTile tutorial={tuto} key={tuto.slug} />
