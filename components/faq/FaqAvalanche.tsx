@@ -1,5 +1,7 @@
 import classNames from 'classnames'
-import { Question } from './Question'
+import { calcRem } from '../../utils/styles'
+import { Question } from './utils/Question'
+import { FaqLink } from './utils/FaqLink'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqAvalanche({ className }: SectionProps) {
@@ -7,16 +9,26 @@ export function FaqAvalanche({ className }: SectionProps) {
     <div className={classNames('divide-y divide-gray-light w-full', className)}>
       <Question question="What is Avalanche?" isOpenDefault>
         Avalanche is a blockchain with a significantly higher transaction
-        throughput than Ethereum. Its native token is AVAX having the same
-        purpose as ETH on Ethereum. If you need help using Avalanche, see the
-        tutorial at: [insert link]
+        throughput than Ethereum. Its native token is AVAX, which has the same
+        purpose as ETH on Ethereum.
+        <br />
+        <br />
+        If you need help using Avalanche, see this{' '}
+        <FaqLink href="/tutorials/avalanchet">tutorial</FaqLink> (will be added
+        soon!).
       </Question>
       <Question question="Why is Polarfox running on Avalanche?">
-        Polarfox is built on Avalanche because it uses a revolutionary consensus
-        model that completes transactions with near-instantaneous finality. To
-        put it simply, Avalanche has: Ridiculously low gas fees Extremely fast
-        transactions A responsive developer team A dedicated community
-        Sub-second consensus finality
+        Polarfox is built on Avalanche for a number of reasons, notably:
+        <ul
+          className="list-disc list-inside pl-4"
+          style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
+        >
+          <li>Ridiculously low gas fees</li>
+          <li>Extremely fast transactions</li>
+          <li>Responsive developer team</li>
+          <li>Dedicated community</li>
+          <li>Sub-second consensus finality</li>
+        </ul>
       </Question>
     </div>
   )

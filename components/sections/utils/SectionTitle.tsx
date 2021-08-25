@@ -22,7 +22,7 @@ export function SectionTitle({ className, children }: SectionTitleProps) {
           line-height: ${calcRem(52.8)};
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1280px) {
           .section-title {
             font-size: ${calcRem(50)};
             line-height: ${calcRem(65)};

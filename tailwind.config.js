@@ -41,8 +41,7 @@ module.exports = {
     backgroundPosition: {
       center: 'center',
       top: 'top',
-      bottom: 'bottom',
-      'bottom-40-vw': 'center bottom -40vw'
+      bottom: 'bottom'
     },
     backgroundSize: {
       auto: 'auto',
@@ -58,7 +57,8 @@ module.exports = {
       fontFamily: {
         publicSans: ['Public Sans', ...defaultTheme.fontFamily.sans],
         switzer: ['Switzer', ...defaultTheme.fontFamily.sans],
-        graphik: ['Graphik', ...defaultTheme.fontFamily.sans]
+        graphik: ['Graphik', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', ...defaultTheme.fontFamily.sans]
       },
       opacity: {
         12: '0.12',

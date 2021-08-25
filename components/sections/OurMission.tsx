@@ -15,13 +15,13 @@ export function OurMission({ className }: SectionProps) {
         Our goal is to build an independent ecosystem of fully decentralized and
         open-source applications on the Avalanche blockchain.
       </Mission>
-      <Mission title="Our values">
+      <Mission title="Core values">
         We believe trust, honesty and transparency are necessary to build
         anything tangible on the long term.
       </Mission>
       <Mission title="Our vision">
-        Polarfox is the name given to an ecosystem of applications based on the
-        Avalanche blockchain.
+        We will see many more apps added to the Polarfox ecosystem allowing for
+        various use cases.
       </Mission>
     </div>
   )
@@ -48,7 +48,7 @@ export function Mission({ title, children }: MissionProps) {
         {children}
       </p>
       <style jsx>{`
-        @media (min-width: 1200px) {
+        @media (min-width: 1280px) {
           .mission {
             width: ${calcRem(385)};
           }
