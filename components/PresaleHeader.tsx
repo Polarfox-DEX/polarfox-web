@@ -11,11 +11,11 @@ import moment from 'moment'
 export function PresaleHeader({ className }: SectionProps) {
 
   return (
-    <div className={classNames("absolute w-full bg-blue flex justify-center", className)} style={{ height: '5rem' }}>
       <div
       className={classNames(
-        'desktop:container grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28 desktop:px-14',
-        'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader w-full'
+        'grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28 ',
+        'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader w-full',
+        className
       )} 
       style={{
         height: calcRem(80)
@@ -79,6 +79,5 @@ export function PresaleHeader({ className }: SectionProps) {
           </div>
         </div>
       </div>
-    </div>
   )
 }
