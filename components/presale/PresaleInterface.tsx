@@ -23,7 +23,7 @@ export function PresaleInterface({ className }: SectionProps) {
         }}
       >
         <div className="flex text-white h-full items-center space-x-7">
-            <Countdown eventDateUTC={ GlobalVars.presaleEndUTCDate }/>
+          <Countdown eventDateUTC={GlobalVars.presaleEndUTCDate} />
           <Clock />
         </div>
       </div>
