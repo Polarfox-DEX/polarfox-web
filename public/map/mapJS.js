@@ -1,4 +1,7 @@
 /* Create map and initialize tileLayer */
+
+L.mapbox.accessToken = 'pk.eyJ1IjoiamJyaWNoZXoiLCJhIjoiY2tzaXpsaXE4MXJlYzJ2bnVkZ2FuZ29zMCJ9.nq-rpN9x9ukzySBnjp5omA'
+
 var map = L.map('mapid').setView([10,10], 2);
 
 var southWest = L.latLng(-89.98155760646617, -180),
@@ -7,14 +10,15 @@ var bounds = L.latLngBounds(southWest, northEast);
 
 map.setMaxBounds(bounds);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
     attribution: '',
-    maxZoom: 18,
+    maxZoom: 10,
     id: 'mapbox/streets-v11',
     tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiamJyaWNoZXoiLCJhIjoiY2tzaXpsaXE4MXJlYzJ2bnVkZ2FuZ29zMCJ9.nq-rpN9x9ukzySBnjp5omA'
+    zoomOffset: -1
 }).addTo(map);
+
+L.mapbox.styleLayer('mapbox://styles/jbrichez/cksrhryyo14ad17o1vbaws651').addTo(map)
 
 /* create teams sorted by continent */
 var jobsAvailable = {

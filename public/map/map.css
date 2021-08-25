@@ -1,9 +1,13 @@
 .cluster{
     width: 20px !important;
     height: 20px !important;
-    display: flex;
+    display: flex !important;
     justify-content: center;
-    background-color: black;
+    background-color: #001937;
     color: white;
     text-align: center;
+}
+
+.leaflet-popup-content-wrapper{
+    border-radius: 1rem !important;
 }
