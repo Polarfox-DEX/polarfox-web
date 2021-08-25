@@ -80,7 +80,7 @@ function Dropdown({
   return (
     <div className="group relative">
       <div
-        className="grid items-center group-hover:bg-gray-mid2 rounded-3xl px-6 py-4 gap-x-2"
+        className="grid items-center group-hover:bg-gray-mid2 rounded-3xl px-6 py-3 gap-x-2"
         style={{ gridTemplateColumns: '0.9fr 0.1fr' }}
       >
         <span className="flex justify-items items-center gap-x-2">
@@ -114,7 +114,6 @@ function RessourceDropdown() {
       name="Resources"
       width={calcRem(220)}
       className={classNames('grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl')}
-      rightAlignment="-35%"
     >
       <MenuItem href={TUTORIALS_LINK} linkTitle="Tutorials">
         Tutorials
@@ -134,7 +133,6 @@ function ProductsDropdown() {
     <Dropdown
       name="Products"
       className="grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl"
-      rightAlignment="-350%"
     >
       <Product logo={<DoubleArrow />} href={DEX_LINK} linkTitle="Open app">
         Decentralized Exchange
@@ -144,9 +142,6 @@ function ProductsDropdown() {
       </Product>
       <Product logo={<Mining />} href={MININGPOOL_LINK} linkTitle="Open app">
         Mining Pools
-      </Product>
-      <Product logo={<Bridge />} href={BRIDGE_LINK} linkTitle="Open app">
-        Bridge
       </Product>
       <Product
         logo={
@@ -242,7 +237,6 @@ function LanguageDropdown() {
       name="English"
       logo={<USFlag />}
       className="block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
-      rightAlignment="-10%"
     >
       <Language href="/">
         English <USFlag />
