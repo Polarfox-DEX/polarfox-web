@@ -2,7 +2,7 @@
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiamJyaWNoZXoiLCJhIjoiY2tzaXpsaXE4MXJlYzJ2bnVkZ2FuZ29zMCJ9.nq-rpN9x9ukzySBnjp5omA'
 
-var map = L.map('mapid').setView([10,10], 2);
+var map = L.map('mapid').setView([10,10], 1);
 
 var southWest = L.latLng(-89.98155760646617, -180),
 northEast = L.latLng(89.99346179538875, 180);

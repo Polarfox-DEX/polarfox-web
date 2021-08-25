@@ -2,6 +2,8 @@ import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
 import { SectionTitle } from './utils/SectionTitle'
 import { SectionProps } from './utils/SectionProps'
+import React from 'react'
+import TeamInteractiveMap from '../map/Map'
 
 export function TeamMap({ className }: SectionProps) {
   return (
@@ -14,8 +16,8 @@ export function TeamMap({ className }: SectionProps) {
           <Figure figure="14" label="personalities" />
         </div>
       </div>
-      <div className="flex justify-center mt-14 tablet:mt-28">
-        <img src="/team-map.png" alt="Team map" />
+      <div className="flex justify-center mt-8">
+        <TeamInteractiveMap/>
       </div>
     </div>
   )

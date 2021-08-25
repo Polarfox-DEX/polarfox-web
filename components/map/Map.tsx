@@ -1,6 +1,6 @@
 import Helmet from "react-helmet";
 
-export default function Map(){
+export default function TeamInteractiveMap(){
 
     return(
 
@@ -17,7 +17,7 @@ export default function Map(){
             </Helmet>
             
 
-            <div id="mapid" style={{ height: '500px', width: '800px' }} ></div>
+            <div id="mapid" style={{ height: '500px', width: '1000px' }} ></div>
         </div>
         
     )
