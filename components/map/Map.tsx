@@ -1,21 +1,6 @@
-import { TeamMemberInterface } from "./TeamMemberInterface"
-import CzechRepublic from "../svg/flags/CzechRepublic"
-import FrenchFlag from "../svg/flags/FrenchFlag"
-import GermanFlag from "../svg/flags/GermanFlag"
-import USFlag from "../svg/flags/USFlag"
-import memberJobs from "./MemberJobs"
-
-import {Helmet} from "react-helmet";
+import Helmet from "react-helmet";
 
 export default function Map(){
-
-    const createClusterCustomIcon = function (array: TeamMemberInterface[]) {
-        return L.divIcon({
-          html: `<span>${array.length}</span>`,
-          className: 'marker-cluster-custom',
-          iconSize: L.point(40, 40, true),
-        });
-      }
 
     return(
 
