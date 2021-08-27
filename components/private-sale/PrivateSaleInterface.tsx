@@ -46,13 +46,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           {new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-          }).format(soldLeft)}
-          <SideText>
-            {new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: 'USD'
-            }).format(TOTAL_TO_BUY)}
-          </SideText>
+          }).format(soldLeft)}{' '}
+          remaining
+          <SideText>out of $1,000,000 worth of PFX</SideText>
         </div>
         <Clock />
       </div>
