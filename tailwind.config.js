@@ -50,6 +50,10 @@ module.exports = {
       '100%': '100%'
     },
     extend: {
+      gridTemplateColumns: {
+        'teasingPresaleHeader' : '2.5rem 5fr 3fr',
+        'presaleHeader' : '3fr 1fr'
+      },
       fontFamily: {
         publicSans: ['Public Sans', ...defaultTheme.fontFamily.sans],
         switzer: ['Switzer', ...defaultTheme.fontFamily.sans],

@@ -50,7 +50,7 @@ export function HeaderMobile({
 
   return (
     <div
-      className={classNames('laptop:hidden absolute w-full px-5 py-7', {
+      className={classNames('laptop:hidden w-full px-5 py-4', {
         'z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
           isMobileMenuOpen
       })}
