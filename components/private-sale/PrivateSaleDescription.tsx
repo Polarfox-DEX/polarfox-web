@@ -2,6 +2,9 @@ import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 
+// TODO: US / Canadian investors
+// TODO: Metamask warning
+
 export function PrivateSaleDescription({ className }: SectionProps) {
   return (
     <div className={classNames(className)}>
@@ -33,7 +36,10 @@ export function PrivateSaleDescription({ className }: SectionProps) {
           lineHeight: calcRem(32)
         }}
       >
-        I am a description.
+        The PFX private sale will last until{' '}
+        <span className="font-bold">$1,000,000</span> are raised. The token is
+        sold at a price of $1 per token, on a{' '}
+        <span className="font-bold">first-come, first-served</span> basis.
       </p>
       <p
         className="mt-10 text-gray"
@@ -42,21 +48,25 @@ export function PrivateSaleDescription({ className }: SectionProps) {
           lineHeight: calcRem(30)
         }}
       >
-        I am a sub-description.
+        The price of $1 is <span className="font-bold">half of the start</span>{' '}
+        ICO price, and 1/40th of the potential end price — a{' '}
+        <span className="font-bold">potential 4000% gain</span>.
       </p>
       <div
-        className="mt-10 border border-blue bg-white rounded-lg h-32"
+        className="mt-10 border border-blue bg-white rounded-lg h-40"
         style={{
           width: calcRem(503)
         }}
       >
         <p
-          className="text-gray italic mx-6 my-8"
+          className="text-gray italic mx-6 my-9"
           style={{
             lineHeight: calcRem(30)
           }}
         >
-          I am an example.
+          We will use the funding generated from this private round for{' '}
+          <span className="font-bold">marketing purposes</span>. This will help
+          us make the public PFX ICO as successful as possible.
         </p>
       </div>
     </div>
