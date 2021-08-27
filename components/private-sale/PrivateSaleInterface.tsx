@@ -5,6 +5,9 @@ import Clock from "../svg/Clock";
 import { DownArrow } from "../svg/DownArrow";
 import useWallet, { ChainId } from "../hooks/useWallet";
 
+//const { abi } = require('../../polarfox-presale/artifacts/contracts/PolarfoxTokenSale.sol/PolarfoxTokenSale.json');
+//const contractAddress = "0x1658FD1aaAB89292538Ff767824C596d24A02f23"
+
 interface PrivateSaleInterfaceProps {
   className?: string;
   style?: string
@@ -21,7 +24,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
 
   const [errorMessage, setErrorMessage] = useState("")
 
-  const { hasWallet, userBalance, connected, requestConnection } = useWallet(ChainId.BSC_TESTNET)
+  const { web3, hasWallet, userBalance, connected, requestConnection } = useWallet(ChainId.BSC_TESTNET)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)

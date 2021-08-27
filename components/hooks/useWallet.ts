@@ -17,6 +17,8 @@ export interface Wallet {
     requestConnection: () => void
 }
 
+let window_ : any;
+
 export default function useWallet(chosenChainId: ChainId): Wallet {
 
     const [errorMessage, setErrorMessage] = useState("")
@@ -31,8 +33,13 @@ export default function useWallet(chosenChainId: ChainId): Wallet {
     const [chainId, setChainId] = useState(0)
 
     useEffect(() => {
+
+        window_ = window;
+
+        addListeners();
+
         //verify if metamask is present
-        if (window.ethereum) {
+        if (window_.ethereum) {
             setHasWallet(true)
         } else {
             setErrorMessage("Metamask is not present on your web browser. Please download it and refresh the page.")
@@ -43,22 +50,22 @@ export default function useWallet(chosenChainId: ChainId): Wallet {
 
         if (hasWallet) {
 
-            var web3 = new Web3(window.ethereum)
+            var web3 = new Web3(window_.ethereum)
 
             setWeb3(web3)
 
             //Verify user is connected to right network
-            await window.ethereum.request({ method: 'eth_chainId' })
+            await window_.ethereum.request({ method: 'eth_chainId' })
                 .then(async (chainId: any) => {
 
                     if (web3.utils.hexToNumber(chainId) == chosenChainId) {
 
-                        await window.ethereum.request({ method: 'eth_requestAccounts' })
+                        await window_.ethereum.request({ method: 'eth_requestAccounts' })
                             .then(async (accounts: string[]) => {
 
                                 setAccounts(accounts)
                                 setConnected(true)
-                                await window.ethereum.request({ method: 'eth_getBalance', params: [accounts[0]] })
+                                await window_.ethereum.request({ method: 'eth_getBalance', params: [accounts[0]] })
                                     .then((balance: any) => setUserBalance(parseFloat(web3.utils.fromWei(balance))))
                                     .catch(console.log)
 
@@ -74,7 +81,10 @@ export default function useWallet(chosenChainId: ChainId): Wallet {
 
     function addListeners() {
 
-        //Listener on chain
+        //Listener when chain change
+        window_.ethereum.on('chainChanged', () => {
+            document.location.reload()
+          })
 
     }
 
