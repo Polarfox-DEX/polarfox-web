@@ -10,7 +10,7 @@ interface PrivateSaleInterfaceProps {
   style?: string
 }
 
-export default function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceProps) {
+export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceProps) {
 
   //régler pb de l'input
   //ajouter logique du champs adresse reciepient
@@ -26,8 +26,10 @@ export default function PrivateSaleInterface({ className, style }: PrivateSaleIn
   const [dailySpend, setDailySpend] = useState(0.8)
   const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
+  const [userRecipientAddress, setUserRecipientAddress] = useState('')
 
   const [approved, setApproved] = useState(false)
+
 
   const [soldLeft, setSoldLeft] = useState(865432)
   const [participants, setParticipants] = useState(176)
@@ -57,120 +59,161 @@ export default function PrivateSaleInterface({ className, style }: PrivateSaleIn
   }
 
   return (
-    <div className={classNames(className)}>
+    <div
+      className={classNames('border bg-blue rounded-3xl text-white', className)}
+      style={{
+        width: calcRem(439),
+        height: calcRem(680)
+      }}
+    >
       <div
-        className={classNames("flex px-8 bg-blue-gray text-white h-full items-center content-between",
-          "rounded-t-3xl")}
+        className="border-blue bg-blue-gray rounded-t-3xl flex items-center justify-between px-8"
         style={{
           height: calcRem(90),
           fontSize: calcRem(20)
         }}
       >
-        <div className="">
-          {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(soldLeft)}
-          <SideText>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(TOTAL_TO_BUY)} </SideText>
-        </div>
-        <Clock style={{ marginLeft: 'auto' }} />
-      </div>
-      <div className="grid text-white py-4 px-8" style={{ gridTemplateColumns: '50% 50%' }}>
         <div>
-          <MainText>{participants}</MainText>
-          <SideText>participants</SideText>
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(soldLeft)}{' '}
+          remaining
+          <SideText>out of $1,000,000 worth of PFX</SideText>
         </div>
-        <div>
-          <MainText>{totalBnbSold} {SYMBOL}</MainText>
-          <SideText>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(TOTAL_TO_BUY - soldLeft)}</SideText>
-        </div>
+        <Clock />
       </div>
-      <div
-        className="px-8"
-        style={{
-          borderTopWidth: calcRem(1),
-          borderColor: "#FFFFFF"
-        }}
-      >
+      <div className="grid text-white py-4 divide-y divide-white divide-opacity-12">
         <div
-          className="flex mt-4 justify-between"
+          className="flex px-8 space-x-32"
           style={{ lineHeight: calcRem(20) }}
         >
-          <div className="flex items-center">
-            <MainText>Buy</MainText>
-            <DownArrow className="mx-3" />
+          <div>
+            <MainText>{participants}</MainText>
+            <SideText>participants</SideText>
           </div>
-          <div className="mx-2">
-            <SideText>Your daily spend allowance</SideText>
-            <div
-              className="text-right"
-              style={{ fontSize: calcRem(14), lineHeight: calcRem(16) }}
-            >
-              {dailySpend} / {DAILY_ALLOWANCE} {SYMBOL}
-            </div>
-          </div>
-        </div>
-        <div
-          className={classNames({ "border-2 border-red-error": errorMessage !== "" }, "mt-7 bg-blue-gray rounded-3xl flex justify-between")}
-          style={{
-            width: calcRem(369),
-            height: calcRem(87)
-          }}
-        >
-          <div
-            className="m-6 font-semibold"
-            style={{ fontSize: calcRem(18) }}
-          >
-            <input
-              className="bg-blue-gray focus:outline-none"
-              style={{
-                width: calcRem(200)
-              }}
-              value={userBnbAllowance}
-              onChange={(event) => userAllowanceChange(event)}
-            ></input>
-            <SideText>= {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(userUsdAllowance)}</SideText>
-          </div>
-          <div className="mr-6">
-            <div className="flex justify-between">
-              <div
-                className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer"
-                style={{
-                  width: calcRem(45),
-                  height: calcRem(24),
-                  marginTop: calcRem(23),
-                  paddingTop: calcRem(5),
-                  fontSize: calcRem(10),
-                  marginRight: calcRem(10)
-                }}
-                onClick={() => setMaxUserAllowance()}
-              >
-                MAX
-              </div>
-              <MainText className="mt-6">{SYMBOL}</MainText>
-            </div>
-            <SideText className="mt-2">
-              Balance: {userBalance.toString().length > 7 ? userBalance.toString().substring(0, 6) + "..." : userBalance}
+          <div>
+            <MainText>
+              {totalBnbSold} {SYMBOL}
+            </MainText>
+            <SideText>
+              {new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+              }).format(TOTAL_TO_BUY - soldLeft)}
             </SideText>
           </div>
         </div>
-        <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-          {errorMessage != "" && "Alert: " + errorMessage}
-        </div>
-        <div
-          className="mt-6 opacity-40 text-center"
-          style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
-        >
-          <span className="font-bold">NOTE: </span>
-          Your tokens will be locked in the contract until the presale has
-          ended. You will be able to claim them after the presale.
-        </div>
-        <div
-          className="mt-6 font-bold text-center"
-          style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
-        >
-          Your total funds in this presale: 0.82 {SYMBOL}
-        </div>
-        <div className="mb-6 flex">
-          {connected && <IsConnected />}
-          {!connected && <ConnectButton hasWallet={hasWallet} />}
+
+        <div className="mt-5.5 pt-2 px-8">
+          <div
+            className="flex mt-4 justify-between "
+            style={{ lineHeight: calcRem(20) }}
+          >
+            <div className="flex items-center">
+              <MainText>Buy</MainText>
+              <DownArrow className="mx-3" />
+            </div>
+          </div>
+
+          <div
+            className={classNames("mt-7 bg-blue-gray rounded-3xl flex justify-between", { "border-2 border-red-error": errorMessage !== "" })}
+            style={{
+              width: calcRem(369),
+              height: calcRem(87)
+            }}
+          >
+            <div
+              className="m-6 font-semibold"
+              style={{ fontSize: calcRem(18) }}
+            >
+              <input
+                className="bg-blue-gray focus:outline-none"
+                style={{
+                  width: calcRem(200)
+                }}
+                value={userBnbAllowance}
+                onChange={(event) => userAllowanceChange(event)}
+              />
+              <SideText>
+                ={' '}
+                {new Intl.NumberFormat('en-US', {
+                  style: 'currency',
+                  currency: 'USD'
+                }).format(userUsdAllowance)}
+              </SideText>
+            </div>
+            <div className="mr-6">
+              <div className="flex justify-between">
+                <div
+                  className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer"
+                  style={{
+                    width: calcRem(45),
+                    height: calcRem(24),
+                    marginTop: calcRem(23),
+                    paddingTop: calcRem(5),
+                    fontSize: calcRem(10),
+                    marginRight: calcRem(10)
+                  }}
+                  onClick={() => setMaxUserAllowance()}
+                >
+                  MAX
+                </div>
+                <MainText className="mt-6">{SYMBOL}</MainText>
+              </div>
+              <SideText className="mt-2">
+                Balance: {userBalance.toFixed(2)}
+              </SideText>
+            </div>
+          </div>
+          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
+            {errorMessage && "Alert: " + errorMessage}
+          </div>
+          <div className="mt-6">
+            <input
+              className="bg-blue-gray focus:outline-none rounded-3xl px-6"
+              style={{
+                width: calcRem(369),
+                height: calcRem(45),
+                fontSize: calcRem(12)
+              }}
+              value={userRecipientAddress}
+              onChange={(event) =>
+                setUserRecipientAddress(event.currentTarget.value)
+              }
+              placeholder="Receiving address..."
+            />
+            <div
+              className="mt-2 opacity-40 px-2"
+              style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
+            >
+              <div className="flex items-center space-x-1">
+                <input
+                  type="checkbox"
+                  className=" checked:border-transparent"
+                />
+                <div>I want to send funds to my address</div>
+              </div>
+            </div>
+          </div>
+          <div className="mb-6 flex">
+            {connected && <IsConnected />}
+            {!connected && <ConnectButton hasWallet={hasWallet} />}
+          </div>
+          <div
+            className="mt-6 opacity-40 text-center"
+            style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
+          >
+            <span className="font-bold">NOTE: </span>
+            Your tokens will be locked in the contract until the presale has
+            ended. You will be able to claim them after the presale.
+          </div>
+          <div
+            className="mt-6 font-bold text-center"
+            style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
+          >
+            Your total funds in this presale: 0.82 {SYMBOL}
+          </div>
         </div>
       </div>
     </div>
@@ -207,28 +250,6 @@ export default function PrivateSaleInterface({ className, style }: PrivateSaleIn
       </div>
     )
   }
-
-}
-
-
-
-interface MainTextProps {
-  className?: string
-  children: ReactNode
-}
-
-function MainText({ className, children }: MainTextProps) {
-  return (
-    <div
-      className={classNames('font-semibold', className)}
-      style={{
-        fontSize: calcRem(20),
-        lineHeight: calcRem(23)
-      }}
-    >
-      {children}
-    </div>
-  )
 }
 
 interface SideTextProps {
@@ -274,5 +295,24 @@ function ActionButton({ name, disabled, click }: ActionButtonProps) {
       value={name}
       onClick={() => click()}
     />
+  )
+}
+
+interface MainTextProps {
+  className?: string
+  children: ReactNode
+}
+
+function MainText({ className, children }: MainTextProps) {
+  return (
+    <div
+      className={classNames('font-semibold', className)}
+      style={{
+        fontSize: calcRem(20),
+        lineHeight: calcRem(23)
+      }}
+    >
+      {children}
+    </div>
   )
 }

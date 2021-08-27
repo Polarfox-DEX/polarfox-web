@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Web3 from "web3"
 
-export enum ChainId{
+export enum ChainId {
     BSC_MAINNET = 56,
     BSC_TESTNET = 97
 }
@@ -17,31 +17,31 @@ export interface Wallet {
     requestConnection: () => void
 }
 
-export default function useWallet(choosenChainId: ChainId): Wallet{
+export default function useWallet(chosenChainId: ChainId): Wallet {
 
-    const[errorMessage,setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
 
-    const[hasWallet,setHasWallet] = useState(false)
-    const[web3,setWeb3] = useState<Web3>()
+    const [hasWallet, setHasWallet] = useState(false)
+    const [web3, setWeb3] = useState<Web3>()
 
-    const[accounts,setAccounts] = useState<string[]>([])
-    const[userBalance, setUserBalance] = useState(0.0)
+    const [accounts, setAccounts] = useState<string[]>([])
+    const [userBalance, setUserBalance] = useState(0.0)
 
-    const[connected,setConnected] = useState(false)
-    const[chainId,setChainId] = useState(0)
+    const [connected, setConnected] = useState(false)
+    const [chainId, setChainId] = useState(0)
 
     useEffect(() => {
         //verify if metamask is present
-        if(window.ethereum){
+        if (window.ethereum) {
             setHasWallet(true)
-        }else{
-            setErrorMessage("Metamask is not present on your web browser. Please downlaod it and refresh the page.")
+        } else {
+            setErrorMessage("Metamask is not present on your web browser. Please download it and refresh the page.")
         }
     })
 
-    async function requestConnection(){
+    async function requestConnection() {
 
-        if(hasWallet){
+        if (hasWallet) {
 
             var web3 = new Web3(window.ethereum)
 
@@ -51,34 +51,34 @@ export default function useWallet(choosenChainId: ChainId): Wallet{
             await window.ethereum.request({ method: 'eth_chainId' })
                 .then(async (chainId: any) => {
 
-                    if(web3.utils.hexToNumber(chainId) == choosenChainId){
+                    if (web3.utils.hexToNumber(chainId) == chosenChainId) {
 
                         await window.ethereum.request({ method: 'eth_requestAccounts' })
                             .then(async (accounts: string[]) => {
 
                                 setAccounts(accounts)
                                 setConnected(true)
-                                await window.ethereum.request({method: 'eth_getBalance', params:[accounts[0]]})
+                                await window.ethereum.request({ method: 'eth_getBalance', params: [accounts[0]] })
                                     .then((balance: any) => setUserBalance(parseFloat(web3.utils.fromWei(balance))))
                                     .catch(console.log)
 
                             }).catch(console.log)
 
-                    }else{
-                        setErrorMessage("Your are connected to the wrong network. Please change.")
+                    } else {
+                        setErrorMessage("You are connected to the wrong network. Please switch to the BSC mainnet.")
                     }
                 }).catch(console.log)
         }
 
     }
 
-    function addListeners(){
+    function addListeners() {
 
         //Listener on chain
 
     }
 
-    return{
+    return {
         hasWallet,
         errorMessage,
         web3,

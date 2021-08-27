@@ -8,35 +8,31 @@ import { ReactNode } from 'react'
 export function PresaleInterface({ className }: SectionProps) {
   return (
     <div
-      className={classNames('border bg-blue rounded-3xl', className)}
+      className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
         height: calcRem(717)
       }}
     >
       <div
-        className="border bg-blue-gray rounded-t-3xl w-full"
+        className="border-blue bg-blue-gray rounded-t-3xl flex items-center space-x-5 justify-center"
         style={{
           height: calcRem(128)
         }}
       >
-        <div className="flex text-white h-full items-center space-x-7">
-          <div className="flex space-x-5 ml-7" style={{ width: calcRem(312) }}>
-            <PresaleTimerWindow>16h</PresaleTimerWindow>
-            <PresaleTimerWindow>45m</PresaleTimerWindow>
-            <PresaleTimerWindow>32s</PresaleTimerWindow>
-          </div>
-          <Clock />
-        </div>
+        <PresaleTimerWindow>16h</PresaleTimerWindow>
+        <PresaleTimerWindow>45m</PresaleTimerWindow>
+        <PresaleTimerWindow>32s</PresaleTimerWindow>
+        <Clock />
       </div>
-      <div className="text-white mt-7 divide-y divide-white divide-opacity-12">
+      <div className="mt-7 divide-y divide-white divide-opacity-12">
         <div className="pl-8">
-          <div className="flex">
+          <div className="flex space-x-28">
             <MainText>
               <span>DAY 2</span>
               <span className="opacity-30">/3</span>
             </MainText>
-            <div className="ml-28 flex space-x-1.5">
+            <div className="flex space-x-1.5">
               <DayButton hasStarted>D1</DayButton>
               <DayButton hasStarted isActive>
                 D2
@@ -44,12 +40,15 @@ export function PresaleInterface({ className }: SectionProps) {
               <DayButton>D3</DayButton>
             </div>
           </div>
-          <div className="flex mt-8" style={{ lineHeight: calcRem(20) }}>
+          <div
+            className="flex mt-8 space-x-32"
+            style={{ lineHeight: calcRem(20) }}
+          >
             <div>
               <MainText>167</MainText>
               <SideText>participants</SideText>
             </div>
-            <div className="ml-32">
+            <div>
               <MainText>62.82 ETH</MainText>
               <SideText>$120,280.82</SideText>
             </div>

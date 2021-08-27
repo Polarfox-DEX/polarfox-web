@@ -1,20 +1,13 @@
-import React from "react";
-import { Page } from "../components/Page";
-import PrivateSaleInterface from "../components/private-sale/PrivateSaleInterface";
+import React from 'react'
+import { Page } from '../components/Page'
+import { PrivateSalePanel } from '../components/private-sale/PrivateSalePanel'
+import { PrivateSaleTutorial } from '../components/private-sale/PrivateSaleTutorial'
 
-export default function PrivateSale(){
-    return(
-        <Page>
-            <div 
-                className="container grid mt-24"
-                style={{
-                    gridTemplateColumns: "1.3fr 0.6fr 1fr"
-                }}
-            >
-                <div>texte</div>
-                <div>vide</div>
-                <PrivateSaleInterface className="text-white bg-blue rounded-3xl"/>
-            </div>
-        </Page>
-    )
+export default function PrivateSale() {
+  return (
+    <Page>
+      <PrivateSalePanel className="mt-64" />
+      <PrivateSaleTutorial className="mt-24" />
+    </Page>
+  )
 }
