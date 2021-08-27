@@ -23,13 +23,12 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
 
   const { hasWallet, userBalance, connected, requestConnection } = useWallet(ChainId.BSC_TESTNET)
 
-  const [dailySpend, setDailySpend] = useState(0.8)
   const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState('')
 
   const [approved, setApproved] = useState(false)
-
+  const [useMyAddress, setUseMyAddress] = useState(false)
 
   const [soldLeft, setSoldLeft] = useState(865432)
   const [participants, setParticipants] = useState(176)
@@ -104,7 +103,6 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
             </SideText>
           </div>
         </div>
-
         <div className="mt-5.5 pt-2 px-8">
           <div
             className="flex mt-4 justify-between "
@@ -115,7 +113,6 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
               <DownArrow className="mx-3" />
             </div>
           </div>
-
           <div
             className={classNames("mt-7 bg-blue-gray rounded-3xl flex justify-between", { "border-2 border-red-error": errorMessage !== "" })}
             style={{
@@ -171,7 +168,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
           </div>
           <div className="mt-6">
             <input
-              className="bg-blue-gray focus:outline-none rounded-3xl px-6"
+              className={classNames("bg-blue-gray focus:outline-none rounded-3xl px-6 disabled:opacity-40")}
               style={{
                 width: calcRem(369),
                 height: calcRem(45),
@@ -182,6 +179,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
                 setUserRecipientAddress(event.currentTarget.value)
               }
               placeholder="Receiving address..."
+              disabled={useMyAddress}
             />
             <div
               className="mt-2 opacity-40 px-2"
@@ -191,6 +189,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
                 <input
                   type="checkbox"
                   className=" checked:border-transparent"
+                  onChange={(event) => setUseMyAddress(event.currentTarget.checked)}
                 />
                 <div>I want to send funds to my address</div>
               </div>
@@ -279,9 +278,9 @@ interface ActionButtonProps {
 
 function ActionButton({ name, disabled, click }: ActionButtonProps) {
   return (
-    <input
-      className={classNames("rounded-3xl mx-1 font-semibold text-center",
-        disabled ? "bg-black hover:cursor-not-allowed" : 'bg-blue-light hover:cursor-pointer'
+    <button
+      className={classNames("rounded-3xl mx-1 font-semibold text-center text-white bg-blue-light",
+        disabled ? "opacity-40 hover:cursor-not-allowed" : 'hover:cursor-pointer'
       )}
       style={{
         width: calcRem(178),
@@ -292,9 +291,10 @@ function ActionButton({ name, disabled, click }: ActionButtonProps) {
       }}
       disabled={disabled}
       type="button"
-      value={name}
       onClick={() => click()}
-    />
+    >
+      {name}
+    </button>
   )
 }
 
