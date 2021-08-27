@@ -65,7 +65,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
       className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(680)
+        height: calcRem(655)
       }}
     >
       <div
