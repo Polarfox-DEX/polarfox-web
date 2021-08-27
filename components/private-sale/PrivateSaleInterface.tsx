@@ -32,7 +32,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(717)
+        height: calcRem(680)
       }}
     >
       <div
