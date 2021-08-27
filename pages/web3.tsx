@@ -8,7 +8,7 @@ export enum ChaindId{
 }
 
 const { abi } = require('../../polarfox-presale/artifacts/contracts/PolarfoxTokenSale.sol/PolarfoxTokenSale.json');
-const contractAddress = "0x765547f8CeCad11fa122C61Fca1bc7e79b062336"
+const contractAddress = "0x1658FD1aaAB89292538Ff767824C596d24A02f23"
 
 declare let window: any;
 
@@ -104,7 +104,7 @@ export default function PresaleWeb3App(){
 
         window.ethereum.request({method: 'eth_gasPrice', params: []}).then(async (gasFees: number) => {
 
-            console.log(polarfoxTokenSaleContract)
+            console.log(gasFees)
 
             await polarfoxTokenSaleContract.methods.buyTokens().send({
 
@@ -125,7 +125,7 @@ export default function PresaleWeb3App(){
     var userAllocationChange = async (value: string) => {
 
         setUserAllocation(value.replace(",","."));
-        setPFXtoReceive((parseFloat(value)*bnbUsdPrice)/getLevelPrice(currentLevel))
+        setPFXtoReceive((parseFloat(value)*bnbUsdPrice)/getLevelPrice(currentLevel)[1])
 
     }
 
