@@ -14,6 +14,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [userBalance, setUserBalance] = useState(4.6)
   const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
+  const [userRecipientAddress, setUserRecipientAddress] = useState('')
 
   const [approved, setApproved] = useState(false)
   const [connected, setConnected] = useState(false)
@@ -85,15 +86,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               <MainText>Buy</MainText>
               <DownArrow className="mx-3" />
             </div>
-            <div className="mx-2">
-              <SideText>Your daily spend allowance</SideText>
-              <div
-                className="text-right"
-                style={{ fontSize: calcRem(14), lineHeight: calcRem(16) }}
-              >
-                {dailySpend} / {DAILY_ALLOWANCE} {SYMBOL}
-              </div>
-            </div>
           </div>
           <div
             className="mt-7 bg-blue-gray rounded-3xl flex justify-between"
@@ -113,7 +105,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 }}
                 value={userBnbAllowance}
                 onChange={(event) => userAllowanceChange(event)}
-              ></input>
+              />
               <SideText>
                 ={' '}
                 {new Intl.NumberFormat('en-US', {
@@ -142,6 +134,37 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               <SideText className="mt-2">Balance: {userBalance}</SideText>
             </div>
           </div>
+          <div className="mt-6">
+            <input
+              className="bg-blue-gray focus:outline-none rounded-3xl px-6"
+              style={{
+                width: calcRem(369),
+                height: calcRem(45),
+                fontSize: calcRem(12)
+              }}
+              value={userRecipientAddress}
+              onChange={(event) =>
+                setUserRecipientAddress(event.currentTarget.value)
+              }
+              placeholder="Receiving address..."
+            />
+            <div
+              className="mt-2 opacity-40 px-2"
+              style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
+            >
+              <div className="flex items-center space-x-1">
+                <input
+                  type="checkbox"
+                  className=" checked:border-transparent"
+                />
+                <div>I want to send funds to my address</div>
+              </div>
+            </div>
+          </div>
+          <div className="my-6 flex">
+            <ActionButton isActive>Approve</ActionButton>
+            <ActionButton>Purchase</ActionButton>
+          </div>
           <div
             className="mt-6 opacity-40 text-center"
             style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
@@ -155,10 +178,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
           >
             Your total funds in this presale: 0.82 {SYMBOL}
-          </div>
-          <div className="my-6 flex">
-            <ActionButton isActive>Approve</ActionButton>
-            <ActionButton>Purchase</ActionButton>
           </div>
         </div>
       </div>
