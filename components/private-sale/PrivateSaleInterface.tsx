@@ -156,7 +156,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           >
             Your total funds in this presale: 0.82 {SYMBOL}
           </div>
-          <div className="mt-6 mb-6 flex">
+          <div className="my-6 flex">
             <ActionButton isActive>Approve</ActionButton>
             <ActionButton>Purchase</ActionButton>
           </div>
