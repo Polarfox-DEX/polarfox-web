@@ -3,11 +3,12 @@ import { ReactNode } from 'react'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionTitle } from './utils/SectionTitle'
 import AnalyticsGradient from '../svg/AnalyticsGradient'
-import BridgeGradient from '../svg/BridgeGradient'
+// import BridgeGradient from '../svg/BridgeGradient'
 import classNames from 'classnames'
 import DoubleArrowGradient from '../svg/DoubleArrowGradient'
 import TokenGradient from '../svg/TokenGradient'
 import TopRightArrow from '../svg/TopRightArrow'
+import {DEX_LINK, ANALYTICS_LINK, AKITA_LINK } from '../const/links'
 
 interface ProductsSectionProps {
   className?: string
@@ -21,12 +22,12 @@ export function Products({ className }: ProductsSectionProps) {
       <div className="flex flex-wrap laptop:flex-nowrap justify-between laptop:justify-start gap-x-5 gap-y-5 mt-16 laptop:mt-20 desktop:mt-28 laptop:pb-10 laptop:overflow-x-scroll">
         <Product
           label="Decentralized Exchange"
-          url="https://dex-test.polarfox.io/"
+          url={DEX_LINK}
           logo={<DoubleArrowGradient />}
         />
         <Product
           label="Polarfox Analytics"
-          url="https://analytics-test.polarfox.io"
+          url={ANALYTICS_LINK}
           logo={<AnalyticsGradient />}
         />
         <Product
@@ -34,14 +35,14 @@ export function Products({ className }: ProductsSectionProps) {
           url="#"
           logo={<TokenGradient />}
         />
-        <Product
+        {/* <Product
           label="Polarfox Bridge"
           url="https://bridge-test.polarfox.io"
           logo={<BridgeGradient />}
-        />
+        /> */}
         <Product
           label="Akita Community"
-          url="https://akita.network"
+          url={AKITA_LINK}
           logo={
             <div className="-mt-1 hidden group-hover:block">
               <img

@@ -11,7 +11,7 @@ export function PresaleHeader({ className }: SectionProps) {
   return (
     <div
       className={classNames(
-        'grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28 ',
+        'grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28',
         'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader w-full',
         className
       )}
@@ -55,12 +55,12 @@ export function PresaleHeader({ className }: SectionProps) {
             : 'ml-1 laptop:justify-center laptop:ml-8'
         )}
       >
-        PFX presale starts mid-September
+        PFX presale starts mid-September 🦊
       </div>
       <a
         className={classNames(
           { 'laptop:hidden': GlobalVars.showPresaleStartDate },
-          'mr-4 bg-white text-blue grid items-center justify-self-end text-center rounded-full px-2 font-semibold '
+          'mr-4 bg-white text-blue grid items-center justify-self-end text-center rounded-full px-2 font-semibold laptop:mr-8'
         )}
         style={{
           height: calcRem(50),

@@ -11,6 +11,7 @@ import Telegram from './svg/Telegram'
 import Twitter from './svg/Twitter'
 import { SiteMapLink } from './utils/SiteMapLink'
 import { SocialMediaLinks } from './utils/SocialMediaLinks'
+import { LITEPAPER_LINK } from './const/links'
 
 interface FooterProps {
   className?: string
@@ -230,7 +231,7 @@ function SiteMap() {
         <SiteMapSectionTitle>Resources</SiteMapSectionTitle>
         <br />
         <SiteMapLink url="">Blog</SiteMapLink>
-        <SiteMapLink url="">Litepaper</SiteMapLink>
+        <SiteMapLink url={LITEPAPER_LINK}>Litepaper</SiteMapLink>
         <SiteMapLink url="/tutorials">Tutorials</SiteMapLink>
       </SiteMapSection>
     </div>

@@ -12,7 +12,6 @@ import {
   ABOUT_LINK,
   AKITA_LINK,
   ANALYTICS_LINK,
-  BRIDGE_LINK,
   DEX_LINK,
   FAQ_LINK,
   GITHUB_LINK,
@@ -104,11 +103,6 @@ function ProductsAccordionMenu() {
         href={MININGPOOL_LINK}
         linkTitle="Open app"
         name="Mining Pools"
-      />
-      <AccordionMenuItem
-        href={BRIDGE_LINK}
-        linkTitle="Open app"
-        name="Bridge"
       />
       <AccordionMenuItem
         href={AKITA_LINK}

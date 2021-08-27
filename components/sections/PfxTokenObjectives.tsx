@@ -5,6 +5,7 @@ import { SectionButton } from './utils/SectionButton'
 import { SectionHeading } from './utils/SectionHeading'
 import { SectionTitle } from './utils/SectionTitle'
 import { WithBackgroundPfxObjectives } from '../utils/WithBackgroundImage'
+import { LITEPAPER_LINK } from '../const/links'
 
 interface PfxTokenObjectivesProps {
   className?: string
@@ -29,7 +30,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
               more about PFX below.
             </p>
             <SectionButton
-              href="/Polarfox Litepaper V2.6.pdf"
+              href={LITEPAPER_LINK}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -89,7 +90,7 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
             token supply, and then with a dev fee on each PFX transaction.
           </PfxTokenObjective>
           <PfxTokenObjective title="Liquidity provider rewards">
-            On every transaction involving PFX, 0.9% of the transferred PFX
+            On every transaction involving PFX, 3% of the transferred PFX
             amount is converted to AVAX and distributed among liquidity
             providers.
           </PfxTokenObjective>

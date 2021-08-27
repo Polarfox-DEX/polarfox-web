@@ -20,8 +20,8 @@ export function FaqPfxToken({ className }: SectionProps) {
           className="list-disc list-inside pl-4"
           style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
         >
-          <li>Presale: 9,900,000 PFX (33%)</li>
-          <li>Liquidity mining: 9,900,000 PFX (33%)</li>
+          <li>Presale: 10,000,000 PFX (33%)</li>
+          <li>Liquidity mining: 10,000,000 PFX (33%)</li>
           <li>Initial DEX liquidity: 5,100,000 PFX (17%)</li>
           <li>Governance: 900,000 PFX (3%)</li>
         </ul>
@@ -31,7 +31,7 @@ export function FaqPfxToken({ className }: SectionProps) {
           className="list-disc list-inside pl-4"
           style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
         >
-          <li>Initial funding: 600,000 PFX (2%)</li>
+          <li>Initial funding: 500,000 PFX (2%)</li>
           <li>Treasury vester: 1,500,000 PFX (5%)</li>
         </ul>
         <br />
@@ -40,18 +40,18 @@ export function FaqPfxToken({ className }: SectionProps) {
           className="list-disc list-inside pl-4"
           style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
         >
-          <li>Initial funding: 600,000 PFX (2%)</li>
+          <li>Initial funding: 500,000 PFX (2%)</li>
           <li>Treasury vester: 1,500,000 PFX (5%)</li>
         </ul>
       </Question>
       <Question question="Does PFX have any special mechanics?">
-        PFX establishes a tax of 1% on every transaction consisting of:
+        PFX establishes a tax of 3.5% on every transaction consisting of:
         <ul
           className="list-disc list-inside pl-4"
           style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
         >
-          <li>0.9% distributed to PFX liquidity providers as AVAX</li>
-          <li>0.1% developer fee</li>
+          <li>3% distributed to PFX liquidity providers as AVAX</li>
+          <li>0.5% developer fee</li>
         </ul>
         <br />
         For more details, read our{' '}
