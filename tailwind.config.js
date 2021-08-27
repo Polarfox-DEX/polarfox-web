@@ -51,7 +51,7 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        'teasingPresaleHeader' : '2.5rem  5fr 3fr',
+        'teasingPresaleHeader' : '2.5rem 5fr 3fr',
         'presaleHeader' : '3fr 1fr'
       },
       fontFamily: {
