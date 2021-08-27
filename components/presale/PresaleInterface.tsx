@@ -8,28 +8,24 @@ import { ReactNode } from 'react'
 export function PresaleInterface({ className }: SectionProps) {
   return (
     <div
-      className={classNames('border bg-blue rounded-3xl', className)}
+      className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
         height: calcRem(717)
       }}
     >
       <div
-        className="border bg-blue-gray rounded-t-3xl w-full"
+        className="border-blue bg-blue-gray rounded-t-3xl flex items-center space-x-5 justify-center"
         style={{
           height: calcRem(128)
         }}
       >
-        <div className="flex text-white h-full items-center space-x-7">
-          <div className="flex space-x-5 ml-7" style={{ width: calcRem(312) }}>
-            <PresaleTimerWindow>16h</PresaleTimerWindow>
-            <PresaleTimerWindow>45m</PresaleTimerWindow>
-            <PresaleTimerWindow>32s</PresaleTimerWindow>
-          </div>
-          <Clock />
-        </div>
+        <PresaleTimerWindow>16h</PresaleTimerWindow>
+        <PresaleTimerWindow>45m</PresaleTimerWindow>
+        <PresaleTimerWindow>32s</PresaleTimerWindow>
+        <Clock />
       </div>
-      <div className="text-white mt-7 divide-y divide-white divide-opacity-12">
+      <div className="mt-7 divide-y divide-white divide-opacity-12">
         <div className="pl-8">
           <div className="flex">
             <MainText>
