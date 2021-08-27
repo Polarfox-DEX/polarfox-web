@@ -3,6 +3,7 @@ import React, { ReactNode, useState } from "react";
 import { calcRem } from "../../utils/styles";
 import Clock from "../svg/Clock";
 import { DownArrow } from "../svg/DownArrow";
+import useWallet, { ChainId } from "../hooks/useWallet";
 
 interface PrivateSaleInterfaceProps{
     className?: string;
@@ -11,17 +12,22 @@ interface PrivateSaleInterfaceProps{
 
 export default function PrivateSaleInterface({className, style}: PrivateSaleInterfaceProps){
 
+    //régler pb de l'input
+    //ajouter logique du champs adresse reciepient
+
     const SYMBOL: string = "BNB"
     const DAILY_ALLOWANCE: number = 3
     const TOTAL_TO_BUY: number = 1000000
+
+    const[errorMessage,setErrorMessage] = useState("")
+
+    const{hasWallet,userBalance,connected,requestConnection} = useWallet(ChainId.BSC_TESTNET)
     
     const[dailySpend,setDailySpend] = useState(0.8)
-    const[userBalance,setUserBalance] = useState(4.6)
     const[userBnbAllowance,setUserBnbAllowance] = useState(0.0)
     const[userUsdAllowance,setUsdAllowance] = useState(0.0)
 
     const[approved,setApproved] = useState(false)
-    const[connected,setConnected] = useState(false)
 
     const[soldLeft,setSoldLeft] = useState(865432)
     const[participants,setParticipants] = useState(176)
@@ -29,6 +35,25 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
 
     var userAllowanceChange = (event: React.FormEvent<HTMLInputElement>) => {
         setUserBnbAllowance(parseFloat(event.currentTarget.value.replace(",",".")))
+    }
+
+    var setMaxUserAllowance = () => {
+        if(connected){
+          setUserBnbAllowance(userBalance)
+        }
+    }
+
+    var connectWallet = () => {
+      requestConnection()
+    }
+
+    var approveContract = () => {
+      alert('Contract approved')
+      setApproved(true)
+    }
+
+    var purshase = () => {
+      setErrorMessage("This is an error message")
     }
 
     return(
@@ -57,7 +82,6 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
                     <SideText>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(TOTAL_TO_BUY-soldLeft)}</SideText>
                 </div>
             </div>
-
             <div 
                 className="px-8"
                 style={{
@@ -84,7 +108,7 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
                     </div>
                 </div>
                 <div
-                    className="mt-7 bg-blue-gray rounded-3xl flex justify-between"
+                    className={classNames({ "border-2 border-red-error" : errorMessage !== "" },"mt-7 bg-blue-gray rounded-3xl flex justify-between")}
                     style={{
                     width: calcRem(369),
                     height: calcRem(87)
@@ -107,7 +131,7 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
                     <div className="mr-6">
                         <div className="flex justify-between">
                             <div
-                            className="bg-blue-light rounded-3xl font-semibold text-center"
+                            className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer"
                             style={{
                                 width: calcRem(45),
                                 height: calcRem(24),
@@ -116,13 +140,19 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
                                 fontSize: calcRem(10),
                                 marginRight: calcRem(10)
                             }}
+                            onClick={() => setMaxUserAllowance()}
                             >
                             MAX
                             </div>
                             <MainText className="mt-6">{SYMBOL}</MainText>
                         </div>
-                        <SideText className="mt-2">Balance: {userBalance}</SideText>
+                        <SideText className="mt-2">
+                          Balance: {userBalance.toString().length > 7 ? userBalance.toString().substring(0,6) + "...": userBalance}
+                        </SideText>
                     </div>
+                </div>
+                <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
+                  { errorMessage != "" && "Alert: " + errorMessage }
                 </div>
                 <div
                     className="mt-6 opacity-40 text-center"
@@ -138,15 +168,49 @@ export default function PrivateSaleInterface({className, style}: PrivateSaleInte
                 >
                     Your total funds in this presale: 0.82 {SYMBOL}
                 </div>
-                <div className="mt-6 mb-6 flex">
-                    <ActionButton isActive>Approve</ActionButton>
-                    <ActionButton>Purchase</ActionButton>
+                <div className="mb-6 flex">
+                    { connected && <IsConnected/>}
+                    { !connected && <ConnectButton hasWallet={hasWallet}/> }
                 </div>
             </div>
         </div>
     )
 
+    function IsConnected(){
+      return(
+        <div className="flex">
+          <ActionButton name="Approve" disabled={approved} click={approveContract}/>
+          <ActionButton name="Purchase" disabled={!approved} click={purshase}/>
+        </div>
+      )
+    }
+
+    interface ConnectButton{
+      hasWallet: boolean
+    }
+
+    function ConnectButton({hasWallet}: ConnectButton){
+      return(
+        <div
+            className={classNames(
+              'bg-blue-light w-full rounded-3xl mx-1 pt-3 font-semibold text-center hover:cursor-pointer'
+            )}
+            style={{
+              height: calcRem(44),
+              marginTop: calcRem(23),
+              fontSize: calcRem(14),
+              lineHeight: calcRem(16)
+            }}
+            onClick={() => connectWallet()}
+          > 
+           {hasWallet ? 'Connect your wallet' : 'Install Metamask'}
+          </div>
+      )
+    }
+
 }
+
+
 
 interface MainTextProps {
     className?: string
@@ -187,18 +251,16 @@ function MainText({ className, children }: MainTextProps) {
   }
 
   interface ActionButtonProps {
-    isActive?: boolean
-    children: ReactNode
+    name: string,
+    disabled: boolean,
+    click: () => void
   }
   
-  function ActionButton({ isActive, children }: ActionButtonProps) {
+  function ActionButton({ name, disabled, click }: ActionButtonProps) {
     return (
-      <div
-        className={classNames(
-          'bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center',
-          {
-            'opacity-30': !isActive
-          }
+      <input
+        className={classNames("rounded-3xl mx-1 font-semibold text-center",
+          disabled ? "bg-black hover:cursor-not-allowed" : 'bg-blue-light hover:cursor-pointer'
         )}
         style={{
           width: calcRem(178),
@@ -207,8 +269,10 @@ function MainText({ className, children }: MainTextProps) {
           fontSize: calcRem(14),
           lineHeight: calcRem(16)
         }}
-      >
-        {children}
-      </div>
+        disabled={disabled}
+        type="button"
+        value={name}
+        onClick={() => click()}
+      />
     )
   }
