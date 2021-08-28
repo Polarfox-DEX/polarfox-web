@@ -1,12 +1,12 @@
 import classNames from 'classnames'
-import Coins from '../svg/Coins'
-import Ethereum from '../svg/Ethereum'
+import Binance from '../svg/Binance'
 import RightArrow from '../svg/RightArrow'
 import Sablier from '../svg/Sablier'
 import Wallet from '../svg/Wallet'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
+import CheckCircle from '../svg/CheckCircle'
 
 export function PrivateSaleTutorial({ className }: SectionProps) {
   return (
@@ -31,35 +31,21 @@ export function PrivateSaleTutorial({ className }: SectionProps) {
         How to participate
       </h2>
       <div className="flex justify-between">
-        <PresaleTutorialBlock logo={<Wallet />} title="Connect your wallet">
-          We support MetaMask, Trustwallet and Coinbase wallet.
+        <PresaleTutorialBlock logo={<CheckCircle className="fill-current" />} title="Get whitelisted">
+          This sale is only open to our partners and large investors. Contact our team to get whitelisted.
         </PresaleTutorialBlock>
         <GreyRightArrow />
-        <div>
-          <PresaleTutorialBlock logo={<Coins />} title="Hold 100M AKITA tokens">
-            To participate in the presale, you need to own at least 100M AKITA
-            in your wallet.
-          </PresaleTutorialBlock>
-        </div>
+        <PresaleTutorialBlock logo={<Wallet />} title="Connect your wallet">
+          We recommend using a MetaMask wallet. Use another wallet at your own risk.
+        </PresaleTutorialBlock>
         <GreyRightArrow />
-        <PresaleTutorialBlock logo={<Ethereum />} title="Buy PFX with ETH">
-          Each day, you can buy up to 1 ETH worth of PFX. You can buy more the
-          day after.
+        <PresaleTutorialBlock logo={<Binance />} title="Buy PFX with BNB">
+          The private sale will keep going until $1,000,000 has been raised.
         </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Sablier />} title="Wait for the airdrop">
-          A few days after the presale, you will be able to claim PFX to your
-          MetaMask wallet.
+          A few days after the ICO, you will be able to claim a part of your PFX. The rest will be locked then vested.
         </PresaleTutorialBlock>
-      </div>
-      <div
-        className="mt-12 italic text-grey"
-        style={{ lineHeight: calcRem(30) }}
-      >
-        <span className="font-semibold">Note: </span>
-        You may purchase PFX with Trustwallet or Coinbase wallet, but MetaMask
-        is currently the only wallet that is supported for claiming your PFX
-        tokens.
       </div>
     </div>
   )
