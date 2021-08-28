@@ -2,9 +2,6 @@ import classNames from 'classnames'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 
-// TODO: US / Canadian investors
-// TODO: Metamask warning
-
 export function PrivateSaleDescription({ className }: SectionProps) {
   return (
     <div className={classNames(className)}>
