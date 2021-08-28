@@ -1,32 +1,38 @@
-import classNames from "classnames";
-import React, { ReactNode, useState } from "react";
-import { calcRem } from "../../utils/styles";
-import Clock from "../svg/Clock";
-import { DownArrow } from "../svg/DownArrow";
-import useWallet, { ChainId } from "../hooks/useWallet";
+import classNames from 'classnames'
+import React, { ReactNode, useState } from 'react'
+import { calcRem } from '../../utils/styles'
+import Clock from '../svg/Clock'
+import { DownArrow } from '../svg/DownArrow'
+import useWallet, { ChainId } from '../hooks/useWallet'
+import { Check } from '../svg/Check'
 
 //const { abi } = require('../../polarfox-presale/artifacts/contracts/PolarfoxTokenSale.sol/PolarfoxTokenSale.json');
 //const contractAddress = "0x1658FD1aaAB89292538Ff767824C596d24A02f23"
 
 interface PrivateSaleInterfaceProps {
-  className?: string;
+  className?: string
   style?: string
 }
 
-export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceProps) {
-
+export function PrivateSaleInterface({
+  className,
+  style
+}: PrivateSaleInterfaceProps) {
   //régler pb de l'input
   //ajouter logique du champs adresse reciepient
 
-  const SYMBOL: string = "BNB"
+  const SYMBOL: string = 'BNB'
   const DAILY_ALLOWANCE: number = 3
   const TOTAL_TO_BUY: number = 1000000
 
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const { web3, hasWallet, userBalance, connected, requestConnection } = useWallet(ChainId.BSC_TESTNET)
+  const { web3, hasWallet, userBalance, connected, requestConnection } =
+    useWallet(ChainId.BSC_TESTNET)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
+  const [userPfxAllowance, setUserPfxAllowance] = useState(0.0)
+
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState('')
 
@@ -38,7 +44,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
   const [totalBnbSold, setTotalBnbSold] = useState(62.82)
 
   var userAllowanceChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setUserBnbAllowance(parseFloat(event.currentTarget.value.replace(",", ".")))
+    setUserBnbAllowance(parseFloat(event.currentTarget.value.replace(',', '.')))
   }
 
   var setMaxUserAllowance = () => {
@@ -57,7 +63,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
   }
 
   var purshase = () => {
-    setErrorMessage("This is an error message")
+    setErrorMessage('This is an error message')
   }
 
   return (
@@ -65,7 +71,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
       className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(655)
+        height: calcRem(780)
       }}
     >
       <div
@@ -86,38 +92,16 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
         <Clock />
       </div>
       <div className="grid text-white py-4 divide-y divide-white divide-opacity-12">
-        <div
-          className="flex px-8 space-x-32"
-          style={{ lineHeight: calcRem(20) }}
-        >
-          <div>
-            <MainText>{participants}</MainText>
-            <SideText>participants</SideText>
-          </div>
-          <div>
-            <MainText>
-              {totalBnbSold} {SYMBOL}
-            </MainText>
-            <SideText>
-              {new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-              }).format(TOTAL_TO_BUY - soldLeft)}
-            </SideText>
-          </div>
-        </div>
-        <div className="mt-5.5 pt-2 px-8">
-          <div
-            className="flex mt-4 justify-between "
-            style={{ lineHeight: calcRem(20) }}
-          >
-            <div className="flex items-center">
-              <MainText>Buy</MainText>
-              <DownArrow className="mx-3" />
-            </div>
+        <div className="px-8 pb-8">
+          <div className="flex mt-4 items-center">
+            <MainText>Buy</MainText>
+            <DownArrow className="mx-3" />
           </div>
           <div
-            className={classNames("mt-7 bg-blue-gray rounded-3xl flex justify-between", { "border-2 border-red-error": errorMessage !== "" })}
+            className={classNames(
+              'mt-7 bg-blue-gray rounded-xl flex justify-between',
+              { 'border-2 border-red-error': errorMessage !== '' }
+            )}
             style={{
               width: calcRem(369),
               height: calcRem(87)
@@ -166,12 +150,39 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
               </SideText>
             </div>
           </div>
-          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-            {errorMessage && "Alert: " + errorMessage}
+          <div
+            className="text-center my-2 opacity-40"
+            style={{ fontSize: calcRem(12) }}
+          >
+            You will get
           </div>
-          <div className="mt-6">
+          <div
+            className={classNames(
+              'bg-blue-gray rounded-xl flex justify-between'
+            )}
+            style={{
+              width: calcRem(369),
+              height: calcRem(75)
+            }}
+          >
+            <div
+              className="m-6 font-semibold bg-blue-gray focus:outline-none"
+              style={{ fontSize: calcRem(18), width: calcRem(200) }}
+            >
+              {userPfxAllowance}
+            </div>
+            <MainText className="mr-6 flex justify-between mt-6">PFX</MainText>
+          </div>
+        </div>
+        <div className="px-8 pt-2">
+          <MainText className="flex mt-4 items-center">
+            Destination address
+          </MainText>
+          <div className="mt-4">
             <input
-              className={classNames("bg-blue-gray focus:outline-none rounded-3xl px-6 disabled:opacity-40")}
+              className={classNames(
+                'bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40'
+              )}
               style={{
                 width: calcRem(369),
                 height: calcRem(45),
@@ -181,23 +192,37 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
               onChange={(event) =>
                 setUserRecipientAddress(event.currentTarget.value)
               }
-              placeholder="Receiving address..."
+              placeholder="Please enter the receiving address"
               disabled={useMyAddress}
             />
             <div
-              className="mt-2 opacity-40 px-2"
+              className="mt-4 px-2"
               style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
             >
-              <div className="flex items-center space-x-1">
-                <input
-                  type="checkbox"
-                  className=" checked:border-transparent"
-                  onChange={(event) => setUseMyAddress(event.currentTarget.checked)}
-                />
-                <div>I want to send funds to my address</div>
+              <div className="flex items-center space-x-2.5 ">
+                <div
+                  className="border-2 rounded-md border-white border-opacity-30 flex justify-center items-center hover:border-blue-light hover:border-opacity-70"
+                  style={{ width: calcRem(22), height: calcRem(22) }}
+                >
+                  <input
+                    type="checkbox"
+                    className="opacity-0 absolute"
+                    style={{ width: calcRem(22), height: calcRem(22) }}
+                    onChange={(event) =>
+                      setUseMyAddress(event.currentTarget.checked)
+                    }
+                  />
+                  <Check
+                    className={classNames(useMyAddress ? 'flex' : 'hidden')}
+                    style={{ width: calcRem(12), height: calcRem(12) }}
+                  />
+                </div>
+                <div>I want to send funds to this address</div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="px-8 mt-4">
           <div className="mb-6 flex">
             {connected && <IsConnected />}
             {!connected && <ConnectButton hasWallet={hasWallet} />}
@@ -214,7 +239,7 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
             className="mt-6 font-bold text-center"
             style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
           >
-            Your total funds in this presale: 0.82 {SYMBOL}
+            Your total funds in this private sale: 0.82 {SYMBOL}
           </div>
         </div>
       </div>
@@ -224,7 +249,11 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
   function IsConnected() {
     return (
       <div className="flex">
-        <ActionButton name="Approve" disabled={approved} click={approveContract} />
+        <ActionButton
+          name="Approve"
+          disabled={approved}
+          click={approveContract}
+        />
         <ActionButton name="Purchase" disabled={!approved} click={purshase} />
       </div>
     )
@@ -274,16 +303,19 @@ function SideText({ className, children }: SideTextProps) {
 }
 
 interface ActionButtonProps {
-  name: string,
-  disabled: boolean,
+  name: string
+  disabled: boolean
   click: () => void
 }
 
 function ActionButton({ name, disabled, click }: ActionButtonProps) {
   return (
     <button
-      className={classNames("rounded-3xl mx-1 font-semibold text-center text-white bg-blue-light",
-        disabled ? "opacity-40 hover:cursor-not-allowed" : 'hover:cursor-pointer'
+      className={classNames(
+        'rounded-3xl mx-1 font-semibold text-center text-white bg-blue-light',
+        disabled
+          ? 'opacity-40 hover:cursor-not-allowed'
+          : 'hover:cursor-pointer'
       )}
       style={{
         width: calcRem(178),
