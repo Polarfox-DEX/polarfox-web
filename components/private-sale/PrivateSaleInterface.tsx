@@ -68,14 +68,13 @@ export function PrivateSaleInterface({
 
   return (
     <div
-      className={classNames('border bg-blue rounded-3xl text-white', className)}
-      style={{
-        width: calcRem(439),
-        height: calcRem(810)
-      }}
+      className={classNames(
+        'sale-modal bg-blue tablet:rounded-3xl text-white w-full bg-stretch pb-8',
+        className
+      )}
     >
       <div
-        className="border-blue bg-blue-gray rounded-t-3xl flex items-center justify-between px-8"
+        className="sale-modal container border-blue bg-blue-gray tablet:rounded-t-3xl flex items-center justify-between px-8"
         style={{
           height: calcRem(90),
           fontSize: calcRem(20)
@@ -91,31 +90,24 @@ export function PrivateSaleInterface({
         </div>
         <Clock />
       </div>
-      <div className="grid text-white py-4 divide-y divide-white divide-opacity-12">
-        <div className="px-8 pb-8">
+      <div className="sale-modal text-white py-4 divide-y divide-white divide-opacity-12">
+        <div className="container tablet:px-8 pb-8">
           <div className="flex mt-4 items-center">
             <MainText>Buy</MainText>
             <DownArrow className="mx-3" />
           </div>
           <div
             className={classNames(
-              'mt-7 bg-blue-gray rounded-xl flex justify-between',
+              ' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6',
               { 'border-2 border-red-error': errorMessage !== '' }
             )}
             style={{
-              width: calcRem(369),
               height: calcRem(87)
             }}
           >
-            <div
-              className="m-6 font-semibold"
-              style={{ fontSize: calcRem(18) }}
-            >
+            <div className="font-semibold" style={{ fontSize: calcRem(18) }}>
               <input
-                className="bg-blue-gray focus:outline-none"
-                style={{
-                  width: calcRem(200)
-                }}
+                className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
                 onChange={(event) => userAllowanceChange(event)}
               />
@@ -127,14 +119,13 @@ export function PrivateSaleInterface({
                 }).format(userUsdAllowance)}
               </SideText>
             </div>
-            <div className="mr-6">
+            <div className="mt-1">
               <div className="flex justify-between">
                 <div
                   className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer"
                   style={{
                     width: calcRem(45),
                     height: calcRem(24),
-                    marginTop: calcRem(23),
                     paddingTop: calcRem(5),
                     fontSize: calcRem(10),
                     marginRight: calcRem(10)
@@ -143,7 +134,7 @@ export function PrivateSaleInterface({
                 >
                   MAX
                 </div>
-                <MainText className="mt-6">{SYMBOL}</MainText>
+                <MainText>{SYMBOL}</MainText>
               </div>
               <SideText className="mt-2">
                 Balance: {userBalance.toFixed(2)}
@@ -158,20 +149,11 @@ export function PrivateSaleInterface({
           </div>
           <div
             className={classNames(
-              'bg-blue-gray rounded-xl flex justify-between'
+              'bg-blue-gray rounded-xl flex justify-between items-center p-6'
             )}
-            style={{
-              width: calcRem(369),
-              height: calcRem(75)
-            }}
           >
-            <div
-              className="m-6 font-semibold bg-blue-gray focus:outline-none"
-              style={{ fontSize: calcRem(18), width: calcRem(200) }}
-            >
-              {userPfxAllowance}
-            </div>
-            <MainText className="mr-6 flex justify-between mt-6">PFX</MainText>
+            {userPfxAllowance}
+            <MainText>PFX</MainText>
           </div>
         </div>
         <div className="px-8 pt-2">
@@ -179,15 +161,15 @@ export function PrivateSaleInterface({
             Destination address
           </MainText>
           <SideText className="mt-2 opacity-95">
-            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
+            Make sure to use a{' '}
+            <span className="font-bold text-red-error">MetaMask</span> address.
           </SideText>
           <div className="mt-4">
             <input
               className={classNames(
-                'bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40'
+                'bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full'
               )}
               style={{
-                width: calcRem(369),
                 height: calcRem(45),
                 fontSize: calcRem(12)
               }}
@@ -247,6 +229,13 @@ export function PrivateSaleInterface({
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (min-width: 640px) {
+          .sale-modal {
+            width: ${calcRem(439)};
+          }
+        }
+      `}</style>
     </div>
   )
 
