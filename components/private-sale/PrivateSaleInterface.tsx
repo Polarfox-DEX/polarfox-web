@@ -71,7 +71,7 @@ export function PrivateSaleInterface({
       className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(780)
+        height: calcRem(810)
       }}
     >
       <div
@@ -178,6 +178,9 @@ export function PrivateSaleInterface({
           <MainText className="flex mt-4 items-center">
             Destination address
           </MainText>
+          <SideText className="mt-2 opacity-95">
+            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
+          </SideText>
           <div className="mt-4">
             <input
               className={classNames(
@@ -232,8 +235,9 @@ export function PrivateSaleInterface({
             style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
           >
             <span className="font-bold">NOTE: </span>
-            Your tokens will be locked in the contract until the presale has
-            ended. You will be able to claim them after the presale.
+            You will start receiving your tokens after the ICO has ended. Since
+            you are participating at a low price, most of your tokens will be
+            locked and vested at a later date.
           </div>
           <div
             className="mt-6 font-bold text-center"

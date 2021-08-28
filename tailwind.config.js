@@ -38,7 +38,7 @@ module.exports = {
       },
       white: colors.white,
       red: {
-        error: "#F53939"
+        error: '#F53939'
       }
     },
     backgroundPosition: {
