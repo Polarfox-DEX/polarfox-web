@@ -300,11 +300,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     return (
       <ActionButton
         name="Purchase"
-        disabled={
-          !isWhitelisted ||
-          userBnbAllowance == '0' ||
-          !(useMyAddress && userRecipientAddress === '')
-        }
+        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '')}
         click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
         // TODO: While the transaction is going, we should write a "please wait" button
         // TODO: When the transaction is done, should we reset the other fields to 0?
