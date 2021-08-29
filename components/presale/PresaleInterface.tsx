@@ -54,7 +54,6 @@ export function PresaleInterface({ className }: SectionProps) {
             </div>
           </div>
         </div>
-
         <div className="mt-5.5 pt-2 px-8">
           <div
             className="flex mt-8 justify-between"

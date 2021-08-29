@@ -5,6 +5,7 @@ import Clock from '../svg/Clock'
 import { DownArrow } from '../svg/DownArrow'
 import useWallet, { ChainId } from '../hooks/useWallet'
 import Web3 from 'web3'
+import { Check } from '../svg/Check'
 
 const {
   abi
@@ -39,6 +40,7 @@ export function PrivateSaleInterface({
 
   const [userBnbAllowance, setUserBnbAllowance] = useState('0')
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
+  const [userPfxAllowance, setUserPfxAllowance] = useState(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState('')
   const [useMyAddress, setUseMyAddress] = useState(false)
 
@@ -56,7 +58,6 @@ export function PrivateSaleInterface({
   })
 
   var initializePrivateSaleContract = (
-    hasWallet: boolean,
     accounts: string[]
   ) => {
     privateSaleContract = new web3.eth.Contract(abi, contractAddress)
@@ -78,7 +79,7 @@ export function PrivateSaleInterface({
 
   var setMaxUserAllowance = () => {
     if (connected) {
-      setUserBnbAllowance(userBalance)
+      setUserBnbAllowance(userBalance.toString())
       userAllowanceChange(userBalance.toString())
     }
   }
@@ -98,7 +99,7 @@ export function PrivateSaleInterface({
                 setAccounts(accounts)
                 setConnected(true)
 
-                initializePrivateSaleContract(hasWallet, accounts)
+                initializePrivateSaleContract(accounts)
 
                 await window_.ethereum
                   .request({ method: 'eth_getBalance', params: [accounts[0]] })
@@ -152,7 +153,7 @@ export function PrivateSaleInterface({
       className={classNames('border bg-blue rounded-3xl text-white', className)}
       style={{
         width: calcRem(439),
-        height: calcRem(655)
+        height: calcRem(810)
       }}
     >
       <div
@@ -173,39 +174,14 @@ export function PrivateSaleInterface({
         <Clock />
       </div>
       <div className="grid text-white py-4 divide-y divide-white divide-opacity-12">
-        <div
-          className="flex px-8 space-x-32"
-          style={{ lineHeight: calcRem(20) }}
-        >
-          <div>
-            <MainText>{participants}</MainText>
-            <SideText>participants</SideText>
-          </div>
-          <div>
-            <MainText>
-              {totalBnbSold} {SYMBOL}
-            </MainText>
-            <SideText>
-              {new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-              }).format(TOTAL_TO_BUY - soldLeft)}
-            </SideText>
-          </div>
-        </div>
-        <div className="mt-5.5 pt-2 px-8">
-          <div
-            className="flex mt-4 justify-between "
-            style={{ lineHeight: calcRem(20) }}
-          >
-            <div className="flex items-center">
-              <MainText>Buy</MainText>
-              <DownArrow className="mx-3" />
-            </div>
+        <div className="px-8 pb-8">
+          <div className="flex mt-4 items-center">
+            <MainText>Buy</MainText>
+            <DownArrow className="mx-3" />
           </div>
           <div
             className={classNames(
-              'mt-7 bg-blue-gray rounded-3xl flex justify-between',
+              'mt-7 bg-blue-gray rounded-xl flex justify-between',
               { 'border-2 border-red-error': errorMessage !== '' }
             )}
             style={{
@@ -264,10 +240,41 @@ export function PrivateSaleInterface({
           >
             {errorMessage && 'Alert: ' + errorMessage}
           </div>
-          <div className="mt-6">
+          <div
+            className="text-center my-2 opacity-40"
+            style={{ fontSize: calcRem(12) }}
+          >
+            You will get
+          </div>
+          <div
+            className={classNames(
+              'bg-blue-gray rounded-xl flex justify-between'
+            )}
+            style={{
+              width: calcRem(369),
+              height: calcRem(75)
+            }}
+          >
+            <div
+              className="m-6 font-semibold bg-blue-gray focus:outline-none"
+              style={{ fontSize: calcRem(18), width: calcRem(200) }}
+            >
+              {userPfxAllowance}
+            </div>
+            <MainText className="mr-6 flex justify-between mt-6">PFX</MainText>
+          </div>
+        </div>
+        <div className="px-8 pt-2">
+          <MainText className="flex mt-4 items-center">
+            Destination address
+          </MainText>
+          <SideText className="mt-2 opacity-95">
+            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
+          </SideText>
+          <div className="mt-4">
             <input
               className={classNames(
-                'bg-blue-gray focus:outline-none rounded-3xl px-6 disabled:opacity-40'
+                'bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40'
               )}
               style={{
                 width: calcRem(369),
@@ -278,25 +285,37 @@ export function PrivateSaleInterface({
               onChange={(event) =>
                 setUserRecipientAddress(event.currentTarget.value)
               }
-              placeholder="Receiving address..."
+              placeholder="Please enter the receiving address"
               disabled={useMyAddress}
             />
             <div
-              className="mt-2 opacity-40 px-2"
+              className="mt-4 px-2"
               style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
             >
-              <div className="flex items-center space-x-1">
-                <input
-                  type="checkbox"
-                  className=" checked:border-transparent"
-                  onChange={(event) =>
-                    setUseMyAddress(event.currentTarget.checked)
-                  }
-                />
-                <div>I want to send funds to my address</div>
+              <div className="flex items-center space-x-2.5 ">
+                <div
+                  className="border-2 rounded-md border-white border-opacity-30 flex justify-center items-center hover:border-blue-light hover:border-opacity-70"
+                  style={{ width: calcRem(22), height: calcRem(22) }}
+                >
+                  <input
+                    type="checkbox"
+                    className="opacity-0 absolute"
+                    style={{ width: calcRem(22), height: calcRem(22) }}
+                    onChange={(event) =>
+                      setUseMyAddress(event.currentTarget.checked)
+                    }
+                  />
+                  <Check
+                    className={classNames(useMyAddress ? 'flex' : 'hidden')}
+                    style={{ width: calcRem(12), height: calcRem(12) }}
+                  />
+                </div>
+                <div>I want to send funds to this address</div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="px-8 mt-4">
           <div className="mb-6 flex">
             {connected && <IsConnected />}
             {!connected && <ConnectButton />}
@@ -312,14 +331,15 @@ export function PrivateSaleInterface({
             style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
           >
             <span className="font-bold">NOTE: </span>
-            Your tokens will be locked in the contract until the presale has
-            ended. You will be able to claim them after the presale.
+            You will start receiving your tokens after the ICO has ended. Since
+            you are participating at a low price, most of your tokens will be
+            locked and vested at a later date.
           </div>
           <div
             className="mt-6 font-bold text-center"
             style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
           >
-            Your total funds in this presale: 0.82 {SYMBOL}
+            Your total funds in this private sale: 0.82 {SYMBOL}
           </div>
         </div>
       </div>

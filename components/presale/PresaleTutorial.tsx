@@ -35,12 +35,10 @@ export function PresaleTutorial({ className }: SectionProps) {
           We support MetaMask, Trustwallet and Coinbase wallet.
         </PresaleTutorialBlock>
         <GreyRightArrow />
-        <div>
-          <PresaleTutorialBlock logo={<Coins />} title="Hold 100M AKITA tokens">
-            To participate in the presale, you need to own at least 100M AKITA
-            in your wallet.
-          </PresaleTutorialBlock>
-        </div>
+        <PresaleTutorialBlock logo={<Coins />} title="Hold 100M AKITA tokens">
+          To participate in the presale, you need to own at least 100M AKITA in
+          your wallet.
+        </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Ethereum />} title="Buy PFX with ETH">
           Each day, you can buy up to 1 ETH worth of PFX. You can buy more the
