@@ -8,25 +8,23 @@ export enum ChainId {
 
 export interface Wallet {
     hasWallet: boolean
-    errorMessage: string
-    web3: Web3 | null | undefined
+    walletErrorMessage: string
     userBalance: number
     connected: boolean
     chainId: ChainId | null
     accounts: string[]
-    requestConnection: () => void
+    requestConnection: () => Promise<Web3|undefined>
 }
 
 let window_ : any;
 
 export default function useWallet(chosenChainId: ChainId): Wallet {
 
-    const [errorMessage, setErrorMessage] = useState("")
+    const [walletErrorMessage, setWalletErrorMessage] = useState("")
 
     const [hasWallet, setHasWallet] = useState(false)
-    const [web3, setWeb3] = useState<Web3>()
 
-    const [accounts, setAccounts] = useState<string[]>([])
+    const [accounts, setAccounts] = useState<string[]>()
     const [userBalance, setUserBalance] = useState(0.0)
 
     const [connected, setConnected] = useState(false)
@@ -42,40 +40,55 @@ export default function useWallet(chosenChainId: ChainId): Wallet {
         if (window_.ethereum) {
             setHasWallet(true)
         } else {
-            setErrorMessage("Metamask is not present on your web browser. Please download it and refresh the page.")
+            setWalletErrorMessage("Metamask is not present on your web browser. Please download it and refresh the page.")
         }
     })
 
-    async function requestConnection() {
+    async function requestConnection(): Promise<Web3|undefined>{
+
+        var ret;
 
         if (hasWallet) {
 
-            var web3 = new Web3(window_.ethereum)
+            ret = new Promise<Web3>(async (resolve,reject) => {
 
-            setWeb3(web3)
+                var web3: Web3 = new Web3(window_.ethereum)
 
-            //Verify user is connected to right network
-            await window_.ethereum.request({ method: 'eth_chainId' })
-                .then(async (chainId: any) => {
+                console.log(web3)
 
-                    if (web3.utils.hexToNumber(chainId) == chosenChainId) {
+                //Verify user is connected to right network
+                await window_.ethereum.request({ method: 'eth_chainId' })
+                    .then(async (chainId: any) => {
 
-                        await window_.ethereum.request({ method: 'eth_requestAccounts' })
-                            .then(async (accounts: string[]) => {
+                        if (web3?.utils.hexToNumber(chainId) == chosenChainId) {
 
-                                setAccounts(accounts)
-                                setConnected(true)
-                                await window_.ethereum.request({ method: 'eth_getBalance', params: [accounts[0]] })
-                                    .then((balance: any) => setUserBalance(parseFloat(web3.utils.fromWei(balance))))
-                                    .catch(console.log)
+                            await window_.ethereum.request({ method: 'eth_requestAccounts' })
+                                .then(async (accounts: string[]) => {
 
-                            }).catch(console.log)
+                                    setAccounts(accounts)
+                                    setConnected(true)
 
-                    } else {
-                        setErrorMessage("You are connected to the wrong network. Please switch to the BSC mainnet.")
-                    }
-                }).catch(console.log)
+                                    await window_.ethereum.request({ method: 'eth_getBalance', params: [accounts[0]] })
+                                        .then((balance: any) => {
+                                            setUserBalance(parseFloat(web3.utils.fromWei(balance)))
+                                            resolve(web3)
+                                        })
+                                        .catch(console.log)
+
+                                })
+                                .catch(console.log)
+
+                        } else {
+                            setWalletErrorMessage("You are connected to the wrong network. Please switch to the BSC mainnet.")
+                        }
+                    })
+                    .catch(console.log)
+
+            })
+
         }
+
+        return ret;
 
     }
 
@@ -84,14 +97,13 @@ export default function useWallet(chosenChainId: ChainId): Wallet {
         //Listener when chain change
         window_.ethereum.on('chainChanged', () => {
             document.location.reload()
-          })
+        })
 
     }
 
     return {
         hasWallet,
-        errorMessage,
-        web3,
+        walletErrorMessage,
         accounts,
         userBalance,
         requestConnection,

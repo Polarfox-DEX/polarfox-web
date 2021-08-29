@@ -1,54 +1,117 @@
-import classNames from "classnames";
-import React, { ReactNode, useState } from "react";
-import { calcRem } from "../../utils/styles";
-import Clock from "../svg/Clock";
-import { DownArrow } from "../svg/DownArrow";
-import useWallet, { ChainId } from "../hooks/useWallet";
+import classNames from 'classnames'
+import React, { ReactNode, useEffect, useState } from 'react'
+import { calcRem } from '../../utils/styles'
+import Clock from '../svg/Clock'
+import { DownArrow } from '../svg/DownArrow'
+import useWallet, { ChainId } from '../hooks/useWallet'
+import Web3 from 'web3'
 
-//const { abi } = require('../../polarfox-presale/artifacts/contracts/PolarfoxTokenSale.sol/PolarfoxTokenSale.json');
-//const contractAddress = "0x1658FD1aaAB89292538Ff767824C596d24A02f23"
+const {
+  abi
+} = require('../../../polarfox-presale/artifacts/contracts/PolarfoxPrivateSale.sol/PolarfoxPrivateSale.json')
+const contractAddress = '0xaB95cA45D1c5D1E2657481F97096AEFDb2128b91'
 
 interface PrivateSaleInterfaceProps {
-  className?: string;
+  className?: string
   style?: string
 }
 
-export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceProps) {
+let window_: any
+let privateSaleContract: any
+let web3: Web3
 
+export function PrivateSaleInterface({
+  className,
+  style
+}: PrivateSaleInterfaceProps) {
   //régler pb de l'input
   //ajouter logique du champs adresse reciepient
 
-  const SYMBOL: string = "BNB"
-  const DAILY_ALLOWANCE: number = 3
+  const SYMBOL: string = 'BNB'
   const TOTAL_TO_BUY: number = 1000000
 
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const { web3, hasWallet, userBalance, connected, requestConnection } = useWallet(ChainId.BSC_TESTNET)
+  const [userBalance, setUserBalance] = useState(0.0)
+  const [connected, setConnected] = useState(false)
+  const [accounts, setAccounts] = useState<string[]>([])
+  const [hasWallet, setHasWallet] = useState(false)
 
-  const [userBnbAllowance, setUserBnbAllowance] = useState(0.0)
+  const [userBnbAllowance, setUserBnbAllowance] = useState('0')
   const [userUsdAllowance, setUsdAllowance] = useState(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState('')
-
-  const [approved, setApproved] = useState(false)
   const [useMyAddress, setUseMyAddress] = useState(false)
 
+  const [approved, setApproved] = useState(false)
+  const [isWhitelisted, setWhitelisted] = useState(true)
+
+  const [currentBnbPrice, setCurrentBnbPrice] = useState(0.0)
   const [soldLeft, setSoldLeft] = useState(865432)
   const [participants, setParticipants] = useState(176)
   const [totalBnbSold, setTotalBnbSold] = useState(62.82)
 
-  var userAllowanceChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setUserBnbAllowance(parseFloat(event.currentTarget.value.replace(",", ".")))
+  useEffect(() => {
+    window_ = window
+    setHasWallet(window_.ethereum)
+  })
+
+  var initializePrivateSaleContract = (
+    hasWallet: boolean,
+    accounts: string[]
+  ) => {
+    privateSaleContract = new web3.eth.Contract(abi, contractAddress)
+
+    privateSaleContract.methods
+      .currentBnbPrice()
+      .call()
+      .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
+    privateSaleContract.methods
+      .isWhitelisted(accounts[0])
+      .call()
+      .then((isWhitelisted: boolean) => setWhitelisted(isWhitelisted))
+  }
+
+  var userAllowanceChange = (value: string) => {
+    setUserBnbAllowance(value.replace(',', '.'))
+    setUsdAllowance(parseFloat(value) * currentBnbPrice)
   }
 
   var setMaxUserAllowance = () => {
     if (connected) {
       setUserBnbAllowance(userBalance)
+      userAllowanceChange(userBalance.toString())
     }
   }
 
-  var connectWallet = () => {
-    requestConnection()
+  var connectWallet = async () => {
+    if (hasWallet) {
+      web3 = new Web3(window_.ethereum)
+
+      //Verify user is connected to right network
+      await window_.ethereum
+        .request({ method: 'eth_chainId' })
+        .then(async (chainId: any) => {
+          if (web3?.utils.hexToNumber(chainId) == ChainId.BSC_TESTNET) {
+            await window_.ethereum
+              .request({ method: 'eth_requestAccounts' })
+              .then(async (accounts: string[]) => {
+                setAccounts(accounts)
+                setConnected(true)
+
+                initializePrivateSaleContract(hasWallet, accounts)
+
+                await window_.ethereum
+                  .request({ method: 'eth_getBalance', params: [accounts[0]] })
+                  .then((balance: any) => {
+                    setUserBalance(parseFloat(web3.utils.fromWei(balance)))
+                  })
+                  .catch(console.log)
+              })
+              .catch(console.log)
+          }
+        })
+        .catch(console.log)
+    }
   }
 
   var approveContract = () => {
@@ -56,8 +119,32 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
     setApproved(true)
   }
 
-  var purshase = () => {
-    setErrorMessage("This is an error message")
+  var purchase = () => {
+    if (web3 != undefined && isWhitelisted) {
+      const amountInWei = web3.utils.toWei(userBnbAllowance)
+      const address = useMyAddress ? accounts[0] : userRecipientAddress
+
+      console.log(accounts)
+
+      window_.ethereum
+        .request({ method: 'eth_gasPrice', params: [] })
+        .then(async (gasFees: number) => {
+          await privateSaleContract.methods
+            .buyTokens()
+            .send({
+              from: address,
+              value: amountInWei,
+              gasPrice: gasFees
+            })
+            .then((data: any) => {
+              console.log(data)
+            })
+            .catch((error: any) => {
+              console.log(error)
+            })
+        })
+    }
+    //setErrorMessage("This is an error message")
   }
 
   return (
@@ -117,7 +204,10 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
             </div>
           </div>
           <div
-            className={classNames("mt-7 bg-blue-gray rounded-3xl flex justify-between", { "border-2 border-red-error": errorMessage !== "" })}
+            className={classNames(
+              'mt-7 bg-blue-gray rounded-3xl flex justify-between',
+              { 'border-2 border-red-error': errorMessage !== '' }
+            )}
             style={{
               width: calcRem(369),
               height: calcRem(87)
@@ -133,7 +223,9 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
                   width: calcRem(200)
                 }}
                 value={userBnbAllowance}
-                onChange={(event) => userAllowanceChange(event)}
+                onChange={(event) =>
+                  userAllowanceChange(event.currentTarget.value)
+                }
               />
               <SideText>
                 ={' '}
@@ -166,12 +258,17 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
               </SideText>
             </div>
           </div>
-          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-            {errorMessage && "Alert: " + errorMessage}
+          <div
+            className="text-red-error mt-2"
+            style={{ fontSize: calcRem(12) }}
+          >
+            {errorMessage && 'Alert: ' + errorMessage}
           </div>
           <div className="mt-6">
             <input
-              className={classNames("bg-blue-gray focus:outline-none rounded-3xl px-6 disabled:opacity-40")}
+              className={classNames(
+                'bg-blue-gray focus:outline-none rounded-3xl px-6 disabled:opacity-40'
+              )}
               style={{
                 width: calcRem(369),
                 height: calcRem(45),
@@ -192,7 +289,9 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
                 <input
                   type="checkbox"
                   className=" checked:border-transparent"
-                  onChange={(event) => setUseMyAddress(event.currentTarget.checked)}
+                  onChange={(event) =>
+                    setUseMyAddress(event.currentTarget.checked)
+                  }
                 />
                 <div>I want to send funds to my address</div>
               </div>
@@ -200,7 +299,13 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
           </div>
           <div className="mb-6 flex">
             {connected && <IsConnected />}
-            {!connected && <ConnectButton hasWallet={hasWallet} />}
+            {!connected && <ConnectButton />}
+          </div>
+          <div
+            className="text-red-error mt-2"
+            style={{ fontSize: calcRem(12) }}
+          >
+            {!isWhitelisted && 'Error: Your address is not whitelisted'}
           </div>
           <div
             className="mt-6 opacity-40 text-center"
@@ -223,10 +328,15 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
 
   function IsConnected() {
     return (
-      <div className="flex">
-        <ActionButton name="Approve" disabled={approved} click={approveContract} />
-        <ActionButton name="Purchase" disabled={!approved} click={purshase} />
-      </div>
+      <ActionButton
+        name="Purchase"
+        disabled={
+          !isWhitelisted ||
+          userBnbAllowance == '0' ||
+          !(useMyAddress && userRecipientAddress == '')
+        }
+        click={purchase}
+      />
     )
   }
 
@@ -234,11 +344,11 @@ export function PrivateSaleInterface({ className, style }: PrivateSaleInterfaceP
     hasWallet: boolean
   }
 
-  function ConnectButton({ hasWallet }: ConnectButton) {
+  function ConnectButton() {
     return (
       <div
         className={classNames(
-          'bg-blue-light w-full rounded-3xl mx-1 pt-3 font-semibold text-center hover:cursor-pointer'
+          'flex items-center justify-center bg-blue-light w-full rounded-3xl mx-1 font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light'
         )}
         style={{
           height: calcRem(44),
@@ -274,30 +384,30 @@ function SideText({ className, children }: SideTextProps) {
 }
 
 interface ActionButtonProps {
-  name: string,
-  disabled: boolean,
+  name: string
+  disabled: boolean
   click: () => void
 }
 
 function ActionButton({ name, disabled, click }: ActionButtonProps) {
   return (
-    <button
-      className={classNames("rounded-3xl mx-1 font-semibold text-center text-white bg-blue-light",
-        disabled ? "opacity-40 hover:cursor-not-allowed" : 'hover:cursor-pointer'
+    <div
+      className={classNames(
+        'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light',
+        disabled
+          ? 'opacity-40 hover:cursor-not-allowed'
+          : 'hover:cursor-pointer hover:bg-white hover:text-blue-light'
       )}
       style={{
-        width: calcRem(178),
         height: calcRem(44),
         marginTop: calcRem(23),
         fontSize: calcRem(14),
         lineHeight: calcRem(16)
       }}
-      disabled={disabled}
-      type="button"
       onClick={() => click()}
     >
       {name}
-    </button>
+    </div>
   )
 }
 
