@@ -80,7 +80,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   var setMaxUserAllowance = () => {
     if (connected) {
-      const max = balance ? (balance-parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
+      const max = balance ? (balance - parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
       setUserBnbAllowance(max)
       userAllowanceChange(max)
     }
