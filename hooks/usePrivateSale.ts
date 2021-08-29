@@ -93,7 +93,7 @@ export function usePrivateSale(): PrivateSale {
     await privateSale(chainId)
       .methods.soldAmount()
       .call()
-      .then((soldAmount: number) => setRemaining(1000000 - web3.utils.fromWei(soldAmount)))
+      .then((soldAmount: string) => setRemaining(1000000 - parseFloat(web3.utils.fromWei(soldAmount))))
   }
 
   return {
