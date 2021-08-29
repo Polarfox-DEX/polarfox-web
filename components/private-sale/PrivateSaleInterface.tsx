@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react'
+import Web3 from 'web3'
 
 // TODO: Implement "wrong network"
 // TODO: BSC mainnet crashes
@@ -27,7 +28,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
   // const TOTAL_TO_BUY: number = 1000000
 
-  const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
+  const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
@@ -79,8 +80,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   var setMaxUserAllowance = () => {
     if (connected) {
-      setUserBnbAllowance(balance ? balance.toString() : '0')
-      userAllowanceChange(balance ? balance.toString() : '0')
+      const max = balance ? (balance - parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
+      setUserBnbAllowance(max)
+      userAllowanceChange(max)
     }
   }
 
