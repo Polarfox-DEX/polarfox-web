@@ -28,7 +28,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   // const TOTAL_TO_BUY: number = 1000000
 
   const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
-  console.log('Balance:', balance)
   const { currentBnbPrice, isWhitelisted, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
