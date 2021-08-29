@@ -380,6 +380,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@polarfox/presale@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@polarfox/presale/-/presale-1.0.1.tgz#370925603df7a00f0814c541461da11dd7b2ca79"
+  integrity sha512-sVtZyTwo+WG3tSL5Lfvk/TBBHtEI3rq8uWU/XvpQiFutZNJWfA0/N01uVLS4PrTziOuUyThd+rEbgbMNW8XK7A==
+
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
@@ -7231,7 +7236,7 @@ web3-shh@1.5.2:
     web3-core-subscriptions "1.5.2"
     web3-net "1.5.2"
 
-web3-utils@1.5.2:
+web3-utils@1.5.2, web3-utils@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/web3-utils/-/web3-utils-1.5.2.tgz#150982dcb1918ffc54eba87528e28f009ebc03aa"
   integrity sha512-quTtTeQJHYSxAwIBOCGEcQtqdVcFWX6mCFNoqnp+mRbq+Hxbs8CGgO/6oqfBx4OvxIOfCpgJWYVHswRXnbEu9Q==

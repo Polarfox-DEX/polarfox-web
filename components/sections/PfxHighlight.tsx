@@ -25,22 +25,14 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
         {isFoxSleeping && (
           <div className="flex items-end space-x-8 desktop:space-x-60">
             <SleepingFox className="w-14 desktop:w-32 opacity-0" />
-            <h1
-              className="title text-center font-switzer font-semibold"
-              style={{ maxWidth: calcRem(880) }}
-            >
+            <h1 className="title text-center font-switzer font-semibold" style={{ maxWidth: calcRem(880) }}>
               Pssst.
             </h1>
             <SleepingFox className="w-14 desktop:w-32 pt-14 desktop:pt-0" />
           </div>
         )}
-        <h1
-          className="title text-center font-switzer font-semibold"
-          style={{ maxWidth: calcRem(880) }}
-        >
-          {isFoxSleeping
-            ? 'The fox is still sleeping.'
-            : 'Decentralized ecosystem of applications'}
+        <h1 className="title text-center font-switzer font-semibold" style={{ maxWidth: calcRem(880) }}>
+          {isFoxSleeping ? 'The fox is still sleeping.' : 'Decentralized ecosystem of applications'}
         </h1>
         <style jsx>{`
           .title {
@@ -69,11 +61,7 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
             }
           }
         `}</style>
-        <div
-          className={classNames(
-            'flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24'
-          )}
-        >
+        <div className={classNames('flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24')}>
           <Button
             url="/Polarfox Litepaper V2.6.pdf"
             className={classNames(
@@ -84,10 +72,7 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
             Litepaper
           </Button>
           {!isFoxSleeping && (
-            <Button
-              url="https://dex-test.polarfox.io/"
-              className="small-shadow text-white bg-blue hover:bg-blue-light"
-            >
+            <Button url="https://dex-test.polarfox.io/" className="small-shadow text-white bg-blue hover:bg-blue-light">
               Open DEX
             </Button>
           )}
@@ -121,10 +106,7 @@ function Button({ url, className, children }: ButtonProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={classNames(
-        'button flex justify-center items-center rounded-full font-semibold',
-        className
-      )}
+      className={classNames('button flex justify-center items-center rounded-full font-semibold', className)}
     >
       {children}
       <style jsx>{`

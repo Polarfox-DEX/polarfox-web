@@ -18,11 +18,7 @@ export function TutorialsTile(props: { tutorial: TutorialClass }) {
         }}
       >
         {props.tutorial.isVideo && (
-          <img
-            className="place-self-center"
-            src="tutorials/play-video.png"
-            alt="play video"
-          />
+          <img className="place-self-center" src="tutorials/play-video.png" alt="play video" />
         )}
       </div>
 

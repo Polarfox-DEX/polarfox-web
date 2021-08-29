@@ -51,8 +51,8 @@ export function PresaleDescription({ className }: SectionProps) {
         <span>An entire </span>
         <span className="font-bold">37% of the total PFX supply </span>
         <span>
-          will be allocated to this presale. Each day of the presale, an equal
-          portion of the tokens will be available to purchasers.
+          will be allocated to this presale. Each day of the presale, an equal portion of the tokens will be available
+          to purchasers.
         </span>
       </p>
       <div
@@ -69,8 +69,7 @@ export function PresaleDescription({ className }: SectionProps) {
         >
           <span className="font-bold">Example: </span>
           <span>
-            on Day 1, if there are 5 participants each spending 1 ETH, everyone
-            receives 1/5 of the daily PFX sale pool.
+            on Day 1, if there are 5 participants each spending 1 ETH, everyone receives 1/5 of the daily PFX sale pool.
           </span>
         </p>
       </div>

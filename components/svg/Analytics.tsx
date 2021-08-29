@@ -1,13 +1,6 @@
 export function Analytics(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      width="30"
-      height="20"
-      viewBox="0 0 30 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M2.15929 9.12012C0.966745 9.12012 0 10.0869 0 11.2794V17.8406C0 19.0331 0.966745 19.9999 2.15929 19.9999C3.35183 19.9999 4.31858 19.0331 4.31858 17.8406V11.2794C4.31858 10.0869 3.35183 9.12012 2.15929 9.12012Z"
         fill="#1C67FE"

@@ -14,17 +14,11 @@ export function PresaleHeader({ className }: SectionProps) {
         className
       )}
     >
-      <div
-        className="self-center ml-16"
-        style={{ fontSize: calcRem(18), width: calcRem(334) }}
-      >
+      <div className="self-center ml-16" style={{ fontSize: calcRem(18), width: calcRem(334) }}>
         PFX presale starts on 43rd July 2021
       </div>
       <div className="flex">
-        <div
-          className="container flex justify-between items-center space-x-5 mx-24"
-          style={{ width: calcRem(312) }}
-        >
+        <div className="container flex justify-between items-center space-x-5 mx-24" style={{ width: calcRem(312) }}>
           <PresaleTimerBox>10d</PresaleTimerBox>
           <PresaleTimerBox>23h</PresaleTimerBox>
           <PresaleTimerBox>15m</PresaleTimerBox>

@@ -13,59 +13,36 @@ export function FaqMain({ className }: SectionProps) {
   const [selectedFaq, setSelectedFaq] = useState('POLARFOX')
 
   return (
-    <div
-      className={classNames(
-        'container flex w-full flex-col laptop:flex-row',
-        className
-      )}
-    >
+    <div className={classNames('container flex w-full flex-col laptop:flex-row', className)}>
       <div className="flex flex-col laptop:flex-row w-full">
         <div>
-          <FaqSelector
-            selectedFaq={selectedFaq}
-            setSelectedFaq={setSelectedFaq}
-          />
+          <FaqSelector selectedFaq={selectedFaq} setSelectedFaq={setSelectedFaq} />
           <FaqContact className="hidden laptop:block mt-32" />
         </div>
         <FaqPolarfox
-          className={classNames(
-            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
-            {
-              hidden: selectedFaq !== 'POLARFOX'
-            }
-          )}
+          className={classNames('mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44', {
+            hidden: selectedFaq !== 'POLARFOX'
+          })}
         />
         <FaqPfxToken
-          className={classNames(
-            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
-            {
-              hidden: selectedFaq !== 'PFX_TOKEN'
-            }
-          )}
+          className={classNames('mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44', {
+            hidden: selectedFaq !== 'PFX_TOKEN'
+          })}
         />
         <FaqPresale
-          className={classNames(
-            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
-            {
-              hidden: selectedFaq !== 'PRESALE'
-            }
-          )}
+          className={classNames('mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44', {
+            hidden: selectedFaq !== 'PRESALE'
+          })}
         />
         <FaqAvalanche
-          className={classNames(
-            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
-            {
-              hidden: selectedFaq !== 'AVALANCHE'
-            }
-          )}
+          className={classNames('mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44', {
+            hidden: selectedFaq !== 'AVALANCHE'
+          })}
         />
         <FaqAkitaInu
-          className={classNames(
-            'mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44',
-            {
-              hidden: selectedFaq !== 'AKITA_INU'
-            }
-          )}
+          className={classNames('mt-8 laptop:mt-32 laptop:pl-20 desktop:pl-44', {
+            hidden: selectedFaq !== 'AKITA_INU'
+          })}
         />
       </div>
       <FaqContact className="laptop:hidden mt-12" />

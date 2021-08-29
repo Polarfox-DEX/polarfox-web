@@ -40,10 +40,7 @@ export function PresaleInterface({ className }: SectionProps) {
               <DayButton>D3</DayButton>
             </div>
           </div>
-          <div
-            className="flex mt-8 space-x-32"
-            style={{ lineHeight: calcRem(20) }}
-          >
+          <div className="flex mt-8 space-x-32" style={{ lineHeight: calcRem(20) }}>
             <div>
               <MainText>167</MainText>
               <SideText>participants</SideText>
@@ -55,20 +52,14 @@ export function PresaleInterface({ className }: SectionProps) {
           </div>
         </div>
         <div className="mt-5.5 pt-2 px-8">
-          <div
-            className="flex mt-8 justify-between"
-            style={{ lineHeight: calcRem(20) }}
-          >
+          <div className="flex mt-8 justify-between" style={{ lineHeight: calcRem(20) }}>
             <div className="flex items-center">
               <MainText>Buy</MainText>
               <DownArrow className="mx-3" />
             </div>
             <div className="mx-2">
               <SideText>Your daily spend allowance</SideText>
-              <div
-                className="text-right"
-                style={{ fontSize: calcRem(14), lineHeight: calcRem(16) }}
-              >
+              <div className="text-right" style={{ fontSize: calcRem(14), lineHeight: calcRem(16) }}>
                 0 / 1 ETH
               </div>
             </div>
@@ -80,10 +71,7 @@ export function PresaleInterface({ className }: SectionProps) {
               height: calcRem(87)
             }}
           >
-            <div
-              className="m-6 font-semibold"
-              style={{ fontSize: calcRem(18) }}
-            >
+            <div className="m-6 font-semibold" style={{ fontSize: calcRem(18) }}>
               0.00
             </div>
             <div className="mr-6">
@@ -105,18 +93,12 @@ export function PresaleInterface({ className }: SectionProps) {
               <SideText className="mt-2">Balance: 2.24683</SideText>
             </div>
           </div>
-          <div
-            className="mt-6 opacity-40 text-center"
-            style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
-          >
+          <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
-            Your tokens will be locked in the contract until the presale has
-            ended. You will be able to claim them after the presale.
+            Your tokens will be locked in the contract until the presale has ended. You will be able to claim them after
+            the presale.
           </div>
-          <div
-            className="mt-6 font-bold text-center"
-            style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
-          >
+          <div className="mt-6 font-bold text-center" style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}>
             Your total funds in this presale: 0.82 ETH
           </div>
           <div className="mt-6 flex">
@@ -137,10 +119,7 @@ interface PresaleTimerWindowProps {
 function PresaleTimerWindow({ className, children }: PresaleTimerWindowProps) {
   return (
     <div
-      className={classNames(
-        'border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center',
-        className
-      )}
+      className={classNames('border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center', className)}
       style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
     >
       {children}
@@ -193,12 +172,7 @@ interface DayButtonProps {
   children: ReactNode
 }
 
-function DayButton({
-  className,
-  isActive,
-  hasStarted,
-  children
-}: DayButtonProps) {
+function DayButton({ className, isActive, hasStarted, children }: DayButtonProps) {
   return (
     <div
       className={classNames(
@@ -230,12 +204,9 @@ interface ActionButtonProps {
 function ActionButton({ isActive, children }: ActionButtonProps) {
   return (
     <div
-      className={classNames(
-        'bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center',
-        {
-          'opacity-30': !isActive
-        }
-      )}
+      className={classNames('bg-blue-light rounded-3xl mx-1 pt-3 font-semibold text-center', {
+        'opacity-30': !isActive
+      })}
       style={{
         width: calcRem(178),
         height: calcRem(44),

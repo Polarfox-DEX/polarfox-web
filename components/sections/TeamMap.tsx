@@ -33,9 +33,7 @@ function Figure({ figure, label }: FigureProps) {
   return (
     <div className="flex flex-col items-center font-semibold">
       <div style={{ fontSize: calcRem(50) }}>{figure}</div>
-      <div style={{ fontSize: calcRem(16), lineHeight: calcRem(28) }}>
-        {label}
-      </div>
+      <div style={{ fontSize: calcRem(16), lineHeight: calcRem(28) }}>{label}</div>
     </div>
   )
 }

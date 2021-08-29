@@ -15,9 +15,7 @@ export function FaqPreview({ className }: SectionProps) {
     >
       <div>
         <SectionHeading>FAQ</SectionHeading>
-        <SectionTitle className="mt-1 mb-12">
-          Frequently Asked Questions
-        </SectionTitle>
+        <SectionTitle className="mt-1 mb-12">Frequently Asked Questions</SectionTitle>
         <SectionButton href="/faq">More questions</SectionButton>
       </div>
       <FaqPolarfox />

@@ -1,9 +1,6 @@
 import classNames from 'classnames'
 import React, { ReactNode, ReactText } from 'react'
-import {
-  WithBackgroundFooter,
-  WithBackgroundFox
-} from '../components/utils/WithBackgroundImage'
+import { WithBackgroundFooter, WithBackgroundFox } from '../components/utils/WithBackgroundImage'
 import { calcRem } from '../utils/styles'
 import GitHub from './svg/Github'
 import Medium from './svg/Medium'
@@ -24,9 +21,7 @@ export function Footer({ className }: FooterProps) {
           id="footer"
           className="forest3 container flex flex-col laptop:flex-row laptop:justify-between laptop:items-center laptop:pb-32"
         >
-          <h2 className="title font-switzer font-semibold">
-            Meet the worldwide community.
-          </h2>
+          <h2 className="title font-switzer font-semibold">Meet the worldwide community.</h2>
           <div className="flex justify-between tablet:justify-center space-x-1 tablet:space-x-16 laptop:space-x-5 my-12 laptop:my-0">
             <TelegramButton />
             <GitHubButton />
@@ -37,15 +32,8 @@ export function Footer({ className }: FooterProps) {
         {/* TODO: Remove double div */}
         <div className="container laptop:px-4">
           <div className="py-16 mt-4 laptop:py-20 border-t-2 border-blue flex items-center space-x-4">
-            <img
-              src="/logo/polarfox-tmp.png"
-              alt="Polarfox logo"
-              style={{ width: calcRem(44), height: calcRem(44) }}
-            />
-            <span
-              className="font-poppins font-bold"
-              style={{ fontSize: calcRem(25), lineHeight: calcRem(20) }}
-            >
+            <img src="/logo/polarfox-tmp.png" alt="Polarfox logo" style={{ width: calcRem(44), height: calcRem(44) }} />
+            <span className="font-poppins font-bold" style={{ fontSize: calcRem(25), lineHeight: calcRem(20) }}>
               polarfox
             </span>
           </div>
@@ -86,10 +74,7 @@ export function Footer({ className }: FooterProps) {
           }}
         >
           <div className="flex flex-col-reverse tablet:flex-row tablet:items-center tablet:space-x-6 border-t border-blue border-opacity-20 pt-16">
-            <p
-              className="text-blue flex-1 mt-8 tablet:mt-0"
-              style={{ fontSize: '13px', lineHeight: '33px' }}
-            >
+            <p className="text-blue flex-1 mt-8 tablet:mt-0" style={{ fontSize: '13px', lineHeight: '33px' }}>
               © 2021 Polarfox ltd.
             </p>
             <SocialMediaLinks />
@@ -98,12 +83,11 @@ export function Footer({ className }: FooterProps) {
           <p className="w-72">
             <b>Disclaimer</b>
             <br />
-            The Polarfox team works around the clock to make sure you get the
-            best possible return on your investment.
+            The Polarfox team works around the clock to make sure you get the best possible return on your investment.
           </p>
           <p className="w-72 mt-5">
-            However, we are not responsible for any losses on your side. Do your
-            own research and only invest what you can afford to lose.
+            However, we are not responsible for any losses on your side. Do your own research and only invest what you
+            can afford to lose.
           </p>
         </div>
       </WithBackgroundFox>
@@ -114,11 +98,7 @@ export function Footer({ className }: FooterProps) {
 function TelegramButton() {
   return (
     <SocialButton url="https://t.me/polarfoxdex">
-      <Telegram
-        width={calcRem(24.62)}
-        height={calcRem(20.51)}
-        className="fill-current"
-      />
+      <Telegram width={calcRem(24.62)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
 }
@@ -126,11 +106,7 @@ function TelegramButton() {
 function GitHubButton() {
   return (
     <SocialButton url="https://github.com/Polarfox-DEX">
-      <GitHub
-        width={calcRem(21.03)}
-        height={calcRem(20.51)}
-        className="fill-current"
-      />
+      <GitHub width={calcRem(21.03)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
 }
@@ -138,11 +114,7 @@ function GitHubButton() {
 function MediumButton() {
   return (
     <SocialButton url="https://medium.com/polarfoxdex">
-      <Medium
-        width={calcRem(36.12)}
-        height={calcRem(20.51)}
-        className="fill-current"
-      />
+      <Medium width={calcRem(36.12)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
 }
@@ -150,11 +122,7 @@ function MediumButton() {
 function TwitterButton() {
   return (
     <SocialButton url="https://twitter.com/polarfoxdex">
-      <Twitter
-        width={calcRem(24.91)}
-        height={calcRem(20.51)}
-        className="fill-current"
-      />
+      <Twitter width={calcRem(24.91)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
 }

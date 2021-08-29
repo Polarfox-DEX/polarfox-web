@@ -1,13 +1,6 @@
 export function RightArrow(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 17 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -55,15 +55,10 @@ export function TutorialPage({ slug, className }: any) {
           >
             {selectedTutorial.type}
           </div>
-          <span className="font-bold">reading time: </span>{' '}
-          {selectedTutorial.readingTime} minutes
+          <span className="font-bold">reading time: </span> {selectedTutorial.readingTime} minutes
           <div>
-            <span className="text-blue-light font-bold">
-              By {selectedTutorial.creator}{' '}
-            </span>
-            <span className="text-gray">
-              {'on ' + selectedTutorial.creationDate.toLocaleDateString()}
-            </span>
+            <span className="text-blue-light font-bold">By {selectedTutorial.creator} </span>
+            <span className="text-gray">{'on ' + selectedTutorial.creationDate.toLocaleDateString()}</span>
           </div>
         </div>
         <img className="mb-8" src={selectedTutorial.image} alt="image" />

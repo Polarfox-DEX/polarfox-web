@@ -24,10 +24,7 @@ interface WithBackGroundImageProps {
   className?: string
 }
 
-export function WithBackgroundHeader({
-  children,
-  className
-}: WithBackGroundImageProps) {
+export function WithBackgroundHeader({ children, className }: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
@@ -53,10 +50,7 @@ export function WithBackgroundHeader({
   )
 }
 
-export function WithBackgroundPfxObjectives({
-  children,
-  className
-}: WithBackGroundImageProps) {
+export function WithBackgroundPfxObjectives({ children, className }: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
@@ -77,10 +71,7 @@ export function WithBackgroundPfxObjectives({
   )
 }
 
-export function WithBackgroundRoadmap({
-  children,
-  className
-}: WithBackGroundImageProps) {
+export function WithBackgroundRoadmap({ children, className }: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
@@ -98,10 +89,7 @@ export function WithBackgroundRoadmap({
   )
 }
 
-export function WithBackgroundFooter({
-  children,
-  className
-}: WithBackGroundImageProps) {
+export function WithBackgroundFooter({ children, className }: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
@@ -132,10 +120,7 @@ export function WithBackgroundFooter({
   )
 }
 
-export function WithBackgroundFox({
-  children,
-  className
-}: WithBackGroundImageProps) {
+export function WithBackgroundFox({ children, className }: WithBackGroundImageProps) {
   return (
     <div
       className={classNames(
