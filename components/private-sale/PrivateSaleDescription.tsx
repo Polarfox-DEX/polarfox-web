@@ -34,9 +34,10 @@ export function PrivateSaleDescription({ className }: SectionProps) {
         }}
       >
         The PFX private sale will last until{' '}
-        <span className="font-bold text-blue">$1,000,000</span> are raised. The token is
-        sold at a price of $1 per token, on a{' '}
-        <span className="font-bold text-blue">first-come, first-served</span> basis.
+        <span className="font-bold text-blue">$1,000,000</span> are raised. The
+        token is sold at a price of $1 per token, on a{' '}
+        <span className="font-bold text-blue">first-come, first-served</span>{' '}
+        basis.
       </p>
       <p
         className="mt-10 text-gray"
@@ -45,8 +46,9 @@ export function PrivateSaleDescription({ className }: SectionProps) {
           lineHeight: calcRem(30)
         }}
       >
-        The price of $1 is <span className="font-bold text-blue">half of the start</span>{' '}
-        ICO price, and 1/40th of the potential end price — a{' '}
+        The price of $1 is{' '}
+        <span className="font-bold text-blue">half of the start</span> ICO
+        price, and 1/40th of the potential end price — a{' '}
         <span className="font-bold text-blue">potential 4000% gain</span>.
       </p>
       <div
@@ -79,10 +81,15 @@ export function PrivateSaleDescription({ className }: SectionProps) {
           style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}
         >
           <li>
-            The destination address <span className="font-bold text-blue underline">must</span> be a <span className="font-bold text-blue-light">MetaMask</span> address. This is because
-            most other wallets do not support Avalanche yet.
+            The destination address{' '}
+            <span className="font-bold text-blue underline">must</span> be a{' '}
+            <span className="font-bold text-blue-light">MetaMask</span> address.
+            This is because most other wallets do not support Avalanche yet.
           </li>
-          <li>Due to regulatory concerns, we are unable to accept investments from US and Canadian citizens.</li>
+          <li>
+            Due to regulatory concerns, we are unable to accept investments from
+            US and Canadian citizens.
+          </li>
         </ul>
       </p>
     </div>

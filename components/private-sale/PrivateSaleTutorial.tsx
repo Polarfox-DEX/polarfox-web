@@ -31,12 +31,17 @@ export function PrivateSaleTutorial({ className }: SectionProps) {
         How to participate
       </h2>
       <div className="flex justify-between">
-        <PresaleTutorialBlock logo={<CheckCircle className="fill-current" />} title="Get whitelisted">
-          This sale is only open to our partners and large investors. Contact our team to get whitelisted.
+        <PresaleTutorialBlock
+          logo={<CheckCircle className="fill-current" />}
+          title="Get whitelisted"
+        >
+          This sale is only open to our partners and large investors. Contact
+          our team to get whitelisted.
         </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Wallet />} title="Connect your wallet">
-          We recommend using a MetaMask wallet. Use another wallet at your own risk.
+          We recommend using a MetaMask wallet. Use another wallet at your own
+          risk.
         </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Binance />} title="Buy PFX with BNB">
@@ -44,7 +49,8 @@ export function PrivateSaleTutorial({ className }: SectionProps) {
         </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Sablier />} title="Wait for the airdrop">
-          A few days after the ICO, you will be able to claim a part of your PFX. The rest will be locked then vested.
+          A few days after the ICO, you will be able to claim a part of your
+          PFX. The rest will be locked then vested.
         </PresaleTutorialBlock>
       </div>
     </div>

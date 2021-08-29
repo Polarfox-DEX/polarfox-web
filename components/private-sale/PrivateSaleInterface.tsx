@@ -25,11 +25,8 @@ export function PrivateSaleInterface({
   className,
   style
 }: PrivateSaleInterfaceProps) {
-  //régler pb de l'input
-  //ajouter logique du champs adresse reciepient
-
   const SYMBOL: string = 'BNB'
-  const TOTAL_TO_BUY: number = 1000000
+  const PFX_PRICE: number = 1
 
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -39,10 +36,10 @@ export function PrivateSaleInterface({
   const [hasWallet, setHasWallet] = useState(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState('0')
-  const [userUsdAllowance, setUsdAllowance] = useState(0.0)
+  const [userUsdAllowance, setUserUsdAllowance] = useState(0.0)
   const [userPfxAllowance, setUserPfxAllowance] = useState(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState('')
-  const [useMyAddress, setUseMyAddress] = useState(false)
+  const [useOtherAddress, setUseOtherAddress] = useState(false)
 
   const [approved, setApproved] = useState(false)
   const [isWhitelisted, setWhitelisted] = useState(true)
@@ -57,9 +54,7 @@ export function PrivateSaleInterface({
     setHasWallet(window_.ethereum)
   })
 
-  var initializePrivateSaleContract = (
-    accounts: string[]
-  ) => {
+  var initializePrivateSaleContract = (accounts: string[]) => {
     privateSaleContract = new web3.eth.Contract(abi, contractAddress)
 
     privateSaleContract.methods
@@ -74,7 +69,15 @@ export function PrivateSaleInterface({
 
   var userAllowanceChange = (value: string) => {
     setUserBnbAllowance(value.replace(',', '.'))
-    setUsdAllowance(parseFloat(value) * currentBnbPrice)
+    const val = parseFloat(value) * currentBnbPrice
+    setUserUsdAllowance(val)
+    setUserPfxAllowance(val * PFX_PRICE)
+
+    if (value == '' || value == '0') {
+      setErrorMessage('Cannot buy 0 PFX')
+    } else {
+      setErrorMessage('')
+    }
   }
 
   var setMaxUserAllowance = () => {
@@ -115,15 +118,10 @@ export function PrivateSaleInterface({
     }
   }
 
-  var approveContract = () => {
-    alert('Contract approved')
-    setApproved(true)
-  }
-
   var purchase = () => {
     if (web3 != undefined && isWhitelisted) {
       const amountInWei = web3.utils.toWei(userBnbAllowance)
-      const address = useMyAddress ? accounts[0] : userRecipientAddress
+      const address = useOtherAddress ? userRecipientAddress : accounts[0]
 
       console.log(accounts)
 
@@ -204,7 +202,7 @@ export function PrivateSaleInterface({
                 }
               />
               <SideText>
-                ={' '}
+                {'= '}
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD'
@@ -259,7 +257,7 @@ export function PrivateSaleInterface({
               className="m-6 font-semibold bg-blue-gray focus:outline-none"
               style={{ fontSize: calcRem(18), width: calcRem(200) }}
             >
-              {userPfxAllowance}
+              {new Intl.NumberFormat('en-US').format(userPfxAllowance)}{' '}
             </div>
             <MainText className="mr-6 flex justify-between mt-6">PFX</MainText>
           </div>
@@ -269,7 +267,8 @@ export function PrivateSaleInterface({
             Destination address
           </MainText>
           <SideText className="mt-2 opacity-95">
-            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
+            Make sure to use a{' '}
+            <span className="font-bold text-red-error">MetaMask</span> address.
           </SideText>
           <div className="mt-4">
             <input
@@ -286,7 +285,7 @@ export function PrivateSaleInterface({
                 setUserRecipientAddress(event.currentTarget.value)
               }
               placeholder="Please enter the receiving address"
-              disabled={useMyAddress}
+              disabled={!useOtherAddress}
             />
             <div
               className="mt-4 px-2"
@@ -302,11 +301,11 @@ export function PrivateSaleInterface({
                     className="opacity-0 absolute"
                     style={{ width: calcRem(22), height: calcRem(22) }}
                     onChange={(event) =>
-                      setUseMyAddress(event.currentTarget.checked)
+                      setUseOtherAddress(event.currentTarget.checked)
                     }
                   />
                   <Check
-                    className={classNames(useMyAddress ? 'flex' : 'hidden')}
+                    className={classNames(useOtherAddress ? 'flex' : 'hidden')}
                     style={{ width: calcRem(12), height: calcRem(12) }}
                   />
                 </div>
@@ -353,7 +352,7 @@ export function PrivateSaleInterface({
         disabled={
           !isWhitelisted ||
           userBnbAllowance == '0' ||
-          !(useMyAddress && userRecipientAddress == '')
+          (useOtherAddress && userRecipientAddress === '')
         }
         click={purchase}
       />
@@ -366,7 +365,7 @@ export function PrivateSaleInterface({
 
   function ConnectButton() {
     return (
-      <div
+      <button
         className={classNames(
           'flex items-center justify-center bg-blue-light w-full rounded-3xl mx-1 font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light'
         )}
@@ -379,9 +378,36 @@ export function PrivateSaleInterface({
         onClick={() => connectWallet()}
       >
         {hasWallet ? 'Connect your wallet' : 'Install Metamask'}
-      </div>
+      </button>
     )
   }
+}
+
+interface ActionButtonProps {
+  name: string
+  disabled: boolean
+  click: () => void
+}
+
+function ActionButton({ name, disabled, click }: ActionButtonProps) {
+  return (
+    <button
+      className={classNames(
+        'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light hover:cursor-pointer hover:bg-white hover:text-blue-light',
+        'disabled:opacity-40 disabled:hover:cursor-not-allowed'
+      )}
+      style={{
+        height: calcRem(44),
+        marginTop: calcRem(23),
+        fontSize: calcRem(14),
+        lineHeight: calcRem(16)
+      }}
+      onClick={() => click()}
+      disabled={disabled}
+    >
+      {name}
+    </button>
+  )
 }
 
 interface SideTextProps {
@@ -399,34 +425,6 @@ function SideText({ className, children }: SideTextProps) {
       }}
     >
       {children}
-    </div>
-  )
-}
-
-interface ActionButtonProps {
-  name: string
-  disabled: boolean
-  click: () => void
-}
-
-function ActionButton({ name, disabled, click }: ActionButtonProps) {
-  return (
-    <div
-      className={classNames(
-        'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light',
-        disabled
-          ? 'opacity-40 hover:cursor-not-allowed'
-          : 'hover:cursor-pointer hover:bg-white hover:text-blue-light'
-      )}
-      style={{
-        height: calcRem(44),
-        marginTop: calcRem(23),
-        fontSize: calcRem(14),
-        lineHeight: calcRem(16)
-      }}
-      onClick={() => click()}
-    >
-      {name}
     </div>
   )
 }
