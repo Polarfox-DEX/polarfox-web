@@ -28,7 +28,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   // const TOTAL_TO_BUY: number = 1000000
 
   const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
-  const { currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
+  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
   // const [userBalance, setUserBalance] = useState<number>(0.0)
@@ -270,13 +270,14 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         </div>
         <div className="px-8 mt-4">
           <div className="mb-6 flex">
-            {connected && <IsConnected />}
-            {!connected && <ConnectButton />}
+            {!correctNetwork && <WrongNetworkButton />}
+            {correctNetwork && connected && <PurchaseButton />}
+            {correctNetwork && !connected && <ConnectButton />}
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
             {/* // TODO: The below displays "your address is not whitelisted" for half a second when you log in. Fix this */}
             {/* // TODO: When changing accounts, the error "your address is not whitelisted" needs to change */}
-            {connected && !isWhitelisted && 'Error: Your address is not whitelisted'}
+            {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
           </div>
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
@@ -302,8 +303,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     </div>
   )
 
-  // TODO: Wrong function name?
-  function IsConnected() {
+  function PurchaseButton() {
     return (
       <ActionButton
         name="Purchase"
@@ -340,18 +340,25 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   }
 }
 
+function WrongNetworkButton() {
+  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => {}} isError />
+}
+
 interface ActionButtonProps {
   name: string
   disabled: boolean
   click: () => void
+  isError?: boolean
 }
 
-function ActionButton({ name, disabled, click }: ActionButtonProps) {
+function ActionButton({ name, disabled, click, isError }: ActionButtonProps) {
   return (
     <button
       className={classNames(
-        'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light hover:cursor-pointer hover:bg-white hover:text-blue-light',
-        'disabled:opacity-40 disabled:hover:cursor-not-allowed'
+        'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light hover:cursor-pointer',
+        'disabled:opacity-40 disabled:hover:cursor-not-allowed',
+        'hover:bg-white hover:text-blue-light disabled:hover:bg-blue-light disabled:hover:text-white',
+        { 'bg-red-error text-white disabled:opacity-100': isError }
       )}
       style={{
         height: calcRem(44),

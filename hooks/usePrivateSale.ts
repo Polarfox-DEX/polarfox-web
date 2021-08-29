@@ -6,6 +6,7 @@ import { useInterval } from './useInterval'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
+  correctNetwork: boolean
   currentBnbPrice: number
   isWhitelisted: boolean
   remaining: number
@@ -14,18 +15,20 @@ export interface PrivateSale {
 }
 
 export function usePrivateSale(): PrivateSale {
+  const [correctNetwork, setCorrectNetwork] = useState<boolean>(false)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false)
   const [remaining, setRemaining] = useState<number>(0)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
-  // TODO: If we want, we can have multiple error message fields
-  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const { hasWallet, connected, chainId, accounts, gasPrice } = useWallet()
 
   useEffect(() => {
+    // See if the chainId is correct
+    setCorrectNetwork(chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET))
+
     // If the network is correct
-    if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
+    if (chainId != null && correctNetwork) {
       // Get the current BNB price from the private sale contract
       privateSale(chainId)
         .methods.currentBnbPrice()
@@ -50,9 +53,6 @@ export function usePrivateSale(): PrivateSale {
         // Calculate the total bought amount
         getBoughtAmount(accounts[0])
       }
-
-      // If the network is incorrect
-      // ...
     }
 
     async function getBoughtAmount(address: string) {
@@ -92,7 +92,7 @@ export function usePrivateSale(): PrivateSale {
         }
       }
     }
-  }, [hasWallet, connected, chainId, accounts])
+  }, [correctNetwork, hasWallet, connected, chainId, accounts])
 
   async function buyTokens(amount: string, address: string) {
     // If the network is correct and the user is connected and whitelisted
@@ -131,6 +131,7 @@ export function usePrivateSale(): PrivateSale {
   }
 
   return {
+    correctNetwork,
     currentBnbPrice,
     isWhitelisted,
     remaining,

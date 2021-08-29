@@ -12,7 +12,7 @@ if (typeof window !== "undefined" && window && (window as any).ethereum) {
 // Running in server OR no Metamask
 else {
   // Create our own provider. The default blockchain is BSC
-  // TODO: switch to mainnet
+  // TODO: Switch to mainnet
   const newProvider = new Web3.providers.HttpProvider(PROVIDER[ChainId.BSC_TESTNET])
   web3_ = new Web3(newProvider)
 }
