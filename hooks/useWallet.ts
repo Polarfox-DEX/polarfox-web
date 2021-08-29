@@ -84,7 +84,7 @@ export function useWallet(): Wallet {
       if (connected) {
         const currentBalance = await getBalance(accounts[0])
         if (currentBalance !== balance) {
-          setBalance(balance)
+          setBalance(currentBalance)
         }
       }
 

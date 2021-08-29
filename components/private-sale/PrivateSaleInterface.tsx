@@ -1,5 +1,8 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 
+// TODO: Implement "wrong network"
+// TODO: BSC mainnet crashes
+
 // Front-end
 import classNames from 'classnames'
 import Clock from '../svg/Clock'
@@ -24,11 +27,12 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
   // const TOTAL_TO_BUY: number = 1000000
 
-  const { hasWallet, connected, accounts, requestConnection } = useWallet()
+  const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
+  console.log('Balance:', balance)
   const { currentBnbPrice, isWhitelisted, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
-  const [userBalance, setUserBalance] = useState<number>(0.0)
+  // const [userBalance, setUserBalance] = useState<number>(0.0)
   // const [connected, setConnected] = useState(false)
   // const [accounts, setAccounts] = useState<string[]>([])
   // const [hasWallet, setHasWallet] = useState(false)
@@ -78,8 +82,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   var setMaxUserAllowance = () => {
     if (connected) {
-      setUserBnbAllowance(userBalance.toString())
-      userAllowanceChange(userBalance.toString())
+      setUserBnbAllowance(balance ? balance.toString() : '0')
+      userAllowanceChange(balance ? balance.toString() : '0')
     }
   }
 
@@ -213,7 +217,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 </div>
                 <MainText>{SYMBOL}</MainText>
               </div>
-              <SideText className="mt-2">Balance: {userBalance.toFixed(2)}</SideText>
+              <SideText className="mt-2">Balance: {balance ? balance.toFixed(2) : '0.00'}</SideText>
             </div>
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
@@ -301,11 +305,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     return (
       <ActionButton
         name="Purchase"
-        disabled={
-          !isWhitelisted ||
-          userBnbAllowance == '0' ||
-          (useOtherAddress && userRecipientAddress === '')
-        }
+        disabled={!isWhitelisted || userBnbAllowance == '0' || (useOtherAddress && userRecipientAddress === '')}
         click={() => buyTokens(userBnbAllowance, useOtherAddress ? userRecipientAddress : accounts[0])}
         // TODO: While the transaction is going, we should write a "please wait" button
         // TODO: When the transaction is done, should we reset the other fields to 0?
