@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import DoubleArrowGradient from '../svg/DoubleArrowGradient'
 import TokenGradient from '../svg/TokenGradient'
 import TopRightArrow from '../svg/TopRightArrow'
-import {DEX_LINK, ANALYTICS_LINK, AKITA_LINK } from '../const/links'
+import { DEX_LINK, ANALYTICS_LINK, AKITA_LINK } from '../const/links'
 
 interface ProductsSectionProps {
   className?: string

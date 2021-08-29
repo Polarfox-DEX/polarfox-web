@@ -7,12 +7,18 @@ import GlobalVars from './GlobalVars'
 import { Countdown } from './countdown/Countdown'
 import moment from 'moment'
 
-export function PresaleHeader({ className }: SectionProps) {
+interface PresaleHeader {
+  className?: string
+  isMobileMenuOpen: boolean
+}
+
+export function PresaleHeader({ className, isMobileMenuOpen }: PresaleHeader) {
   return (
     <div
       className={classNames(
         'grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28',
         'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader w-full',
+        { hidden: isMobileMenuOpen },
         className
       )}
       style={{

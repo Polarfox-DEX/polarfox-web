@@ -90,9 +90,8 @@ export function PfxTokenObjectives({ className }: PfxTokenObjectivesProps) {
             token supply, and then with a dev fee on each PFX transaction.
           </PfxTokenObjective>
           <PfxTokenObjective title="Liquidity provider rewards">
-            On every transaction involving PFX, 3% of the transferred PFX
-            amount is converted to AVAX and distributed among liquidity
-            providers.
+            On every transaction involving PFX, 3% of the transferred PFX amount
+            is converted to AVAX and distributed among liquidity providers.
           </PfxTokenObjective>
           <PfxTokenObjective title="Governance protocol">
             3% of the total supply will be given to the governance for use over

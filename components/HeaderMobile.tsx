@@ -23,8 +23,6 @@ import {
 } from '../components/const/links'
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
-// TODO: Define the behavior we want when the user clicks on a link to the current page
-
 export function HeaderMobile({
   isMobileMenuOpen,
   setIsMobileMenuOpen
@@ -50,7 +48,7 @@ export function HeaderMobile({
   return (
     <div
       className={classNames('laptop:hidden w-full px-5 py-4', {
-        'z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
+        '-mt-28 z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
           isMobileMenuOpen
       })}
     >
@@ -77,11 +75,12 @@ export function HeaderMobile({
           <div />
         )}
       </div>
-      {isMobileMenuOpen ? (
-        <SocialMediaLinks className="justify-end" />
-      ) : (
-        <div />
-      )}
+      <SocialMediaLinks
+        className={classNames('absolute justify-end ', {
+          hidden: !isMobileMenuOpen
+        })}
+        style={{ bottom: '1rem', right: '1rem' }}
+      />
     </div>
   )
 }

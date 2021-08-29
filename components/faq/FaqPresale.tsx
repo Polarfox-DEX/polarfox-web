@@ -6,7 +6,10 @@ import { SectionProps } from '../sections/utils/SectionProps'
 export function FaqPresale({ className }: SectionProps) {
   return (
     <div className={classNames('divide-y divide-gray-light w-full', className)}>
-      <Question question="When and where can I participate in the PFX presale?" isOpenDefault>
+      <Question
+        question="When and where can I participate in the PFX presale?"
+        isOpenDefault
+      >
         The presale will take place right before the launch of the Polarfox DEX
         and last for 3 days. It will be accessible on the homepage of Polarfox.
       </Question>

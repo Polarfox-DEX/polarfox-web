@@ -52,7 +52,9 @@ export function Page({ children }: PageProps) {
         />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28" />}
+      {displayPresale && (
+        <PresaleHeader className="-mt-28" isMobileMenuOpen={isMobileMenuOpen} />
+      )}
       <Header
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
