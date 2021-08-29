@@ -28,7 +28,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   // const TOTAL_TO_BUY: number = 1000000
 
   const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
-  const { currentBnbPrice, isWhitelisted, boughtAmount, buyTokens } = usePrivateSale()
+  const { currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
   // const [userBalance, setUserBalance] = useState<number>(0.0)
@@ -45,7 +45,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   // const [isWhitelisted, setWhitelisted] = useState<boolean>(true)
 
   // const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0.0)
-  const [soldLeft, setSoldLeft] = useState<number>(865432)
   const [participants, setParticipants] = useState<number>(176)
   const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
 
@@ -162,7 +161,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           {new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-          }).format(soldLeft)}{' '}
+          }).format(remaining)}{' '}
           remaining
           <SideText>out of $1,000,000 worth of PFX</SideText>
         </div>
