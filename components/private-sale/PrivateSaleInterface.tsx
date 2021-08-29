@@ -35,9 +35,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
   const [userUsdAllowance, setUserUsdAllowance] = useState<number>(0.0)
-  const [userPfxAllowance, setUserPfxAllowance] = useState<number>(0.0) // TODO: Same as USD allowance, this can be deleted
   const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
-  const [useOtherAddress, setUseOtherAddress] = useState<boolean>(false)
+  const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
   const [approved, setApproved] = useState<boolean>(false)
   // const [isWhitelisted, setWhitelisted] = useState<boolean>(true)
@@ -242,7 +241,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               value={userRecipientAddress}
               onChange={(event) => setUserRecipientAddress(event.currentTarget.value)}
               placeholder="Please enter the receiving address"
-              disabled={!useOtherAddress}
+              disabled={useMyAddress}
             />
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5 ">
@@ -254,10 +253,10 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                     type="checkbox"
                     className="opacity-0 absolute"
                     style={{ width: calcRem(22), height: calcRem(22) }}
-                    onChange={(event) => setUseOtherAddress(event.currentTarget.checked)}
+                    onChange={(event) => setUseMyAddress(event.currentTarget.checked)}
                   />
                   <Check
-                    className={classNames(useOtherAddress ? 'flex' : 'hidden')}
+                    className={classNames(useMyAddress ? 'flex' : 'hidden')}
                     style={{ width: calcRem(12), height: calcRem(12) }}
                   />
                 </div>
@@ -304,9 +303,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         disabled={
           !isWhitelisted ||
           userBnbAllowance == '0' ||
-          (useOtherAddress && userRecipientAddress === '')
+          !(useMyAddress && userRecipientAddress === '')
         }
-        click={() => buyTokens(userBnbAllowance, useOtherAddress ? userRecipientAddress : accounts[0])}
+        click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
         // TODO: While the transaction is going, we should write a "please wait" button
         // TODO: When the transaction is done, should we reset the other fields to 0?
       />
