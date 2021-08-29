@@ -28,7 +28,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   // const TOTAL_TO_BUY: number = 1000000
 
   const { hasWallet, connected, accounts, balance, requestConnection } = useWallet()
-  const { currentBnbPrice, isWhitelisted, buyTokens } = usePrivateSale()
+  const { currentBnbPrice, isWhitelisted, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
   // const [userBalance, setUserBalance] = useState<number>(0.0)
@@ -187,6 +187,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
                 // TODO: Should display "Insufficient funds" when the amount is too high.
+                // TODO: When the amount is empty, it should act as if it was 0
                 onChange={(event) => userAllowanceChange(event.currentTarget.value)}
               />
               <SideText>
@@ -201,7 +202,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             <div className="mt-1">
               <div className="flex justify-between">
                 <div
-                  className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer"
+                  className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light"
                   style={{
                     width: calcRem(45),
                     height: calcRem(24),
@@ -219,7 +220,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             </div>
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-            {errorMessage && 'Alert: ' + errorMessage}
+            {errorMessage}
           </div>
           <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
@@ -263,7 +264,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                     style={{ width: calcRem(12), height: calcRem(12) }}
                   />
                 </div>
-                <div>I want to send funds to this address</div>
+                <div>Send funds to the currently connected address</div>
               </div>
             </div>
           </div>
@@ -281,10 +282,14 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
             You will start receiving your tokens after the ICO has ended. Since you are participating at a low price,
-            most of your tokens will be locked and vested at a later date.
+            most of your tokens will be vested over time and not given to you at once.
           </div>
           <div className="mt-6 font-bold text-center" style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}>
-            Your total funds in this private sale: 0.82 {SYMBOL}
+            Your total funds in this private sale:{' '}
+            {new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }).format(boughtAmount)}
           </div>
         </div>
       </div>
