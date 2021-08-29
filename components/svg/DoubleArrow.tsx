@@ -1,13 +1,6 @@
 export function DoubleArrow(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      width="23"
-      height="20"
-      viewBox="0 0 23 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -13,12 +13,7 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
           height: calcRem(107)
         }}
       >
-        <img
-          src="akita.png"
-          alt="akita"
-          className="mx-4"
-          style={{ height: calcRem(36), width: calcRem(36) }}
-        />
+        <img src="akita.png" alt="akita" className="mx-4" style={{ height: calcRem(36), width: calcRem(36) }} />
         <div>
           <div
             className="text-white opacity-40"

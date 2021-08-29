@@ -81,19 +81,10 @@ interface DayStatisticsProps {
   children: ReactNode
 }
 
-function DayStatistics({
-  hasBackground,
-  fontSize,
-  className,
-  children
-}: DayStatisticsProps) {
+function DayStatistics({ hasBackground, fontSize, className, children }: DayStatisticsProps) {
   return (
     <div
-      className={classNames(
-        'flex justify-between',
-        { 'bg-gray-mid rounded-lg': hasBackground },
-        className
-      )}
+      className={classNames('flex justify-between', { 'bg-gray-mid rounded-lg': hasBackground }, className)}
       style={{ height: calcRem(64), fontSize: calcRem(fontSize || 16) }}
     >
       {children}
@@ -108,10 +99,7 @@ interface DayStatisticsRowProps {
 
 function DayStatisticsRow({ className, children }: DayStatisticsRowProps) {
   return (
-    <div
-      className={classNames('mt-5 ml-6', className)}
-      style={{ width: calcRem(171) }}
-    >
+    <div className={classNames('mt-5 ml-6', className)} style={{ width: calcRem(171) }}>
       {children}
     </div>
   )

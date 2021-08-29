@@ -7,15 +7,8 @@ export function PolarfoxLogo({ className }: SectionProps) {
   return (
     <Link href="/">
       <a className={classNames('flex items-center space-x-4', className)}>
-        <img
-          src="/logo/polarfox-tmp.png"
-          alt="Polarfox logo"
-          className="polarfox-logo"
-        />
-        <span
-          className="font-poppins font-bold polarfox-text"
-          style={{ lineHeight: calcRem(20) }}
-        >
+        <img src="/logo/polarfox-tmp.png" alt="Polarfox logo" className="polarfox-logo" />
+        <span className="font-poppins font-bold polarfox-text" style={{ lineHeight: calcRem(20) }}>
           polarfox
         </span>
         <style jsx>{`

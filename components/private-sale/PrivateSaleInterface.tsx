@@ -1,76 +1,68 @@
-import classNames from 'classnames'
 import React, { ReactNode, useEffect, useState } from 'react'
-import { calcRem } from '../../utils/styles'
+
+// Front-end
+import classNames from 'classnames'
 import Clock from '../svg/Clock'
-import { DownArrow } from '../svg/DownArrow'
-import useWallet, { ChainId } from '../hooks/useWallet'
-import Web3 from 'web3'
+import { calcRem } from '../../utils/styles'
 import { Check } from '../svg/Check'
+import { DownArrow } from '../svg/DownArrow'
+import { SectionProps } from '../sections/utils/SectionProps'
 
-const {
-  abi
-} = require('../../../polarfox-presale/artifacts/contracts/PolarfoxPrivateSale.sol/PolarfoxPrivateSale.json')
-const contractAddress = '0xaB95cA45D1c5D1E2657481F97096AEFDb2128b91'
+// Back-end
+// import Web3 from 'web3'
+// import { ChainId } from '../../blockchain/const'
+// import { PRIVATE_SALE_ADDRESS, privateSale } from '../../blockchain/contracts/privateSale'
+// import { web3 } from '../../blockchain/web3'
+import { useWallet } from '../../hooks/useWallet'
+import { usePrivateSale } from '../../hooks/usePrivateSale'
 
-interface PrivateSaleInterfaceProps {
-  className?: string
-  style?: string
-}
+// let window_: any
+// let privateSaleContract: any
+// let web3: Web3
 
-let window_: any
-let privateSaleContract: any
-let web3: Web3
-
-export function PrivateSaleInterface({
-  className,
-  style
-}: PrivateSaleInterfaceProps) {
-  //régler pb de l'input
-  //ajouter logique du champs adresse reciepient
-
+export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
-  const TOTAL_TO_BUY: number = 1000000
+  // const TOTAL_TO_BUY: number = 1000000
 
-  const [errorMessage, setErrorMessage] = useState('')
+  const { hasWallet, connected, accounts, requestConnection } = useWallet()
+  const { currentBnbPrice, isWhitelisted, buyTokens } = usePrivateSale()
 
-  const [userBalance, setUserBalance] = useState(0.0)
-  const [connected, setConnected] = useState(false)
-  const [accounts, setAccounts] = useState<string[]>([])
-  const [hasWallet, setHasWallet] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [userBalance, setUserBalance] = useState<number>(0.0)
+  // const [connected, setConnected] = useState(false)
+  // const [accounts, setAccounts] = useState<string[]>([])
+  // const [hasWallet, setHasWallet] = useState(false)
 
-  const [userBnbAllowance, setUserBnbAllowance] = useState('0')
-  const [userUsdAllowance, setUsdAllowance] = useState(0.0)
-  const [userPfxAllowance, setUserPfxAllowance] = useState(0.0)
-  const [userRecipientAddress, setUserRecipientAddress] = useState('')
-  const [useMyAddress, setUseMyAddress] = useState(false)
+  const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
+  const [userUsdAllowance, setUsdAllowance] = useState<number>(0.0)
+  const [userPfxAllowance, setUserPfxAllowance] = useState<number>(0.0) // TODO: Same as USD allowance, this can be deleted
+  const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
+  const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
-  const [approved, setApproved] = useState(false)
-  const [isWhitelisted, setWhitelisted] = useState(true)
+  const [approved, setApproved] = useState<boolean>(false)
+  // const [isWhitelisted, setWhitelisted] = useState<boolean>(true)
 
-  const [currentBnbPrice, setCurrentBnbPrice] = useState(0.0)
-  const [soldLeft, setSoldLeft] = useState(865432)
-  const [participants, setParticipants] = useState(176)
-  const [totalBnbSold, setTotalBnbSold] = useState(62.82)
+  // const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0.0)
+  const [soldLeft, setSoldLeft] = useState<number>(865432)
+  const [participants, setParticipants] = useState<number>(176)
+  const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
 
-  useEffect(() => {
-    window_ = window
-    setHasWallet(window_.ethereum)
-  })
+  // var initializePrivateSaleContract = (accounts: string[]) => {
+  //   // Access the private sale contract
+  //   privateSaleContract = new web3.eth.Contract(abi, contractAddress)
 
-  var initializePrivateSaleContract = (
-    accounts: string[]
-  ) => {
-    privateSaleContract = new web3.eth.Contract(abi, contractAddress)
+  //   // Get the current BNB price from the contract
+  //   privateSaleContract.methods
+  //     .currentBnbPrice()
+  //     .call()
+  //     .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
 
-    privateSaleContract.methods
-      .currentBnbPrice()
-      .call()
-      .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
-    privateSaleContract.methods
-      .isWhitelisted(accounts[0])
-      .call()
-      .then((isWhitelisted: boolean) => setWhitelisted(isWhitelisted))
-  }
+  //   // See if the currently connected account is whitelisted
+  //   privateSaleContract.methods
+  //     .isWhitelisted(accounts[0])
+  //     .call()
+  //     .then((isWhitelisted: boolean) => setWhitelisted(isWhitelisted))
+  // }
 
   var userAllowanceChange = (value: string) => {
     setUserBnbAllowance(value.replace(',', '.'))
@@ -84,77 +76,72 @@ export function PrivateSaleInterface({
     }
   }
 
-  var connectWallet = async () => {
-    if (hasWallet) {
-      web3 = new Web3(window_.ethereum)
+  // var connectWallet = async () => {
+  // if (hasWallet) {
+  //   web3 = new Web3(window_.ethereum)
 
-      //Verify user is connected to right network
-      await window_.ethereum
-        .request({ method: 'eth_chainId' })
-        .then(async (chainId: any) => {
-          if (web3?.utils.hexToNumber(chainId) == ChainId.BSC_TESTNET) {
-            await window_.ethereum
-              .request({ method: 'eth_requestAccounts' })
-              .then(async (accounts: string[]) => {
-                setAccounts(accounts)
-                setConnected(true)
+  //   //Verify user is connected to right network
+  //   await window_.ethereum
+  //     .request({ method: 'eth_chainId' })
+  //     .then(async (chainId: any) => {
+  //       if (web3?.utils.hexToNumber(chainId) == ChainId.BSC_TESTNET) {
+  //         await window_.ethereum
+  //           .request({ method: 'eth_requestAccounts' })
+  //           .then(async (accounts: string[]) => {
+  //             setAccounts(accounts)
+  //             setConnected(true)
 
-                initializePrivateSaleContract(accounts)
+  // initializePrivateSaleContract(accounts)
 
-                await window_.ethereum
-                  .request({ method: 'eth_getBalance', params: [accounts[0]] })
-                  .then((balance: any) => {
-                    setUserBalance(parseFloat(web3.utils.fromWei(balance)))
-                  })
-                  .catch(console.log)
-              })
-              .catch(console.log)
-          }
-        })
-        .catch(console.log)
-    }
-  }
+  //               await window_.ethereum
+  //                 .request({ method: 'eth_getBalance', params: [accounts[0]] })
+  //                 .then((balance: any) => {
+  //                   setUserBalance(parseFloat(web3.utils.fromWei(balance)))
+  //                 })
+  //                 .catch(console.log)
+  //             })
+  //             .catch(console.log)
+  //         }
+  //       })
+  //       .catch(console.log)
+  //   }
+  // }
 
-  var approveContract = () => {
-    alert('Contract approved')
-    setApproved(true)
-  }
+  // var approveContract = () => {
+  //   alert('Contract approved')
+  //   setApproved(true)
+  // }
 
-  var purchase = () => {
-    if (web3 != undefined && isWhitelisted) {
-      const amountInWei = web3.utils.toWei(userBnbAllowance)
-      const address = useMyAddress ? accounts[0] : userRecipientAddress
+  // var purchase = () => {
+  // if (web3 != undefined && isWhitelisted) {
+  // const amountInWei = web3.utils.toWei(userBnbAllowance)
+  // const address = useMyAddress ? accounts[0] : userRecipientAddress
 
-      console.log(accounts)
+  //   console.log(accounts)
 
-      window_.ethereum
-        .request({ method: 'eth_gasPrice', params: [] })
-        .then(async (gasFees: number) => {
-          await privateSaleContract.methods
-            .buyTokens()
-            .send({
-              from: address,
-              value: amountInWei,
-              gasPrice: gasFees
-            })
-            .then((data: any) => {
-              console.log(data)
-            })
-            .catch((error: any) => {
-              console.log(error)
-            })
-        })
-    }
-    //setErrorMessage("This is an error message")
-  }
+  //   window_.ethereum
+  //     .request({ method: 'eth_gasPrice', params: [] })
+  //     .then(async (gasFees: number) => {
+  //       await privateSaleContract.methods
+  //         .buyTokens()
+  //         .send({
+  //           from: address,
+  //           value: amountInWei,
+  //           gasPrice: gasFees
+  //         })
+  //         .then((data: any) => {
+  //           console.log(data)
+  //         })
+  //         .catch((error: any) => {
+  //           console.log(error)
+  //         })
+  //     })
+  // }
+  //setErrorMessage("This is an error message")
+  // }
 
   return (
-    <div
-      className={classNames(
-        'sale-modal bg-blue tablet:rounded-3xl text-white w-full bg-stretch pb-8',
-        className
-      )}
-    >
+    <div className={classNames('sale-modal bg-blue tablet:rounded-3xl text-white w-full bg-stretch pb-8', className)}>
       <div
         className="sale-modal container border-blue bg-blue-gray tablet:rounded-t-3xl flex items-center justify-between px-8"
         style={{
@@ -179,10 +166,9 @@ export function PrivateSaleInterface({
             <DownArrow className="mx-3" />
           </div>
           <div
-            className={classNames(
-              ' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6',
-              { 'border-2 border-red-error': errorMessage !== '' }
-            )}
+            className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
+              'border-2 border-red-error': errorMessage !== ''
+            })}
             style={{
               height: calcRem(87)
             }}
@@ -191,15 +177,15 @@ export function PrivateSaleInterface({
               <input
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
-                onChange={(event) =>
-                  userAllowanceChange(event.currentTarget.value)
-                }
+                // TODO: Should display "Insufficient funds" when the amount is too high.
+                onChange={(event) => userAllowanceChange(event.currentTarget.value)}
               />
               <SideText>
                 ={' '}
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD'
+                  // TODO: When connecting a wallet, if a user has already put a BNB amount, the USD amount should display properly.
                 }).format(userUsdAllowance)}
               </SideText>
             </div>
@@ -220,60 +206,39 @@ export function PrivateSaleInterface({
                 </div>
                 <MainText>{SYMBOL}</MainText>
               </div>
-              <SideText className="mt-2">
-                Balance: {userBalance.toFixed(2)}
-              </SideText>
+              <SideText className="mt-2">Balance: {userBalance.toFixed(2)}</SideText>
             </div>
           </div>
-          <div
-            className="text-red-error mt-2"
-            style={{ fontSize: calcRem(12) }}
-          >
+          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
             {errorMessage && 'Alert: ' + errorMessage}
           </div>
-          <div
-            className="text-center my-2 opacity-40"
-            style={{ fontSize: calcRem(12) }}
-          >
+          <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
           </div>
-          <div
-            className={classNames(
-              'bg-blue-gray rounded-xl flex justify-between items-center p-6'
-            )}
-          >
-            {userPfxAllowance}
+          <div className={classNames('bg-blue-gray rounded-xl flex justify-between items-center p-6')}>
+            {/* // TODO: Change the format from "10000" to "10,000" */}
+            {userUsdAllowance}
             <MainText>PFX</MainText>
           </div>
         </div>
         <div className="px-8 pt-2">
-          <MainText className="flex mt-4 items-center">
-            Destination address
-          </MainText>
+          <MainText className="flex mt-4 items-center">Destination address</MainText>
           <SideText className="mt-2 opacity-95">
-            Make sure to use a{' '}
-            <span className="font-bold text-red-error">MetaMask</span> address.
+            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
           </SideText>
           <div className="mt-4">
             <input
-              className={classNames(
-                'bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full'
-              )}
+              className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full')}
               style={{
                 height: calcRem(45),
                 fontSize: calcRem(12)
               }}
               value={userRecipientAddress}
-              onChange={(event) =>
-                setUserRecipientAddress(event.currentTarget.value)
-              }
+              onChange={(event) => setUserRecipientAddress(event.currentTarget.value)}
               placeholder="Please enter the receiving address"
               disabled={useMyAddress}
             />
-            <div
-              className="mt-4 px-2"
-              style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
-            >
+            <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5 ">
                 <div
                   className="border-2 rounded-md border-white border-opacity-30 flex justify-center items-center hover:border-blue-light hover:border-opacity-70"
@@ -283,9 +248,7 @@ export function PrivateSaleInterface({
                     type="checkbox"
                     className="opacity-0 absolute"
                     style={{ width: calcRem(22), height: calcRem(22) }}
-                    onChange={(event) =>
-                      setUseMyAddress(event.currentTarget.checked)
-                    }
+                    onChange={(event) => setUseMyAddress(event.currentTarget.checked)}
                   />
                   <Check
                     className={classNames(useMyAddress ? 'flex' : 'hidden')}
@@ -302,25 +265,17 @@ export function PrivateSaleInterface({
             {connected && <IsConnected />}
             {!connected && <ConnectButton />}
           </div>
-          <div
-            className="text-red-error mt-2"
-            style={{ fontSize: calcRem(12) }}
-          >
-            {!isWhitelisted && 'Error: Your address is not whitelisted'}
+          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
+            {/* // TODO: The below displays "your address is not whitelisted" for half a second when you log in. Fix this */}
+            {/* // TODO: When changing accounts, the error "your address is not whitelisted" needs to change */}
+            {connected && !isWhitelisted && 'Error: Your address is not whitelisted'}
           </div>
-          <div
-            className="mt-6 opacity-40 text-center"
-            style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}
-          >
+          <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
-            You will start receiving your tokens after the ICO has ended. Since
-            you are participating at a low price, most of your tokens will be
-            locked and vested at a later date.
+            You will start receiving your tokens after the ICO has ended. Since you are participating at a low price,
+            most of your tokens will be locked and vested at a later date.
           </div>
-          <div
-            className="mt-6 font-bold text-center"
-            style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}
-          >
+          <div className="mt-6 font-bold text-center" style={{ fontSize: calcRem(14), lineHeight: calcRem(18) }}>
             Your total funds in this private sale: 0.82 {SYMBOL}
           </div>
         </div>
@@ -335,16 +290,15 @@ export function PrivateSaleInterface({
     </div>
   )
 
+  // TODO: Wrong function name?
   function IsConnected() {
     return (
       <ActionButton
         name="Purchase"
-        disabled={
-          !isWhitelisted ||
-          userBnbAllowance == '0' ||
-          !(useMyAddress && userRecipientAddress == '')
-        }
-        click={purchase}
+        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress == '')}
+        click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
+        // TODO: While the transaction is going, we should write a "please wait" button
+        // TODO: When the transaction is done, should we reset the other fields to 0?
       />
     )
   }
@@ -365,9 +319,10 @@ export function PrivateSaleInterface({
           fontSize: calcRem(14),
           lineHeight: calcRem(16)
         }}
-        onClick={() => connectWallet()}
+        onClick={() => requestConnection()}
+        // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
       >
-        {hasWallet ? 'Connect your wallet' : 'Install Metamask'}
+        {typeof window === 'undefined' || hasWallet ? 'Connect your wallet' : 'Install Metamask'}
       </div>
     )
   }
@@ -403,9 +358,7 @@ function ActionButton({ name, disabled, click }: ActionButtonProps) {
     <div
       className={classNames(
         'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light',
-        disabled
-          ? 'opacity-40 hover:cursor-not-allowed'
-          : 'hover:cursor-pointer hover:bg-white hover:text-blue-light'
+        disabled ? 'opacity-40 hover:cursor-not-allowed' : 'hover:cursor-pointer hover:bg-white hover:text-blue-light'
       )}
       style={{
         height: calcRem(44),

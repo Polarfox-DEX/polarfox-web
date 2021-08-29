@@ -1,11 +1,6 @@
 export function Check(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      version="1.1"
-      viewBox="0 0 17 12"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         transform="translate(-9 -11)"
         fill="white"

@@ -30,10 +30,7 @@ export function Question({ question, isOpenDefault, children }: QuestionProps) {
         </button>
       </h3>
       {isOpen && (
-        <div
-          className="mt-3 mb-8 text-gray"
-          style={{ lineHeight: calcRem(30) }}
-        >
+        <div className="mt-3 mb-8 text-gray" style={{ lineHeight: calcRem(30) }}>
           {children}
         </div>
       )}

@@ -1,13 +1,6 @@
 export function AnalyticsGradient(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      width="90"
-      height="60"
-      viewBox="0 0 90 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="90" height="60" viewBox="0 0 90 60" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M6.47788 27.3607C2.90024 27.3607 0 30.261 0 33.8386V53.5221C0 57.0997 2.90024 60 6.47788 60C10.0555 60 12.9558 57.0997 12.9558 53.5221V33.8386C12.9558 30.261 10.0555 27.3607 6.47788 27.3607Z"
         fill="url(#paint0_linear)"
@@ -40,25 +33,11 @@ export function AnalyticsGradient(props: React.SVGProps<SVGSVGElement>) {
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
-        <linearGradient
-          id="paint1_linear"
-          x1="83.287"
-          y1="17.7605"
-          x2="83.287"
-          y2="60"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint1_linear" x1="83.287" y1="17.7605" x2="83.287" y2="60" gradientUnits="userSpaceOnUse">
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
-        <linearGradient
-          id="paint2_linear"
-          x1="64.0843"
-          y1="0"
-          x2="64.0843"
-          y2="59.9999"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint2_linear" x1="64.0843" y1="0" x2="64.0843" y2="59.9999" gradientUnits="userSpaceOnUse">
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>

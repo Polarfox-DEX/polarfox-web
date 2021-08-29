@@ -7,22 +7,9 @@ interface PfxFiguresProps {
 
 export function PfxFigures({ className }: PfxFiguresProps) {
   return (
-    <div
-      className={classNames(
-        'container flex flex-wrap justify-between gap-5 desktop:px-4',
-        className
-      )}
-    >
-      <PfxFigureBox
-        title="Total PFX supply"
-        figure="30,000,000 PFX"
-        backgroundColor="#939EAC"
-      />
-      <PfxFigureBox
-        title="Circulating supply"
-        figure="0 PFX"
-        backgroundColor="#738193"
-      />
+    <div className={classNames('container flex flex-wrap justify-between gap-5 desktop:px-4', className)}>
+      <PfxFigureBox title="Total PFX supply" figure="30,000,000 PFX" backgroundColor="#939EAC" />
+      <PfxFigureBox title="Circulating supply" figure="0 PFX" backgroundColor="#738193" />
       <PfxFigureBox title="Market Cap" figure="$0" backgroundColor="#9EAEC1" />
       <PfxFigureBox title="Holders" figure="0" backgroundColor="#667F9F" />
     </div>
@@ -46,16 +33,10 @@ function PfxFigureBox({ title, figure, backgroundColor }: PfxFigureBoxProps) {
         borderRadius: calcRem(10)
       }}
     >
-      <p
-        className="opacity-40"
-        style={{ fontSize: calcRem(14), lineHeight: calcRem(15.4) }}
-      >
+      <p className="opacity-40" style={{ fontSize: calcRem(14), lineHeight: calcRem(15.4) }}>
         {title}
       </p>
-      <p
-        className="mt-5"
-        style={{ fontSize: calcRem(24), lineHeight: calcRem(26.4) }}
-      >
+      <p className="mt-5" style={{ fontSize: calcRem(24), lineHeight: calcRem(26.4) }}>
         {figure}
       </p>
     </div>
