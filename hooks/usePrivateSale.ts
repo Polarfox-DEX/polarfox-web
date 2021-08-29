@@ -2,17 +2,20 @@ import { useCallback, useEffect, useState } from 'react'
 import { ChainId } from '../blockchain/const'
 import { privateSale } from '../blockchain/contracts/privateSale'
 import { web3 } from '../blockchain/web3'
+import { useInterval } from './useInterval'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
   currentBnbPrice: number
   isWhitelisted: boolean
+  remaining: number
   buyTokens: (amount: string, address: string) => void
 }
 
 export function usePrivateSale(): PrivateSale {
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false)
+  const [remaining, setRemaining] = useState<number>(0)
   // TODO: If we want, we can have multiple error message fields
   const [errorMessage, setErrorMessage] = useState<string>('')
 
@@ -26,6 +29,17 @@ export function usePrivateSale(): PrivateSale {
         .methods.currentBnbPrice()
         .call()
         .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
+
+      // Get remaining amount of USD in the presale
+      getSoldAmount(chainId)
+
+      // Register to 'Sold' event of contract and compute remaining value when event is thrown 
+      privateSale(chainId).events.Sold({ fromBlock: 'latest' }, getSoldAmount(chainId))
+
+      // privateSale(chainId)
+      //   .methods.
+      //   .call()
+      //   .then(() => )
 
       // If the user has a wallet
       if (hasWallet) {
@@ -75,9 +89,17 @@ export function usePrivateSale(): PrivateSale {
     }
   }
 
+  async function getSoldAmount(chainId: ChainId) {
+    await privateSale(chainId)
+      .methods.soldAmount()
+      .call()
+      .then((soldAmount: number) => setRemaining(1000000 - web3.utils.fromWei(soldAmount)))
+  }
+
   return {
     currentBnbPrice,
     isWhitelisted,
+    remaining,
     buyTokens
   }
 }
