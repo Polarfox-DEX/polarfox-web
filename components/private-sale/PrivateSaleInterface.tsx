@@ -230,8 +230,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         <div className="px-8 pt-2">
           <MainText className="flex mt-4 items-center">Destination address</MainText>
           <SideText className="mt-2 opacity-95">
-            Make sure to use a{' '}
-            <span className="font-bold text-red-error">MetaMask</span> address.
+            Make sure to use a <span className="font-bold text-red-error">MetaMask</span> address.
           </SideText>
           <div className="mt-4">
             <input
@@ -255,9 +254,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                     type="checkbox"
                     className="opacity-0 absolute"
                     style={{ width: calcRem(22), height: calcRem(22) }}
-                    onChange={(event) =>
-                      setUseOtherAddress(event.currentTarget.checked)
-                    }
+                    onChange={(event) => setUseOtherAddress(event.currentTarget.checked)}
                   />
                   <Check
                     className={classNames(useOtherAddress ? 'flex' : 'hidden')}

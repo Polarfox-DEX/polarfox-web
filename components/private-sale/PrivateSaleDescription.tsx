@@ -69,6 +69,7 @@ export function PrivateSaleDescription({ className }: SectionProps) {
             <span className="font-bold text-blue-light">MetaMask</span> address. This is because most other wallets do
             not support Avalanche yet.
           </li>
+          <li>Due to regulatory concerns, we are unable to accept investments from US and Canadian citizens.</li>
         </ul>
       </div>
       <style jsx>{`
