@@ -67,7 +67,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       setUserRecipientAddress(address)
       const regex = new RegExp("^0x[a-fA-F0-9]{40}$");
       setIsInvalidAddress(!regex.test(address))
-      console.log(!regex.test(address))
     }else{
       setIsInvalidAddress(false)
       setUserRecipientAddress("")
