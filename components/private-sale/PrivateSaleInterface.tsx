@@ -130,7 +130,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD'
-                  // TODO: When connecting a wallet, if a user has already put a BNB amount, the USD amount should display properly.
                 }).format(userUsdAllowance)}
               </SideText>
             </div>
