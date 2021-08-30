@@ -1,8 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import Web3 from 'web3'
 
-// TODO: When changing accounts, the value "your total funds in this presale" does not get updated
-
 // Front-end
 import classNames from 'classnames'
 import Clock from '../svg/Clock'
