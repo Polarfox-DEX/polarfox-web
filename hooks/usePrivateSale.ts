@@ -18,7 +18,7 @@ export function usePrivateSale(): PrivateSale {
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(false)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false)
-  const [remaining, setRemaining] = useState<number>(0)
+  const [remaining, setRemaining] = useState<number>(1000000)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
 
   const { hasWallet, connected, chainId, accounts, gasPrice } = useWallet()
@@ -28,7 +28,7 @@ export function usePrivateSale(): PrivateSale {
     setCorrectNetwork(chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET))
 
     // If the network is correct
-    if (chainId != null && correctNetwork) {
+    if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
       // Get the current BNB price from the private sale contract
       privateSale(chainId)
         .methods.currentBnbPrice()
