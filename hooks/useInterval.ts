@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 export function useInterval({
   callback,
   delay,
-  leading,
+  leading
 }: {
   callback: () => void
   delay: null | number
@@ -23,7 +23,7 @@ export function useInterval({
       current && current()
     }
 
-    if (delay !== null) {
+    if (delay) {
       if (leading) tick()
       const id = setInterval(tick, delay)
       return () => clearInterval(id)

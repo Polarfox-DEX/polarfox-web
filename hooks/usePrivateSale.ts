@@ -32,7 +32,7 @@ export function usePrivateSale(): PrivateSale {
     // If the chainId changed
     if (chainId !== lastChainId) {
       // If the last chainId was null, do nothing
-      if (lastChainId != null) {
+      if (lastChainId) {
         // If it changed from a good chainId to a bad chainId
         if (isGoodChainId(lastChainId) && !isGoodChainId(chainId)) {
           // Refresh the page
@@ -51,7 +51,7 @@ export function usePrivateSale(): PrivateSale {
     }
 
     // If the network is correct
-    if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
+    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
       // Get the current BNB price from the private sale contract
       privateSale(chainId)
         .methods.currentBnbPrice()
@@ -82,7 +82,7 @@ export function usePrivateSale(): PrivateSale {
     if (justBought) setJustBought(false)
 
     async function getBoughtAmount(address: string) {
-      if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
+      if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
         // Check if the user has bought in the presale
         const hasBought = await privateSale(chainId).methods.hasBought(address).call()
 
@@ -120,20 +120,18 @@ export function usePrivateSale(): PrivateSale {
     }
   }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId, justBought])
 
-  async function buyTokens(amount: string, address: string): Promise<boolean>{
+  async function buyTokens(amount: string, address: string): Promise<boolean> {
     // If the network is correct and the user is connected and whitelisted
-    if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
+    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
         // TODO: Try without gas price
-        await privateSale(chainId)
-          .methods.buyTokens()
-          .send({
-            from: address,
-            value: amountInWei,
-            gasPrice: gasPrice
-          })
+        await privateSale(chainId).methods.buyTokens().send({
+          from: address,
+          value: amountInWei,
+          gasPrice: gasPrice
+        })
 
         // The transaction was successful
         return true
@@ -148,35 +146,6 @@ export function usePrivateSale(): PrivateSale {
     // The transaction failed
     return false
   }
-
-  // async function buyTokens(amount: string, address: string){
-  //   // If the network is correct and the user is connected and whitelisted
-  //   if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
-  //     const amountInWei = web3.utils.toWei(amount)
-
-  //     try {
-  //       // TODO: Try without gas price
-  //       await privateSale(chainId)
-  //         .methods.buyTokens()
-  //         .send({
-  //           from: address,
-  //           value: amountInWei,
-  //           gasPrice: gasPrice
-  //         })
-  //         .then((data: any) => {
-  //           console.log(data)
-  //         })
-  //         .catch((error: any) => {
-  //           console.log(error)
-  //         })
-  //     } catch (error) {
-  //       // TODO: Display the error message
-  //       console.log('An error occurred in buyTokens():', error)
-  //     }
-  //   } else {
-  //     // TODO: Print an error message
-  //   }
-  // }
 
   async function getSoldAmount(chainId: ChainId) {
     await privateSale(chainId)
@@ -198,5 +167,5 @@ export function usePrivateSale(): PrivateSale {
 
 // Returns true if the chainId is BSC or BSC testnet, false otherwise
 function isGoodChainId(chainId: number | null): boolean {
-  return chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)
+  return chainId !== null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)
 }
