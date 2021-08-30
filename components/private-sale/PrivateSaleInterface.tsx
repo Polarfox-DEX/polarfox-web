@@ -19,7 +19,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
-  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } = usePrivateSale()
+  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
+    usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
@@ -58,21 +59,22 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   var purchase = () => {
     setPurchaseLoading(true)
 
-    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)
-      .then((data: any) => {
-        // Transaction is successful, show a confirmation message then reset the interface to default
+    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress).then((success: boolean) => {
+      // Transaction is successful, show a confirmation message then reset the interface to default
+      if (success) {
         setBuySuccessfulMessage(
           'Successfuly bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
         )
         resetUIToDefault()
-        setJustBought(true)
-
-        console.log(data)
-      })
-      .catch((error: any) => {
+      }
+      // The transaction was not successful
+      else {
         setPurchaseLoading(false)
-        console.log(error)
-      })
+      }
+
+      // Recalculate the values displayed on the UI
+      setJustBought(true)
+    })
   }
 
   return (

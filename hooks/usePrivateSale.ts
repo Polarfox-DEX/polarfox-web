@@ -120,20 +120,23 @@ export function usePrivateSale(): PrivateSale {
     }
   }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId, justBought])
 
-  async function buyTokens(amount: string, address: string): Promise<any>{
+  async function buyTokens(amount: string, address: string): Promise<boolean>{
     // If the network is correct and the user is connected and whitelisted
     if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
         // TODO: Try without gas price
-        return await privateSale(chainId)
+        await privateSale(chainId)
           .methods.buyTokens()
           .send({
             from: address,
             value: amountInWei,
             gasPrice: gasPrice
           })
+
+        // The transaction was successful
+        return true
       } catch (error) {
         // TODO: Display the error message
         console.error('An error occurred in buyTokens():', error)
@@ -141,6 +144,9 @@ export function usePrivateSale(): PrivateSale {
     } else {
       // TODO: Print an error message
     }
+
+    // The transaction failed
+    return false
   }
 
   // async function buyTokens(amount: string, address: string){
