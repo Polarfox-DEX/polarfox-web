@@ -3,6 +3,7 @@ import Web3 from 'web3'
 
 // TODO: Implement "wrong network"
 // TODO: BSC mainnet crashes
+// TODO: When changing accounts, the value "your total funds in this presale" does not get updated
 
 // Front-end
 import classNames from 'classnames'
@@ -13,29 +14,16 @@ import { DownArrow } from '../svg/DownArrow'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 // Back-end
-// import Web3 from 'web3'
-// import { ChainId } from '../../blockchain/const'
-// import { PRIVATE_SALE_ADDRESS, privateSale } from '../../blockchain/contracts/privateSale'
-// import { web3 } from '../../blockchain/web3'
 import { useWallet } from '../../hooks/useWallet'
 import { usePrivateSale } from '../../hooks/usePrivateSale'
 
-// let window_: any
-// let privateSaleContract: any
-// let web3: Web3
-
 export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
-  // const TOTAL_TO_BUY: number = 1000000
 
   const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
-  // const [userBalance, setUserBalance] = useState<number>(0.0)
-  // const [connected, setConnected] = useState(false)
-  // const [accounts, setAccounts] = useState<string[]>([])
-  // const [hasWallet, setHasWallet] = useState(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
   const [userUsdAllowance, setUserUsdAllowance] = useState<number>(0.0)
@@ -43,28 +31,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
   const [approved, setApproved] = useState<boolean>(false)
-  // const [isWhitelisted, setWhitelisted] = useState<boolean>(true)
 
-  // const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0.0)
   const [participants, setParticipants] = useState<number>(176)
   const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
-
-  // var initializePrivateSaleContract = (accounts: string[]) => {
-  //   // Access the private sale contract
-  //   privateSaleContract = new web3.eth.Contract(abi, contractAddress)
-
-  //   // Get the current BNB price from the contract
-  //   privateSaleContract.methods
-  //     .currentBnbPrice()
-  //     .call()
-  //     .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
-
-  //   // See if the currently connected account is whitelisted
-  //   privateSaleContract.methods
-  //     .isWhitelisted(accounts[0])
-  //     .call()
-  //     .then((isWhitelisted: boolean) => setWhitelisted(isWhitelisted))
-  // }
 
   var userAllowanceChange = (value: string) => {
     setUserBnbAllowance(value.replace(',', '.'))
@@ -85,70 +54,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       userAllowanceChange(max)
     }
   }
-
-  // var connectWallet = async () => {
-  // if (hasWallet) {
-  //   web3 = new Web3(window_.ethereum)
-
-  //   //Verify user is connected to right network
-  //   await window_.ethereum
-  //     .request({ method: 'eth_chainId' })
-  //     .then(async (chainId: any) => {
-  //       if (web3?.utils.hexToNumber(chainId) == ChainId.BSC_TESTNET) {
-  //         await window_.ethereum
-  //           .request({ method: 'eth_requestAccounts' })
-  //           .then(async (accounts: string[]) => {
-  //             setAccounts(accounts)
-  //             setConnected(true)
-
-  // initializePrivateSaleContract(accounts)
-
-  //               await window_.ethereum
-  //                 .request({ method: 'eth_getBalance', params: [accounts[0]] })
-  //                 .then((balance: any) => {
-  //                   setUserBalance(parseFloat(web3.utils.fromWei(balance)))
-  //                 })
-  //                 .catch(console.log)
-  //             })
-  //             .catch(console.log)
-  //         }
-  //       })
-  //       .catch(console.log)
-  //   }
-  // }
-
-  // var approveContract = () => {
-  //   alert('Contract approved')
-  //   setApproved(true)
-  // }
-
-  // var purchase = () => {
-  // if (web3 != undefined && isWhitelisted) {
-  // const amountInWei = web3.utils.toWei(userBnbAllowance)
-  // const address = useMyAddress ? accounts[0] : userRecipientAddress
-
-  //   console.log(accounts)
-
-  //   window_.ethereum
-  //     .request({ method: 'eth_gasPrice', params: [] })
-  //     .then(async (gasFees: number) => {
-  //       await privateSaleContract.methods
-  //         .buyTokens()
-  //         .send({
-  //           from: address,
-  //           value: amountInWei,
-  //           gasPrice: gasFees
-  //         })
-  //         .then((data: any) => {
-  //           console.log(data)
-  //         })
-  //         .catch((error: any) => {
-  //           console.log(error)
-  //         })
-  //     })
-  // }
-  //setErrorMessage("This is an error message")
-  // }
 
   return (
     <div className={classNames('sale-modal bg-blue tablet:rounded-3xl text-white w-full bg-stretch pb-8', className)}>
@@ -311,8 +216,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         name="Purchase"
         disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '')}
         click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
-        // TODO: While the transaction is going, we should write a "please wait" button
-        // TODO: When the transaction is done, should we reset the other fields to 0?
+      // TODO: While the transaction is going, we should write a "please wait" button
+      // TODO: When the transaction is done, should we reset the other fields to 0?
       />
     )
   }
@@ -334,7 +239,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           lineHeight: calcRem(16)
         }}
         onClick={() => requestConnection()}
-        // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
+      // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
       >
         {typeof window === 'undefined' || hasWallet ? 'Connect your wallet' : 'Install Metamask'}
       </button>
@@ -343,7 +248,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 }
 
 function WrongNetworkButton() {
-  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => {}} isError />
+  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => { }} isError />
 }
 
 interface ActionButtonProps {
