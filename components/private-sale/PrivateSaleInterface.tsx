@@ -292,7 +292,7 @@ function ActionButton({ children, disabled, click, isError }: ActionButtonProps)
         'flex items-center justify-center w-full rounded-3xl mx-1 font-semibold text-white bg-blue-light hover:cursor-pointer',
         'disabled:opacity-40 disabled:hover:cursor-not-allowed',
         'hover:bg-white hover:text-blue-light disabled:hover:bg-blue-light disabled:hover:text-white',
-        { 'bg-red-error text-white disabled:opacity-100': isError }
+        { 'bg-red-error text-white disabled:opacity-100 disabled:hover:bg-red-error': isError }
       )}
       style={{
         height: calcRem(44),

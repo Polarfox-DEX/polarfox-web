@@ -1,7 +1,7 @@
 import { web3 } from '../web3'
 import { AbiItem } from 'web3-utils'
 import { ChainId } from '../const'
-import * as PolarfoxPrivateSale from '@polarfox/presale/artifacts/contracts/PolarfoxPrivateSale.sol/PolarfoxPrivateSale.json'
+import PolarfoxPrivateSale from '@polarfox/presale/artifacts/contracts/PolarfoxPrivateSale.sol/PolarfoxPrivateSale.json'
 
 export const PRIVATE_SALE_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.BSC]: '',

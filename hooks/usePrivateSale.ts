@@ -19,12 +19,34 @@ export function usePrivateSale(): PrivateSale {
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false)
   const [remaining, setRemaining] = useState<number>(1000000)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
+  const [lastChainId, setLastChainId] = useState<number | null>(null)
 
   const { hasWallet, connected, chainId, accounts, gasPrice } = useWallet()
 
   useEffect(() => {
     // See if the chainId is correct
-    setCorrectNetwork(chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET))
+    setCorrectNetwork(isGoodChainId(chainId))
+
+    // If the chainId changed
+    if (chainId !== lastChainId) {
+      // If the last chainId was null, do nothing
+      if (lastChainId != null) {
+        // If it changed from a good chainId to a bad chainId
+        if (isGoodChainId(lastChainId) && !isGoodChainId(chainId)) {
+          // Refresh the page
+          // TODO: Eventually find a better solution
+          window.location.reload()
+        }
+
+        // If it changed from a good chainId to a good chainId
+        else if (isGoodChainId(lastChainId) && isGoodChainId(chainId)) {
+          // TODO
+        }
+      }
+
+      // Update the last chainId
+      setLastChainId(chainId)
+    }
 
     // If the network is correct
     if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
@@ -37,7 +59,7 @@ export function usePrivateSale(): PrivateSale {
       // Get remaining amount of USD in the presale
       getSoldAmount(chainId)
 
-      // Register to 'Sold' event of contract and compute remaining value when event is thrown 
+      // Register to 'Sold' event of contract and compute remaining value when event is thrown
       privateSale(chainId).events.Sold({ fromBlock: 'latest' }, getSoldAmount(chainId))
 
       // If the user has connected his wallet to the application
@@ -91,7 +113,7 @@ export function usePrivateSale(): PrivateSale {
         }
       }
     }
-  }, [correctNetwork, hasWallet, connected, chainId, accounts])
+  }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId])
 
   async function buyTokens(amount: string, address: string): Promise<any>{
     // If the network is correct and the user is connected and whitelisted
@@ -109,7 +131,7 @@ export function usePrivateSale(): PrivateSale {
           })
       } catch (error) {
         // TODO: Display the error message
-        console.log('An error occurred in buyTokens():', error)
+        console.error('An error occurred in buyTokens():', error)
       }
     } else {
       // TODO: Print an error message
@@ -160,4 +182,9 @@ export function usePrivateSale(): PrivateSale {
     boughtAmount,
     buyTokens
   }
+}
+
+// Returns true if the chainId is BSC or BSC testnet, false otherwise
+function isGoodChainId(chainId: number | null): boolean {
+  return chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)
 }
