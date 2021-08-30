@@ -76,37 +76,41 @@ export function useWallet(): Wallet {
   }, [])
 
   useEffect(() => {
-    window_.ethereum.on('accountsChanged', (accounts: string[]) => {
-      connectAccount(accounts, balance, gasPrice, chainId)
-    })
+    if (window_.ethereum) {
+      window_.ethereum.on('accountsChanged', (accounts: string[]) => {
+        connectAccount(accounts, balance, gasPrice, chainId)
+      })
+    }
   }, [balance, chainId, gasPrice, connectAccount])
 
   useInterval({
     callback: async () => {
-      // If the chain changed
-      const currentChainId = await getChainId()
-      if (currentChainId !== chainId) {
-        connectAccount(await getAccounts(), balance, gasPrice, currentChainId)
-      }
-
-      // If the balance changed
-      if (connected) {
-        const currentBalance = await getBalance(accounts[0])
-        if (currentBalance !== balance) {
-          setBalance(currentBalance)
+      if (window_.ethereum) {
+        // If the chain changed
+        const currentChainId = await getChainId()
+        if (currentChainId !== chainId) {
+          connectAccount(await getAccounts(), balance, gasPrice, currentChainId)
         }
-      }
-
-      // If the gas price changed
-      const currentGasPrice = await getGasPrice()
-      if (currentGasPrice !== gasPrice) {
-        setGasPrice(gasPrice)
-      }
-
-      // If the user disconnected
-      if (connected && hasWallet() && (await getAccounts()).length === 0) {
-        setConnected(false)
-        setAccounts([])
+  
+        // If the balance changed
+        if (connected) {
+          const currentBalance = await getBalance(accounts[0])
+          if (currentBalance !== balance) {
+            setBalance(currentBalance)
+          }
+        }
+  
+        // If the gas price changed
+        const currentGasPrice = await getGasPrice()
+        if (currentGasPrice !== gasPrice) {
+          setGasPrice(gasPrice)
+        }
+  
+        // If the user disconnected
+        if (connected && hasWallet() && (await getAccounts()).length === 0) {
+          setConnected(false)
+          setAccounts([])
+        }
       }
     },
     delay: 500,

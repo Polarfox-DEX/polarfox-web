@@ -11,4 +11,5 @@ export const AKITA_LINK = "https://akita.network"
 export const ABOUT_LINK = "/about"
 export const ROADMAP_LINK = "/#roadmap"
 export const FAQ_LINK = "/faq"
+export const METAMASK_LINK = "https://metamask.io/download"
 

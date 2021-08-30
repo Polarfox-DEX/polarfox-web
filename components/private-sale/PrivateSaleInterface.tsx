@@ -7,6 +7,7 @@ import Clock from '../svg/Clock'
 import { calcRem } from '../../utils/styles'
 import { Check } from '../svg/Check'
 import { DownArrow } from '../svg/DownArrow'
+import { METAMASK_LINK } from '../const/links'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 // Back-end
@@ -63,13 +64,13 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   }
 
   var onUserRecipientAddressChange = (address: string) => {
-    if(address != ""){
+    if (address != '') {
       setUserRecipientAddress(address)
-      const regex = new RegExp("^0x[a-fA-F0-9]{40}$");
+      const regex = new RegExp('^0x[a-fA-F0-9]{40}$')
       setIsInvalidAddress(!regex.test(address))
-    }else{
+    } else {
       setIsInvalidAddress(false)
-      setUserRecipientAddress("")
+      setUserRecipientAddress('')
     }
   }
 
@@ -185,7 +186,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </SideText>
           <div className="mt-4">
             <input
-              className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full',{ "border-2 border-red-error"  : isInvalidAddress})}
+              className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full', {
+                'border-2 border-red-error': isInvalidAddress
+              })}
               style={{
                 height: calcRem(45),
                 fontSize: calcRem(12)
@@ -196,7 +199,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               disabled={useMyAddress}
             />
             <div className="text-red-error mt-3" style={{ fontSize: calcRem(12) }}>
-              {isInvalidAddress && "Invalid address format"}
+              {isInvalidAddress && 'Invalid address format'}
             </div>
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5 ">
@@ -259,7 +262,11 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   function PurchaseButton() {
     return (
       <ActionButton
-        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '' || !isInvalidAddress)}
+        disabled={
+          !isWhitelisted ||
+          userBnbAllowance == '0' ||
+          !((useMyAddress && userRecipientAddress === '') || !isInvalidAddress)
+        }
         click={() => purchase()}
       >
         {!purchaseLoading && 'Purchase'}
@@ -273,22 +280,23 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   }
 
   function ConnectButton() {
-    return (
-      <button
-        className={classNames(
-          'flex items-center justify-center bg-blue-light w-full rounded-3xl mx-1 font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light'
-        )}
-        style={{
-          height: calcRem(44),
-          marginTop: calcRem(23),
-          fontSize: calcRem(14),
-          lineHeight: calcRem(16)
-        }}
-        onClick={() => requestConnection()}
-        // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
-      >
-        {typeof window === 'undefined' || hasWallet ? 'Connect your wallet' : 'Install Metamask'}
+    const buttonClassName =
+      'flex items-center justify-center bg-blue-light w-full rounded-3xl mx-1 font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light'
+    const buttonStyle = {
+      height: calcRem(44),
+      marginTop: calcRem(23),
+      fontSize: calcRem(14),
+      lineHeight: calcRem(16)
+    }
+
+    return typeof window === 'undefined' || hasWallet ? (
+      <button className={buttonClassName} style={buttonStyle} onClick={() => requestConnection()}>
+        Connect your wallet
       </button>
+    ) : (
+      <a className={buttonClassName} style={buttonStyle} href={METAMASK_LINK} target="_blank" rel="noopener noreferrer">
+        Install MetaMask
+      </a>
     )
   }
 }
