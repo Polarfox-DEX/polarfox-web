@@ -20,7 +20,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
     usePrivateSale()
 
-  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [errorInput, setErrorInput] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
@@ -38,6 +38,15 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     const val = value == '' ? '0' : value.replace(',', '.')
     setUserBnbAllowance(val)
     setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
+
+    // If the allowance is higher than the user balance, write an error message
+    if (balance && parseFloat(val) > balance) {
+      setErrorInput('Insufficent funds.')
+    }
+    // Clear the error message if needed
+    else if (errorInput && balance && parseFloat(val) <= balance) {
+      setErrorInput('')
+    }
   }
 
   var setMaxUserAllowance = () => {
@@ -102,20 +111,19 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div
             className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
-              'border-2 border-red-error': errorMessage !== ''
+              'border-2 border-red-error': errorInput
             })}
             style={{
               height: calcRem(87)
             }}
           >
-            <div className="font-semibold" style={{ fontSize: calcRem(18) }}>
+            <div className="font-semibold truncate" style={{ fontSize: calcRem(18) }}>
               <input
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
-                // TODO: Should display "Insufficient funds" when the amount is too high.
                 onChange={(event) => userAllowanceChange(event.currentTarget.value)}
               />
-              <SideText>
+              <SideText className="truncate">
                 {'= '}
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
@@ -124,7 +132,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 }).format(userUsdAllowance)}
               </SideText>
             </div>
-            <div className="mt-1">
+            <div className="mt-1 pl-2">
               <div className="flex justify-between">
                 <div
                   className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light"
@@ -145,14 +153,14 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             </div>
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-            {errorMessage}
+            {errorInput}
           </div>
           <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
           </div>
           <div className={classNames('bg-blue-gray rounded-xl flex justify-between items-center p-6')}>
-            {new Intl.NumberFormat('en-US').format(userUsdAllowance)}
-            <MainText>PFX</MainText>
+            <div className="truncate">{new Intl.NumberFormat('en-US').format(userUsdAllowance)}</div>
+            <MainText className="pl-2">PFX</MainText>
           </div>
         </div>
         <div className="px-8 pt-2">
