@@ -259,7 +259,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   function PurchaseButton() {
     return (
       <ActionButton
-        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '' || !isInvalidAddress)}
+        disabled={!isWhitelisted || userBnbAllowance == '0' || (!useMyAddress && userRecipientAddress === '') || isInvalidAddress}
         click={() => purchase()}
       >
         {!purchaseLoading && 'Purchase'}
