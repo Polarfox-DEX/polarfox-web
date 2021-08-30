@@ -15,7 +15,7 @@ export interface PrivateSale {
 }
 
 export function usePrivateSale(): PrivateSale {
-  const [correctNetwork, setCorrectNetwork] = useState<boolean>(false)
+  const [correctNetwork, setCorrectNetwork] = useState<boolean>(true)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
   const [remaining, setRemaining] = useState<number>(1000000)
@@ -26,8 +26,8 @@ export function usePrivateSale(): PrivateSale {
   const { hasWallet, connected, chainId, accounts, gasPrice } = useWallet()
 
   useEffect(() => {
-    // See if the chainId is correct
-    setCorrectNetwork(isGoodChainId(chainId))
+    // See if the chainId is correct (if it is defined)
+    setCorrectNetwork(!chainId || chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)
 
     // If the chainId changed
     if (chainId !== lastChainId) {

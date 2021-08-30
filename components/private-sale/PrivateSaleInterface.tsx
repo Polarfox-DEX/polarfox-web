@@ -17,7 +17,7 @@ import { usePrivateSale } from '../../hooks/usePrivateSale'
 export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
-  const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
+  const { hasWallet, connected, accounts, balance, chainId, requestConnection, gasPrice } = useWallet()
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
     usePrivateSale()
 
@@ -225,9 +225,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         </div>
         <div className="px-8 mt-4">
           <div className="mb-6 flex">
-            {!correctNetwork && connected && <WrongNetworkButton />}
-            {correctNetwork && connected && <PurchaseButton />}
-            {!connected && <ConnectButton />}
+            {connected && chainId && (correctNetwork ? <PurchaseButton /> : <WrongNetworkButton />)}
+            {(!connected || !chainId) && <ConnectButton />}
           </div>
           <div className="mt-2" style={{ fontSize: calcRem(12) }}>
             <div className="text-red-error">
