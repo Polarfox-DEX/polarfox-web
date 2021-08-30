@@ -24,6 +24,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [buySuccessfullMessage, setBuySuccessfullMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
@@ -49,6 +50,13 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       setUserBnbAllowance(max)
       userAllowanceChange(max)
     }
+  }
+
+  var onUserRecipientAddressChange = (address: string) => {
+    setUserRecipientAddress(address)
+    const regex = new RegExp("^0x[a-fA-F0-9]{40}$");
+    setIsInvalidAddress(!regex.test(address))
+    console.log(!regex.test(address))
   }
 
   var resetUIToDefault = () => {
@@ -163,16 +171,19 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </SideText>
           <div className="mt-4">
             <input
-              className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full')}
+              className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full',{ "border-2 border-red-error"  : isInvalidAddress})}
               style={{
                 height: calcRem(45),
                 fontSize: calcRem(12)
               }}
               value={userRecipientAddress}
-              onChange={(event) => setUserRecipientAddress(event.currentTarget.value)}
+              onChange={(event) => onUserRecipientAddressChange(event.currentTarget.value)}
               placeholder="Please enter the receiving address"
               disabled={useMyAddress}
             />
+            <div className="text-red-error mt-3" style={{ fontSize: calcRem(12) }}>
+              {isInvalidAddress && "Invalid address format"}
+            </div>
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5 ">
                 <div
@@ -236,7 +247,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   function PurchaseButton() {
     return (
       <ActionButton
-        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '')}
+        disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '' || !isInvalidAddress)}
         click={() => purchase()}
       >
         {!purchaseLoading && 'Purchase'}
