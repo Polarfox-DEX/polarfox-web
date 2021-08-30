@@ -1,8 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import Web3 from 'web3'
 
-// TODO: Implement "wrong network"
-// TODO: BSC mainnet crashes
 // TODO: When changing accounts, the value "your total funds in this presale" does not get updated
 
 // Front-end
@@ -21,10 +19,10 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
-  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
+  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
-  const [buySuccessfullMessage, setBuySuccessfullMessage] = useState<string>('')
+  const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
@@ -62,11 +60,12 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
     buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)
       .then((data: any) => {
-        // transaction is successfull, show confirmation message then reset interface to default
-        setBuySuccessfullMessage(
-          'Successfully bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
+        // Transaction is successful, show a confirmation message then reset the interface to default
+        setBuySuccessfulMessage(
+          'Successfuly bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
         )
         resetUIToDefault()
+        setJustBought(true)
 
         console.log(data)
       })
@@ -207,7 +206,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             <div className="text-red-error">
               {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
             </div>
-            <div className="text-green-successfull">{buySuccessfullMessage !== '' && buySuccessfullMessage}</div>
+            <div className="text-green-successful">{buySuccessfulMessage}</div>
           </div>
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>

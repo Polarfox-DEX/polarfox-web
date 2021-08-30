@@ -11,6 +11,7 @@ export interface PrivateSale {
   remaining: number
   boughtAmount: number
   buyTokens: (amount: string, address: string) => Promise<any>
+  setJustBought: (justBought: boolean) => void
 }
 
 export function usePrivateSale(): PrivateSale {
@@ -20,6 +21,7 @@ export function usePrivateSale(): PrivateSale {
   const [remaining, setRemaining] = useState<number>(1000000)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
   const [lastChainId, setLastChainId] = useState<number | null>(null)
+  const [justBought, setJustBought] = useState<boolean>(false) // Here so we can go through the useEffect below at will
 
   const { hasWallet, connected, chainId, accounts, gasPrice } = useWallet()
 
@@ -76,6 +78,9 @@ export function usePrivateSale(): PrivateSale {
       }
     }
 
+    // Set the justBought variable to false if needed
+    if (justBought) setJustBought(false)
+
     async function getBoughtAmount(address: string) {
       if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET)) {
         // Check if the user has bought in the presale
@@ -113,7 +118,7 @@ export function usePrivateSale(): PrivateSale {
         }
       }
     }
-  }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId])
+  }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId, justBought])
 
   async function buyTokens(amount: string, address: string): Promise<any>{
     // If the network is correct and the user is connected and whitelisted
@@ -180,7 +185,8 @@ export function usePrivateSale(): PrivateSale {
     isWhitelisted,
     remaining,
     boughtAmount,
-    buyTokens
+    buyTokens,
+    setJustBought
   }
 }
 
