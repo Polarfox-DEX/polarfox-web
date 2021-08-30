@@ -24,6 +24,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const [buySuccessfullMessage, setBuySuccessfullMessage] = useState<string>('')
+  const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
   const [userUsdAllowance, setUserUsdAllowance] = useState<number>(0.0)
@@ -36,23 +38,42 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
 
   var userAllowanceChange = (value: string) => {
-    setUserBnbAllowance(value.replace(',', '.'))
-    setUserUsdAllowance(parseFloat(value) * currentBnbPrice)
-
-    // TODO: Refactor
-    if (value == '' || value == '0') {
-      setErrorMessage('Cannot buy 0 PFX')
-    } else {
-      setErrorMessage('')
-    }
+    const val = value == '' ? '0' : value.replace(',', '.')
+    setUserBnbAllowance(val)
+    setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
   }
 
   var setMaxUserAllowance = () => {
     if (connected) {
-      const max = balance ? (balance - parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
+      const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
       setUserBnbAllowance(max)
       userAllowanceChange(max)
     }
+  }
+
+  var resetUIToDefault = () => {
+    setUserBnbAllowance('0')
+    setUserUsdAllowance(0.0)
+    setPurchaseLoading(false)
+  }
+
+  var purchase = () => {
+    setPurchaseLoading(true)
+
+    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)
+      .then((data: any) => {
+        // transaction is successfull, show confirmation message then reset interface to default
+        setBuySuccessfullMessage(
+          'Successfully bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
+        )
+        resetUIToDefault()
+
+        console.log(data)
+      })
+      .catch((error: any) => {
+        setPurchaseLoading(false)
+        console.log(error)
+      })
   }
 
   return (
@@ -93,7 +114,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
                 // TODO: Should display "Insufficient funds" when the amount is too high.
-                // TODO: When the amount is empty, it should act as if it was 0
                 onChange={(event) => userAllowanceChange(event.currentTarget.value)}
               />
               <SideText>
@@ -181,10 +201,13 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             {correctNetwork && connected && <PurchaseButton />}
             {correctNetwork && !connected && <ConnectButton />}
           </div>
-          <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
+          <div className="mt-2" style={{ fontSize: calcRem(12) }}>
             {/* // TODO: The below displays "your address is not whitelisted" for half a second when you log in. Fix this */}
             {/* // TODO: When changing accounts, the error "your address is not whitelisted" needs to change */}
-            {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
+            <div className="text-red-error">
+              {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
+            </div>
+            <div className="text-green-successfull">{buySuccessfullMessage !== '' && buySuccessfullMessage}</div>
           </div>
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
@@ -213,12 +236,12 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   function PurchaseButton() {
     return (
       <ActionButton
-        name="Purchase"
         disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '')}
-        click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
-      // TODO: While the transaction is going, we should write a "please wait" button
-      // TODO: When the transaction is done, should we reset the other fields to 0?
-      />
+        click={() => purchase()}
+      >
+        {!purchaseLoading && 'Purchase'}
+        {purchaseLoading && 'Please wait...'}
+      </ActionButton>
     )
   }
 
@@ -239,7 +262,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           lineHeight: calcRem(16)
         }}
         onClick={() => requestConnection()}
-      // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
+        // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
       >
         {typeof window === 'undefined' || hasWallet ? 'Connect your wallet' : 'Install Metamask'}
       </button>
@@ -248,17 +271,21 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 }
 
 function WrongNetworkButton() {
-  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => { }} isError />
+  return (
+    <ActionButton disabled={true} click={() => {}} isError>
+      Wrong network - please switch to BSC
+    </ActionButton>
+  )
 }
 
 interface ActionButtonProps {
-  name: string
+  children: ReactNode
   disabled: boolean
   click: () => void
   isError?: boolean
 }
 
-function ActionButton({ name, disabled, click, isError }: ActionButtonProps) {
+function ActionButton({ children, disabled, click, isError }: ActionButtonProps) {
   return (
     <button
       className={classNames(
@@ -276,7 +303,7 @@ function ActionButton({ name, disabled, click, isError }: ActionButtonProps) {
       onClick={() => click()}
       disabled={disabled}
     >
-      {name}
+      {children}
     </button>
   )
 }

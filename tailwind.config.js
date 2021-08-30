@@ -39,6 +39,9 @@ module.exports = {
       white: colors.white,
       red: {
         error: '#F53939'
+      },
+      green: {
+        successfull: '#1CCB00'
       }
     },
     backgroundPosition: {

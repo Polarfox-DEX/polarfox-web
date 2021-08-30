@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ChainId } from '../blockchain/const'
 import { web3 } from '../blockchain/web3'
 import { useInterval } from './useInterval'
@@ -71,6 +71,14 @@ export function useWallet(): Wallet {
       setGasPrice(gasPrice)
     }
   }, [])
+
+  useEffect(() => {
+
+    window_.ethereum.on('accountsChanged', (accounts: string[]) => {
+      connectAccount(accounts,balance,gasPrice)
+    });
+
+  })
 
   useInterval({
     callback: async () => {

@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChainId } from '../blockchain/const'
 import { privateSale } from '../blockchain/contracts/privateSale'
 import { web3 } from '../blockchain/web3'
-import { useInterval } from './useInterval'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
@@ -11,7 +10,7 @@ export interface PrivateSale {
   isWhitelisted: boolean
   remaining: number
   boughtAmount: number
-  buyTokens: (amount: string, address: string) => void
+  buyTokens: (amount: string, address: string) => Promise<any>
 }
 
 export function usePrivateSale(): PrivateSale {
@@ -94,25 +93,19 @@ export function usePrivateSale(): PrivateSale {
     }
   }, [correctNetwork, hasWallet, connected, chainId, accounts])
 
-  async function buyTokens(amount: string, address: string) {
+  async function buyTokens(amount: string, address: string): Promise<any>{
     // If the network is correct and the user is connected and whitelisted
     if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
         // TODO: Try without gas price
-        await privateSale(chainId)
+        return await privateSale(chainId)
           .methods.buyTokens()
           .send({
             from: address,
             value: amountInWei,
             gasPrice: gasPrice
-          })
-          .then((data: any) => {
-            console.log(data)
-          })
-          .catch((error: any) => {
-            console.log(error)
           })
       } catch (error) {
         // TODO: Display the error message
@@ -122,6 +115,35 @@ export function usePrivateSale(): PrivateSale {
       // TODO: Print an error message
     }
   }
+
+  // async function buyTokens(amount: string, address: string){
+  //   // If the network is correct and the user is connected and whitelisted
+  //   if (chainId != null && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
+  //     const amountInWei = web3.utils.toWei(amount)
+
+  //     try {
+  //       // TODO: Try without gas price
+  //       await privateSale(chainId)
+  //         .methods.buyTokens()
+  //         .send({
+  //           from: address,
+  //           value: amountInWei,
+  //           gasPrice: gasPrice
+  //         })
+  //         .then((data: any) => {
+  //           console.log(data)
+  //         })
+  //         .catch((error: any) => {
+  //           console.log(error)
+  //         })
+  //     } catch (error) {
+  //       // TODO: Display the error message
+  //       console.log('An error occurred in buyTokens():', error)
+  //     }
+  //   } else {
+  //     // TODO: Print an error message
+  //   }
+  // }
 
   async function getSoldAmount(chainId: ChainId) {
     await privateSale(chainId)
