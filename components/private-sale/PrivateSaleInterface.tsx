@@ -21,9 +21,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
     usePrivateSale()
 
-  const [errorMessage, setErrorMessage] = useState<string>('')
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
-  const [buySuccessfullMessage, setBuySuccessfullMessage] = useState<string>('')
   const [errorInput, setErrorInput] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
@@ -33,11 +31,6 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
-  const [approved, setApproved] = useState<boolean>(false)
-
-  const [participants, setParticipants] = useState<number>(176)
-  const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
-
   const userAllowanceChange = (value: string) => {
     const val = value == '' ? '0' : value.replace(',', '.')
     setUserBnbAllowance(val)
@@ -45,15 +38,19 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   }
 
   useEffect(() => {
+    // If there are not enough PFX left to sell, write an error message
+    if (balance && connected && userUsdAllowance > remaining) {
+      setErrorInput('Not enough PFX to sell.')
+    }
     // If the allowance is higher than the user balance, write an error message
-    if (balance && connected && parseFloat(userBnbAllowance) > balance) {
+    else if (balance && connected && parseFloat(userBnbAllowance) > balance) {
       setErrorInput('Insufficent funds.')
     }
     // Clear the error message if needed
-    else if (errorInput && (!connected || (balance && parseFloat(userBnbAllowance) <= balance))) {
+    else if (errorInput || !connected) {
       setErrorInput('')
     }
-  }, [connected, balance, errorInput, userBnbAllowance])
+  }, [connected, balance, errorInput, userBnbAllowance, userUsdAllowance, remaining])
 
   const setMaxUserAllowance = () => {
     if (connected) {
@@ -199,7 +196,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               disabled={useMyAddress}
             />
             <div className="text-red-error mt-3" style={{ fontSize: calcRem(12) }}>
-              {isInvalidAddress && 'Invalid address format'}
+              {isInvalidAddress && 'Invalid address format.'}
             </div>
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5 ">
