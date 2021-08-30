@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ChainId } from '../blockchain/const'
 import { privateSale } from '../blockchain/contracts/privateSale'
 import { web3 } from '../blockchain/web3'
-import { useInterval } from './useInterval'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
@@ -114,7 +113,7 @@ export function usePrivateSale(): PrivateSale {
         }
       }
     }
-  }, [correctNetwork, hasWallet, connected, chainId, accounts])
+  }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId])
 
   async function buyTokens(amount: string, address: string) {
     // If the network is correct and the user is connected and whitelisted

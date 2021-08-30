@@ -18,6 +18,3 @@ export const PROVIDER: { [chainId in ChainId]: string } = {
   [ChainId.AVALANCHE]: 'https://api.avax.network/ext/bc/C/rpc',
   [ChainId.FUJI]: 'https://api.avax-test.network/ext/bc/C/rpc'
 }
-
-// TODO: Do we need this?
-export const NetworkContextName = 'NETWORK'

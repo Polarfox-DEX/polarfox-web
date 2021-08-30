@@ -216,8 +216,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         name="Purchase"
         disabled={!isWhitelisted || userBnbAllowance == '0' || !(useMyAddress && userRecipientAddress === '')}
         click={() => buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)}
-      // TODO: While the transaction is going, we should write a "please wait" button
-      // TODO: When the transaction is done, should we reset the other fields to 0?
+        // TODO: While the transaction is going, we should write a "please wait" button
+        // TODO: When the transaction is done, should we reset the other fields to 0?
       />
     )
   }
@@ -239,7 +239,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           lineHeight: calcRem(16)
         }}
         onClick={() => requestConnection()}
-      // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
+        // TODO: When hasWallet is false, "Install Metamask" should redirect to the MetaMask website
       >
         {typeof window === 'undefined' || hasWallet ? 'Connect your wallet' : 'Install Metamask'}
       </button>
@@ -248,7 +248,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 }
 
 function WrongNetworkButton() {
-  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => { }} isError />
+  return <ActionButton name="Wrong network - please switch to BSC" disabled={true} click={() => {}} isError />
 }
 
 interface ActionButtonProps {
