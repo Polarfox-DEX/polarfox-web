@@ -18,12 +18,15 @@ function requestAccounts(): Promise<string[]> {
   return window_.ethereum.request({ method: 'eth_requestAccounts' })
 }
 
-async function getChainId(): Promise<ChainId | undefined> {
+async function getChainId(): Promise<ChainId | null> {
   const chainId_ = await window_.ethereum.request({ method: 'eth_chainId' })
 
   if (chainId_) {
     // Hex to base 10
     return parseInt(chainId_)
+  }
+  else {
+    return null
   }
 }
 
@@ -62,7 +65,7 @@ export function useWallet(): Wallet {
   const [balance, setBalance] = useState<number>(0)
   const [gasPrice, setGasPrice] = useState<string>('')
 
-  const connectAccount = useCallback((accounts: string[], balance: number, gasPrice: string, chainId?: ChainId) => {
+  const connectAccount = useCallback((accounts: string[], balance: number, gasPrice: string, chainId: ChainId | null) => {
     if (accounts.length > 0 && chainId) {
       setAccounts(accounts)
       setChainId(chainId)
@@ -73,12 +76,10 @@ export function useWallet(): Wallet {
   }, [])
 
   useEffect(() => {
-
     window_.ethereum.on('accountsChanged', (accounts: string[]) => {
-      connectAccount(accounts,balance,gasPrice)
-    });
-
-  })
+      connectAccount(accounts, balance, gasPrice, chainId)
+    })
+  }, [balance, chainId, gasPrice, connectAccount])
 
   useInterval({
     callback: async () => {

@@ -1,10 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import Web3 from 'web3'
 
-// TODO: Implement "wrong network"
-// TODO: BSC mainnet crashes
-// TODO: When changing accounts, the value "your total funds in this presale" does not get updated
-
 // Front-end
 import classNames from 'classnames'
 import Clock from '../svg/Clock'
@@ -21,11 +17,14 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, requestConnection, gasPrice } = useWallet()
-  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens } = usePrivateSale()
+  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
+    usePrivateSale()
 
   const [errorMessage, setErrorMessage] = useState<string>('')
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [buySuccessfullMessage, setBuySuccessfullMessage] = useState<string>('')
+  const [errorInput, setErrorInput] = useState<string>('')
+  const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
@@ -38,13 +37,24 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [participants, setParticipants] = useState<number>(176)
   const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
 
-  var userAllowanceChange = (value: string) => {
+  const userAllowanceChange = (value: string) => {
     const val = value == '' ? '0' : value.replace(',', '.')
     setUserBnbAllowance(val)
     setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
   }
 
-  var setMaxUserAllowance = () => {
+  useEffect(() => {
+    // If the allowance is higher than the user balance, write an error message
+    if (balance && connected && parseFloat(userBnbAllowance) > balance) {
+      setErrorInput('Insufficent funds.')
+    }
+    // Clear the error message if needed
+    else if (errorInput && (!connected || (balance && parseFloat(userBnbAllowance) <= balance))) {
+      setErrorInput('')
+    }
+  }, [connected, balance, errorInput, userBnbAllowance])
+
+  const setMaxUserAllowance = () => {
     if (connected) {
       const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
       setUserBnbAllowance(max)
@@ -65,23 +75,25 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     setPurchaseLoading(false)
   }
 
-  var purchase = () => {
+  const purchase = () => {
     setPurchaseLoading(true)
 
-    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress)
-      .then((data: any) => {
-        // transaction is successfull, show confirmation message then reset interface to default
-        setBuySuccessfullMessage(
-          'Successfully bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
+    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress).then((success: boolean) => {
+      // Transaction is successful, show a confirmation message then reset the interface to default
+      if (success) {
+        setBuySuccessfulMessage(
+          'Successfuly bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
         )
         resetUIToDefault()
-
-        console.log(data)
-      })
-      .catch((error: any) => {
+      }
+      // The transaction was not successful
+      else {
         setPurchaseLoading(false)
-        console.log(error)
-      })
+      }
+
+      // Recalculate the values displayed on the UI
+      setJustBought(true)
+    })
   }
 
   return (
@@ -111,29 +123,27 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div
             className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
-              'border-2 border-red-error': errorMessage !== ''
+              'border-2 border-red-error': errorInput
             })}
             style={{
               height: calcRem(87)
             }}
           >
-            <div className="font-semibold" style={{ fontSize: calcRem(18) }}>
+            <div className="font-semibold truncate" style={{ fontSize: calcRem(18) }}>
               <input
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
-                // TODO: Should display "Insufficient funds" when the amount is too high.
                 onChange={(event) => userAllowanceChange(event.currentTarget.value)}
               />
-              <SideText>
+              <SideText className="truncate">
                 {'= '}
                 {new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD'
-                  // TODO: When connecting a wallet, if a user has already put a BNB amount, the USD amount should display properly.
                 }).format(userUsdAllowance)}
               </SideText>
             </div>
-            <div className="mt-1">
+            <div className="mt-1 pl-2">
               <div className="flex justify-between">
                 <div
                   className="bg-blue-light rounded-3xl font-semibold text-center hover:cursor-pointer hover:bg-white hover:text-blue-light"
@@ -154,14 +164,14 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             </div>
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
-            {errorMessage}
+            {errorInput}
           </div>
           <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
           </div>
           <div className={classNames('bg-blue-gray rounded-xl flex justify-between items-center p-6')}>
-            {new Intl.NumberFormat('en-US').format(userUsdAllowance)}
-            <MainText>PFX</MainText>
+            <div className="truncate">{new Intl.NumberFormat('en-US').format(userUsdAllowance)}</div>
+            <MainText className="pl-2">PFX</MainText>
           </div>
         </div>
         <div className="px-8 pt-2">
@@ -218,7 +228,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             <div className="text-red-error">
               {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
             </div>
-            <div className="text-green-successfull">{buySuccessfullMessage !== '' && buySuccessfullMessage}</div>
+            <div className="text-green-successful">{buySuccessfulMessage}</div>
           </div>
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
             <span className="font-bold">NOTE: </span>
