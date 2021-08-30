@@ -34,22 +34,24 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [participants, setParticipants] = useState<number>(176)
   const [totalBnbSold, setTotalBnbSold] = useState<number>(62.82)
 
-  var userAllowanceChange = (value: string) => {
+  const userAllowanceChange = (value: string) => {
     const val = value == '' ? '0' : value.replace(',', '.')
     setUserBnbAllowance(val)
     setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
+  }
 
+  useEffect(() => {
     // If the allowance is higher than the user balance, write an error message
-    if (balance && parseFloat(val) > balance) {
+    if (balance && connected && parseFloat(userBnbAllowance) > balance) {
       setErrorInput('Insufficent funds.')
     }
     // Clear the error message if needed
-    else if (errorInput && balance && parseFloat(val) <= balance) {
+    else if (errorInput && (!connected || (balance && parseFloat(userBnbAllowance) <= balance))) {
       setErrorInput('')
     }
-  }
+  }, [connected, balance, errorInput, userBnbAllowance])
 
-  var setMaxUserAllowance = () => {
+  const setMaxUserAllowance = () => {
     if (connected) {
       const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
       setUserBnbAllowance(max)
@@ -57,13 +59,13 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     }
   }
 
-  var resetUIToDefault = () => {
+  const resetUIToDefault = () => {
     setUserBnbAllowance('0')
     setUserUsdAllowance(0.0)
     setPurchaseLoading(false)
   }
 
-  var purchase = () => {
+  const purchase = () => {
     setPurchaseLoading(true)
 
     buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress).then((success: boolean) => {
