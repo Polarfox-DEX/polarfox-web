@@ -265,7 +265,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         disabled={
           !isWhitelisted ||
           userBnbAllowance == '0' ||
-          !((useMyAddress && userRecipientAddress === '') || !isInvalidAddress)
+          (!useMyAddress && userRecipientAddress === '') ||
+          isInvalidAddress
         }
         click={() => purchase()}
       >
