@@ -205,13 +205,11 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         </div>
         <div className="px-8 mt-4">
           <div className="mb-6 flex">
-            {!correctNetwork && <WrongNetworkButton />}
+            {!correctNetwork && connected && <WrongNetworkButton />}
             {correctNetwork && connected && <PurchaseButton />}
-            {correctNetwork && !connected && <ConnectButton />}
+            {!connected && <ConnectButton />}
           </div>
           <div className="mt-2" style={{ fontSize: calcRem(12) }}>
-            {/* // TODO: The below displays "your address is not whitelisted" for half a second when you log in. Fix this */}
-            {/* // TODO: When changing accounts, the error "your address is not whitelisted" needs to change */}
             <div className="text-red-error">
               {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
             </div>

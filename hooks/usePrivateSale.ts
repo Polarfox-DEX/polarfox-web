@@ -17,7 +17,7 @@ export interface PrivateSale {
 export function usePrivateSale(): PrivateSale {
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(false)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
-  const [isWhitelisted, setIsWhitelisted] = useState<boolean>(false)
+  const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
   const [remaining, setRemaining] = useState<number>(1000000)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
   const [lastChainId, setLastChainId] = useState<number | null>(null)
@@ -72,7 +72,6 @@ export function usePrivateSale(): PrivateSale {
           .call()
           .then((isWhitelisted: boolean) => setIsWhitelisted(isWhitelisted))
 
-        // TODO: Need to execute this code every time the user buys in the presale
         // Calculate the total bought amount
         getBoughtAmount(accounts[0])
       }
