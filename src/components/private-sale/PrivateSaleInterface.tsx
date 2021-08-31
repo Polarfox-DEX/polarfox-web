@@ -24,6 +24,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [errorInput, setErrorInput] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
+  const [allowanceFormatErrorMessage, setAllowanceFormatErrorMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
   const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
@@ -32,9 +33,16 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
   const userAllowanceChange = (value: string) => {
-    const val = value == '' ? '0' : value.replace(',', '.')
-    setUserBnbAllowance(val)
-    setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
+    const val = value == '' ? '' : value.replace(',', '.')
+    let regex = new RegExp('^([0-9]*[.])?[0-9]+$')
+    if (regex.test(val)) {
+      setAllowanceFormatErrorMessage('')
+      setUserBnbAllowance(val)
+      setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
+    } else {
+      setAllowanceFormatErrorMessage('Wrong number format')
+      setUserBnbAllowance(val)
+    }
   }
 
   useEffect(() => {
@@ -125,7 +133,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div
             className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
-              'border-2 border-red-error': errorInput
+              'border-2 border-red-error': errorInput || allowanceFormatErrorMessage
             })}
             style={{
               height: calcRem(87)
@@ -167,6 +175,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
             {errorInput}
+            {allowanceFormatErrorMessage}
           </div>
           <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
@@ -260,9 +269,11 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       <ActionButton
         disabled={
           !isWhitelisted ||
-          userBnbAllowance == '0' ||
+          userBnbAllowance === '0' ||
           (!useMyAddress && userRecipientAddress === '') ||
-          isInvalidAddress
+          isInvalidAddress ||
+          allowanceFormatErrorMessage !== '' ||
+          errorInput !== ''
         }
         click={() => purchase()}
       >
