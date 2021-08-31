@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import Analytics from './svg/Analytics'
-import Bridge from './svg/Bridge'
 import DoubleArrow from './svg/DoubleArrow'
 import MenuArrow from './svg/MenuArrow'
 import Mining from './svg/Mining'
