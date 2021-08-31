@@ -12,7 +12,6 @@ import {
   ABOUT_LINK,
   AKITA_LINK,
   ANALYTICS_LINK,
-  BRIDGE_LINK,
   DEX_LINK,
   FAQ_LINK,
   GITHUB_LINK,
@@ -24,8 +23,6 @@ import {
 } from '../components/const/links'
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
-// TODO: Define the behavior we want when the user clicks on a link to the current page
-
 export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
   function SmartLink({ href, name }: SmartLinkProp) {
     var verifyLink = (event: React.MouseEvent) => {
@@ -33,9 +30,9 @@ export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderPr
 
       var nextLocation = document.location.origin + href
 
-      //We are on the same page that we try to go
+      // We are on the page we are trying to reach
       if (window.location.href === nextLocation) {
-        //Close menu
+        // Close menu
         setIsMobileMenuOpen(false)
       } else {
         window.location.href = href
@@ -47,8 +44,8 @@ export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderPr
 
   return (
     <div
-      className={classNames('laptop:hidden absolute w-full px-5 py-7', {
-        'z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen': isMobileMenuOpen
+      className={classNames('laptop:hidden w-full px-5 py-4', {
+        '-mt-28 z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen': isMobileMenuOpen
       })}
     >
       <div>
@@ -74,7 +71,12 @@ export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderPr
           <div />
         )}
       </div>
-      {isMobileMenuOpen ? <SocialMediaLinks className="justify-end" /> : <div />}
+      <SocialMediaLinks
+        className={classNames('absolute justify-end ', {
+          hidden: !isMobileMenuOpen
+        })}
+        style={{ bottom: '1rem', right: '1rem' }}
+      />
     </div>
   )
 }
@@ -85,7 +87,6 @@ function ProductsAccordionMenu() {
       <AccordionMenuItem href={DEX_LINK} linkTitle="Open app" name="Decentralized Exchange" />
       <AccordionMenuItem href={ANALYTICS_LINK} linkTitle="Open app" name="Analytics" />
       <AccordionMenuItem href={MININGPOOL_LINK} linkTitle="Open app" name="Mining Pools" />
-      <AccordionMenuItem href={BRIDGE_LINK} linkTitle="Open app" name="Bridge" />
       <AccordionMenuItem href={AKITA_LINK} linkTitle="Visit site" name="AKITA Network" />
     </AccordionMenu>
   )

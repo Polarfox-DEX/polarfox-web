@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import { calcRem } from '../../utils/styles'
 import { SocialMediaLinks } from '../utils/SocialMediaLinks'
 import { WithBackgroundHeader } from '../utils/WithBackgroundImage'
+import { LITEPAPER_LINK } from '../const/links'
 
 interface PfxHighlightsProps {
   className?: string
@@ -63,7 +64,7 @@ export function PfxHighlight({ className }: PfxHighlightsProps) {
         `}</style>
         <div className={classNames('flex w-full flex-wrap justify-center gap-x-5 gap-y-6 mt-24')}>
           <Button
-            url="/Polarfox Litepaper V2.6.pdf"
+            url={LITEPAPER_LINK}
             className={classNames(
               'large-shadow border border-blue bg-white hover:border-blue hover:bg-blue hover:text-white',
               { 'hover:opacity-80': !isFoxSleeping }

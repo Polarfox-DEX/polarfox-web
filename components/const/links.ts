@@ -1,7 +1,7 @@
 
 export const HOME_LINK = "/"
 export const TUTORIALS_LINK = "/tutorials"
-export const LITEPAPER_LINK = "/Polarfox Litepaper V2.6.pdf"
+export const LITEPAPER_LINK = "/Polarfox Litepaper V2.10.pdf"
 export const GITHUB_LINK = "https://github.com/Polarfox-DEX"
 export const DEX_LINK = "https://dex.polarfox.io"
 export const ANALYTICS_LINK = "https://analytics.polarfox.io"

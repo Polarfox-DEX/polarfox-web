@@ -4,12 +4,17 @@ import Medium from '../svg/Medium'
 import Telegram from '../svg/Telegram'
 import Twitter from '../svg/Twitter'
 import classNames from 'classnames'
-import { SectionProps } from '../sections/utils/SectionProps'
 import { SiteMapLink } from './SiteMapLink'
+import { CSSProperties } from 'react'
 
-export function SocialMediaLinks({ className }: SectionProps) {
+interface SocialMediaLinksProps {
+  className?: string
+  style?: CSSProperties
+}
+
+export function SocialMediaLinks({ className, style }: SocialMediaLinksProps) {
   return (
-    <div className={classNames('flex space-x-6 items', className)}>
+    <div className={classNames('flex space-x-6 items', className)} style={style}>
       <SiteMapLink url="https://t.me/polarfoxdex">
         <Telegram
           className="text-blue hover:text-blue-light fill-current"

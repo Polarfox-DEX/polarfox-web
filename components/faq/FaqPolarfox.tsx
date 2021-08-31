@@ -74,7 +74,7 @@ export function FaqPolarfox({ className }: SectionProps) {
         <ul className="list-disc list-inside pl-4" style={{ fontSize: calcRem(15), lineHeight: calcRem(25) }}>
           <li>The PFX presale</li>
           <li>Keeping a small percentage of the PFX token supply</li>
-          <li>The 0.1% dev fee on every transaction involving PFX</li>
+          <li>The 0.5% dev fee on every transaction involving PFX</li>
         </ul>
       </Question>
     </div>

@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export function Page({ children }: PageProps) {
-  const displayPresale = false
+  const displayPresale = true
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -37,7 +37,7 @@ export function Page({ children }: PageProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28" />}
+      {displayPresale && <PresaleHeader className="-mt-28" isMobileMenuOpen={isMobileMenuOpen} />}
       <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
       {children}
 

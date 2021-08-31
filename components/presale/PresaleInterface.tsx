@@ -4,6 +4,8 @@ import DownArrow from '../svg/DownArrow'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
+import { Countdown } from '../countdown/Countdown'
+import GlobalVars from './../GlobalVars'
 
 export function PresaleInterface({ className }: SectionProps) {
   return (
@@ -20,10 +22,10 @@ export function PresaleInterface({ className }: SectionProps) {
           height: calcRem(128)
         }}
       >
-        <PresaleTimerWindow>16h</PresaleTimerWindow>
-        <PresaleTimerWindow>45m</PresaleTimerWindow>
-        <PresaleTimerWindow>32s</PresaleTimerWindow>
-        <Clock />
+        <div className="flex text-white h-full items-center space-x-7">
+          <Countdown eventDateUTC={GlobalVars.presaleEndUTCDate} />
+          <Clock />
+        </div>
       </div>
       <div className="mt-7 divide-y divide-white divide-opacity-12">
         <div className="pl-8">
@@ -107,22 +109,6 @@ export function PresaleInterface({ className }: SectionProps) {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
-
-interface PresaleTimerWindowProps {
-  className?: string
-  children: ReactNode
-}
-
-function PresaleTimerWindow({ className, children }: PresaleTimerWindowProps) {
-  return (
-    <div
-      className={classNames('border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center', className)}
-      style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
-    >
-      {children}
     </div>
   )
 }
