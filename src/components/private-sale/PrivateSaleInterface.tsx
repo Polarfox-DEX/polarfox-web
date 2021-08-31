@@ -13,6 +13,8 @@ import { SectionProps } from '../sections/utils/SectionProps'
 // Back-end
 import { useWallet } from '../../hooks/useWallet'
 import { usePrivateSale } from '../../hooks/usePrivateSale'
+import useNumberValue from '../../hooks/useNumberValue'
+
 
 export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
@@ -24,25 +26,21 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [errorInput, setErrorInput] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
-  const [allowanceFormatErrorMessage, setAllowanceFormatErrorMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
-  const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
   const [userUsdAllowance, setUserUsdAllowance] = useState<number>(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
-  const userAllowanceChange = (value: string) => {
-    const val = value == '' ? '' : value.replace(',', '.')
-    let regex = new RegExp('^([0-9]*[.])?[0-9]+$')
-    if (regex.test(val)) {
-      setAllowanceFormatErrorMessage('')
-      setUserBnbAllowance(val)
-      setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
-    } else {
-      setAllowanceFormatErrorMessage('Wrong number format')
-      setUserBnbAllowance(val)
-    }
+  const [userBnbAllowance,userAllowanceChange,allowanceErrorMessage] = useNumberValue()
+
+  const onUserAllowanceChange = (value: string) => {
+
+    userAllowanceChange(value)
+      .then(() => {
+        setUserUsdAllowance(parseFloat(userBnbAllowance) * currentBnbPrice)
+      })
+      .catch()
   }
 
   useEffect(() => {
@@ -63,8 +61,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const setMaxUserAllowance = () => {
     if (connected) {
       const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
-      setUserBnbAllowance(max)
-      userAllowanceChange(max)
+      onUserAllowanceChange(max)
     }
   }
 
@@ -80,7 +77,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   }
 
   var resetUIToDefault = () => {
-    setUserBnbAllowance('0')
+    onUserAllowanceChange('0')
     setUserUsdAllowance(0.0)
     setPurchaseLoading(false)
   }
@@ -133,7 +130,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div
             className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
-              'border-2 border-red-error': errorInput || allowanceFormatErrorMessage
+              'border-2 border-red-error': errorInput || allowanceErrorMessage
             })}
             style={{
               height: calcRem(87)
@@ -143,7 +140,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               <input
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
-                onChange={(event) => userAllowanceChange(event.currentTarget.value)}
+                onChange={(event) => onUserAllowanceChange(event.currentTarget.value)}
               />
               <SideText className="truncate">
                 {'= '}
@@ -175,7 +172,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div className="text-red-error mt-2" style={{ fontSize: calcRem(12) }}>
             {errorInput}
-            {allowanceFormatErrorMessage}
+            {allowanceErrorMessage}
           </div>
           <div className="text-center my-2 opacity-40" style={{ fontSize: calcRem(12) }}>
             You will get
@@ -272,7 +269,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           userBnbAllowance === '0' ||
           (!useMyAddress && userRecipientAddress === '') ||
           isInvalidAddress ||
-          allowanceFormatErrorMessage !== '' ||
+          allowanceErrorMessage !== '' ||
           errorInput !== ''
         }
         click={() => purchase()}
