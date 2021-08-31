@@ -85,40 +85,26 @@ interface FaqSelectorButtonProps {
   setSelectedFaq: Dispatch<SetStateAction<string>>
 }
 
-function FaqSelectorButton({
-  title,
-  numberOfItems,
-  name,
-  selectedFaq,
-  setSelectedFaq
-}: FaqSelectorButtonProps) {
+function FaqSelectorButton({ title, numberOfItems, name, selectedFaq, setSelectedFaq }: FaqSelectorButtonProps) {
   return (
     <button
       className={classNames(
         'mt-5 rounded-lg w-full',
         {
-          'border border-blue bg-blue text-white hover:bg-blue':
-            selectedFaq === name
+          'border border-blue bg-blue text-white hover:bg-blue': selectedFaq === name
         },
         {
-          'hover:bg-blue-light hover:text-white hover:opacity-80':
-            selectedFaq !== name
+          'hover:bg-blue-light hover:text-white hover:opacity-80': selectedFaq !== name
         }
       )}
       style={{ height: calcRem(55) }}
       onClick={() => setSelectedFaq(name)}
     >
       <div className="flex justify-between items-center">
-        <h3
-          className="float-left mx-5 font-bold"
-          style={{ fontSize: calcRem(20) }}
-        >
+        <h3 className="float-left mx-5 font-bold" style={{ fontSize: calcRem(20) }}>
           {title}
         </h3>
-        <span
-          className="float-right mx-5 font-normal"
-          style={{ fontSize: calcRem(14) }}
-        >
+        <span className="float-right mx-5 font-normal" style={{ fontSize: calcRem(14) }}>
           {numberOfItems}
         </span>
       </div>

@@ -72,19 +72,12 @@ interface PresaleTimerWindowProps {
   suffix: string
 }
 
-function PresaleTimerWindow({
-  className,
-  value,
-  suffix
-}: PresaleTimerWindowProps) {
+function PresaleTimerWindow({ className, value, suffix }: PresaleTimerWindowProps) {
   const display = value < 9 ? '0' + value : value
 
   return (
     <div
-      className={classNames(
-        'border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center',
-        className
-      )}
+      className={classNames('border border-white rounded-lg border-opacity-25 h-10 pt-4 text-center', className)}
       style={{ width: calcRem(92), height: calcRem(72), fontSize: calcRem(28) }}
     >
       {display + suffix}

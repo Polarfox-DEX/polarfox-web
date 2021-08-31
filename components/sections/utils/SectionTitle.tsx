@@ -9,12 +9,7 @@ interface SectionTitleProps {
 
 export function SectionTitle({ className, children }: SectionTitleProps) {
   return (
-    <h2
-      className={classNames(
-        'section-title font-switzer font-semibold',
-        className
-      )}
-    >
+    <h2 className={classNames('section-title font-switzer font-semibold', className)}>
       {children}
       <style jsx>{`
         .section-title {

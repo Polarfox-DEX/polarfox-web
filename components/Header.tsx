@@ -11,10 +11,7 @@ export function Header({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
   return (
     <>
       {/* TODO: merge the two headers properly */}
-      <HeaderMobile
-        isMobileMenuOpen={isMobileMenuOpen}
-        setIsMobileMenuOpen={setIsMobileMenuOpen}
-      />
+      <HeaderMobile isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
       <HeaderDesktop />
     </>
   )

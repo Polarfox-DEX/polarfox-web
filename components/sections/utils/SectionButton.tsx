@@ -9,12 +9,7 @@ interface SectionButtonProps {
   children: ReactNode
 }
 
-export function SectionButton({
-  href,
-  target,
-  rel,
-  children
-}: SectionButtonProps) {
+export function SectionButton({ href, target, rel, children }: SectionButtonProps) {
   return (
     <Link href={href} passHref={true}>
       <a

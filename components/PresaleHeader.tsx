@@ -26,40 +26,24 @@ export function PresaleHeader({ className, isMobileMenuOpen }: PresaleHeader) {
       }}
     >
       <div
-        className={classNames(
-          'laptop:hidden bg-blue-light grid items-center h-full w-full'
-        )}
+        className={classNames('laptop:hidden bg-blue-light grid items-center h-full w-full')}
         style={{
           fontSize: calcRem(10)
         }}
       >
-        <div className="-rotate-90 text-center">
-          {GlobalVars.showPresaleStartDate ? 'NOW' : 'SOON'}
-        </div>
+        <div className="-rotate-90 text-center">{GlobalVars.showPresaleStartDate ? 'NOW' : 'SOON'}</div>
       </div>
       <div
-        className={classNames(
-          GlobalVars.showPresaleStartDate
-            ? 'laptop:self-center laptop:ml-16 pl-2'
-            : 'hidden'
-        )}
+        className={classNames(GlobalVars.showPresaleStartDate ? 'laptop:self-center laptop:ml-16 pl-2' : 'hidden')}
         style={{ fontSize: calcRem(18) }}
       >
         {GlobalVars.presaleStartUTCDate.isAfter(moment.utc()) &&
-          'PFX presale starts on ' +
-            GlobalVars.presaleStartUTCDate.format('MMMM Do YYYY, h:mm:ss A z')}
+          'PFX presale starts on ' + GlobalVars.presaleStartUTCDate.format('MMMM Do YYYY, h:mm:ss A z')}
         {GlobalVars.presaleStartUTCDate.isBefore(moment.utc()) &&
-          'PFX presale ends on ' +
-            GlobalVars.presaleEndUTCDate.format(
-              'dddd, MMMM Do YYYY, h:mm:ss A z'
-            )}
+          'PFX presale ends on ' + GlobalVars.presaleEndUTCDate.format('dddd, MMMM Do YYYY, h:mm:ss A z')}
       </div>
       <div
-        className={classNames(
-          GlobalVars.showPresaleStartDate
-            ? 'hidden'
-            : 'ml-1 laptop:justify-center laptop:ml-8'
-        )}
+        className={classNames(GlobalVars.showPresaleStartDate ? 'hidden' : 'ml-1 laptop:justify-center laptop:ml-8')}
       >
         PFX presale starts mid-September 🦊
       </div>
@@ -73,25 +57,14 @@ export function PresaleHeader({ className, isMobileMenuOpen }: PresaleHeader) {
           width: calcRem(140),
           fontSize: calcRem(14)
         }}
-        href={
-          GlobalVars.showPresaleStartDate
-            ? '/presale'
-            : 'https://t.me/pfxannouncements'
-        }
+        href={GlobalVars.showPresaleStartDate ? '/presale' : 'https://t.me/pfxannouncements'}
         rel={GlobalVars.showPresaleStartDate ? '' : 'noopener noreferrer'}
         target={GlobalVars.showPresaleStartDate ? '' : '_blank'}
       >
         {GlobalVars.showPresaleStartDate ? 'OPEN' : 'MORE INFO'}
       </a>
-      <div
-        className={classNames(
-          GlobalVars.showPresaleStartDate ? 'hidden laptop:flex' : 'hidden'
-        )}
-      >
-        <div
-          className="container flex justify-between items-center space-x-5 mx-24"
-          style={{ width: calcRem(312) }}
-        >
+      <div className={classNames(GlobalVars.showPresaleStartDate ? 'hidden laptop:flex' : 'hidden')}>
+        <div className="container flex justify-between items-center space-x-5 mx-24" style={{ width: calcRem(312) }}>
           {GlobalVars.presaleStartUTCDate.isAfter(moment.utc()) && (
             <Countdown eventDateUTC={GlobalVars.presaleStartUTCDate} />
           )}

@@ -12,16 +12,14 @@ export function OurMission({ className }: SectionProps) {
       )}
     >
       <Mission title="Our mission">
-        Our goal is to build an independent ecosystem of fully decentralized and
-        open-source applications on the Avalanche blockchain.
+        Our goal is to build an independent ecosystem of fully decentralized and open-source applications on the
+        Avalanche blockchain.
       </Mission>
       <Mission title="Core values">
-        We believe trust, honesty and transparency are necessary to build
-        anything tangible on the long term.
+        We believe trust, honesty and transparency are necessary to build anything tangible on the long term.
       </Mission>
       <Mission title="Our vision">
-        We will see many more apps added to the Polarfox ecosystem allowing for
-        various use cases.
+        We will see many more apps added to the Polarfox ecosystem allowing for various use cases.
       </Mission>
     </div>
   )
@@ -35,16 +33,10 @@ interface MissionProps {
 export function Mission({ title, children }: MissionProps) {
   return (
     <div className="mission w-full">
-      <h3
-        className="font-switzer font-semibold"
-        style={{ fontSize: calcRem(20), lineHeight: calcRem(32) }}
-      >
+      <h3 className="font-switzer font-semibold" style={{ fontSize: calcRem(20), lineHeight: calcRem(32) }}>
         {title}
       </h3>
-      <p
-        className="text-gray"
-        style={{ fontSize: calcRem(16), lineHeight: calcRem(32) }}
-      >
+      <p className="text-gray" style={{ fontSize: calcRem(16), lineHeight: calcRem(32) }}>
         {children}
       </p>
       <style jsx>{`

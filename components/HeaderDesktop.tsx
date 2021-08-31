@@ -68,14 +68,7 @@ interface DropdownItemProps {
   rightAlignment?: string
 }
 
-function Dropdown({
-  className,
-  logo,
-  name,
-  children,
-  width,
-  rightAlignment
-}: DropdownItemProps) {
+function Dropdown({ className, logo, name, children, width, rightAlignment }: DropdownItemProps) {
   return (
     <div className="group relative">
       <div
@@ -129,10 +122,7 @@ function RessourceDropdown() {
 
 function ProductsDropdown() {
   return (
-    <Dropdown
-      name="Products"
-      className="grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl"
-    >
+    <Dropdown name="Products" className="grid mt-1 grid-flow-col p-4 gap-x-4 rounded-3xl">
       <Product logo={<DoubleArrow />} href={DEX_LINK} linkTitle="Open app">
         Decentralized Exchange
       </Product>
@@ -143,13 +133,7 @@ function ProductsDropdown() {
         Mining Pools
       </Product>
       <Product
-        logo={
-          <img
-            src="akita.png"
-            alt="akita"
-            style={{ height: calcRem(24), width: calcRem(24) }}
-          />
-        }
+        logo={<img src="akita.png" alt="akita" style={{ height: calcRem(24), width: calcRem(24) }} />}
         href={AKITA_LINK}
         linkTitle="Visit site"
       >
@@ -167,10 +151,7 @@ interface MenuItemProps {
 
 function MenuItem({ href, linkTitle, children }: MenuItemProps) {
   return (
-    <a
-      href={href}
-      className="rounded-2xl py-4 hover:bg-gray-mid2 w-full text-left pl-4 hover:cursor-pointer"
-    >
+    <a href={href} className="rounded-2xl py-4 hover:bg-gray-mid2 w-full text-left pl-4 hover:cursor-pointer">
       {children}
     </a>
   )
@@ -221,10 +202,7 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
         onMouseLeave={() => setButtonHover(false)}
       >
         {linkTitle}
-        <TopRightArrow
-          className="fill-current mx-4"
-          style={{ height: calcRem(7), width: calcRem(7) }}
-        />
+        <TopRightArrow className="fill-current mx-4" style={{ height: calcRem(7), width: calcRem(7) }} />
       </a>
     </div>
   )
@@ -232,11 +210,7 @@ function Product({ logo, href, linkTitle, children }: ProductProps) {
 
 function LanguageDropdown() {
   return (
-    <Dropdown
-      name="English"
-      logo={<USFlag />}
-      className="block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1"
-    >
+    <Dropdown name="English" logo={<USFlag />} className="block grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl z-1">
       <Language href="/">
         English <USFlag />
       </Language>

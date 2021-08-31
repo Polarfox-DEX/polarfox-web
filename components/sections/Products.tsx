@@ -20,21 +20,9 @@ export function Products({ className }: ProductsSectionProps) {
       <SectionHeading>PFX PORTFOLIO</SectionHeading>
       <SectionTitle className="mt-1">Products</SectionTitle>
       <div className="flex flex-wrap laptop:flex-nowrap justify-between laptop:justify-start gap-x-5 gap-y-5 mt-16 laptop:mt-20 desktop:mt-28 laptop:pb-10 laptop:overflow-x-scroll">
-        <Product
-          label="Decentralized Exchange"
-          url={DEX_LINK}
-          logo={<DoubleArrowGradient />}
-        />
-        <Product
-          label="Polarfox Analytics"
-          url={ANALYTICS_LINK}
-          logo={<AnalyticsGradient />}
-        />
-        <Product
-          label="Polarfox Token (PFX)"
-          url="#"
-          logo={<TokenGradient />}
-        />
+        <Product label="Decentralized Exchange" url={DEX_LINK} logo={<DoubleArrowGradient />} />
+        <Product label="Polarfox Analytics" url={ANALYTICS_LINK} logo={<AnalyticsGradient />} />
+        <Product label="Polarfox Token (PFX)" url="#" logo={<TokenGradient />} />
         {/* <Product
           label="Polarfox Bridge"
           url="https://bridge-test.polarfox.io"
@@ -45,12 +33,7 @@ export function Products({ className }: ProductsSectionProps) {
           url={AKITA_LINK}
           logo={
             <div className="-mt-1 hidden group-hover:block">
-              <img
-                src="/akita-gradient.png"
-                alt="akita"
-                width="60"
-                height="60"
-              />
+              <img src="/akita-gradient.png" alt="akita" width="60" height="60" />
             </div>
           }
         />

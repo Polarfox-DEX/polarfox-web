@@ -21,25 +21,20 @@ export function Roadmap({ className }: SectionProps) {
             }}
           >
             {/* TODO: This should not be on the right. See Figma */}
-            The launch of Polarfox is one step in our journey towards realizing
-            a fully decentralized ecosystem. More projects are underway to
-            reinforce our vision.
+            The launch of Polarfox is one step in our journey towards realizing a fully decentralized ecosystem. More
+            projects are underway to reinforce our vision.
           </p>
         </div>
         <div className="flex gap-x-10 overflow-x-scroll pb-6">
           <Year title="2021" slide>
             <Quarter title="Q1">
-              <Task isDone>
-                Creation of Polarfox Labs by the AKITA community
-              </Task>
+              <Task isDone>Creation of Polarfox Labs by the AKITA community</Task>
               <Task isDone>First ideation phase</Task>
               <Task isDone>Creation of the first Polarfox roadmap</Task>
             </Quarter>
             <Quarter title="Q2">
               <Task isDone>Development of Polarfox DEX V1</Task>
-              <Task isDone>
-                Development of the Polarfox Avalanche-Ethereum bridge
-              </Task>
+              <Task isDone>Development of the Polarfox Avalanche-Ethereum bridge</Task>
               <Task isDone>Development of the AKITA website</Task>
               <Task isDone>Litepaper release</Task>
               <Task isDone>Contact potential investors and partners</Task>
@@ -59,41 +54,27 @@ export function Roadmap({ className }: SectionProps) {
             <Quarter title="Q4" isFuture>
               <Task isFuture>Second ideation phase</Task>
               <Task isFuture>Development of Polarfox DEX V2 - new design</Task>
-              <Task isFuture>
-                Translation of our products into multiple languages
-              </Task>
+              <Task isFuture>Translation of our products into multiple languages</Task>
               <Task isFuture>Development of whyavax.com</Task>
               <Task isFuture>Boot of the Polarfox community AVAX node</Task>
               {/* TODO: Does this fit here? */}
-              <Task isFuture>
-                Improve accessibility to Avalanche and Polarfox
-              </Task>
+              <Task isFuture>Improve accessibility to Avalanche and Polarfox</Task>
             </Quarter>
           </Year>
           <Year title="2022" isFuture>
             <Quarter title="Q1" isFuture>
-              <Task isFuture>
-                Improve user experience further, make it easier for crypto
-                newcomers
-              </Task>
+              <Task isFuture>Improve user experience further, make it easier for crypto newcomers</Task>
               <Task isFuture>Redesign of the Polarfox analytics</Task>
-              <Task isFuture>
-                Start the development of new apps on the Polarfox ecosystem
-              </Task>
+              <Task isFuture>Start the development of new apps on the Polarfox ecosystem</Task>
               <Task isFuture>Start development of AKITA Network</Task>
             </Quarter>
             <Quarter title="Q2" isFuture>
-              <Task isFuture>
-                Development of Polarfox DEX V3 - yield farming, limit orders
-                and/or other features
-              </Task>
+              <Task isFuture>Development of Polarfox DEX V3 - yield farming, limit orders and/or other features</Task>
               <Task isFuture>Establishment of further partnerships</Task>
             </Quarter>
             <Quarter title="Q3 Q4" isFuture>
               <Task isFuture>Third ideation phase</Task>
-              <Task isFuture>
-                Further improvements to the DEX and ecosystem
-              </Task>
+              <Task isFuture>Further improvements to the DEX and ecosystem</Task>
             </Quarter>
           </Year>
           <Year title="2023" isFuture>
@@ -151,10 +132,7 @@ interface QuarterProps {
 
 function Quarter({ title, isFuture, children }: QuarterProps) {
   return (
-    <div
-      className="flex flex-none justify-between gap-x-10"
-      style={{ width: 239 }}
-    >
+    <div className="flex flex-none justify-between gap-x-10" style={{ width: 239 }}>
       <div
         className={classNames('font-bold', { 'opacity-40': isFuture })}
         style={{ fontSize: calcRem(30), lineHeight: calcRem(35) }}
@@ -175,14 +153,5 @@ interface TaskProps {
 }
 
 function Task({ isDone, isFuture, children }: TaskProps) {
-  return (
-    <div
-      className={classNames(
-        { 'line-through': isDone },
-        { 'opacity-40': isFuture }
-      )}
-    >
-      {children}
-    </div>
-  )
+  return <div className={classNames({ 'line-through': isDone }, { 'opacity-40': isFuture })}>{children}</div>
 }

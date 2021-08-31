@@ -23,10 +23,7 @@ import {
 } from '../components/const/links'
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
-export function HeaderMobile({
-  isMobileMenuOpen,
-  setIsMobileMenuOpen
-}: HeaderProps) {
+export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
   function SmartLink({ href, name }: SmartLinkProp) {
     var verifyLink = (event: React.MouseEvent) => {
       event.preventDefault
@@ -48,8 +45,7 @@ export function HeaderMobile({
   return (
     <div
       className={classNames('laptop:hidden w-full px-5 py-4', {
-        '-mt-28 z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen':
-          isMobileMenuOpen
+        '-mt-28 z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen': isMobileMenuOpen
       })}
     >
       <div>
@@ -88,26 +84,10 @@ export function HeaderMobile({
 function ProductsAccordionMenu() {
   return (
     <AccordionMenu name="Products">
-      <AccordionMenuItem
-        href={DEX_LINK}
-        linkTitle="Open app"
-        name="Decentralized Exchange"
-      />
-      <AccordionMenuItem
-        href={ANALYTICS_LINK}
-        linkTitle="Open app"
-        name="Analytics"
-      />
-      <AccordionMenuItem
-        href={MININGPOOL_LINK}
-        linkTitle="Open app"
-        name="Mining Pools"
-      />
-      <AccordionMenuItem
-        href={AKITA_LINK}
-        linkTitle="Visit site"
-        name="AKITA Network"
-      />
+      <AccordionMenuItem href={DEX_LINK} linkTitle="Open app" name="Decentralized Exchange" />
+      <AccordionMenuItem href={ANALYTICS_LINK} linkTitle="Open app" name="Analytics" />
+      <AccordionMenuItem href={MININGPOOL_LINK} linkTitle="Open app" name="Mining Pools" />
+      <AccordionMenuItem href={AKITA_LINK} linkTitle="Visit site" name="AKITA Network" />
     </AccordionMenu>
   )
 }
@@ -115,16 +95,8 @@ function ProductsAccordionMenu() {
 function ResourcesAccordionMenu() {
   return (
     <AccordionMenu name="Resources">
-      <AccordionMenuItem
-        href={TUTORIALS_LINK}
-        linkTitle="Visit site"
-        name="Tutorials"
-      />
-      <AccordionMenuItem
-        href={LITEPAPER_LINK}
-        linkTitle="Read"
-        name="Litepaper"
-      />
+      <AccordionMenuItem href={TUTORIALS_LINK} linkTitle="Visit site" name="Tutorials" />
+      <AccordionMenuItem href={LITEPAPER_LINK} linkTitle="Read" name="Litepaper" />
       <AccordionMenuItem href={GITHUB_LINK} linkTitle="View" name="Code" />
     </AccordionMenu>
   )
@@ -141,10 +113,7 @@ function AccordionMenu({ children, className, name }: AccordionMenuProps) {
 
   return (
     <div>
-      <div
-        className={classNames('flex justify-between items-center')}
-        onClick={() => setMenuOpened(!menuOpened)}
-      >
+      <div className={classNames('flex justify-between items-center')} onClick={() => setMenuOpened(!menuOpened)}>
         {name}
         <MenuArrow style={{ width: calcRem(12), height: calcRem(8) }} />
       </div>
@@ -161,10 +130,7 @@ interface AccordionMenuItemProps {
 
 function AccordionMenuItem({ href, linkTitle, name }: AccordionMenuItemProps) {
   return (
-    <div
-      className="flex justify-between items-center"
-      style={{ fontSize: calcRem(16) }}
-    >
+    <div className="flex justify-between items-center" style={{ fontSize: calcRem(16) }}>
       {name}
       <Link href={href}>
         <a
@@ -175,10 +141,7 @@ function AccordionMenuItem({ href, linkTitle, name }: AccordionMenuItemProps) {
           }}
         >
           {linkTitle}
-          <TopRightArrow
-            className="fill-current mx-4"
-            style={{ height: calcRem(7), width: calcRem(7) }}
-          />
+          <TopRightArrow className="fill-current mx-4" style={{ height: calcRem(7), width: calcRem(7) }} />
         </a>
       </Link>
     </div>
