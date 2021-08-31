@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import Check from '../svg/Check'
+import CheckAkita from '../svg/CheckAkita'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 
@@ -25,7 +25,7 @@ export function PresaleAkitaBalance({ className }: SectionProps) {
           </div>
           <div className="text-white">100,200,300,400 / 100,000,000 AKITA</div>
         </div>
-        <Check className="ml-6" />
+        <CheckAkita className="ml-6" />
       </div>
     </div>
   )

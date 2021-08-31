@@ -30,9 +30,9 @@ export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderPr
 
       var nextLocation = document.location.origin + href
 
-      //We are on the same page that we try to go
+      // We are on the page we are trying to reach
       if (window.location.href === nextLocation) {
-        //Close menu
+        // Close menu
         setIsMobileMenuOpen(false)
       } else {
         window.location.href = href

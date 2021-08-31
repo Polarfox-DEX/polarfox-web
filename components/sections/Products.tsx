@@ -23,11 +23,7 @@ export function Products({ className }: ProductsSectionProps) {
         <Product label="Decentralized Exchange" url={DEX_LINK} logo={<DoubleArrowGradient />} />
         <Product label="Polarfox Analytics" url={ANALYTICS_LINK} logo={<AnalyticsGradient />} />
         <Product label="Polarfox Token (PFX)" url="#" logo={<TokenGradient />} />
-        {/* <Product
-          label="Polarfox Bridge"
-          url="https://bridge-test.polarfox.io"
-          logo={<BridgeGradient />}
-        /> */}
+        {/* <Product label="Polarfox Bridge" url="https://bridge-test.polarfox.io" logo={<BridgeGradient />} /> */}
         <Product
           label="Akita Community"
           url={AKITA_LINK}
