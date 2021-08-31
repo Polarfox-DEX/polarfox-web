@@ -10,16 +10,23 @@ export default function useNumberValue(): [
     const [errorMessage, setErrorMessage] = useState<string>('')
 
     function onValueChange(value: string): Promise<void> {
+
+        // Return promise to be able to execute code after value has changed
         return new Promise<void>((resolve, reject) => {
+            // Remplace ',' with '.' for US agreements
             const val = value == '' ? '' : value.replace(',', '.')
             let regex = new RegExp('^([0-9]*[.])?[0-9]+$')
             if (regex.test(val)) {
                 setErrorMessage('')
                 setValue(value)
                 resolve()
-            } else {
+            } 
+            // Value is not a correct number
+            else {
                 setErrorMessage('Wrong number format')
+                // Set Value because user need to see the value even if it's incorrect
                 setValue(val)
+                // Reject the promise
                 reject()
             }
         })
