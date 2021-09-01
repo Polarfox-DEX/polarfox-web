@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -36,7 +36,13 @@ module.exports = {
         dark: '#F4F6F9',
         DEFAULT: '#4D6481'
       },
-      white: colors.white
+      white: colors.white,
+      red: {
+        error: '#F53939'
+      },
+      green: {
+        successful: '#1CCB00'
+      }
     },
     backgroundPosition: {
       center: 'center',

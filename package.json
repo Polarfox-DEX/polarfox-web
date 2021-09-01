@@ -6,19 +6,22 @@
     "dev": "next dev",
     "build": "yarn clear && next build && next export",
     "start": "next start",
-    "lint": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./components/*/*/*.tsx ./pages/*.tsx --check",
-    "lint:fix": "yarn prettier ./components/*.tsx ./components/*/*.tsx ./components/*/*/*.tsx ./pages/*.tsx --write",
+    "lint": "yarn prettier ./src/**/*.{js,ts,jsx,tsx} --check",
+    "lint:fix": "yarn prettier ./src/**/*.{js,ts,jsx,tsx} --write",
     "clear": "rimraf out"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "imagemin-mozjpeg": "^9.0.0",
+    "moment": "^2.29.1",
     "next": "11.0.1",
     "next-optimized-images": "^2.6.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "web3": "^1.5.2"
   },
   "devDependencies": {
+    "@polarfox/presale": "^1.0.3",
     "@types/react": "17.0.13",
     "autoprefixer": "^10.2.6",
     "eslint": "7.30.0",
@@ -27,6 +30,7 @@
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.4",
-    "typescript": "4.3.5"
+    "typescript": "4.3.5",
+    "web3-utils": "^1.5.2"
   }
 }
