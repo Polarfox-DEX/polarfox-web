@@ -5,7 +5,7 @@ import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
 import { Countdown } from '../countdown/Countdown'
-import GlobalVars from './../GlobalVars'
+import { PRESALE_END_UTC_DATE } from '../const/presale'
 
 export function PresaleInterface({ className }: SectionProps) {
   return (
@@ -23,7 +23,7 @@ export function PresaleInterface({ className }: SectionProps) {
         }}
       >
         <div className="flex text-white h-full items-center space-x-7">
-          <Countdown eventDateUTC={GlobalVars.presaleEndUTCDate} />
+          <Countdown eventDateUTC={PRESALE_END_UTC_DATE} />
           <Clock />
         </div>
       </div>
