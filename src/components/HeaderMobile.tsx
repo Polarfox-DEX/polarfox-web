@@ -46,7 +46,7 @@ export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderPr
   return (
     <div
       className={classNames('laptop:hidden w-full px-5 py-4', {
-        '-mt-28 z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen': isMobileMenuOpen
+        'absolute z-10 bg-gray-dark opacity-98 flex flex-col justify-between h-screen': isMobileMenuOpen
       })}
     >
       <div>

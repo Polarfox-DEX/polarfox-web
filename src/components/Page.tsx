@@ -5,28 +5,20 @@ import { Footer } from './Footer'
 import { Header } from './Header'
 import { PresaleHeader } from './PresaleHeader'
 import React, { ReactNode, useState } from 'react'
+import { SHOW_PRESALE_HEADER } from './const/presale'
 
 interface PageProps {
   children: ReactNode
 }
 
 export function Page({ children }: PageProps) {
-  const displayPresale = true
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
     <div
-      className={classNames(
-        styles.container,
-        'text-blue',
-        {
-          'pt-28': displayPresale
-        },
-        {
-          'h-screen overflow-hidden': isMobileMenuOpen
-        }
-      )}
+      className={classNames(styles.container, 'text-blue', {
+        'h-screen overflow-hidden': isMobileMenuOpen
+      })}
     >
       <Head>
         <title>Polarfox</title>
@@ -37,7 +29,7 @@ export function Page({ children }: PageProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
       </Head>
 
-      {displayPresale && <PresaleHeader className="-mt-28" isMobileMenuOpen={isMobileMenuOpen} />}
+      {SHOW_PRESALE_HEADER && <PresaleHeader isMobileMenuOpen={isMobileMenuOpen} />}
       <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
       {children}
 
