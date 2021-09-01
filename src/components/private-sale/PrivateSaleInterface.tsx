@@ -26,15 +26,25 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
-  const [userBnbAllowance, setUserBnbAllowance] = useState<string>('0')
+  const [userBnbAllowance, setUserBnbAllowance] = useState<string>('')
   const [userUsdAllowance, setUserUsdAllowance] = useState<number>(0.0)
   const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
+  const userAllowanceRegex = /^[0-9]*[\.|,]?[0-9]*$/
+
   const userAllowanceChange = (value: string) => {
-    const val = value == '' ? '0' : value.replace(',', '.')
-    setUserBnbAllowance(val)
-    setUserUsdAllowance(parseFloat(val) * currentBnbPrice)
+    // Correct input
+    if (value.match(userAllowanceRegex)) {
+      // Replace commas with dots
+      const withoutCommas = value.replace(',', '.')
+
+      // Set balances
+      setUserBnbAllowance(withoutCommas)
+      setUserUsdAllowance(withoutCommas && withoutCommas != '.' ? parseFloat(withoutCommas) * currentBnbPrice : 0)
+    }
+
+    // Wrong input: don't do anything
   }
 
   useEffect(() => {
@@ -135,7 +145,10 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               <input
                 className="bg-blue-gray focus:outline-none w-full"
                 value={userBnbAllowance}
-                onChange={(event) => userAllowanceChange(event.currentTarget.value)}
+                onChange={(event) => {
+                  userAllowanceChange(event.currentTarget.value)
+                }}
+                placeholder="0.0"
               />
               <SideText className="truncate">
                 {'= '}
@@ -172,7 +185,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             You will get
           </div>
           <div className={classNames('bg-blue-gray rounded-xl flex justify-between items-center p-6')}>
-            <div className="truncate">{new Intl.NumberFormat('en-US').format(userUsdAllowance)}</div>
+            <div className={classNames('truncate', { 'opacity-50': !userBnbAllowance })}>
+              {new Intl.NumberFormat('en-US').format(userUsdAllowance)}
+            </div>
             <MainText className="pl-2">PFX</MainText>
           </div>
         </div>
@@ -261,6 +276,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
         disabled={
           !isWhitelisted ||
           userBnbAllowance == '0' ||
+          userUsdAllowance == 0 ||
           (!useMyAddress && userRecipientAddress === '') ||
           isInvalidAddress
         }
