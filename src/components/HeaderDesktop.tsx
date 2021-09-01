@@ -50,7 +50,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         <Link href={FAQ_LINK}>
           <a className="px-6">FAQ</a>
         </Link>
-        <ResourceDropdown />
+        <ResourcesDropdown />
         {/* <LanguageDropdown /> */}
         {/* <div>Account</div> */}
       </div>
@@ -99,11 +99,11 @@ function Dropdown({ className, logo, name, children, width, rightAlignment }: Dr
   )
 }
 
-function ResourceDropdown() {
+function ResourcesDropdown() {
   return (
     <Dropdown
       name="Resources"
-      width={calcRem(220)}
+      width={calcRem(150)}
       className={classNames('grid mt-1 grid-flow-row p-4 gap-y-2 rounded-3xl')}
     >
       {/* <MenuItem href={TUTORIALS_LINK} linkTitle="Tutorials">
