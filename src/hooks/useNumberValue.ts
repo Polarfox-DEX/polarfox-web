@@ -14,11 +14,12 @@ export default function useNumberValue(): [
         // Return promise to be able to execute code after value has changed
         return new Promise<void>((resolve, reject) => {
             // Remplace ',' with '.' for US agreements
-            const val = value == '' ? '' : value.replace(',', '.')
+            const val = value === '' ? '0' : value.replace(',', '.')
             let regex = new RegExp('^([0-9]*[.])?[0-9]+$')
             if (regex.test(val)) {
                 setErrorMessage('')
-                setValue(value)
+                // parseFloat() is used to remove 0 before number
+                setValue(parseFloat(val).toString()) 
                 resolve()
             } 
             // Value is not a correct number
