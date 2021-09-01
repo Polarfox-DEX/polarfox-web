@@ -2,84 +2,108 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { calcRem } from '../utils/styles'
 import { RightArrow } from './svg/RightArrow'
-import { SectionProps } from './sections/utils/SectionProps'
 import GlobalVars from './GlobalVars'
 import { Countdown } from './countdown/Countdown'
 import moment from 'moment'
+import { TELEGRAM_ANNOUNCEMENTS } from './const/links'
 
-interface PresaleHeader {
+interface PresaleHeaderProps {
   className?: string
   isMobileMenuOpen: boolean
 }
 
-export function PresaleHeader({ className, isMobileMenuOpen }: PresaleHeader) {
+export function PresaleHeader({ className, isMobileMenuOpen }: PresaleHeaderProps) {
   return (
-    <div
-      className={classNames(
-        'grid grid-cols-3 items-center justify-items-start bg-blue text-white gap-x-2 font-graphik laptop:h-28',
-        'grid-cols-teasingPresaleHeader laptop:grid-cols-presaleHeader w-full',
-        { hidden: isMobileMenuOpen },
-        className
-      )}
-      style={{
-        height: calcRem(80)
-      }}
-    >
-      <div
-        className={classNames('laptop:hidden bg-blue-light grid items-center h-full w-full')}
-        style={{
-          fontSize: calcRem(10)
-        }}
-      >
-        <div className="-rotate-90 text-center">{GlobalVars.showPresaleStartDate ? 'NOW' : 'SOON'}</div>
-      </div>
-      <div
-        className={classNames(GlobalVars.showPresaleStartDate ? 'laptop:self-center laptop:ml-16 pl-2' : 'hidden')}
-        style={{ fontSize: calcRem(18) }}
-      >
-        {GlobalVars.presaleStartUTCDate.isAfter(moment.utc()) &&
-          'PFX presale starts on ' + GlobalVars.presaleStartUTCDate.format('MMMM Do YYYY, h:mm:ss A z')}
-        {GlobalVars.presaleStartUTCDate.isBefore(moment.utc()) &&
-          'PFX presale ends on ' + GlobalVars.presaleEndUTCDate.format('dddd, MMMM Do YYYY, h:mm:ss A z')}
-      </div>
-      <div
-        className={classNames(GlobalVars.showPresaleStartDate ? 'hidden' : 'ml-1 laptop:justify-center laptop:ml-8')}
-      >
-        PFX presale starts mid-September 🦊
-      </div>
-      <a
-        className={classNames(
-          { 'laptop:hidden': GlobalVars.showPresaleStartDate },
-          'mr-4 bg-white text-blue grid items-center justify-self-end text-center rounded-full px-2 font-semibold laptop:mr-8'
-        )}
-        style={{
-          height: calcRem(50),
-          width: calcRem(140),
-          fontSize: calcRem(14)
-        }}
-        href={GlobalVars.showPresaleStartDate ? '/presale' : 'https://t.me/pfxannouncements'}
-        rel={GlobalVars.showPresaleStartDate ? '' : 'noopener noreferrer'}
-        target={GlobalVars.showPresaleStartDate ? '' : '_blank'}
-      >
-        {GlobalVars.showPresaleStartDate ? 'OPEN' : 'MORE INFO'}
-      </a>
-      <div className={classNames(GlobalVars.showPresaleStartDate ? 'hidden laptop:flex' : 'hidden')}>
-        <div className="container flex justify-between items-center space-x-5 mx-24" style={{ width: calcRem(312) }}>
-          {GlobalVars.presaleStartUTCDate.isAfter(moment.utc()) && (
-            <Countdown eventDateUTC={GlobalVars.presaleStartUTCDate} />
-          )}
-          {GlobalVars.presaleStartUTCDate.isBefore(moment.utc()) && (
-            <Countdown eventDateUTC={GlobalVars.presaleEndUTCDate} />
-          )}
+    // TODO: Refactor and improve
+    <div className={classNames('bg-blue text-white w-full', { hidden: isMobileMenuOpen }, className)}>
+      <div className="presale-header flex justify-between items-center text-white font-graphik">
+        <div className="flex justify-between h-full">
+          <div
+            className="laptop:hidden bg-blue-light flex items-center"
+            style={{
+              fontSize: calcRem(10)
+            }}
+          >
+            <p className="-rotate-90">{GlobalVars.presaleStartUTCDate.isBefore(moment.utc()) ? 'NOW' : 'SOON'}</p>
+          </div>
+          <div className="presale-date flex items-center px-4 laptop:pl-8">{getPresaleHeaderText()}</div>
         </div>
-        <div className="mx-12 self-center">
+        <div className="flex pr-4 laptop:pr-8 desktop:pr-12 items-center">
+          <div
+            className={classNames('container flex justify-between items-center space-x-5 mx-24 hidden', {
+              'laptop:flex': GlobalVars.showPresaleStartDate
+            })}
+            style={{ width: calcRem(312) }}
+          >
+            {GlobalVars.presaleStartUTCDate.isAfter(moment.utc()) && (
+              <Countdown eventDateUTC={GlobalVars.presaleStartUTCDate} />
+            )}
+          </div>
+          <a
+            className={classNames(
+              { 'laptop:hidden': GlobalVars.showPresalePage },
+              'flex items-center justify-center bg-white text-blue rounded-full font-semibold'
+            )}
+            style={{
+              height: calcRem(50),
+              width: calcRem(140),
+              fontSize: calcRem(14)
+            }}
+            href={TELEGRAM_ANNOUNCEMENTS}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {GlobalVars.showPresalePage ? 'Open' : 'MORE INFO'}
+          </a>
           <Link href="/presale">
-            <a>
+            <a
+              className={classNames(
+                'self-center',
+                { 'hidden laptop:block': GlobalVars.showPresalePage },
+                { hidden: !GlobalVars.showPresalePage }
+              )}
+            >
               <RightArrow className="fill-current" />
             </a>
           </Link>
         </div>
+        <style jsx>{`
+          .presale-header {
+            height: ${calcRem(81)};
+          }
+
+          @media (min-width: 1024px) {
+            .presale-header {
+              height: ${calcRem(114)};
+            }
+          }
+
+          .presale-date {
+            font-size: ${calcRem(12)};
+          }
+
+          @media (min-width: 336px) {
+            .presale-date {
+              font-size: ${calcRem(14)};
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .presale-date {
+              font-size: ${calcRem(18)};
+            }
+          }
+        `}</style>
       </div>
     </div>
   )
+}
+
+function getPresaleHeaderText() {
+  if (!GlobalVars.showPresaleStartDate) return 'PFX presale starts mid-September 🦊'
+  if (GlobalVars.presaleStartUTCDate.isAfter(moment.utc())) {
+    if (GlobalVars.showPresaleStartHour) return 'PFX presale starts on September 17th, 20:00 UTC'
+    else return 'PFX presale starts on September 17th'
+  }
+  return 'The PFX presale is on!'
 }
