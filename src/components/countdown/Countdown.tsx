@@ -8,7 +8,7 @@ interface PresaleCountdownInterface {
 }
 
 export function Countdown({ eventDateUTC }: PresaleCountdownInterface) {
-  var now = moment.utc()
+  const now = moment.utc()
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -17,24 +17,22 @@ export function Countdown({ eventDateUTC }: PresaleCountdownInterface) {
     seconds: 0
   })
 
-  if (now.isBefore(eventDateUTC)) {
-    useEffect(() => {
-      const timer = setInterval(() => {
-        var timeLeft = moment.duration(eventDateUTC.diff(now))
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const timeLeft_ = moment.duration(eventDateUTC.diff(now))
 
-        setTimeLeft({
-          days: timeLeft.get('days'),
-          hours: timeLeft.get('hours'),
-          minutes: timeLeft.get('minutes'),
-          seconds: timeLeft.get('seconds')
-        })
-      }, 1000)
-      return () => clearTimeout(timer)
-    })
-  } else {
-    {
-      /* Presale is finished */
-    }
+      setTimeLeft({
+        days: timeLeft_.get('days'),
+        hours: timeLeft_.get('hours'),
+        minutes: timeLeft_.get('minutes'),
+        seconds: timeLeft_.get('seconds')
+      })
+    }, 1000)
+    return () => clearTimeout(timer)
+  })
+
+  // Presale is done
+  if (now.isAfter(eventDateUTC)) {
     return (
       <div className="flex space-x-5 ml-7" style={{ width: calcRem(312) }}>
         <div
@@ -46,8 +44,8 @@ export function Countdown({ eventDateUTC }: PresaleCountdownInterface) {
       </div>
     )
   }
-
-  if (timeLeft.days !== 0) {
+  // Presale is in less than 24 hours
+  else if (timeLeft.days !== 0) {
     return (
       <div className="flex space-x-5 ml-7" style={{ width: calcRem(312) }}>
         <PresaleTimerWindow suffix="d" value={timeLeft.days} />
@@ -55,7 +53,9 @@ export function Countdown({ eventDateUTC }: PresaleCountdownInterface) {
         <PresaleTimerWindow suffix="m" value={timeLeft.days} />
       </div>
     )
-  } else {
+  }
+  // Presale is in more than 24 hours
+  else {
     return (
       <div className="flex space-x-5 ml-7" style={{ width: calcRem(312) }}>
         <PresaleTimerWindow suffix="h" value={timeLeft.hours} />

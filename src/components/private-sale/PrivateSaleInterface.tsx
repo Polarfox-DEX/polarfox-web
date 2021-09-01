@@ -60,7 +60,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     }
   }
 
-  var onUserRecipientAddressChange = (address: string) => {
+  const onUserRecipientAddressChange = (address: string) => {
     if (address != '') {
       setUserRecipientAddress(address)
       const regex = new RegExp('^0x[a-fA-F0-9]{40}$')
@@ -71,7 +71,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     }
   }
 
-  var resetUIToDefault = () => {
+  const resetUIToDefault = () => {
     setUserBnbAllowance('0')
     setUserUsdAllowance(0.0)
     setPurchaseLoading(false)
