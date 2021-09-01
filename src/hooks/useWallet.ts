@@ -24,8 +24,7 @@ async function getChainId(): Promise<ChainId | null> {
   if (chainId_) {
     // Hex to base 10
     return parseInt(chainId_)
-  }
-  else {
+  } else {
     return null
   }
 }
@@ -65,15 +64,18 @@ export function useWallet(): Wallet {
   const [balance, setBalance] = useState<number>(0)
   const [gasPrice, setGasPrice] = useState<string>('')
 
-  const connectAccount = useCallback((accounts: string[], balance: number, gasPrice: string, chainId: ChainId | null) => {
-    if (accounts.length > 0 && chainId) {
-      setAccounts(accounts)
-      setChainId(chainId)
-      setConnected(true)
-      setBalance(balance)
-      setGasPrice(gasPrice)
-    }
-  }, [])
+  const connectAccount = useCallback(
+    (accounts: string[], balance: number, gasPrice: string, chainId: ChainId | null) => {
+      if (accounts.length > 0 && chainId) {
+        setAccounts(accounts)
+        setChainId(chainId)
+        setConnected(true)
+        setBalance(balance)
+        setGasPrice(gasPrice)
+      }
+    },
+    []
+  )
 
   useEffect(() => {
     if (window_.ethereum) {
@@ -91,7 +93,7 @@ export function useWallet(): Wallet {
         if (currentChainId !== chainId) {
           connectAccount(await getAccounts(), balance, gasPrice, currentChainId)
         }
-  
+
         // If the balance changed
         if (connected) {
           const currentBalance = await getBalance(accounts[0])
@@ -99,13 +101,13 @@ export function useWallet(): Wallet {
             setBalance(currentBalance)
           }
         }
-  
+
         // If the gas price changed
         const currentGasPrice = await getGasPrice()
         if (currentGasPrice !== gasPrice) {
           setGasPrice(gasPrice)
         }
-  
+
         // If the user disconnected
         if (connected && hasWallet() && (await getAccounts()).length === 0) {
           setConnected(false)

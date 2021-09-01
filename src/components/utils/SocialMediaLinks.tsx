@@ -6,6 +6,7 @@ import Twitter from '../svg/Twitter'
 import classNames from 'classnames'
 import { SiteMapLink } from './SiteMapLink'
 import { CSSProperties } from 'react'
+import { TELEGRAM_ANNOUNCEMENTS } from '../const/links'
 
 interface SocialMediaLinksProps {
   className?: string
@@ -15,7 +16,7 @@ interface SocialMediaLinksProps {
 export function SocialMediaLinks({ className, style }: SocialMediaLinksProps) {
   return (
     <div className={classNames('flex space-x-6 items', className)} style={style}>
-      <SiteMapLink url="https://t.me/polarfoxdex">
+      <SiteMapLink url={TELEGRAM_ANNOUNCEMENTS}>
         <Telegram
           className="text-blue hover:text-blue-light fill-current"
           width={calcRem(24.29)}

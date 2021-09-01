@@ -8,7 +8,7 @@ import Telegram from './svg/Telegram'
 import Twitter from './svg/Twitter'
 import { SiteMapLink } from './utils/SiteMapLink'
 import { SocialMediaLinks } from './utils/SocialMediaLinks'
-import { LITEPAPER_LINK } from './const/links'
+import { TELEGRAM_ANNOUNCEMENTS, GITHUB_LINK, LITEPAPER_LINK, MEDIUM_LINK, TWITTER_LINK } from './const/links'
 
 interface FooterProps {
   className?: string
@@ -98,7 +98,7 @@ export function Footer({ className }: FooterProps) {
 
 function TelegramButton() {
   return (
-    <SocialButton url="https://t.me/polarfoxdex">
+    <SocialButton url={TELEGRAM_ANNOUNCEMENTS}>
       <Telegram width={calcRem(24.62)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
@@ -106,7 +106,7 @@ function TelegramButton() {
 
 function GitHubButton() {
   return (
-    <SocialButton url="https://github.com/Polarfox-DEX">
+    <SocialButton url={GITHUB_LINK}>
       <GitHub width={calcRem(21.03)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
@@ -114,7 +114,7 @@ function GitHubButton() {
 
 function MediumButton() {
   return (
-    <SocialButton url="https://medium.com/polarfoxdex">
+    <SocialButton url={MEDIUM_LINK}>
       <Medium width={calcRem(36.12)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
@@ -122,7 +122,7 @@ function MediumButton() {
 
 function TwitterButton() {
   return (
-    <SocialButton url="https://twitter.com/polarfoxdex">
+    <SocialButton url={TWITTER_LINK}>
       <Twitter width={calcRem(24.91)} height={calcRem(20.51)} className="fill-current" />
     </SocialButton>
   )
@@ -179,7 +179,7 @@ function SiteMap() {
         <SiteMapLink url="/about">About us</SiteMapLink>
         <SiteMapLink url="/faq">FAQ</SiteMapLink>
         <SiteMapLink url="/#roadmap">Roadmap</SiteMapLink>
-        <SiteMapLink url="https://t.me/polarfoxdex">Contact</SiteMapLink>
+        <SiteMapLink url={TELEGRAM_ANNOUNCEMENTS}>Contact</SiteMapLink>
       </SiteMapSection>
       <SiteMapSection>
         <SiteMapSectionTitle>Products</SiteMapSectionTitle>

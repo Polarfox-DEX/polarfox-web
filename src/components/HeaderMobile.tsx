@@ -24,6 +24,7 @@ import {
 import { PolarfoxLogo } from './utils/PolarfoxLogo'
 
 export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
+  // TODO: Move to utils
   function SmartLink({ href, name }: SmartLinkProp) {
     var verifyLink = (event: React.MouseEvent) => {
       event.preventDefault

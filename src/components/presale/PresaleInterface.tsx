@@ -164,8 +164,7 @@ function DayButton({ className, isActive, hasStarted, children }: DayButtonProps
       className={classNames(
         'rounded-3xl -mt-2 font-semibold text-center pt-3',
         { 'bg-blue-gray': hasStarted && !isActive },
-        { 'bg-white': isActive },
-        { 'text-blue': isActive },
+        { 'bg-white text-blue': isActive },
         { 'opacity-30': !hasStarted },
 
         className

@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { calcRem } from '../../utils/styles'
+import { TELEGRAM_GROUP } from '../const/links'
 import { SectionProps } from '../sections/utils/SectionProps'
 
 export function FaqContact({ className }: SectionProps) {
@@ -22,7 +23,7 @@ export function FaqContact({ className }: SectionProps) {
         className="mt-12 rounded-full border border-blue bg-white font-semibold hover:bg-blue hover:text-white"
         style={{ width: calcRem(166), height: calcRem(44) }}
       >
-        <Link href="https://t.me/polarfoxdex">
+        <Link href={TELEGRAM_GROUP}>
           <a target="_blank" rel="noopener noreferrer">
             Contact us
           </a>

@@ -4,7 +4,7 @@ import { PROVIDER, ChainId } from './const'
 let web3_: Web3
 
 // Running in browser AND Metamask is available
-if (typeof window !== "undefined" && window && (window as any).ethereum) {
+if (typeof window !== 'undefined' && window && (window as any).ethereum) {
   // Get Metamask's instance of Web3
   web3_ = new Web3((window as any).ethereum)
 }
