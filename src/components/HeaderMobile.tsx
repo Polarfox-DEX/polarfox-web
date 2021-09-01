@@ -26,10 +26,10 @@ import { PolarfoxLogo } from './utils/PolarfoxLogo'
 export function HeaderMobile({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
   // TODO: Move to utils
   function SmartLink({ href, name }: SmartLinkProp) {
-    var verifyLink = (event: React.MouseEvent) => {
+    const verifyLink = (event: React.MouseEvent) => {
       event.preventDefault
 
-      var nextLocation = document.location.origin + href
+      const nextLocation = document.location.origin + href
 
       // We are on the page we are trying to reach
       if (window.location.href === nextLocation) {
@@ -110,7 +110,7 @@ interface AccordionMenuProps {
 }
 
 function AccordionMenu({ children, className, name }: AccordionMenuProps) {
-  var [menuOpened, setMenuOpened] = useState(false)
+  const [menuOpened, setMenuOpened] = useState(false)
 
   return (
     <div>
