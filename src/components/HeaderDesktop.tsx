@@ -50,7 +50,7 @@ export function HeaderDesktop({ className }: SectionProps) {
         <Link href={FAQ_LINK}>
           <a className="px-6">FAQ</a>
         </Link>
-        <RessourceDropdown />
+        <ResourceDropdown />
         <LanguageDropdown />
         {/* <div>Account</div> */}
       </div>
@@ -99,7 +99,7 @@ function Dropdown({ className, logo, name, children, width, rightAlignment }: Dr
   )
 }
 
-function RessourceDropdown() {
+function ResourceDropdown() {
   return (
     <Dropdown
       name="Resources"
