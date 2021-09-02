@@ -8,7 +8,7 @@ import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
 import CheckCircle from '../svg/CheckCircle'
 
-export function ClaimSaleTutorial({ className }: SectionProps) {
+export function ClaimTutorial({ className }: SectionProps) {
   return (
     <div className={classNames('container', className)}>
       <div

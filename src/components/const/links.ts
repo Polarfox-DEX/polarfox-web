@@ -13,4 +13,5 @@ export const ROADMAP_LINK = "/#roadmap"
 export const FAQ_LINK = "/faq"
 export const METAMASK_LINK = "https://metamask.io/download"
 export const CLAIM_LINK = "/claim"
+export const POLARFOX_LINK = "https://polarfox.io"
 

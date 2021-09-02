@@ -14,7 +14,7 @@ import { SectionProps } from '../sections/utils/SectionProps'
 import { useWallet } from '../../hooks/useWallet'
 import { usePrivateSale } from '../../hooks/usePrivateSale'
 
-export function ClaimSaleInterface({ className }: SectionProps) {
+export function ClaimInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, chainId, requestConnection, gasPrice } = useWallet()
