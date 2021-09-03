@@ -31,7 +31,8 @@ async function getChainId(): Promise<ChainId | null> {
 
 async function getBalance(address: string): Promise<number> {
   try {
-    const balance_ = await window_.ethereum.request({ method: 'eth_getBalance', params: [address] })
+    // const balance_ = await window_.ethereum.request({ method: 'eth_getBalance', params: [address] })
+    const balance_ = await web3.eth.getBalance(address)
 
     if (balance_) {
       return parseFloat(web3.utils.fromWei(balance_))
