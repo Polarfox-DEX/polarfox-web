@@ -1,4 +1,4 @@
-Code for the [Polarfox website](https://polarfox.io) (not deployed yet!)
+Code for the [Polarfox website](https://polarfox.io)!
 
 You can see the latest test version deployed [here](https://website-test.polarfox.io).
 
