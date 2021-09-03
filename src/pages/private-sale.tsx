@@ -6,7 +6,7 @@ import { PrivateSaleTutorial } from '../components/private-sale/PrivateSaleTutor
 export default function PrivateSale() {
   return (
     <Page>
-      <PrivateSalePanel className="mt-32 laptop:mt-12" />
+      <PrivateSalePanel className="mt-12" />
       <PrivateSaleTutorial className="mt-20" />
     </Page>
   )

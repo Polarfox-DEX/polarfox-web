@@ -31,9 +31,7 @@ export function PrivateSaleDescription({ className }: SectionProps) {
           lineHeight: calcRem(32)
         }}
       >
-        The PFX private sale will last until <span className="font-bold text-blue">$1,000,000</span> are raised. The
-        token is sold at a price of $1 per token, on a{' '}
-        <span className="font-bold text-blue">first-come, first-served</span> basis.
+        The PFX private sale will last until <span className="font-bold text-blue">$1,000,000</span> are raised. PFX is sold at a price of $1 per token.
       </p>
       <p
         className="description mt-10 text-gray"
