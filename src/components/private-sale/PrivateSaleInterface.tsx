@@ -94,7 +94,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       // Transaction is successful, show a confirmation message then reset the interface to default
       if (success) {
         setBuySuccessfulMessage(
-          'Successfuly bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
+          'Successfully bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
         )
         resetUIToDefault()
       }
