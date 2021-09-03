@@ -199,7 +199,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           <div className="mt-4">
             <input
               className={classNames('bg-blue-gray focus:outline-none rounded-xl px-6 disabled:opacity-40 w-full', {
-                'border-2 border-red-error': isInvalidAddress
+                'border-2 border-red-error': isInvalidAddress && !useMyAddress
               })}
               style={{
                 height: calcRem(45),
@@ -211,7 +211,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               disabled={useMyAddress}
             />
             <div className="text-red-error mt-3" style={{ fontSize: calcRem(12) }}>
-              {isInvalidAddress && 'Invalid address format.'}
+              {isInvalidAddress && !useMyAddress && 'Invalid address format.'}
             </div>
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
               <div className="flex items-center space-x-2.5">
@@ -277,8 +277,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           !isWhitelisted ||
           userBnbAllowance == '0' ||
           userUsdAllowance == 0 ||
-          (!useMyAddress && userRecipientAddress === '') ||
-          isInvalidAddress
+          (!useMyAddress && (userRecipientAddress === '' || isInvalidAddress))
         }
         click={() => purchase()}
       >
