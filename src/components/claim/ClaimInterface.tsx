@@ -1,11 +1,8 @@
 import classNames from 'classnames'
-import Clock from '../svg/Clock'
-import DownArrow from '../svg/DownArrow'
 import { calcRem } from '../../utils/styles'
 import { SectionProps } from '../sections/utils/SectionProps'
 import { ReactNode } from 'react'
-import { Countdown } from '../countdown/Countdown'
-import GlobalVars from './../GlobalVars'
+import Logo from '../svg/ClaimLogo'
 
 export function ClaimInterface({ className }: SectionProps) {
   return (
