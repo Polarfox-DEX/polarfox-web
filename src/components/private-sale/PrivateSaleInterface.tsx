@@ -134,7 +134,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             <DownArrow className="mx-3" />
           </div>
           <div
-            className={classNames(' mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
+            className={classNames('mt-7 bg-blue-gray rounded-xl flex justify-between items-center p-6', {
               'border-2 border-red-error': errorInput
             })}
             style={{
@@ -214,7 +214,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
               {isInvalidAddress && 'Invalid address format.'}
             </div>
             <div className="mt-4 px-2" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
-              <div className="flex items-center space-x-2.5 ">
+              <div className="flex items-center space-x-2.5">
                 <div
                   className="border-2 rounded-md border-white border-opacity-30 flex justify-center items-center hover:border-blue-light hover:border-opacity-70"
                   style={{ width: calcRem(22), height: calcRem(22) }}
