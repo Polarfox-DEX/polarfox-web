@@ -11,7 +11,7 @@ export interface PrivateSale {
   isWhitelisted: boolean
   remaining: number
   boughtAmount: number
-  buyTokens: (amount: string, buyer: string, recipient?: string) => Promise<any>
+  buyTokens: (amount: string, buyer: string, recipient?: string) => Promise<string>
   setJustBought: (justBought: boolean) => void
 }
 
@@ -127,7 +127,7 @@ export function usePrivateSale(): PrivateSale {
     }
   }, [correctNetwork, hasWallet, connected, chainId, accounts, lastChainId, justBought])
 
-  async function buyTokens(amount: string, buyer: string, recipient?: string): Promise<boolean> {
+  async function buyTokens(amount: string, buyer: string, recipient?: string): Promise<string> {
     // If the network is correct and the user is connected and whitelisted
     if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted && isSaleActive) {
       const amountInWei = web3.utils.toWei(amount)
@@ -152,14 +152,15 @@ export function usePrivateSale(): PrivateSale {
         }
 
         // The transaction was successful
-        return true
+        return ''
       } catch (error) {
         console.error('An error occurred in buyTokens():', error)
+        return error.message
       }
     }
 
     // The transaction failed
-    return false
+    return 'Conditions for buying are not met'
   }
 
   async function getSoldAmount(chainId: ChainId) {

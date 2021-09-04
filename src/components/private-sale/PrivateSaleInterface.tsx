@@ -18,8 +18,16 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, chainId, requestConnection, gasPrice } = useWallet()
-  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought, isSaleActive } =
-    usePrivateSale()
+  const {
+    correctNetwork,
+    currentBnbPrice,
+    isWhitelisted,
+    remaining,
+    boughtAmount,
+    buyTokens,
+    setJustBought,
+    isSaleActive
+  } = usePrivateSale()
 
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [errorInput, setErrorInput] = useState<string>('')
@@ -90,14 +98,13 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   const purchase = () => {
     setPurchaseLoading(true)
+    setErrorBuyTokens('')
 
     const recipient = useMyAddress ? undefined : userRecipientAddress
 
-    buyTokens(userBnbAllowance, accounts[0], recipient).then((success: boolean) => {
-      setErrorBuyTokens('')
-
+    buyTokens(userBnbAllowance, accounts[0], recipient).then((error: string) => {
       // Transaction is successful, show a confirmation message then reset the interface to default
-      if (success) {
+      if (!error) {
         setBuySuccessfulMessage(
           'Successfully bought ' + new Intl.NumberFormat('en-US').format(userUsdAllowance) + ' PFX!'
         )
@@ -106,7 +113,15 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       // The transaction was not successful
       else {
         setPurchaseLoading(false)
-        setErrorBuyTokens('An error occurred while purchasing tokens. Please contact us on Telegram if the problem persists.')
+        if (error.includes('User denied transaction signature')) {
+          // Do nothing
+        } else if (error.includes('Conditions for buying are not met')) {
+          setErrorBuyTokens('Conditions for buying are not met. Please contact us on Telegram if the problem persists.')
+        } else {
+          setErrorBuyTokens(
+            'An error occurred while purchasing tokens. Please contact us on Telegram if the problem persists.'
+          )
+        }
       }
 
       // Recalculate the values displayed on the UI
@@ -250,9 +265,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
             <div className="text-red-error">
               {connected && !isWhitelisted && correctNetwork && 'Your address is not whitelisted.'}
             </div>
-            <div className="text-red-error">
-              {connected && errorBuyTokens && correctNetwork && errorBuyTokens}
-            </div>
+            <div className="text-red-error">{connected && errorBuyTokens && correctNetwork && errorBuyTokens}</div>
             <div className="text-green-successful">{buySuccessfulMessage}</div>
           </div>
           <div className="mt-6 opacity-40 text-center" style={{ fontSize: calcRem(12), lineHeight: calcRem(18) }}>
@@ -325,7 +338,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
 function WrongNetworkButton() {
   return (
-    <ActionButton disabled={true} click={() => { }} isError>
+    <ActionButton disabled={true} click={() => {}} isError>
       Wrong network - please switch to BSC
     </ActionButton>
   )
