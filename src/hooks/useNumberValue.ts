@@ -25,8 +25,6 @@ export default function useNumberValue(): [
             // Value is not a correct number
             else {
                 setErrorMessage('Wrong number format')
-                // Set Value because user need to see the value even if it's incorrect
-                setValue(val)
                 // Reject the promise
                 reject()
             }
