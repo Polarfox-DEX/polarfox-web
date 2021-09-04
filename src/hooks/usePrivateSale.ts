@@ -5,6 +5,7 @@ import { web3 } from '../blockchain/web3'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
+  isSaleActive: boolean
   correctNetwork: boolean
   currentBnbPrice: number
   isWhitelisted: boolean
@@ -15,6 +16,7 @@ export interface PrivateSale {
 }
 
 export function usePrivateSale(): PrivateSale {
+  const [isSaleActive, setIsSaleActive] = useState<boolean>(true)
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(true)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
@@ -57,6 +59,12 @@ export function usePrivateSale(): PrivateSale {
         .methods.currentBnbPrice()
         .call()
         .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
+
+      // Get if the sale is active or not
+      privateSale(chainId)
+        .methods.isSaleActive()
+        .call()
+        .then((isSaleActive: boolean) => setIsSaleActive(isSaleActive))
 
       // Get remaining amount of USD in the presale
       getSoldAmount(chainId)
@@ -121,7 +129,7 @@ export function usePrivateSale(): PrivateSale {
 
   async function buyTokens(amount: string, address: string): Promise<boolean> {
     // If the network is correct and the user is connected and whitelisted
-    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
+    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted && isSaleActive) {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
@@ -154,6 +162,7 @@ export function usePrivateSale(): PrivateSale {
   }
 
   return {
+    isSaleActive,
     correctNetwork,
     currentBnbPrice,
     isWhitelisted,

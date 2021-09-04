@@ -18,7 +18,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const SYMBOL: string = 'BNB'
 
   const { hasWallet, connected, accounts, balance, chainId, requestConnection, gasPrice } = useWallet()
-  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought } =
+  const { correctNetwork, currentBnbPrice, isWhitelisted, remaining, boughtAmount, buyTokens, setJustBought, isSaleActive } =
     usePrivateSale()
 
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
@@ -278,11 +278,12 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           userBnbAllowance == '0' ||
           userUsdAllowance == 0 ||
           (!useMyAddress && (userRecipientAddress === '' || isInvalidAddress))
+          
         }
         click={() => purchase()}
       >
-        {!purchaseLoading && 'Purchase'}
-        {purchaseLoading && 'Please wait...'}
+        { !isSaleActive && 'Sale has ended'}
+        { isSaleActive && (purchaseLoading ? 'Please wait...' : 'Purchase')}
       </ActionButton>
     )
   }
