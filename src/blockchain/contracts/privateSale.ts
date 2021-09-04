@@ -5,7 +5,7 @@ import PolarfoxPrivateSale from '@polarfox/presale/artifacts/contracts/PolarfoxP
 
 export const PRIVATE_SALE_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.BSC]: '',
-  [ChainId.BSC_TESTNET]: '0x5CF90C96142E2d1efd300A687ee6259c59fA3503',
+  [ChainId.BSC_TESTNET]: '0x1D6e213bEB84f351eAA3354AE2F63Dc87A205953',
   [ChainId.AVALANCHE]: '',
   [ChainId.FUJI]: ''
 }
