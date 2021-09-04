@@ -246,7 +246,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           </div>
           <div className="mt-2" style={{ fontSize: calcRem(12) }}>
             <div className="text-red-error">
-              {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
+              {connected && !isWhitelisted && correctNetwork && 'Your address is not whitelisted.'}
             </div>
             <div className="text-red-error">
               {connected && errorBuyTokens && correctNetwork && errorBuyTokens}
