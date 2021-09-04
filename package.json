@@ -21,7 +21,7 @@
     "web3": "^1.5.2"
   },
   "devDependencies": {
-    "@polarfox/presale": "^1.0.6",
+    "@polarfox/presale": "^1.0.7",
     "@types/react": "17.0.13",
     "autoprefixer": "^10.2.6",
     "eslint": "7.30.0",
