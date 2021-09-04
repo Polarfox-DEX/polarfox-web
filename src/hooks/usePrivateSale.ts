@@ -20,7 +20,7 @@ export function usePrivateSale(): PrivateSale {
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(true)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
-  const [remaining, setRemaining] = useState<number>(1000001)
+  const [remaining, setRemaining] = useState<number>(1000000)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
   const [lastChainId, setLastChainId] = useState<number | null>(null)
   const [justBought, setJustBought] = useState<boolean>(false) // Here so we can go through the useEffect below at will
