@@ -123,7 +123,6 @@ export function useWallet(): Wallet {
   async function requestConnection() {
     if (!connected) {
       const [accounts, gasPrice, chainId] = await Promise.all([requestAccounts(), getGasPrice(), getChainId()])
-      // TODO: Not sure the line below will work - test this
       const balance = accounts ? await getBalance(accounts[0]) : 0
       connectAccount(accounts, balance, gasPrice, chainId)
     }
