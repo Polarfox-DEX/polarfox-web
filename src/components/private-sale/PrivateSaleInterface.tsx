@@ -91,7 +91,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const purchase = () => {
     setPurchaseLoading(true)
 
-    buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress).then((success: boolean) => {
+    const recipient = useMyAddress ? undefined : userRecipientAddress
+
+    buyTokens(userBnbAllowance, accounts[0], recipient).then((success: boolean) => {
       setErrorBuyTokens('')
 
       // Transaction is successful, show a confirmation message then reset the interface to default
