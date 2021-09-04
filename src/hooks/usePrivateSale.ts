@@ -5,6 +5,7 @@ import { web3 } from '../blockchain/web3'
 import { useWallet } from './useWallet'
 
 export interface PrivateSale {
+  isSaleActive: boolean
   correctNetwork: boolean
   currentBnbPrice: number
   isWhitelisted: boolean
@@ -15,10 +16,11 @@ export interface PrivateSale {
 }
 
 export function usePrivateSale(): PrivateSale {
+  const [isSaleActive, setIsSaleActive] = useState<boolean>(true)
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(true)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
-  const [remaining, setRemaining] = useState<number>(1000000)
+  const [remaining, setRemaining] = useState<number>(1000001)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
   const [lastChainId, setLastChainId] = useState<number | null>(null)
   const [justBought, setJustBought] = useState<boolean>(false) // Here so we can go through the useEffect below at will
@@ -36,13 +38,13 @@ export function usePrivateSale(): PrivateSale {
         // If it changed from a good chainId to a bad chainId
         if (isGoodChainId(lastChainId) && !isGoodChainId(chainId)) {
           // Refresh the page
-          // TODO: Eventually find a better solution
           window.location.reload()
         }
 
         // If it changed from a good chainId to a good chainId
         else if (isGoodChainId(lastChainId) && isGoodChainId(chainId)) {
-          // TODO
+          // Refresh the page
+          window.location.reload()
         }
       }
 
@@ -57,6 +59,12 @@ export function usePrivateSale(): PrivateSale {
         .methods.currentBnbPrice()
         .call()
         .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
+
+      // Check if the sale is active or not
+      privateSale(chainId)
+        .methods.isSaleActive()
+        .call()
+        .then((isSaleActive: boolean) => setIsSaleActive(isSaleActive))
 
       // Get remaining amount of USD in the presale
       getSoldAmount(chainId)
@@ -121,11 +129,10 @@ export function usePrivateSale(): PrivateSale {
 
   async function buyTokens(amount: string, address: string): Promise<boolean> {
     // If the network is correct and the user is connected and whitelisted
-    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted) {
+    if (chainId && (chainId == ChainId.BSC || chainId == ChainId.BSC_TESTNET) && connected && isWhitelisted && isSaleActive) {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
-        // TODO: Try without gas price
         await privateSale(chainId).methods.buyTokens().send({
           from: address,
           value: amountInWei,
@@ -135,11 +142,8 @@ export function usePrivateSale(): PrivateSale {
         // The transaction was successful
         return true
       } catch (error) {
-        // TODO: Display the error message
         console.error('An error occurred in buyTokens():', error)
       }
-    } else {
-      // TODO: Print an error message
     }
 
     // The transaction failed
@@ -150,10 +154,11 @@ export function usePrivateSale(): PrivateSale {
     await privateSale(chainId)
       .methods.soldAmount()
       .call()
-      .then((soldAmount: string) => setRemaining(1000000 - parseFloat(web3.utils.fromWei(soldAmount))))
+      .then((soldAmount: string) => setRemaining(1000001 - parseFloat(web3.utils.fromWei(soldAmount))))
   }
 
   return {
+    isSaleActive,
     correctNetwork,
     currentBnbPrice,
     isWhitelisted,
