@@ -281,6 +281,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     return (
       <ActionButton
         disabled={
+          !isSaleActive ||
           !isWhitelisted ||
           userBnbAllowance == '0' ||
           userUsdAllowance == 0 ||
