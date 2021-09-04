@@ -20,7 +20,7 @@ export function usePrivateSale(): PrivateSale {
   const [correctNetwork, setCorrectNetwork] = useState<boolean>(true)
   const [currentBnbPrice, setCurrentBnbPrice] = useState<number>(0)
   const [isWhitelisted, setIsWhitelisted] = useState<boolean>(true)
-  const [remaining, setRemaining] = useState<number>(1000000)
+  const [remaining, setRemaining] = useState<number>(1000001)
   const [boughtAmount, setBoughtAmount] = useState<number>(0)
   const [lastChainId, setLastChainId] = useState<number | null>(null)
   const [justBought, setJustBought] = useState<boolean>(false) // Here so we can go through the useEffect below at will
@@ -38,13 +38,13 @@ export function usePrivateSale(): PrivateSale {
         // If it changed from a good chainId to a bad chainId
         if (isGoodChainId(lastChainId) && !isGoodChainId(chainId)) {
           // Refresh the page
-          // TODO: Eventually find a better solution
           window.location.reload()
         }
 
         // If it changed from a good chainId to a good chainId
         else if (isGoodChainId(lastChainId) && isGoodChainId(chainId)) {
-          // TODO
+          // Refresh the page
+          window.location.reload()
         }
       }
 
@@ -133,7 +133,6 @@ export function usePrivateSale(): PrivateSale {
       const amountInWei = web3.utils.toWei(amount)
 
       try {
-        // TODO: Try without gas price
         await privateSale(chainId).methods.buyTokens().send({
           from: address,
           value: amountInWei,
@@ -143,11 +142,8 @@ export function usePrivateSale(): PrivateSale {
         // The transaction was successful
         return true
       } catch (error) {
-        // TODO: Display the error message
         console.error('An error occurred in buyTokens():', error)
       }
-    } else {
-      // TODO: Print an error message
     }
 
     // The transaction failed
@@ -158,7 +154,7 @@ export function usePrivateSale(): PrivateSale {
     await privateSale(chainId)
       .methods.soldAmount()
       .call()
-      .then((soldAmount: string) => setRemaining(1000000 - parseFloat(web3.utils.fromWei(soldAmount))))
+      .then((soldAmount: string) => setRemaining(1000001 - parseFloat(web3.utils.fromWei(soldAmount))))
   }
 
   return {

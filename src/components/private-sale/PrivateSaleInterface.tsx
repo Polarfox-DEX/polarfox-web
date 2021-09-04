@@ -23,6 +23,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   const [isInvalidAddress, setIsInvalidAddress] = useState<boolean>(false)
   const [errorInput, setErrorInput] = useState<string>('')
+  const [errorBuyTokens, setErrorBuyTokens] = useState<string>('')
   const [buySuccessfulMessage, setBuySuccessfulMessage] = useState<string>('')
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false)
 
@@ -91,6 +92,8 @@ export function PrivateSaleInterface({ className }: SectionProps) {
     setPurchaseLoading(true)
 
     buyTokens(userBnbAllowance, useMyAddress ? accounts[0] : userRecipientAddress).then((success: boolean) => {
+      setErrorBuyTokens('')
+
       // Transaction is successful, show a confirmation message then reset the interface to default
       if (success) {
         setBuySuccessfulMessage(
@@ -101,6 +104,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
       // The transaction was not successful
       else {
         setPurchaseLoading(false)
+        setErrorBuyTokens('An error occurred while purchasing tokens. Please contact us on Telegram if the problem persists.')
       }
 
       // Recalculate the values displayed on the UI
@@ -243,6 +247,9 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           <div className="mt-2" style={{ fontSize: calcRem(12) }}>
             <div className="text-red-error">
               {connected && !isWhitelisted && correctNetwork && 'Error: Your address is not whitelisted'}
+            </div>
+            <div className="text-red-error">
+              {connected && errorBuyTokens && correctNetwork && errorBuyTokens}
             </div>
             <div className="text-green-successful">{buySuccessfulMessage}</div>
           </div>
