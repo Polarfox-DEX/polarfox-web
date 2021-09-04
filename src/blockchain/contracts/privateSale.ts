@@ -4,7 +4,7 @@ import { ChainId } from '../const'
 import PolarfoxPrivateSale from '@polarfox/presale/artifacts/contracts/PolarfoxPrivateSale.sol/PolarfoxPrivateSale.json'
 
 export const PRIVATE_SALE_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.BSC]: '0xc1f7aAc0283E9a14e94AD1b44A81eB759C8D8739',
+  [ChainId.BSC]: '0x56afC3bF81250951d8B96bea3AdFd8926Cad7E38',
   [ChainId.BSC_TESTNET]: '0x1D6e213bEB84f351eAA3354AE2F63Dc87A205953',
   [ChainId.AVALANCHE]: '',
   [ChainId.FUJI]: ''
