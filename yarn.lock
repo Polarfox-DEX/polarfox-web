@@ -380,10 +380,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@polarfox/presale@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@polarfox/presale/-/presale-1.0.3.tgz#18ad42a34586fe3d4a893446339801930ea5bacd"
-  integrity sha512-PoSzeR9uqRrBgyktFmk3YJaP5juJViU0u80L+YvPBGQd6qZWsL++bqCd+k9qz7efu9OtvZpCQBqS2TEuMeAngA==
+"@polarfox/presale@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@polarfox/presale/-/presale-1.0.6.tgz#56df2b5efa568aa3b14cf21c90ab60ea2ff24226"
+  integrity sha512-nCBzQ9W0MBDUHcfW/IVePe8GzloRJ0Q7UWXHjN8gaf9CNOEkEFEva2VxQVvs1vnKhsFXNUApUfl9+Ix3r0INew==
 
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"
