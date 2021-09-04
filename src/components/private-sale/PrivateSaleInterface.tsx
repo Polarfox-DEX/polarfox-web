@@ -278,12 +278,11 @@ export function PrivateSaleInterface({ className }: SectionProps) {
           userBnbAllowance == '0' ||
           userUsdAllowance == 0 ||
           (!useMyAddress && (userRecipientAddress === '' || isInvalidAddress))
-          
         }
         click={() => purchase()}
       >
-        { !isSaleActive && 'Sale has ended'}
-        { isSaleActive && (purchaseLoading ? 'Please wait...' : 'Purchase')}
+        {!isSaleActive && 'Sale has ended'}
+        {isSaleActive && (purchaseLoading ? 'Please wait...' : 'Purchase')}
       </ActionButton>
     )
   }
@@ -316,7 +315,7 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
 function WrongNetworkButton() {
   return (
-    <ActionButton disabled={true} click={() => {}} isError>
+    <ActionButton disabled={true} click={() => { }} isError>
       Wrong network - please switch to BSC
     </ActionButton>
   )

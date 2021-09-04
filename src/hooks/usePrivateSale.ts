@@ -60,7 +60,7 @@ export function usePrivateSale(): PrivateSale {
         .call()
         .then((bnbPrice: number) => setCurrentBnbPrice(bnbPrice))
 
-      // Get if the sale is active or not
+      // Check if the sale is active or not
       privateSale(chainId)
         .methods.isSaleActive()
         .call()
