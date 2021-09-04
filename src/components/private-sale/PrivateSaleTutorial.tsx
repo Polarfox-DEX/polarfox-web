@@ -44,7 +44,7 @@ export function PrivateSaleTutorial({ className }: SectionProps) {
         </PresaleTutorialBlock>
         <GreyRightArrow />
         <PresaleTutorialBlock logo={<Sablier />} title="4 - Wait for the airdrop">
-          A few days after the ICO, you will be able to claim a part of your PFX. The rest will be locked then vested.
+          A few days after the ICO, you will be able to claim 5% of your PFX. The rest will be vested to you over two years.
         </PresaleTutorialBlock>
       </div>
     </div>
