@@ -40,11 +40,12 @@ export function PrivateSaleInterface({ className }: SectionProps) {
   const [userRecipientAddress, setUserRecipientAddress] = useState<string>('')
   const [useMyAddress, setUseMyAddress] = useState<boolean>(false)
 
-  const userAllowanceRegex = /^[0-9]*[\.|,]?[0-9]*$/
+  const USER_ALLOWANCE_REGEX = /^[0-9]*[\.|,]?[0-9]*$/
+  const MAX_GAS_PRICE = 0.01
 
   const userAllowanceChange = (value: string) => {
     // Correct input
-    if (value.match(userAllowanceRegex)) {
+    if (value.match(USER_ALLOWANCE_REGEX)) {
       // Replace commas with dots
       const withoutCommas = value.replace(',', '.')
 
@@ -73,9 +74,11 @@ export function PrivateSaleInterface({ className }: SectionProps) {
 
   const setMaxUserAllowance = () => {
     if (connected) {
-      const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
-      setUserBnbAllowance(max)
-      userAllowanceChange(max)
+      // const max = balance ? (balance - 2 * parseFloat(Web3.utils.fromWei(gasPrice))).toString() : '0'
+      const max = balance && balance > MAX_GAS_PRICE ? balance - MAX_GAS_PRICE : 0
+
+      setUserBnbAllowance(max.toString())
+      userAllowanceChange(max.toString())
     }
   }
 
